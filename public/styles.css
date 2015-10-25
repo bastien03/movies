@@ -1,0 +1,24 @@
+.homeLink {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.container h1 {
+    text-align: center;
+}
+
+.moviesList li {
+    float: left;
+    width: 30%;
+    list-style: none;
+    margin-left: 3%;
+    height: 120px;
+    border-bottom: 1px solid forestgreen;
+    text-align: center;
+}

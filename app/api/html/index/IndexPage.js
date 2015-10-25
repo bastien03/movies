@@ -1,11 +1,11 @@
-var jade = require('jade');
-var moviesService = require('../../../services/MoviesService.js');
+module.exports = function(db) {
 
-module.exports = function() {
+    var jade = require('jade');
+    var moviesService = require('../../../services/MoviesService.js')(db);
 
     var render = function(req, res) {
         var configuration = {
-            movies: moviesService.getMovies()
+            movies: moviesService.getMovies(req.query)
         }
         var html = jade.renderFile('app/api/html/index/index.jade', configuration);
         return res.send(html)
@@ -14,4 +14,4 @@ module.exports = function() {
     return {
         render: render
     }
-}();
+};

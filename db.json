@@ -1,0 +1,3131 @@
+{
+  "filename": "db.json",
+  "collections": [
+    {
+      "name": "movies",
+      "data": [
+        {
+          "title": "Little Caesar",
+          "year": "1931",
+          "url": "http://www.youtube.com/watch?v=dBLVJW8ULxY",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 1
+        },
+        {
+          "title": "Psycho",
+          "year": "1960",
+          "url": "http://www.youtube.com/watch?v=NG3-GlvKPcg",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 2
+        },
+        {
+          "title": "Rope",
+          "year": "1948",
+          "url": "https://www.youtube.com/watch?v=8NLsbzhOEHg",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 3
+        },
+        {
+          "title": "Rear Window",
+          "year": "1954",
+          "url": "http://www.youtube.com/watch?v=6kCcZCMYw38",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 4
+        },
+        {
+          "title": "Wait until dark",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=ogGKBiMX8KU",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 5
+        },
+        {
+          "title": "A Clockwork Orange",
+          "year": "1971",
+          "url": "http://www.youtube.com/watch?v=k8vq9RwYJKM",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 6
+        },
+        {
+          "title": "Ghost Dog",
+          "year": "1999",
+          "url": "http://www.youtube.com/watch?v=gpf0NFVLEn8",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 7
+        },
+        {
+          "title": "M - Eine Sadt sucht einen Mörder",
+          "year": "1931",
+          "url": "http://www.youtube.com/watch?v=_O_ldOK3dDE",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 8
+        },
+        {
+          "title": "Bagdad Cafe",
+          "year": "1990",
+          "url": "http://www.youtube.com/watch?v=c45IXAC98z8",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 9
+        },
+        {
+          "title": "The man who knew too much",
+          "year": "1956",
+          "url": "https://www.youtube.com/watch?v=Ft2smpFxJgY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 10
+        },
+        {
+          "title": "It's a wonderful life",
+          "year": "1946",
+          "url": "http://www.youtube.com/watch?v=LJfZaT8ncYk",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 11
+        },
+        {
+          "title": "Torn curtain",
+          "year": "1966",
+          "url": "https://www.youtube.com/watch?v=z2TlfRvNh8M",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 12
+        },
+        {
+          "title": "Good Bye Lenin",
+          "year": "2003",
+          "url": "http://www.youtube.com/watch?v=mIjSaHUKD5I",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 13
+        },
+        {
+          "title": "Berlin Calling",
+          "year": "2008",
+          "url": "http://www.youtube.com/watch?v=drdf8OeBUUM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 14
+        },
+        {
+          "title": "Sommer vorm Balkon",
+          "year": "2005",
+          "url": "http://www.youtube.com/watch?v=m00G24-87Ag",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 15
+        },
+        {
+          "title": "Herr Lehmann",
+          "year": "2003",
+          "url": "http://www.youtube.com/watch?v=YFEUcwdlzHw",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016644,
+            "version": 0
+          },
+          "$loki": 16
+        },
+        {
+          "title": "The graduate",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=4gwb6gmW97o",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 17
+        },
+        {
+          "title": "Lola rennt",
+          "year": "1998",
+          "url": "http://www.youtube.com/watch?v=Mx8XPYbMuXA",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 18
+        },
+        {
+          "title": "Frau2 sucht happyend",
+          "year": "2001",
+          "url": "http://www.youtube.com/watch?v=4f7qGUw2pI4",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 19
+        },
+        {
+          "title": "Sonnenallee",
+          "year": "1999",
+          "url": "http://www.youtube.com/watch?v=_mlJYEnMQpc",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 20
+        },
+        {
+          "title": "Into the wild",
+          "year": "2007",
+          "url": "http://www.youtube.com/watch?v=2LAuzT_x8Ek",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 21
+        },
+        {
+          "title": "Broken Flowers",
+          "year": "2005",
+          "url": "http://www.youtube.com/watch?v=GHmFlLwTNLk",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 22
+        },
+        {
+          "title": "Fußball ist unser Leben",
+          "year": "1999",
+          "url": "http://www.youtube.com/watch?v=dZhUYy07164",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 23
+        },
+        {
+          "title": "I.D.",
+          "year": "1995",
+          "url": "http://www.youtube.com/watch?v=5Y26VMm4L7o",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 24
+        },
+        {
+          "title": "Barry Lindon",
+          "year": "1975",
+          "url": "http://www.youtube.com/watch?v=hHCKrusk5SQ",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 25
+        },
+        {
+          "title": "Full Metal Jacket",
+          "year": "1987",
+          "url": "http://www.youtube.com/watch?v=G_ACkgfWC-Y",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 26
+        },
+        {
+          "title": "Dr. Strangelove",
+          "year": "1964",
+          "url": "http://www.youtube.com/watch?v=1gXY3kuDvSU",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 27
+        },
+        {
+          "title": "Lolita",
+          "year": "1962",
+          "url": "http://www.youtube.com/watch?v=zRVqgvW8100",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 28
+        },
+        {
+          "title": "2001: a space odissey",
+          "year": "1968",
+          "url": "http://www.youtube.com/watch?v=vahx4rAd0N0",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 29
+        },
+        {
+          "title": "The last king of Scotland",
+          "year": "2006",
+          "url": "http://www.youtube.com/watch?v=WWKPIS8-4HE",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 30
+        },
+        {
+          "title": "Frenzy",
+          "year": "1972",
+          "url": "https://www.youtube.com/watch?v=0gWjZpkkkIs",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 31
+        },
+        {
+          "title": "Brazil",
+          "year": "1985",
+          "url": "http://www.youtube.com/watch?v=4Wh2b1eZFUM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 32
+        },
+        {
+          "title": "The Rat Pack",
+          "year": "1998",
+          "url": "http://www.youtube.com/watch?v=6ezlI747WEc",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 33
+        },
+        {
+          "title": "The trouble with Harry",
+          "year": "1955",
+          "url": "https://www.youtube.com/watch?v=3sG_tQ_t5dw",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 34
+        },
+        {
+          "title": "The Unbearable Lightness of Being",
+          "year": "1988",
+          "url": "http://www.youtube.com/watch?v=SDQDwoFe6Ko",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016645,
+            "version": 0
+          },
+          "$loki": 35
+        },
+        {
+          "title": "So glücklich war ich noch nie",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=v3QzZZ_Du18",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 36
+        },
+        {
+          "title": "U-Carmen",
+          "year": "2005",
+          "url": "http://www.youtube.com/watch?v=fFEgd08b7SY",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 37
+        },
+        {
+          "title": "Topas",
+          "year": "1969",
+          "url": "https://www.youtube.com/watch?v=5U1XQH78gwc",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 38
+        },
+        {
+          "title": "Soul Kitchen",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=Vc93A0qxdY4",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 39
+        },
+        {
+          "title": "Gomorrha",
+          "year": "2008",
+          "url": "http://www.youtube.com/watch?v=lTxSRXM5Tsw",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 40
+        },
+        {
+          "title": "Amarcord",
+          "year": "1973",
+          "url": "http://www.youtube.com/watch?v=W5PsIpaRIFs",
+          "director": "federico-fellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 41
+        },
+        {
+          "title": "Roma cità aperta",
+          "year": "1945",
+          "url": "http://www.youtube.com/watch?v=xYrfj2uRoKQ",
+          "director": "roberto-rossellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 42
+        },
+        {
+          "title": "Ginger and Fred",
+          "year": "1986",
+          "url": "http://www.youtube.com/watch?v=4a8EfE-j2cY",
+          "director": "federico-fellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 43
+        },
+        {
+          "title": "The Lodger",
+          "year": "1927",
+          "url": "http://www.youtube.com/watch?v=tbeld6sN8yY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 44
+        },
+        {
+          "title": "Downhill",
+          "year": "1927",
+          "url": "http://www.youtube.com/watch?v=SsTDnkEVoyo",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 45
+        },
+        {
+          "title": "Die Kinder des Monsieur Matthieu",
+          "year": "2004",
+          "url": "http://www.youtube.com/watch?v=ZCD_KFHyNjk",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 46
+        },
+        {
+          "title": "Vertigo",
+          "year": "1958",
+          "url": "https://www.youtube.com/watch?v=Geu4LXm_GlY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 48
+        },
+        {
+          "title": "The man who knew too much",
+          "year": "1934",
+          "url": "http://www.youtube.com/watch?v=2XTN9ZVNuIQ",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 49
+        },
+        {
+          "title": "Sabotage",
+          "year": "1936",
+          "url": "https://www.youtube.com/watch?v=178s548EjM4",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 50
+        },
+        {
+          "title": "The Lady Vanishes",
+          "year": "1938",
+          "url": "http://www.youtube.com/watch?v=YihbNGUNQmU",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 51
+        },
+        {
+          "title": "Young and innocent",
+          "year": "1937",
+          "url": "http://www.youtube.com/watch?v=vXvoWexGn0o",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 52
+        },
+        {
+          "title": "Bend of the river",
+          "year": "1952",
+          "url": "http://www.youtube.com/watch?v=uAq9mE8Zh8M",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 53
+        },
+        {
+          "title": "In the heat of the night",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=oHsVhJTK4jo",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 54
+        },
+        {
+          "title": "Dial M for murder",
+          "year": "1954",
+          "url": "https://www.youtube.com/watch?v=JWP_hrNHSN4",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 55
+        },
+        {
+          "title": "The Wrong Man",
+          "year": "1956",
+          "url": "https://www.youtube.com/watch?v=a30ZjSrEU0w",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 56
+        },
+        {
+          "title": "North by Northwest",
+          "year": "1959",
+          "url": "http://www.youtube.com/watch?v=qk0GbTMMbP0",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 57
+        },
+        {
+          "title": "Strangers on a train",
+          "year": "1951",
+          "url": "http://www.youtube.com/watch?v=D6LCovGaOHY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 58
+        },
+        {
+          "title": "Auf der anderen Seite",
+          "year": "2007",
+          "url": "http://www.youtube.com/watch?v=GT9XvMYx1gI",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 59
+        },
+        {
+          "title": "Kebab Connection",
+          "year": "2005",
+          "url": "http://www.youtube.com/watch?v=kIN8_WZKTOE",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 60
+        },
+        {
+          "title": "Im Juli",
+          "year": "2000",
+          "url": "http://www.youtube.com/watch?v=Mr7WImqnKBM",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 61
+        },
+        {
+          "title": "Solino",
+          "year": "2002",
+          "url": "http://www.youtube.com/watch?v=Gjq3tuh6wY4",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 62
+        },
+        {
+          "title": "Three days of the condor",
+          "year": "1975",
+          "url": "http://www.youtube.com/watch?v=PBZf7vifXmY",
+          "director": "sydney-pollack",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 63
+        },
+        {
+          "title": "The 39 steps",
+          "year": "1935",
+          "url": "http://www.youtube.com/watch?v=KifMUWHbNzY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 64
+        },
+        {
+          "title": "Dead man",
+          "year": "1995",
+          "url": "http://www.youtube.com/watch?v=_64Qv0jV_PY",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016646,
+            "version": 0
+          },
+          "$loki": 65
+        },
+        {
+          "title": "Saboteur",
+          "year": "1942",
+          "url": "http://www.youtube.com/watch?v=K4ELyvwPTTk",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 66
+        },
+        {
+          "title": "La mariée était en noir",
+          "year": "1968",
+          "url": "http://www.youtube.com/watch?v=fG5QosHjTmw",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 67
+        },
+        {
+          "title": "The family plot",
+          "year": "1975",
+          "url": "http://www.youtube.com/watch?v=YVazwgLDFvI",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 68
+        },
+        {
+          "title": "Mystery train",
+          "year": "1989",
+          "url": "http://www.youtube.com/watch?v=nb0yBDSqTfs",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 69
+        },
+        {
+          "title": "Le chat et la souris",
+          "year": "1975",
+          "url": "http://www.youtube.com/watch?v=CGQ_yGRdFiI",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 70
+        },
+        {
+          "title": "Il y a des jours… et des lunes",
+          "year": "1990",
+          "url": "http://www.youtube.com/watch?v=_on0rI-cHRo",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 71
+        },
+        {
+          "title": "Spellboun",
+          "year": "1945",
+          "url": "https://www.youtube.com/watch?v=HIBaGIUbXqI",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 72
+        },
+        {
+          "title": "La bonne année",
+          "year": "1973",
+          "url": "http://www.youtube.com/watch?v=oMHZp0B-v3k",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 73
+        },
+        {
+          "title": "Talk to me",
+          "year": "2007",
+          "url": "http://www.youtube.com/watch?v=-CWoel1OPAw",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 74
+        },
+        {
+          "title": "Smic, Smac, Smoc",
+          "year": "1971",
+          "url": "http://www.dailymotion.com/video/x8mx7b_smic-smac-smoc-bande-annonce_shortfilms",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 75
+        },
+        {
+          "title": "Besieged / Asediada",
+          "year": "1998",
+          "url": "http://www.youtube.com/watch?v=G-FaANAWaVw",
+          "director": "bernardo-bertolucci",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 76
+        },
+        {
+          "title": "Playtime",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=ZO3SIkso0QQ",
+          "director": "jacques-tati",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 77
+        },
+        {
+          "title": "The limits of control",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=uKB7V86grMg",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 78
+        },
+        {
+          "title": "Under capricorn",
+          "year": "1949",
+          "url": "http://www.youtube.com/watch?v=3W6S3mslnFY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 79
+        },
+        {
+          "title": "La première étoile",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=CakQLb1O31I",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 80
+        },
+        {
+          "title": "Headline Story",
+          "year": "1951",
+          "url": "http://www.youtube.com/watch?v=3cczPdOxxsg",
+          "director": "marilyn-monroe",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 81
+        },
+        {
+          "title": "Vivement dimanche",
+          "year": "1983",
+          "url": "http://www.youtube.com/watch?v=tU4wtN1wsiM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 82
+        },
+        {
+          "title": "Tirez sur le pianiste",
+          "year": "1960",
+          "url": "http://www.youtube.com/watch?v=SJuZ-uGffpY",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 83
+        },
+        {
+          "title": "Marnie",
+          "year": "1964",
+          "url": "http://www.youtube.com/watch?v=QV_2-v_dsAU",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 84
+        },
+        {
+          "title": "Go trabi go",
+          "year": "1991",
+          "url": "http://www.youtube.com/watch?v=GADOCN6wJrI",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 85
+        },
+        {
+          "title": "Le dernier métro",
+          "year": "1980",
+          "url": "http://www.youtube.com/watch?v=A6DVipKm8pA",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 86
+        },
+        {
+          "title": "L'histoire d'Adèle",
+          "year": "1975",
+          "url": "http://www.youtube.com/watch?v=fvH77u47d7k",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 87
+        },
+        {
+          "title": "A room with view",
+          "year": "1985",
+          "url": "http://www.youtube.com/watch?v=WkrldSP4EU8",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 88
+        },
+        {
+          "title": "Attention bandits",
+          "year": "1986",
+          "url": "http://www.dailymotion.com/video/x8muqi_attention-bandits-bande-annonce_shortfilms#.USKbO-jHL-k",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 89
+        },
+        {
+          "title": "L'Aventure c'est l'aventure",
+          "year": "1972",
+          "url": "http://www.youtube.com/watch?v=eg9xQGFU5HY",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 90
+        },
+        {
+          "title": "Itinéraire d'un enfant gâté",
+          "year": "1988",
+          "url": "http://www.youtube.com/watch?v=9K5O_WP2zxM",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016647,
+            "version": 0
+          },
+          "$loki": 91
+        },
+        {
+          "title": "Tout ça pour ça",
+          "year": "1993",
+          "url": "http://www.youtube.com/watch?v=JZLoaybhasw",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 92
+        },
+        {
+          "title": "Alemanya",
+          "year": "2011",
+          "url": "http://www.youtube.com/watch?v=1symyME8TdE",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 93
+        },
+        {
+          "title": "Shadow of a doubt",
+          "year": "1943",
+          "url": "https://www.youtube.com/watch?v=JZMHpmRcOv8",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 94
+        },
+        {
+          "title": "The Angel's Share",
+          "year": "2012",
+          "url": "https://www.youtube.com/watch?v=NcQIvmR21VU",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 95
+        },
+        {
+          "title": "Gegen die wand",
+          "year": "2004",
+          "url": "http://www.youtube.com/watch?v=gGd6RaoYPxo",
+          "director": "fatih-akin",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 96
+        },
+        {
+          "title": "Ray",
+          "year": "2011",
+          "url": "https://www.youtube.com/watch?v=X1rJvSF3l6k",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 97
+        },
+        {
+          "title": "Jackie Brown",
+          "year": "1997",
+          "url": "http://www.youtube.com/watch?v=G7HkBDNZV7s",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 98
+        },
+        {
+          "title": "Foxy Brown",
+          "year": "1974",
+          "url": "http://www.youtube.com/watch?v=eVDvu28O3WU",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 99
+        },
+        {
+          "title": "Ali",
+          "year": "2001",
+          "url": "https://www.youtube.com/watch?v=raNQZlrA2wA",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 100
+        },
+        {
+          "title": "Hitchcock",
+          "year": "2012",
+          "url": "https://www.youtube.com/watch?v=3rQuRLERl6A",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 101
+        },
+        {
+          "title": "The Sapphires",
+          "year": "2012",
+          "url": "http://www.youtube.com/watch?v=6Ljho1cyEfg",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 102
+        },
+        {
+          "title": "Safari",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=zffCPQ-Rtwg",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 103
+        },
+        {
+          "title": "Ginger e Fred",
+          "year": "1986",
+          "url": "http://www.youtube.com/watch?v=m4KDO7w4PWo",
+          "director": "federico-fellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 104
+        },
+        {
+          "title": "The loneliest planet",
+          "year": "2011",
+          "url": "http://www.youtube.com/watch?v=W_0cZnM0l8w",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 105
+        },
+        {
+          "title": "Edith et Marcel",
+          "year": "1983",
+          "url": "http://www.dailymotion.com/video/x8xctx_edith-et-marcel-bande-annonce_shortfilms",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 106
+        },
+        {
+          "title": "Big Fish",
+          "year": "2003",
+          "url": "http://www.youtube.com/watch?v=M3YVTgTl-F0",
+          "director": "tim-burton",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 107
+        },
+        {
+          "title": "Herr Lehmann",
+          "year": "2002",
+          "url": "http://www.youtube.com/watch?v=NeS9aSYJcUM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 108
+        },
+        {
+          "title": "The Shining",
+          "year": "1980",
+          "url": "http://www.youtube.com/watch?v=1G7Ju035-8U",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 109
+        },
+        {
+          "title": "Paulette ",
+          "year": "013)",
+          "url": "http://www.youtube.com/watch?v=vkLLbg27y0M",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 110
+        },
+        {
+          "title": "Soul Men",
+          "year": "2008",
+          "url": "http://www.youtube.com/watch?v=WBmGVL6OBQQ",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 111
+        },
+        {
+          "title": "Le bon et les méchants",
+          "year": "1976",
+          "url": "http://www.youtube.com/watch?v=cIi260hcSV0",
+          "director": "claude-lelouch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 112
+        },
+        {
+          "title": "Capitalism a love story",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=CkTkYQkG13w",
+          "director": "michael-moore",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 113
+        },
+        {
+          "title": "Bowling for Columbine",
+          "year": "2002",
+          "url": "http://www.youtube.com/watch?v=hH0mSAjp_Jw",
+          "director": "michael-moore",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 114
+        },
+        {
+          "title": "Roger and me",
+          "year": "1989",
+          "url": "http://www.youtube.com/watch?v=_y5Pluszj4A",
+          "director": "michael-moore",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 115
+        },
+        {
+          "title": "Fahrenheit 9/11",
+          "year": "2004",
+          "url": "http://www.youtube.com/watch?v=kQ3vZzZvrcY",
+          "director": "michael-moore",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 116
+        },
+        {
+          "title": "Monsieur Ibrahim et les fleurs du Coran",
+          "year": "2003",
+          "url": "http://www.youtube.com/watch?v=83ycIA5PjYA",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 117
+        },
+        {
+          "title": "Looking for Eric",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=GgmTRuWMyeI",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 118
+        },
+        {
+          "title": "Lincoln",
+          "year": "2012",
+          "url": "http://www.youtube.com/watch?v=qiSAbAuLhqs",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 119
+        },
+        {
+          "title": "The Godfather",
+          "year": "1972",
+          "url": "http://www.youtube.com/watch?v=OfnUvYn6HoM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 120
+        },
+        {
+          "title": "Wir Kinder vom Bahnhof Zoo",
+          "year": "1981",
+          "url": "http://www.youtube.com/watch?v=kgAfjw3Op5Q",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 121
+        },
+        {
+          "title": "Eyes wide shut",
+          "year": "1999",
+          "url": "http://www.youtube.com/watch?v=sTo1gRqVuEU",
+          "director": "stanley-kubrick",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 122
+        },
+        {
+          "title": "Nobody Knows",
+          "year": "2004",
+          "url": "http://www.youtube.com/watch?v=GLtMmJoBIB4",
+          "director": "hirokazu-koreeda",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 123
+        },
+        {
+          "title": "Fantomas",
+          "year": "1964",
+          "url": "http://www.youtube.com/watch?v=JUjGZ4Vimkw",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 124
+        },
+        {
+          "title": "Fantomas se déchaine",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=OSDOcMe0_mU",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 125
+        },
+        {
+          "title": "Fantomas contre Scotland Yard",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=eRg1RJLVhMo",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 126
+        },
+        {
+          "title": "A separation",
+          "year": "2011",
+          "url": "http://www.youtube.com/watch?v=KtFprNJmnPM",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 127
+        },
+        {
+          "title": "Nordkurve",
+          "year": "1993",
+          "url": "",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 128
+        },
+        {
+          "title": "Last life in the universe",
+          "year": "2003",
+          "url": "http://www.youtube.com/watch?v=tU2QhICrdgY",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016648,
+            "version": 0
+          },
+          "$loki": 129
+        },
+        {
+          "title": "The Navigators",
+          "year": "2001",
+          "url": "http://www.youtube.com/watch?v=CJsiCOYRQl4",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016649,
+            "version": 0
+          },
+          "$loki": 130
+        },
+        {
+          "title": "Breakfast at Tiffany's",
+          "year": "1961",
+          "url": "http://www.youtube.com/watch?v=urQVzgEO_w8",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016649,
+            "version": 0
+          },
+          "$loki": 131
+        },
+        {
+          "title": "Raining stones",
+          "year": "1993",
+          "url": "http://www.youtube.com/watch?v=TnkJmYo6sjE",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016649,
+            "version": 0
+          },
+          "$loki": 132
+        },
+        {
+          "title": "Poor Cow",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=4i5wHLv6BjY",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016649,
+            "version": 0
+          },
+          "$loki": 133
+        },
+        {
+          "title": "Le péril jeune",
+          "year": "1995",
+          "url": "http://www.youtube.com/watch?v=SrhJjyTEJEI",
+          "director": "cedric-klapisch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 134
+        },
+        {
+          "title": "Still walking",
+          "year": "2008",
+          "url": "http://www.youtube.com/watch?v=Id7tXouypEE",
+          "director": "hirokazu-koreeda",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 135
+        },
+        {
+          "title": "Hana",
+          "year": "2006",
+          "url": "http://www.youtube.com/watch?v=TAPnbgdPNS0",
+          "director": "hirokazu-koreeda",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 136
+        },
+        {
+          "title": "Lulu & Jimi",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=WD7WQ9-GS9k",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 137
+        },
+        {
+          "title": "Guess who's coming to Dinner",
+          "year": "1967",
+          "url": "http://www.youtube.com/watch?v=4a56FnhtuGI",
+          "director": "sidney-poitier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 138
+        },
+        {
+          "title": "Air Doll",
+          "year": "2009",
+          "url": "http://www.youtube.com/watch?v=R2T3YkiazkM",
+          "director": "hirokazu-koreeda",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 139
+        },
+        {
+          "title": "It's a free world",
+          "year": "2007",
+          "url": "http://www.youtube.com/watch?v=RhsOi9KDEVc",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 140
+        },
+        {
+          "title": "Le juge Fayard, dit le shérif",
+          "year": "1977",
+          "url": "http://www.dailymotion.com/video/x1f8kci_le-juge-fayard-dit-le-sheriff-bande-annonce-vf_shortfilms",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 141
+        },
+        {
+          "title": "Ae fond kiss",
+          "year": "2004",
+          "url": "http://www.youtube.com/watch?v=Y2YNgMqXh4I",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 142
+        },
+        {
+          "title": "Stage fright",
+          "year": "1950",
+          "url": "http://www.youtube.com/watch?v=cx73E5Q8KF0",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 143
+        },
+        {
+          "title": "Tokyo Eyes",
+          "year": "1998",
+          "url": "http://www.youtube.com/watch?v=Sq4OC40u-WI",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 144
+        },
+        {
+          "title": "Family Life",
+          "year": "1971",
+          "url": "http://www.youtube.com/watch?v=h_FEjE5ec1E",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 145
+        },
+        {
+          "title": "Bashing",
+          "year": "2005",
+          "url": "http://www.youtube.com/watch?v=0MIbY0nhgpk",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 146
+        },
+        {
+          "title": "Harvey",
+          "year": "1950",
+          "url": "http://www.youtube.com/watch?v=dWmc_XRpa9U",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 147
+        },
+        {
+          "title": "Les deux anglaises et le Continent",
+          "year": "1971",
+          "url": "http://www.youtube.com/watch?v=7FfpuIpwsvw",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 148
+        },
+        {
+          "title": "Night on earth",
+          "year": "1991",
+          "url": "http://www.youtube.com/watch?v=XkKBbibm1FM#aid=P-97xr4HBmQ",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 149
+        },
+        {
+          "title": "Baisers volés",
+          "year": "1968",
+          "url": "http://www.youtube.com/watch?v=C3GhsUm1Kao",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 150
+        },
+        {
+          "title": "Les 400 coups",
+          "year": "1959",
+          "url": "http://www.youtube.com/watch?v=BlHckmVjnho",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 151
+        },
+        {
+          "title": "Une belle fille comme moi",
+          "year": "1972",
+          "url": "http://www.youtube.com/watch?v=2FuI2cD7Rww",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 152
+        },
+        {
+          "title": "Domicile conjugal",
+          "year": "1970",
+          "url": "http://www.youtube.com/watch?v=f9gGZJdR3yg",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 153
+        },
+        {
+          "title": "La femme d'à côté",
+          "year": "1981",
+          "url": "http://www.youtube.com/watch?v=Ba8qsNPSdtU",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 154
+        },
+        {
+          "title": "Coup de tête",
+          "year": "1979",
+          "url": "http://www.youtube.com/watch?v=Hip50UafjVc",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 155
+        },
+        {
+          "title": "Léon",
+          "year": "1994",
+          "url": "http://www.youtube.com/watch?v=DcsirofJrlM",
+          "director": "luc-besson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 156
+        },
+        {
+          "title": "L'amour en fuite",
+          "year": "1979",
+          "url": "http://www.youtube.com/watch?v=R0I4DFpk3pg",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 157
+        },
+        {
+          "title": "Antoine et Colette",
+          "year": "1962",
+          "url": "http://www.youtube.com/watch?v=twaNmBgR0CU",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016650,
+            "version": 0
+          },
+          "$loki": 158
+        },
+        {
+          "title": "Sweet Sixteen",
+          "year": "2002",
+          "url": "http://www.youtube.com/watch?v=-rsDPu9wgjs",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 159
+        },
+        {
+          "title": "Jules et Jim",
+          "year": "1962",
+          "url": "http://www.youtube.com/watch?v=Y5VOmrQlY90",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 160
+        },
+        {
+          "title": "L'argent de poche",
+          "year": "1976",
+          "url": "http://www.youtube.com/watch?v=1oRbWVTDWrQ",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 161
+        },
+        {
+          "title": "Les Mistons",
+          "year": "1957",
+          "url": "http://www.youtube.com/watch?v=Pt68n10oGt8",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 162
+        },
+        {
+          "title": "Carla's song",
+          "year": "1987",
+          "url": "http://www.youtube.com/watch?v=3w_ZqZhr3Pg",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 163
+        },
+        {
+          "title": "La peau douce",
+          "year": "1964",
+          "url": "http://www.youtube.com/watch?v=IBr37Lvbkz8",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 164
+        },
+        {
+          "title": "My name is Joe",
+          "year": "1998",
+          "url": "http://www.youtube.com/watch?v=KOEnYR-hiYY",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 165
+        },
+        {
+          "title": "La sirène du Mississippi",
+          "year": "1969",
+          "url": "http://www.youtube.com/watch?v=Kuy3Xkz0xOI",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 166
+        },
+        {
+          "title": "Les Valseuses",
+          "year": "1974",
+          "url": "http://www.youtube.com/watch?v=3EwZWIJSWak",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 167
+        },
+        {
+          "title": "Bread and Roses",
+          "year": "2000",
+          "url": "http://www.youtube.com/watch?v=IrDpd4sCswY",
+          "director": "ken-loach",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 168
+        },
+        {
+          "title": "Cyrano de Bergerac",
+          "year": "1990",
+          "url": "https://www.youtube.com/watch?v=ab6eaj4fdMA",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 169
+        },
+        {
+          "title": "The selfish giant",
+          "year": "2013",
+          "url": "https://www.youtube.com/watch?v=jrHcLLWCVI0",
+          "director": "clio-barnard",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 170
+        },
+        {
+          "title": "Buffet froid",
+          "year": "1979",
+          "url": "https://www.youtube.com/watch?v=cw3W94eyp4g",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 171
+        },
+        {
+          "title": "Fahrenheit 451",
+          "year": "1966",
+          "url": "https://www.youtube.com/watch?v=Yt6Yj4WPn80",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 172
+        },
+        {
+          "title": "Trop belle pour toi",
+          "year": "1989",
+          "url": "http://www.dailymotion.com/video/xa8nsf_trop-belle-pour-toi-bande-annonce-f_shortfilms",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 173
+        },
+        {
+          "title": "Beau père",
+          "year": "1981",
+          "url": "https://www.youtube.com/watch?v=G957jPEHe28",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 174
+        },
+        {
+          "title": "Tenue de soirée",
+          "year": "1986",
+          "url": "http://www.youtube.com/watch?v=JHpz0S6gcrg",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 175
+        },
+        {
+          "title": "Permanent vacation",
+          "year": "1980",
+          "url": "https://www.youtube.com/watch?v=lMd-lGUINAY",
+          "director": "jim-jarmusch",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 176
+        },
+        {
+          "title": "La femme de mon pote",
+          "year": "1983",
+          "url": "https://www.youtube.com/watch?v=Gs_VJpQYPDc",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 177
+        },
+        {
+          "title": "La prise de pouvoir de Louis XIV",
+          "year": "1966",
+          "url": "https://www.youtube.com/watch?v=DUmHx1Ib4aA",
+          "director": "roberto-rossellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 178
+        },
+        {
+          "title": "Stromboli",
+          "year": "1950",
+          "url": "https://www.youtube.com/watch?v=nAsxCpklYeQ",
+          "director": "roberto-rossellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 179
+        },
+        {
+          "title": "A bout de souffle",
+          "year": "1960",
+          "url": "https://www.youtube.com/watch?v=bJFFy3soy9Y",
+          "director": "jean-luc-godard",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 180
+        },
+        {
+          "title": "Une femme est une femme",
+          "year": "1961",
+          "url": "http://www.youtube.com/watch?v=RS95bLuEl9I",
+          "director": "jean-luc-godard",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 181
+        },
+        {
+          "title": "Les acteurs",
+          "year": "2000",
+          "url": "http://www.youtube.com/watch?v=4VKRAObkIak",
+          "director": "bertrand-blier",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 182
+        },
+        {
+          "title": "Paisà",
+          "year": "1946",
+          "url": "http://www.youtube.com/watch?v=NV6_Q0jQ7_o",
+          "director": "roberto-rossellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 183
+        },
+        {
+          "title": "Mammuth",
+          "year": "2010",
+          "url": "http://www.youtube.com/watch?v=T3VpzIhCd_g",
+          "director": "gerard-depardieu",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 184
+        },
+        {
+          "title": "Le Garçu",
+          "year": "1995",
+          "url": "https://www.youtube.com/watch?v=noy7dWNzPYI",
+          "director": "gerard-depardieu",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 185
+        },
+        {
+          "title": "Pierrot le fou",
+          "year": "1965",
+          "url": "http://www.youtube.com/watch?v=ycg2yb3qiUo",
+          "director": "jean-luc-godard",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 186
+        },
+        {
+          "title": "Mon oncle",
+          "year": "1958",
+          "url": "http://www.youtube.com/watch?v=NHJcwMrqnJo",
+          "director": "jacques-tati",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 187
+        },
+        {
+          "title": "Les vacances de Monsieur Hulot",
+          "year": "1953",
+          "url": "http://www.youtube.com/watch?v=_92Cm8gl7Ls",
+          "director": "jacques-tati",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 188
+        },
+        {
+          "title": "Blow up",
+          "year": "1966",
+          "url": "https://www.youtube.com/watch?v=2Xz1utzILj4",
+          "director": "michelangelo-antonioni",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 189
+        },
+        {
+          "title": "Midnight Express",
+          "year": "1978",
+          "url": "https://www.youtube.com/watch?v=CymAuZx4G1U",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 190
+        },
+        {
+          "title": "Rien ne va plus",
+          "year": "1997",
+          "url": "https://www.youtube.com/watch?v=N8P2EONmB3U",
+          "director": "claude-chabrol",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 191
+        },
+        {
+          "title": "Rich and Strange",
+          "year": "1931",
+          "url": "https://www.youtube.com/watch?v=HwR9BNNkL_s",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 192
+        },
+        {
+          "title": "Jamaica Inn",
+          "year": "1939",
+          "url": "https://www.youtube.com/watch?v=cCZ9o9qduV8",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 193
+        },
+        {
+          "title": "Number Seventeen",
+          "year": "1932",
+          "url": "https://www.youtube.com/watch?v=lXsIl3vZO2E",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 194
+        },
+        {
+          "title": "Rebecca",
+          "year": "1940",
+          "url": "https://www.youtube.com/watch?v=PwneccC52fY",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 195
+        },
+        {
+          "title": "La chambre verte",
+          "year": "1978",
+          "url": "https://www.youtube.com/watch?v=HV3P6WR9mb8",
+          "director": "francois-truffaut",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 196
+        },
+        {
+          "title": "La Strada",
+          "year": "1955",
+          "url": "https://www.youtube.com/watch?v=5OJZ_nm6G-M",
+          "director": "federico-fellini",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 197
+        },
+        {
+          "title": "The grand Budapest Hotel",
+          "year": "2013",
+          "url": "https://www.youtube.com/watch?v=1Fg5iWmQjwk",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 198
+        },
+        {
+          "title": "The life aquatic with Steve Zissou",
+          "year": "2004",
+          "url": "https://www.youtube.com/watch?v=gbPUiaRnQkU",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 199
+        },
+        {
+          "title": "On connait la chanson",
+          "year": "1997",
+          "url": "https://www.youtube.com/watch?v=h2MhkajNVmo",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 200
+        },
+        {
+          "title": "Rushmore",
+          "year": "1998",
+          "url": "https://www.youtube.com/watch?v=GxCNDpvGyss",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 201
+        },
+        {
+          "title": "Hotel du Nord",
+          "year": "1938",
+          "url": "https://www.youtube.com/watch?v=6DKI0EP-RMA",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 202
+        },
+        {
+          "title": "L'école des facteurs",
+          "year": "1946",
+          "url": "http://www.video11.com/film/jacques-tatis-the-school-for-postmen-watch-the-exclusive-short-film-that-showcases-tatis-comedy-genius-h83102.html",
+          "director": "jacques-tati",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 203
+        },
+        {
+          "title": "Les visiteurs du soir",
+          "year": "1942",
+          "url": "https://www.youtube.com/watch?v=OLwwPxRc0Y8",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 204
+        },
+        {
+          "title": "Hiroshima mon amour",
+          "year": "1959",
+          "url": "https://www.youtube.com/watch?v=CLts830aLlw",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016651,
+            "version": 0
+          },
+          "$loki": 205
+        },
+        {
+          "title": "Jour de fête",
+          "year": "1949",
+          "url": "https://www.youtube.com/watch?v=HV5mBY2Oaow",
+          "director": "jacques-tati",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 206
+        },
+        {
+          "title": "Pas sur la bouche",
+          "year": "2003",
+          "url": "https://www.youtube.com/watch?v=dnHlwVlqMvk",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 207
+        },
+        {
+          "title": "Bottle Rocket",
+          "year": "1996",
+          "url": "https://www.youtube.com/watch?v=hspUSez-rYY",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 208
+        },
+        {
+          "title": "Drôle de drame",
+          "year": "1937",
+          "url": "https://www.youtube.com/watch?v=HxwnLpTzOms",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 209
+        },
+        {
+          "title": "Le quai des brumes",
+          "year": "1938",
+          "url": "https://www.youtube.com/watch?v=52MtDn6S0m4",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 210
+        },
+        {
+          "title": "The Royal Tenenbaums",
+          "year": "2001",
+          "url": "https://www.youtube.com/watch?v=aPO12GYknq4",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 211
+        },
+        {
+          "title": "L'année dernière à Marienbad",
+          "year": "1961",
+          "url": "https://www.youtube.com/watch?v=yc6n2McMAnY",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 212
+        },
+        {
+          "title": "Smoking / No Smoking",
+          "year": "1993",
+          "url": "https://www.youtube.com/watch?v=WcPZkNZ3syM",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 213
+        },
+        {
+          "title": "Muriel",
+          "year": "1963",
+          "url": "https://www.youtube.com/watch?v=Mps49Z9hap8",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 214
+        },
+        {
+          "title": "Bande de filles",
+          "year": "2014",
+          "url": "https://www.youtube.com/watch?v=1f7EGBPIxtE",
+          "director": "celine-sciamma",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 215
+        },
+        {
+          "title": "Sleepers",
+          "year": "1996",
+          "url": "https://www.youtube.com/watch?v=1piB0xIkvUU",
+          "director": "barry-levinson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 216
+        },
+        {
+          "title": "Le jour se lève",
+          "year": "1939",
+          "url": "https://www.youtube.com/watch?v=UOtrHvA2ajY",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 217
+        },
+        {
+          "title": "Taxi Driver",
+          "year": "1976",
+          "url": "https://www.youtube.com/watch?v=44gB58YS53A",
+          "director": "martin-scorsese",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 218
+        },
+        {
+          "title": "Salesman",
+          "year": "1969",
+          "url": "https://www.youtube.com/watch?v=FJIqZ9OLbRY",
+          "director": "albert-maysles",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 219
+        },
+        {
+          "title": "Notorious",
+          "year": "1946",
+          "url": "https://www.youtube.com/watch?v=H8f4UOtLf5Q",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 220
+        },
+        {
+          "title": "The Darjeeling Limited",
+          "year": "2007",
+          "url": "https://www.youtube.com/watch?v=aO1bYukdvLI",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 221
+        },
+        {
+          "title": "Fantastic Mr.Fox",
+          "year": "2009",
+          "url": "https://www.youtube.com/watch?v=n2igjYFojUo",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 222
+        },
+        {
+          "title": "Providence",
+          "year": "1977",
+          "url": "https://www.youtube.com/watch?v=maHC6aRyd4A",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 223
+        },
+        {
+          "title": "La guerre est finie",
+          "year": "1966",
+          "url": "https://www.youtube.com/watch?v=yWJTieJIxvU",
+          "director": "alain-resnais",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 224
+        },
+        {
+          "title": "L'air de Paris",
+          "year": "1954",
+          "url": "https://www.youtube.com/watch?v=7J0Mmx05OKQ",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 225
+        },
+        {
+          "title": "Moonrise Kingdown",
+          "year": "2012",
+          "url": "https://www.youtube.com/watch?v=_eOI3AamSm8",
+          "director": "wes-anderson",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 226
+        },
+        {
+          "title": "Les tricheurs",
+          "year": "1958",
+          "url": "https://www.youtube.com/watch?v=a5_r3PJqm5E",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 227
+        },
+        {
+          "title": "Les enfants du Paradis",
+          "year": "1945",
+          "url": "https://www.youtube.com/watch?v=bmbVA18XRIk",
+          "director": "marcel-carne",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 228
+        },
+        {
+          "title": "Le petit théâtre de Jean Renoir",
+          "year": "1971",
+          "url": "https://www.youtube.com/watch?v=QQC41eEUKHE",
+          "director": "jean-renoir",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 229
+        },
+        {
+          "title": "The birds",
+          "year": "1963",
+          "url": "https://www.youtube.com/watch?v=lCxR7dlavwg",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 230
+        },
+        {
+          "title": "To catch a thief",
+          "year": "1955",
+          "url": "https://www.youtube.com/watch?v=K6JVaUHS0Ow",
+          "director": "alfred-hitchcock",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 231
+        },
+        {
+          "title": "The Salt of the Earth",
+          "year": "2014",
+          "url": "https://www.youtube.com/watch?v=OivMlWXtWpY",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 232
+        },
+        {
+          "title": "Lisbon Story",
+          "year": "1994",
+          "url": "https://www.youtube.com/watch?v=2bOhxGBRXAU",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 233
+        },
+        {
+          "title": "Buena Vista Social Club",
+          "year": "1999",
+          "url": "https://www.youtube.com/watch?v=mwyGPg8cYvY",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 234
+        },
+        {
+          "title": "La grande illusion",
+          "year": "1937",
+          "url": "https://www.youtube.com/watch?v=hctrYzVYmfM",
+          "director": "jean-renoir",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 235
+        },
+        {
+          "title": "Paris, Texas",
+          "year": "1984",
+          "url": "https://www.youtube.com/watch?v=ic_s0DDNoB8",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 236
+        },
+        {
+          "title": "Der Himmel über Berlin",
+          "year": "1987",
+          "url": "https://www.youtube.com/watch?v=U0AGassBoX0",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 237
+        },
+        {
+          "title": "In weiter Ferne, so nah!",
+          "year": "1993",
+          "url": "https://www.youtube.com/watch?v=uLtZuxgll7A",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 238
+        },
+        {
+          "title": "The million dollar hotel",
+          "year": "2000",
+          "url": "https://www.youtube.com/watch?v=S4Ft6C8LTKU",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 239
+        },
+        {
+          "title": "Im Lauf der Zeit",
+          "year": "1975",
+          "url": "https://www.youtube.com/watch?v=9zq-EBhErEI",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 240
+        },
+        {
+          "title": "Sein letztes Rennen",
+          "year": "2013",
+          "url": "https://www.youtube.com/watch?v=5ecMxZMfwyk",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 241
+        },
+        {
+          "title": "Bis ans Ende der Welt",
+          "year": "1991",
+          "url": "https://www.youtube.com/watch?v=MfKBaMpgc98",
+          "director": "wim-wenders",
+          "meta": {
+            "revision": 0,
+            "created": 1445799016652,
+            "version": 0
+          },
+          "$loki": 242
+        }
+      ],
+      "idIndex": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242
+      ],
+      "binaryIndices": {},
+      "constraints": null,
+      "uniqueNames": [],
+      "transforms": {},
+      "objType": "movies",
+      "dirty": true,
+      "cachedIndex": null,
+      "cachedBinaryIndex": null,
+      "cachedData": null,
+      "transactional": false,
+      "cloneObjects": false,
+      "asyncListeners": false,
+      "disableChangesApi": true,
+      "maxId": 242,
+      "DynamicViews": [],
+      "events": {
+        "insert": [
+          null
+        ],
+        "update": [
+          null
+        ],
+        "pre-insert": [],
+        "pre-update": [],
+        "close": [],
+        "flushbuffer": [],
+        "error": [],
+        "delete": [
+          null
+        ],
+        "warning": [
+          null
+        ]
+      },
+      "changes": []
+    }
+  ],
+  "databaseVersion": 1.1,
+  "engineVersion": 1.1,
+  "autosave": false,
+  "autosaveInterval": 5000,
+  "autosaveHandle": null,
+  "options": {},
+  "persistenceMethod": "fs",
+  "persistenceAdapter": null,
+  "events": {
+    "init": [
+      null
+    ],
+    "loaded": [],
+    "flushChanges": [],
+    "close": [],
+    "changes": [],
+    "warning": []
+  },
+  "ENV": "NODEJS"
+}

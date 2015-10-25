@@ -3,19 +3,24 @@ html(lang="en")
     head
         title movies
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
+        link(rel="stylesheet" href="/styles.css")
+
     body
         .container
-            h1 Movies
 
-            mixin movieMixin(title,author,year, url)
+            mixin movieMixin(title,director,year, url)
                 li
                     h2= title
-                    span= author
+                    a(href= '?director='+director) #{director}
                     span= year
-                    div= url
+                    a(href= url) trailer
 
-            ul
-                for movie in movies
-                    +movieMixin(movie.title, movie.director, movie.year, movie.url)
-                else
-                    no movies!
+            h1 Movies
+            a(href='/' class='homeLink') home
+            div.center= movies.length + ' movies'
+            .moviesList
+                ul
+                    for movie in movies
+                        +movieMixin(movie.title, movie.director, movie.year, movie.url)
+                    else
+                        no movies!

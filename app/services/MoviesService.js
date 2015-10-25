@@ -1,13 +1,24 @@
-module.exports = function() {
+module.exports = function(db) {
 
-    var getMovies = function() {
-        return [
-            {title: "Life aquatic", director: "Wes Anderson", year: 2004, url:"http://youtube.com"},
-            {title: "Buffet froid", director: "Bertrand Blier", year: 1979, url:"http://youtube.com"}
-        ]
+    var getMoviesByDirector = function(director) {
+        return db.getCollection('movies').find({
+            director: director
+        });
+    };
+
+    var getAllMovies = function() {
+        return db.getCollection('movies').find();
+    };
+
+    var getMovies = function(filter) {
+        if (filter.director) {
+            return getMoviesByDirector(filter.director);
+        } else {
+            return getAllMovies();
+        }
     }
 
     return {
         getMovies: getMovies
     }
-}();
+};
