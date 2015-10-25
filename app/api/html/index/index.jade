@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        title= pageTitle
+        script(type='text/javascript').
+            if (foo) bar(1 + 5)
+    body
+        h1 Movies
+
+        mixin movieMixin(title,author,year, url)
+            li
+                h2= title
+                span= author
+                span= year
+                div= url
+
+        ul
+            for movie in movies
+                +movieMixin(movie.title, movie.director, movie.year, movie.url)
+            else
+                no movies!
