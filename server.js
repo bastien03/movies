@@ -5,11 +5,13 @@ var db = new loki('db.json');
 db.loadDatabase();
 
 var indexPage = require('./app/api/html/index/IndexPage.js')(db);
+var insertMoviePage = require('./app/api/html/insertmovie/InsertMoviePage.js');
 var app = express();
 
 app.use(express.static('public'));
 
 app.get('/', indexPage.render);
+app.get('/new-movie', insertMoviePage.render);
 
 console.log('Go to localhost:3000');
 app.listen(3000);
