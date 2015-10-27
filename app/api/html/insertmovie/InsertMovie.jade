@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        title movies
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
+        link(rel="stylesheet" href="/styles.css")
+    body
+        .container
+            h1 Movies
+            form(name="add-movie", method="post", action="/movie")
+                div.form-group
+                    span.col-sm-2.control-label Title
+                    input(type="text", name="title")
+                div.form-group
+                    span.col-sm-2.control-label Year
+                    input(type="text", name="year")
+                div.form-group
+                    span.col-sm-2.control-label Url
+                    input(type="text", name="url")
+                div.form-group
+                    span.col-sm-2.control-label Director
+                    input(type="text", name="director")
+                div.form-group
+                    div.col-sm-offset-2.col-sm-10
+                        input(type="submit", value="add").btn.btn-default

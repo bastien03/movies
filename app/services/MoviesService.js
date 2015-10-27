@@ -16,9 +16,26 @@ module.exports = function(db) {
         } else {
             return getAllMovies();
         }
-    }
+    };
+
+    var addMovie = function(movieDto) {
+        var movie = {
+            title: movieDto.title,
+            year: movieDto.year,
+            url: movieDto.url,
+            director: movieDto.director
+        };
+        db.getCollection('movies').insert(movie);
+        db.saveDatabase();
+    };
+
+    var deleteMovie = function() {
+
+    };
 
     return {
-        getMovies: getMovies
+        getMovies: getMovies,
+        addMovie: addMovie,
+        deleteMovie: deleteMovie
     }
 };

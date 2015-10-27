@@ -1,23 +1,23 @@
 module.exports = function(db) {
 
-    var jade = require('jade');
     var moviesService = require('../../../services/MoviesService.js')(db);
+    var jade = require('jade');
 
     var render = function(req, res) {
         var configuration = {
-            movies: moviesService.getMovies(req.query)
-        };
-        var html = jade.renderFile('app/api/html/index/index.jade', configuration);
+
+        }
+        var html = jade.renderFile('app/api/html/insertmovie/InsertMovie.jade', configuration);
         return res.send(html);
     };
 
-    var deleteMovie = function(req, res) {
-        moviesService.deleteMovie();
+    var add = function(req, res) {
+        moviesService.addMovie(req.body);
         return res.redirect('/');
     }
 
     return {
         render: render,
-        deleteMovie: deleteMovie
+        add: add
     }
 };
