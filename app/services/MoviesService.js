@@ -29,8 +29,11 @@ module.exports = function(db) {
         db.saveDatabase();
     };
 
-    var deleteMovie = function() {
-
+    var deleteMovie = function(id) {
+        var movies = db.getCollection('movies');
+        var movie = movies.get(id);
+        movies.remove(movie);
+        db.saveDatabase();
     };
 
     return {
