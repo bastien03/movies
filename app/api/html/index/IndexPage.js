@@ -11,13 +11,7 @@ module.exports = function(db) {
         return res.send(html);
     };
 
-    var deleteMovie = function(req, res) {
-        moviesService.deleteMovie();
-        return res.redirect('/');
-    }
-
     return {
-        render: render,
-        deleteMovie: deleteMovie
+        render: render
     }
 };
