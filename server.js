@@ -1,15 +1,28 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var loki = require('lokijs');
 var db = new loki('db.json');
 db.loadDatabase();
 
 var indexPage = require('./app/api/html/index/IndexPage.js')(db);
+var insertMoviePage = require('./app/api/html/insertmovie/InsertMoviePage.js');
+var moviesController = require('./app/api/http/MoviesController.js')(db);
+
 var app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 app.use(express.static('public'));
 
 app.get('/', indexPage.render);
+app.get('/new-movie', insertMoviePage.render);
+
+app.post('/movies', moviesController.addMovie);
+app.delete('/movies/:id', moviesController.deleteMovie);
 
 console.log('Go to localhost:3000');
 app.listen(3000);
