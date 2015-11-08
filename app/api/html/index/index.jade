@@ -12,7 +12,7 @@ html(lang="en")
             mixin movieMixin(title,director,year, url, id)
                 li
                     if isAuthenticated
-                        button( type="button" class="btn"
+                        button( type="button" class="remove-btn"
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
                     h2= title
                     a(href= '?director='+director) #{director}
