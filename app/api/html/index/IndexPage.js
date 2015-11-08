@@ -5,7 +5,8 @@ module.exports = function(db) {
 
     var render = function(req, res) {
         var configuration = {
-            movies: moviesService.getMovies(req.query)
+            movies: moviesService.getMovies(req.query),
+            isAuthenticated: req.user
         };
         var html = jade.renderFile('app/api/html/index/index.jade', configuration);
         return res.send(html);

@@ -11,7 +11,8 @@ html(lang="en")
 
             mixin movieMixin(title,director,year, url, id)
                 li
-                    button( type="button" class="btn"
+                    if isAuthenticated
+                        button( type="button" class="btn"
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
                     h2= title
                     a(href= '?director='+director) #{director}
@@ -20,12 +21,15 @@ html(lang="en")
 
             h1 Movies
             a(href='/' class='pageLink') home
-            a(href='/new-movie' class='pageLink') add a movie
+            if isAuthenticated
+                a(href='/logout' class='pageLink') logout
+                a(href='/new-movie' class='pageLink') add a movie
+            else
+                a(href='/login' class='pageLink') login
+
             <br/>
             div.center= movies.length + ' movies'
             .moviesList
                 ul
                     for movie in movies
                         +movieMixin(movie.title, movie.director, movie.year, movie.url, movie.$loki)
-                    else
-                        no movies!
