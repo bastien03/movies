@@ -32,6 +32,7 @@ node_modules
 *.iml
 
 db.json
+usersDb.json
 data.xml
 
 
