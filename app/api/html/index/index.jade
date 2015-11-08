@@ -29,6 +29,11 @@ html(lang="en")
 
             <br/>
             div.center= movies.length + ' movies'
+            .moviesDirector
+                ul
+                    for director in directors
+                        li
+                            a(href= '?director=' + director.name) #{director.name} (#{director.numberMovies})
             .moviesList
                 ul
                     for movie in movies
