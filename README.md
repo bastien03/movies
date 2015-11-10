@@ -1,3 +1,5 @@
 # movies
 
-To start the app, just run `node server.js`.
+
+
+To start the app, just run `npm install` and `node server.js`.
