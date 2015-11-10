@@ -33,6 +33,7 @@ node_modules
 
 db.json
 usersDb.json
+data/
 data.xml
 
 

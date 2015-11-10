@@ -22,6 +22,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./app/bootstrap-data')(usersDb);
 require('./app/passport')(usersDb, passport);
 require('./app/routes')(app, passport, db);
 
