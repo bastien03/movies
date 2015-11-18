@@ -18,8 +18,14 @@ module.exports = function (db) {
         return res.status(200).send();
     };
 
+    var editMovie = function (req, res) {
+        moviesService.editMovie(req.params.id, req.body);
+        return res.redirect('/');
+    };
+
     return {
         addMovie: addMovie,
-        deleteMovie: deleteMovie
+        deleteMovie: deleteMovie,
+        editMovie: editMovie
     }
 };

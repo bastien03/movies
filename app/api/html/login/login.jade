@@ -7,10 +7,10 @@ html(lang="en")
    body
       .container
          h1 Login
-         form(name="login", method="post", action="/login")
+         form(name="login", method="post", action="login")
             div.form-group
                span.col-sm-2.control-label username
-               input(type="text", name="username")
+               input(type="text", name="username", autofocus)
             div.form-group
                span.col-sm-2.control-label password
                input(type="password", name="password")

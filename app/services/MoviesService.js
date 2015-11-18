@@ -18,6 +18,10 @@ module.exports = function(db) {
         }
     };
 
+    var getMovie = function(movieId) {
+        return db.getCollection('movies').get(movieId);
+    };
+
     var addMovie = function(movieDto) {
         var movie = {
             title: movieDto.title,
@@ -30,15 +34,28 @@ module.exports = function(db) {
     };
 
     var deleteMovie = function(id) {
-        var movies = db.getCollection('movies');
-        var movie = movies.get(id);
+        var movies = db.getCollection('movies'),
+            movie = movies.get(id);
+
         movies.remove(movie);
         db.saveDatabase();
     };
 
+    var editMovie = function(id, obj) {
+        var movies = db.getCollection('movies'),
+            movie = movies.get(id);
+
+        obj.$loki = parseInt(id);
+        obj.meta = movie.meta;
+        movies.update(obj);
+        db.saveDatabase();
+    }
+
     return {
         getMovies: getMovies,
+        getMovie: getMovie,
         addMovie: addMovie,
-        deleteMovie: deleteMovie
+        deleteMovie: deleteMovie,
+        editMovie: editMovie
     }
 };
