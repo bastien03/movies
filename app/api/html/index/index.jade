@@ -14,7 +14,7 @@ html(lang="en")
                     if isAuthenticated
                         button( type="button" class="remove-btn"
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
-                        a(href='/edit/'+id) edit
+                        a(href='edit/'+id) edit
                     h2= title
                     a(href='?director='+director) #{director}
                     span= year

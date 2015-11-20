@@ -2,12 +2,14 @@ doctype html
 html(lang="en")
     head
         title edit movie
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
-        link(rel="stylesheet" href="/styles.css")
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+             integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+             crossorigin="anonymous")
+        link(rel="stylesheet" href="./styles.css")
     body
         .container
             h1 Edit
-            form(name="add-movie", method="post", action="/editmovies/"+movie.$loki)
+            form(name="add-movie", method="post", action=endpointUrl)
                 div.form-group
                     span.col-sm-2.control-label Title
                     input(type="text", name="title", value=movie.title)
