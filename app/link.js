@@ -1,6 +1,6 @@
-module.exports = function (url) {
-    var appPath = process.env.APP_PATH || '/';
+var appPath = process.env.APP_PATH || '/';
 
+module.exports = function (url) {
     if (url) {
         return appPath + url;
     }
