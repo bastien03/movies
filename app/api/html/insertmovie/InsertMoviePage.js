@@ -6,8 +6,12 @@ module.exports = function () {
 
     var render = function (req, res) {
         var configuration = {
+            isAuthenticated: req.user,
             url: {
                 addMovie: linkTo('movies')
+            },
+            link: {
+                login: linkTo('login')
             }
         };
         var html = jade.renderFile(path.join(__dirname,'InsertMovie.jade'), configuration);

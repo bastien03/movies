@@ -22,6 +22,9 @@ module.exports = function (db) {
     };
 
     var editMovie = function (req, res) {
+        if (!req.user) {
+            return res.status(401).send();
+        }
         moviesService.editMovie(req.params.id, req.body);
         return res.redirect(linkTo());
     };

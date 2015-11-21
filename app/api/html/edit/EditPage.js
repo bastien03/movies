@@ -10,6 +10,9 @@ module.exports = function (db) {
             movie: moviesService.getMovie(req.params.id),
             url: {
                 edit: linkTo('editmovies/'+parseInt(req.params.id))
+            },
+            link: {
+                login: linkTo('login')
             }
         };
         var html = jade.renderFile(path.join(__dirname,'edit.jade'), configuration);
