@@ -7,7 +7,7 @@ html(lang="en")
     body
         .container
             h1 Edit
-            form(name="add-movie", method="post", action=endpointUrl)
+            form(name="add-movie", method="post", action=url.edit)
                 div.form-group
                     span.col-sm-2.control-label Title
                     input(type="text", name="title", value=movie.title)

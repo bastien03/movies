@@ -2,7 +2,8 @@ module.exports = function(db) {
 
     var jade = require('jade');
     var moviesService = require('../../../services/MoviesService.js')(db);
-    var path = require('path');
+    var path = require('path'),
+        linkTo = require('../../../link.js');
 
     var getDirectors = function(movies) {
         var tmp_directors = [];
@@ -36,7 +37,14 @@ module.exports = function(db) {
         var configuration = {
             movies: movies,
             directors: getDirectors(movies),
-            isAuthenticated: req.user
+            isAuthenticated: req.user,
+            link: {
+                home: linkTo(),
+                edit: linkTo('edit/'),
+                login: linkTo('login'),
+                logout: linkTo('logout'),
+                newMovie: linkTo('new-movie')
+            }
         };
         var html = jade.renderFile(path.join(__dirname,'index.jade'), configuration);
         return res.send(html);

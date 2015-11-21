@@ -7,7 +7,7 @@ html(lang="en")
     body
         .container
             h1 Movies
-            form(name="add-movie", method="post", action="movies")
+            form(name="add-movie", method="post", action=url.addMovie)
                 div.form-group
                     span.col-sm-2.control-label Title
                     input(type="text", name="title" autofocus)

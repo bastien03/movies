@@ -12,19 +12,19 @@ html(lang="en")
                     if isAuthenticated
                         button( type="button" class="remove-btn"
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
-                        a(href='edit/'+id) edit
+                        a(href=link.edit+id) edit
                     h2= title
                     a(href='?director='+director) #{director}
                     span= year
                     a(href=url target='_blank') trailer
 
             h1 Movies
-            a(href='/' class='pageLink') home
+            a(href=link.home class='pageLink') home
             if isAuthenticated
-                a(href='logout' class='pageLink') logout
-                a(href='new-movie' class='pageLink') add a movie
+                a(href=link.logout class='pageLink') logout
+                a(href=link.newMovie class='pageLink') add a movie
             else
-                a(href='login' class='pageLink') login
+                a(href=link.login class='pageLink') login
 
             <br/>
             div.center= movies.length + ' movies'
