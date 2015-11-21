@@ -3,8 +3,8 @@ html(lang="en")
     head
         title movies
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous")
-        link(rel="stylesheet" href="/styles.css")
-        script(src='/app.js')
+        link(rel="stylesheet" href="./styles.css")
+        script(src='./app.js')
 
     body
         .container
@@ -14,18 +14,19 @@ html(lang="en")
                     if isAuthenticated
                         button( type="button" class="remove-btn"
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
+                        a(href='edit/'+id) edit
                     h2= title
-                    a(href= '?director='+director) #{director}
+                    a(href='?director='+director) #{director}
                     span= year
-                    a(href= url target='_blank') trailer
+                    a(href=url target='_blank') trailer
 
             h1 Movies
             a(href='/' class='pageLink') home
             if isAuthenticated
-                a(href='/logout' class='pageLink') logout
-                a(href='/new-movie' class='pageLink') add a movie
+                a(href='logout' class='pageLink') logout
+                a(href='new-movie' class='pageLink') add a movie
             else
-                a(href='/login' class='pageLink') login
+                a(href='login' class='pageLink') login
 
             <br/>
             div.center= movies.length + ' movies'

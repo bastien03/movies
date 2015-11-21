@@ -7,10 +7,10 @@ html(lang="en")
     body
         .container
             h1 Movies
-            form(name="add-movie", method="post", action="/movies")
+            form(name="add-movie", method="post", action="movies")
                 div.form-group
                     span.col-sm-2.control-label Title
-                    input(type="text", name="title")
+                    input(type="text", name="title" autofocus)
                 div.form-group
                     span.col-sm-2.control-label Year
                     input(type="text", name="year")
