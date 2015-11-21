@@ -14,7 +14,6 @@ plan.target('production', [
     {
         host: '85.214.223.229',
         username: properties.username,
-        //password: 'deploy',
         password: properties.password,
         agent: process.env.SSH_AUTH_SOCK
     }
@@ -23,8 +22,6 @@ plan.target('production', [
 // run commands on localhost
 plan.local(function (local) {
     // uncomment these if you need to run a build on your machine first
-    // local.log('Run build');
-    // local.exec('gulp build');
 
     local.log('Copy files to remote hosts');
     var filesToCopy = local.exec('git ls-files', {silent: true});

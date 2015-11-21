@@ -17,7 +17,7 @@ module.exports = function(db) {
         }
 
         for (var name in tmp_directors) {
-            //if (name == 'undefined') continue;
+            if (name == 'undefined') continue;
 
             directors.push({
                 name: name,
