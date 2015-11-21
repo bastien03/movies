@@ -1,8 +1,8 @@
 module.exports = function(db) {
 
-    var jade = require('jade');
-    var moviesService = require('../../../services/MoviesService.js')(db);
-    var path = require('path'),
+    var jade = require('jade'),
+        moviesService = require('../../../services/MoviesService.js')(db),
+        path = require('path'),
         linkTo = require('../../../link.js');
 
     var getDirectors = function(movies) {
