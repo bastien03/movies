@@ -12,4 +12,4 @@ To deploy, put a `deployment.json` under `data/` containing your ssh credentials
 }
 ```
 
-Then run `npm run production`.
+Then run `fly -l production`.

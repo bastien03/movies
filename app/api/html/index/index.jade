@@ -14,9 +14,9 @@ html(lang="en")
                             onclick="app.deleteMovie("+id+",'"+title+"');") X
                         a(href=link.edit+id) edit
                     h2= title
-                    a(href='?director='+director) #{director}
-                    span= year
-                    a(href=url target='_blank') trailer
+                    a(href='?director='+director class='movieDirector') #{director}
+                    div.movieYear= year
+                    a(href=url target='_blank' class='movieTrailer') ⇝ trailer
 
             h1 Movies
             a(href=link.home class='pageLink') home
