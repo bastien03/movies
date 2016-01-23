@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "APP_PATH='/x/' node server.js",
-    "deploy": "fly production"
+    "dev": "APP_PATH='/x/' node server.js"
   },
   "repository": {
     "type": "git",
