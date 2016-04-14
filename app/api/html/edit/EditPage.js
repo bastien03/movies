@@ -6,17 +6,22 @@ module.exports = function (db) {
         linkTo = require('../../../link');
 
     var render = function (req, res) {
-        var configuration = {
-            movie: moviesService.getMovie(req.params.id),
-            url: {
-                edit: linkTo('editmovies/'+parseInt(req.params.id))
-            },
-            link: {
-                login: linkTo('login')
-            }
-        };
-        var html = jade.renderFile(path.join(__dirname,'edit.jade'), configuration);
-        return res.send(html);
+        moviesService.getMovie(req.params.id, function(movie){
+            var configuration = {
+                movie: movie,
+                url: {
+                    edit: linkTo('editmovies/'+req.params.id)
+                },
+                baseUrl: '..',
+                isAuthenticated: req.user,
+                link: {
+                    login: linkTo('login')
+                }
+            };
+            console.log(configuration);
+            var html = jade.renderFile(path.join(__dirname,'edit.jade'), configuration);
+            return res.send(html);
+        });
     };
 
     return {

@@ -1,25 +1,33 @@
+var ObjectId = require('mongodb').ObjectID;
+
 module.exports = function(db) {
 
-    var getMoviesByDirector = function(director) {
-        return db.getCollection('movies').find({
+    var getMoviesByDirector = function(director, callback) {
+        db.collection('movies').find({
             director: director
+        }).toArray(function(err, docs) {
+            callback(docs);
         });
     };
 
-    var getAllMovies = function() {
-        return db.getCollection('movies').find();
+    var getAllMovies = function(callback) {
+        db.collection('movies').find().toArray(function(err, docs) {
+            callback(docs);
+        });
     };
 
-    var getMovies = function(filter) {
+    var getMovies = function(filter, callback) {
         if (filter.director) {
-            return getMoviesByDirector(filter.director);
+            getMoviesByDirector(filter.director, callback);
         } else {
-            return getAllMovies();
+            getAllMovies(callback);
         }
     };
 
-    var getMovie = function(movieId) {
-        return db.getCollection('movies').get(movieId);
+    var getMovie = function(movieId, callback) {
+        db.collection('movies').find({_id:ObjectId(movieId)}).toArray(function(err, doc) {
+            callback(doc[0]);
+        });
     };
 
     var addMovie = function(movieDto) {
@@ -29,27 +37,16 @@ module.exports = function(db) {
             url: movieDto.url,
             director: movieDto.director
         };
-        db.getCollection('movies').insert(movie);
-        db.saveDatabase();
+        db.collection('movies').insert(movie);
     };
 
     var deleteMovie = function(id) {
-        var movies = db.getCollection('movies'),
-            movie = movies.get(id);
-
-        movies.remove(movie);
-        db.saveDatabase();
+        db.collection('movies').findOneAndDelete({_id: ObjectId(id)});
     };
 
     var editMovie = function(id, obj) {
-        var movies = db.getCollection('movies'),
-            movie = movies.get(id);
-
-        obj.$loki = parseInt(id);
-        obj.meta = movie.meta;
-        movies.update(obj);
-        db.saveDatabase();
-    }
+        db.collection('movies').findOneAndUpdate({_id: ObjectId(id)},obj);
+    };
 
     return {
         getMovies: getMovies,
