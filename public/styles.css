@@ -64,7 +64,8 @@ body {
 }
 
 /* Smartphones (portrait) ----------- */
-@media (max-width: 700px) {
+/*@media only screen and (device-width: 700px),*/
+@media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3){
 
     .container {
         width: 100%;

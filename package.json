@@ -27,7 +27,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "flightplan": "^0.6.6",
-    "fly": "^0.8.3"
+    "flightplan": "0.6.9"
   }
 }
