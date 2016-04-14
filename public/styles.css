@@ -62,3 +62,48 @@ body {
 .moviesDirector {
     float: right;
 }
+
+/* Smartphones (portrait) ----------- */
+/*@media only screen and (device-width: 700px),*/
+@media screen and (device-width: 320px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3){
+
+    .container {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .container h1 {
+        font-size: 80px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+
+    .pageLink {
+        float: left;
+        width: 50%;
+        font-size: x-large;
+    }
+
+    .moviesDirector {
+        display: none;
+    }
+
+    .moviesList {
+        width: 100%;
+        background: green;
+    }
+
+    .moviesList ul {
+        padding-left: 0px;
+    }
+
+    .moviesList li {
+        width: 100%;
+    }
+
+    .moviesList .movieYear,
+    .moviesList .movieTrailer,
+    .moviesList .movieDirector {
+        font-size: large;
+    }
+}
