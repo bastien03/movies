@@ -11,7 +11,7 @@ html(lang="en")
                 li
                     if isAuthenticated
                         button( type="button" class="remove-btn"
-                            onclick="app.deleteMovie("+id+",'"+title+"');") X
+                            onclick="app.deleteMovie('"+id+"','"+title+"');") X
                         a(href=link.edit+id) edit
                     h2= title
                     a(href='?director='+director class='movieDirector') #{director}
@@ -36,4 +36,4 @@ html(lang="en")
             .moviesList
                 ul
                     for movie in movies
-                        +movieMixin(movie.title, movie.director, movie.year, movie.url, movie.$loki)
+                        +movieMixin(movie.title, movie.director, movie.year, movie.url, movie._id)

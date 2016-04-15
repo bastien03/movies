@@ -10,6 +10,7 @@ module.exports = function () {
             url: {
                 addMovie: linkTo('movies')
             },
+            baseUrl: '.',
             link: {
                 login: linkTo('login')
             }

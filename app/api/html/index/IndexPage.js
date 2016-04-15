@@ -32,22 +32,23 @@ module.exports = function(db) {
     };
 
     var render = function(req, res) {
-        var movies = moviesService.getMovies(req.query);
-
-        var configuration = {
-            movies: movies,
-            directors: getDirectors(movies),
-            isAuthenticated: req.user,
-            link: {
-                home: linkTo(),
-                edit: linkTo('edit/'),
-                login: linkTo('login'),
-                logout: linkTo('logout'),
-                newMovie: linkTo('new-movie')
-            }
-        };
-        var html = jade.renderFile(path.join(__dirname,'index.jade'), configuration);
-        return res.send(html);
+        moviesService.getMovies(req.query, function(movies) {
+            var configuration = {
+                movies: movies,
+                directors: getDirectors(movies),
+                isAuthenticated: req.user,
+                baseUrl: '.',
+                link: {
+                    home: linkTo(),
+                    edit: linkTo('edit/'),
+                    login: linkTo('login'),
+                    logout: linkTo('logout'),
+                    newMovie: linkTo('new-movie')
+                }
+            };
+            var html = jade.renderFile(path.join(__dirname,'index.jade'), configuration);
+            return res.send(html);
+        });
     };
 
     return {

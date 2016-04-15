@@ -43,5 +43,5 @@ plan.remote(function (remote) {
     remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
     remote.exec('cd ~/' + appName + '/');
     remote.exec('forever stop ~/' + appName + '/' + startFile, {failsafe: true});
-    remote.exec("APP_PATH='/movies/' forever start ~/" + appName + '/' + startFile);
+    remote.exec("APP_PROFILE='production' APP_PATH='/movies/' forever start ~/" + appName + '/' + startFile);
 });

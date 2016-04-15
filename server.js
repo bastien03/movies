@@ -3,13 +3,11 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     loki = require('lokijs'),
     path = require('path'),
-    db = new loki(path.join(__dirname, 'db.json')),
     usersDb = new loki(path.join(__dirname,'usersDb.json')),
     passport = require('passport'),
     linkTo = require('./app/link'),
     app = express();
 
-db.loadDatabase();
 usersDb.loadDatabase();
 
 app.use(bodyParser.json());
@@ -24,9 +22,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./app/bootstrap-data')(usersDb);
-require('./app/passport')(usersDb, passport);
-require('./app/routes')(app, passport, db);
+var MongoClient = require('mongodb').MongoClient,
+    assert = require('assert');
 
-console.log('Go to http://localhost:3000' + linkTo());
-app.listen(3000);
+var config;
+if (process.env.APP_PROFILE === 'production') {
+    config = require('./config/production.json');
+} else {
+    config = require('./config/development.json');
+}
+
+// Use connect method to connect to the Server
+MongoClient.connect(config.DATABASE_URL, function(err, db) {
+    assert.equal(null, err);
+    console.log("Connected correctly to server");
+
+    require('./app/bootstrap-data')(usersDb);
+    require('./app/passport')(usersDb, passport);
+    require('./app/routes')(app, passport, db);
+
+    console.log('Go to http://localhost:3000' + linkTo());
+    app.listen(3000);
+});
