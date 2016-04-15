@@ -1,15 +1,7 @@
 # movies
 
 ## Local development
-To start the app, just run `npm install` and `npm run dev`.
+To start the app, just run `npm install` and `npm run dev`. Be sure that you have a running mongo instance.
 
 ## Deployment
-To deploy, put a `deployment.json` under `data/` containing your ssh credentials:
-```json
-{
-  "username": SSH_USERNAME,
-  "password": SSH_PASSWORD
-}
-```
-
-Then run `fly -l production`.
+Run `npm run dev` and then `fly -l production`.
