@@ -19,7 +19,8 @@ plan.local(function (local) {
     // uncomment these if you need to run a build on your machine first
 
     local.log('Copy files to remote hosts');
-    var filesToCopy = local.exec('git ls-files', {silent: true});
+    var filesToCopy = local.find('build -type f', {silent: true}).stdout.split('\n');
+    filesToCopy = filesToCopy.concat(['package.json', 'README.md']);
     // rsync files to all the destination's hosts
     local.transfer(filesToCopy, '/tmp/' + tmpDir);
 });
@@ -34,14 +35,12 @@ plan.remote(function (remote) {
     remote.log('Install dependencies');
     remote.exec('npm --production --prefix ~/' + tmpDir + ' install ~/' + tmpDir, {user: username});
 
-    remote.exec('mkdir ~/' + tmpDir + '/data');
-    remote.exec('cp /private-backup/movies/users.json ~/' + tmpDir + '/data/');
-    remote.exec('cp /private-backup/movies/usersDb.json ~/' + tmpDir + '/');
+    remote.exec('mkdir ~/' + tmpDir + '/config');
     remote.exec('cp /private-backup/movies/config/production.json ~/' + tmpDir + '/config/');
 
     remote.log('Reload application');
     remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
     remote.exec('cd ~/' + appName + '/');
-    remote.exec('forever stop ~/' + appName + '/' + startFile, {failsafe: true});
-    remote.exec("APP_PROFILE='production' APP_PATH='/movies/' forever start ~/" + appName + '/' + startFile);
+    remote.exec('forever stop ~/' + appName + '/build/' + startFile, {failsafe: true});
+    remote.exec("APP_PROFILE='production' APP_PATH='/movies/' forever start ~/" + appName + '/build/' + startFile);
 });
