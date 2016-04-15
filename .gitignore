@@ -37,4 +37,5 @@ data/
 data.xml
 
 config/production.json
+build/
 # Created by .ignore support plugin (hsz.mobi)
