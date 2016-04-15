@@ -5,10 +5,11 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import path from 'path';
 import passport from 'passport';
-import linkTo from './link';
 import {MongoClient} from 'mongodb';
 import assert from 'assert';
+import {linkTo} from './link';
 import {config} from './config';
+import {initDb} from './dbManager';
 
 var app = express();
 
@@ -29,8 +30,10 @@ app.use(passport.session());
 MongoClient.connect(config.DATABASE_URL, (err, db) => {
     assert.equal(null, err);
 
+    initDb(db);
+
     require('./passport')(db, passport);
-    require('./routes')(app, passport, db);
+    require('./routes')(app, passport);
 
     console.log('Go to http://localhost:3000' + linkTo());
     app.listen(3000);

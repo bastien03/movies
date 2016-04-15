@@ -1,31 +1,23 @@
 import jade from 'jade';
 import path from 'path';
-import linkTo from '../../../link';
+import {linkTo} from '../../../link';
+import {getMovie} from '../../../services/MoviesService.js';
 
-module.exports = function (db) {
+export function renderEditPage(req, res) {
+    getMovie(req.params.id, function (movie) {
+        var configuration = {
+            movie: movie,
+            url: {
+                edit: linkTo('editmovies/' + req.params.id)
+            },
+            baseUrl: '..',
+            isAuthenticated: req.user,
+            link: {
+                login: linkTo('login')
+            }
+        };
 
-    var moviesService = require('../../../services/MoviesService.js')(db);
-
-    var render = function (req, res) {
-        moviesService.getMovie(req.params.id, function(movie){
-            var configuration = {
-                movie: movie,
-                url: {
-                    edit: linkTo('editmovies/'+req.params.id)
-                },
-                baseUrl: '..',
-                isAuthenticated: req.user,
-                link: {
-                    login: linkTo('login')
-                }
-            };
-
-            var html = jade.renderFile(path.join(__dirname,'edit.jade'), configuration);
-            return res.send(html);
-        });
-    };
-
-    return {
-        render: render
-    }
-};
+        var html = jade.renderFile(path.join(__dirname, 'edit.jade'), configuration);
+        return res.send(html);
+    });
+}
