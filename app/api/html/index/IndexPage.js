@@ -1,10 +1,10 @@
+import jade from 'jade';
+import path from 'path';
+import linkTo from '../../../link';
+
 module.exports = function(db) {
 
-    var jade = require('jade'),
-        moviesService = require('../../../services/MoviesService.js')(db),
-        path = require('path'),
-        linkTo = require('../../../link.js');
-
+    var moviesService = require('../../../services/MoviesService.js')(db);
     var getDirectors = function(movies) {
         var tmp_directors = [];
         var directors = [];

@@ -1,8 +1,8 @@
-module.exports = function () {
+import jade from 'jade';
+import path from 'path';
+import linkTo from '../../../link';
 
-    var jade = require('jade'),
-        path = require('path'),
-        linkTo = require('../../../link.js');
+module.exports = function () {
 
     var render = function (req, res) {
         var configuration = {

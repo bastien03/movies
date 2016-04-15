@@ -1,9 +1,9 @@
+import routes from '../../routes';
+import linkTo from '../../link';
+
 module.exports = function (db) {
 
-    var moviesService = require('../../services/MoviesService.js')(db),
-        routes = require('../../routes.js'),
-        linkTo = require('../../link');
-
+    var moviesService = require('../../services/MoviesService.js')(db);
 
     var addMovie = function (req, res) {
         if (!req.user) {

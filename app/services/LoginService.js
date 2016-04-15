@@ -1,4 +1,4 @@
-var ObjectId = require('mongodb').ObjectID;
+import {ObjectID} from 'mongodb';
 
 module.exports = function(db) {
 
@@ -9,7 +9,7 @@ module.exports = function(db) {
     };
 
     var getUserById = function(id, callback) {
-        db.collection('users').find({_id: ObjectId(id)}).limit(1).next(function(err, user) {
+        db.collection('users').find({_id: ObjectID(id)}).limit(1).next(function(err, user) {
             callback(user);
         });
     };

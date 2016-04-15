@@ -1,8 +1,10 @@
+import linkTo from './link.js';
+import insertMoviePage from './api/html/insertmovie/InsertMoviePage.js';
+import loginPage from './api/html/login/LoginPage.js';
+
 module.exports = function (app, passport, db) {
-    var linkTo = require('./link.js'),
-        indexPage = require('./api/html/index/IndexPage.js')(db),
-        insertMoviePage = require('./api/html/insertmovie/InsertMoviePage.js'),
-        loginPage = require('./api/html/login/LoginPage.js'),
+
+    var indexPage = require('./api/html/index/IndexPage.js')(db),
         editPage = require('./api/html/edit/EditPage.js')(db),
         moviesController = require('./api/http/MoviesController.js')(db);
 

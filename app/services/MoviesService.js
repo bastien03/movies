@@ -1,4 +1,4 @@
-var ObjectId = require('mongodb').ObjectID;
+import {ObjectID} from 'mongodb';
 
 module.exports = function(db) {
 
@@ -25,7 +25,7 @@ module.exports = function(db) {
     };
 
     var getMovie = function(movieId, callback) {
-        db.collection('movies').find({_id:ObjectId(movieId)}).toArray(function(err, doc) {
+        db.collection('movies').find({_id:ObjectID(movieId)}).toArray(function(err, doc) {
             callback(doc[0]);
         });
     };
@@ -41,11 +41,11 @@ module.exports = function(db) {
     };
 
     var deleteMovie = function(id) {
-        db.collection('movies').findOneAndDelete({_id: ObjectId(id)});
+        db.collection('movies').findOneAndDelete({_id: ObjectID(id)});
     };
 
     var editMovie = function(id, obj) {
-        db.collection('movies').findOneAndUpdate({_id: ObjectId(id)},obj);
+        db.collection('movies').findOneAndUpdate({_id: ObjectID(id)},obj);
     };
 
     return {

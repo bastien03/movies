@@ -1,9 +1,10 @@
+import jade from 'jade';
+import path from 'path';
+import linkTo from '../../../link';
+
 module.exports = function (db) {
 
-    var jade = require('jade'),
-        moviesService = require('../../../services/MoviesService.js')(db),
-        path = require('path'),
-        linkTo = require('../../../link');
+    var moviesService = require('../../../services/MoviesService.js')(db);
 
     var render = function (req, res) {
         moviesService.getMovie(req.params.id, function(movie){

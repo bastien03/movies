@@ -1,6 +1,7 @@
+import {Strategy as LocalStrategy} from 'passport-local';
+
 module.exports = function(usersDb, passport) {
-    var loginService = require('./services/LoginService.js')(usersDb),
-        LocalStrategy = require('passport-local').Strategy;
+    var loginService = require('./services/LoginService.js')(usersDb);
 
     passport.serializeUser(function (user, done) {
         done(null, user._id);
