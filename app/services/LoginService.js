@@ -9,7 +9,7 @@ module.exports = function(db) {
     };
 
     var getUserById = function(id, callback) {
-        db.collection('users').findOne({_id: ObjectId(id)}, function(err, user) {
+        db.collection('users').find({_id: ObjectId(id)}).limit(1).next(function(err, user) {
             callback(user);
         });
     };
