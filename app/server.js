@@ -20,19 +20,17 @@ app.use(session({
     name: 'movies',
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // Use connect method to connect to the Server
 MongoClient.connect(config.DATABASE_URL, (err, db) => {
     assert.equal(null, err);
 
     initDb(db);
-
-    require('./passport')(db, passport);
+    require('./authenticationManager')();
     require('./routes')(app, passport);
 
     console.log('Go to http://localhost:3000' + linkTo());
