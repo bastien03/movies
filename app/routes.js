@@ -1,3 +1,5 @@
+import React from 'react';
+
 module.exports = function (app, passport, db) {
     var linkTo = require('./link.js'),
         indexPage = require('./api/html/index/IndexPage.js')(db),
@@ -10,6 +12,9 @@ module.exports = function (app, passport, db) {
     app.get(linkTo('new-movie'), insertMoviePage.render);
     app.get(linkTo('login'), loginPage.render);
     app.get(linkTo('edit/:id'), editPage.render);
+    app.get(linkTo('react'), function(req, res) {
+       res.send(React.renderToStaticMarkup('test'));
+    });
 
     app.post(linkTo('movies'), moviesController.addMovie);
     app.delete(linkTo('movies/:id'), moviesController.deleteMovie);
