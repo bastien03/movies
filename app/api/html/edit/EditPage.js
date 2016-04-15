@@ -18,7 +18,7 @@ module.exports = function (db) {
                     login: linkTo('login')
                 }
             };
-            console.log(configuration);
+
             var html = jade.renderFile(path.join(__dirname,'edit.jade'), configuration);
             return res.send(html);
         });

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "APP_PROFILE='/x/' APP_PATH='/x/' node server.js"
+    "dev": "APP_PROFILE='dev' APP_PATH='/x/' node server.js"
   },
   "repository": {
     "type": "git",
