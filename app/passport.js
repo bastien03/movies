@@ -3,22 +3,22 @@ module.exports = function(usersDb, passport) {
         LocalStrategy = require('passport-local').Strategy;
 
     passport.serializeUser(function (user, done) {
-        done(null, user.$loki);
+        done(null, user._id);
     });
 
     passport.deserializeUser(function (id, done) {
-        var user = loginService.getUserById(id);
-        done(null, user);
+        loginService.getUserById(id, function(user) {done(null, user)});
     });
 
     passport.use(new LocalStrategy(
         function (username, password, done) {
-            var user = loginService.login(username, password);
-            if (user) {
-                return done(null, user);
-            } else {
-                return done(null, false, {message: 'Incorrect credentials'});
-            }
+            loginService.login(username, password, function(user) {
+                if (user) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, {message: 'Incorrect credentials'});
+                }
+            });
         }
     ));
 };
