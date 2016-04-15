@@ -1,19 +1,21 @@
-module.exports = function (app, passport, db) {
-    var linkTo = require('./link.js'),
-        indexPage = require('./api/html/index/IndexPage.js')(db),
-        insertMoviePage = require('./api/html/insertmovie/InsertMoviePage.js'),
-        loginPage = require('./api/html/login/LoginPage.js'),
-        editPage = require('./api/html/edit/EditPage.js')(db),
-        moviesController = require('./api/http/MoviesController.js')(db);
+import {linkTo} from './link.js';
 
-    app.get(linkTo(), indexPage.render);
-    app.get(linkTo('new-movie'), insertMoviePage.render);
-    app.get(linkTo('login'), loginPage.render);
-    app.get(linkTo('edit/:id'), editPage.render);
+import {renderLoginPage} from './api/html/login/LoginPage.js';
+import {renderInsertPage} from './api/html/insertmovie/InsertMoviePage.js';
+import {renderEditPage} from './api/html/edit/EditPage.js';
+import {renderIndexPage} from './api/html/index/IndexPage.js';
+import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 
-    app.post(linkTo('movies'), moviesController.addMovie);
-    app.delete(linkTo('movies/:id'), moviesController.deleteMovie);
-    app.post(linkTo('editmovies/:id'), moviesController.editMovie);
+module.exports = function (app, passport) {
+
+    app.get(linkTo(), renderIndexPage);
+    app.get(linkTo('new-movie'), renderInsertPage);
+    app.get(linkTo('login'), renderLoginPage);
+    app.get(linkTo('edit/:id'), renderEditPage);
+
+    app.post(linkTo('movies'), addMovieRequest);
+    app.delete(linkTo('movies/:id'), deleteMovieRequest);
+    app.post(linkTo('editmovies/:id'), editMovieRequest);
 
     app.post(linkTo('login'), passport.authenticate('local', {
         successRedirect: linkTo(),

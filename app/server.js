@@ -2,13 +2,16 @@ require("babel-core").transform("code");
 
 import express from 'express';
 import session from 'express-session';
-var /*express = require('express'),*/
-    //session = require('express-session'),
-    bodyParser = require('body-parser'),
-    path = require('path'),
-    passport = require('passport'),
-    linkTo = require('./link'),
-    app = express();
+import bodyParser from 'body-parser';
+import path from 'path';
+import passport from 'passport';
+import {MongoClient} from 'mongodb';
+import assert from 'assert';
+import {linkTo} from './link';
+import {config} from './config';
+import {initDb} from './dbManager';
+
+var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -17,28 +20,18 @@ app.use(session({
     name: 'movies',
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-var MongoClient = require('mongodb').MongoClient,
-    assert = require('assert');
-
-var config;
-if (process.env.APP_PROFILE === 'production') {
-    config = require('../config/production.json');
-} else {
-    config = require('../config/development.json');
-}
-
 // Use connect method to connect to the Server
 MongoClient.connect(config.DATABASE_URL, (err, db) => {
     assert.equal(null, err);
-    console.log("Connected correctly to server");
 
-    require('./passport')(db, passport);
-    require('./routes')(app, passport, db);
+    initDb(db);
+    require('./authenticationManager')();
+    require('./routes')(app, passport);
 
     console.log('Go to http://localhost:3000' + linkTo());
     app.listen(3000);

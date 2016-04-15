@@ -1,20 +1,13 @@
-module.exports = function () {
+import jade from 'jade';
+import path from 'path';
+import {linkTo} from '../../../link';
 
-    var jade = require('jade'),
-        path = require('path'),
-        linkTo = require('../../../link.js');
-
-    var render = function (req, res) {
-        var configuration = {
-            url: {
-                login: linkTo('login')
-            }
-        };
-        var html = jade.renderFile(path.join(__dirname,'login.jade'), configuration);
-        return res.send(html);
+export function renderLoginPage(req, res) {
+    var configuration = {
+        url: {
+            login: linkTo('login')
+        }
     };
-
-    return {
-        render: render
-    }
-}();
+    var html = jade.renderFile(path.join(__dirname,'login.jade'), configuration);
+    return res.send(html);
+}

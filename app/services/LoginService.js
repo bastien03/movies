@@ -1,21 +1,16 @@
-var ObjectId = require('mongodb').ObjectID;
+import getDbInstance from '../dbManager';
+import {ObjectID} from 'mongodb';
 
-module.exports = function(db) {
+let db = getDbInstance();
 
-    var login = function(username, password, callback) {
-        db.collection('users').find({username: username}).limit(1).next(function(err, user) {
-            callback(user);
-        });
-    };
+export function login(username, password, callback) {
+    db.collection('users').find({username: username}).limit(1).next(function(err, user) {
+        callback(user);
+    });
+}
 
-    var getUserById = function(id, callback) {
-        db.collection('users').find({_id: ObjectId(id)}).limit(1).next(function(err, user) {
-            callback(user);
-        });
-    };
-
-    return {
-        login: login,
-        getUserById: getUserById
-    }
-};
+export function getUserById(id, callback) {
+    db.collection('users').find({_id: ObjectID(id)}).limit(1).next(function(err, user) {
+        callback(user);
+    });
+}

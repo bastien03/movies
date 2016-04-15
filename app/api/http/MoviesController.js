@@ -1,37 +1,27 @@
-module.exports = function (db) {
+import routes from '../../routes';
+import {linkTo} from '../../link';
+import {addMovie, deleteMovie, editMovie} from '../../services/MoviesService.js';
 
-    var moviesService = require('../../services/MoviesService.js')(db),
-        routes = require('../../routes.js'),
-        linkTo = require('../../link');
-
-
-    var addMovie = function (req, res) {
-        if (!req.user) {
-            return res.status(401).send();
-        }
-        moviesService.addMovie(req.body);
-        return res.redirect(linkTo());
-    };
-
-    var deleteMovie = function (req, res) {
-        if (!req.user) {
-            return res.status(401).send();
-        }
-        moviesService.deleteMovie(req.params.id);
-        return res.status(200).send();
-    };
-
-    var editMovie = function (req, res) {
-        if (!req.user) {
-            return res.status(401).send();
-        }
-        moviesService.editMovie(req.params.id, req.body);
-        return res.redirect(linkTo());
-    };
-
-    return {
-        addMovie: addMovie,
-        deleteMovie: deleteMovie,
-        editMovie: editMovie
+export function addMovieRequest(req, res) {
+    if (!req.user) {
+        return res.status(401).send();
     }
-};
+    addMovie(req.body);
+    return res.redirect(linkTo());
+}
+
+export function deleteMovieRequest(req, res) {
+    if (!req.user) {
+        return res.status(401).send();
+    }
+    deleteMovie(req.params.id);
+    return res.status(200).send();
+}
+
+export function editMovieRequest(req, res) {
+    if (!req.user) {
+        return res.status(401).send();
+    }
+    editMovie(req.params.id, req.body);
+    return res.redirect(linkTo());
+}
