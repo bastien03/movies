@@ -36,5 +36,5 @@ usersDb.json
 data/
 data.xml
 
-
+config/production.json
 # Created by .ignore support plugin (hsz.mobi)

@@ -25,10 +25,15 @@ app.use(passport.session());
 var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
-// Connection URL
-var url = 'mongodb://127.0.0.1:27017/moviesApp';
+var config;
+if (process.env.APP_PROFILE === 'production') {
+    config = require('./config/production.json');
+} else {
+    config = require('./config/development.json');
+}
+
 // Use connect method to connect to the Server
-MongoClient.connect(url, function(err, db) {
+MongoClient.connect(config.DATABASE_URL, function(err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server");
 
@@ -38,5 +43,4 @@ MongoClient.connect(url, function(err, db) {
 
     console.log('Go to http://localhost:3000' + linkTo());
     app.listen(3000);
-
 });
