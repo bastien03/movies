@@ -1,9 +1,9 @@
-var appPath = process.env.APP_PATH || '/';
+const appPath = process.env.APP_PATH || '/';
 
-module.exports = function (url) {
+export function linkTo(url) {
     if (url) {
         return appPath + url;
     }
 
     return appPath;
-};
+}

@@ -1,58 +1,58 @@
-var ObjectId = require('mongodb').ObjectID;
+import getDbInstance from '../dbManager';
+import {ObjectID} from 'mongodb';
 
-module.exports = function(db) {
+let db = getDbInstance();
 
-    var getMoviesByDirector = function(director, callback) {
-        db.collection('movies').find({
-            director: director
-        }).toArray(function(err, docs) {
-            callback(docs);
-        });
-    };
+function getMoviesByDirector(director, callback) {
+    db.collection('movies').find({
+        director: director
+    }).toArray(function(err, docs) {
+        callback(docs);
+    });
+}
 
-    var getAllMovies = function(callback) {
-        db.collection('movies').find().toArray(function(err, docs) {
-            callback(docs);
-        });
-    };
+function getAllMovies(callback) {
+    db.collection('movies').find().toArray(function(err, docs) {
+        callback(docs);
+    });
+}
 
-    var getMovies = function(filter, callback) {
-        if (filter.director) {
-            getMoviesByDirector(filter.director, callback);
-        } else {
-            getAllMovies(callback);
-        }
-    };
-
-    var getMovie = function(movieId, callback) {
-        db.collection('movies').find({_id:ObjectId(movieId)}).toArray(function(err, doc) {
-            callback(doc[0]);
-        });
-    };
-
-    var addMovie = function(movieDto) {
-        var movie = {
-            title: movieDto.title,
-            year: movieDto.year,
-            url: movieDto.url,
-            director: movieDto.director
-        };
-        db.collection('movies').insert(movie);
-    };
-
-    var deleteMovie = function(id) {
-        db.collection('movies').findOneAndDelete({_id: ObjectId(id)});
-    };
-
-    var editMovie = function(id, obj) {
-        db.collection('movies').findOneAndUpdate({_id: ObjectId(id)},obj);
-    };
-
-    return {
-        getMovies: getMovies,
-        getMovie: getMovie,
-        addMovie: addMovie,
-        deleteMovie: deleteMovie,
-        editMovie: editMovie
+export function getMovies(filter, callback) {
+    if (filter.director) {
+        getMoviesByDirector(filter.director, callback);
+    } else {
+        getAllMovies(callback);
     }
-};
+}
+
+export function getMovie(movieId, callback) {
+    db.collection('movies').find({_id:ObjectID(movieId)}).toArray(function(err, doc) {
+        callback(doc[0]);
+    });
+}
+
+export function addMovie(movieDto) {
+    var movie = {
+        title: movieDto.title,
+        year: movieDto.year,
+        url: movieDto.url,
+        director: movieDto.director
+    };
+    db.collection('movies').insert(movie);
+}
+
+export function deleteMovie(id) {
+    db.collection('movies').findOneAndDelete({_id: ObjectID(id)});
+}
+
+export function editMovie(id, obj) {
+    db.collection('movies').findOneAndUpdate({_id: ObjectID(id)},obj);
+}
+
+export default {
+    getMovies: getMovies,
+    getMovie: getMovie,
+    addMovie: addMovie,
+    deleteMovie: deleteMovie,
+    editMovie: editMovie
+}
