@@ -36,8 +36,8 @@ plan.remote(function (remote) {
 
     remote.exec('mkdir ~/' + tmpDir + '/data');
     remote.exec('cp /private-backup/movies/users.json ~/' + tmpDir + '/data/');
-    remote.exec('cp /private-backup/movies/db.json ~/' + tmpDir + '/');
     remote.exec('cp /private-backup/movies/usersDb.json ~/' + tmpDir + '/');
+    remote.exec('cp /private-backup/movies/config/production.json ~/' + tmpDir + '/config/');
 
     remote.log('Reload application');
     remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});

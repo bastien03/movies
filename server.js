@@ -1,14 +1,10 @@
 var express = require('express'),
     session = require('express-session'),
     bodyParser = require('body-parser'),
-    loki = require('lokijs'),
     path = require('path'),
-    usersDb = new loki(path.join(__dirname,'usersDb.json')),
     passport = require('passport'),
     linkTo = require('./app/link'),
     app = express();
-
-usersDb.loadDatabase();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -37,8 +33,7 @@ MongoClient.connect(config.DATABASE_URL, function(err, db) {
     assert.equal(null, err);
     console.log("Connected correctly to server");
 
-    require('./app/bootstrap-data')(usersDb);
-    require('./app/passport')(usersDb, passport);
+    require('./app/passport')(db, passport);
     require('./app/routes')(app, passport, db);
 
     console.log('Go to http://localhost:3000' + linkTo());

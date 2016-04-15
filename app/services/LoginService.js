@@ -1,12 +1,17 @@
+var ObjectId = require('mongodb').ObjectID;
+
 module.exports = function(db) {
 
-    var login = function(username, password) {
-        var user = db.getCollection('users').find({username: username});
-        return user.length >= 1 ? user[0] : null;
+    var login = function(username, password, callback) {
+        db.collection('users').find({username: username}).limit(1).next(function(err, user) {
+            callback(user);
+        });
     };
 
-    var getUserById = function(id) {
-        return db.getCollection('users').get(id);
+    var getUserById = function(id, callback) {
+        db.collection('users').findOne({_id: ObjectId(id)}, function(err, user) {
+            callback(user);
+        });
     };
 
     return {
