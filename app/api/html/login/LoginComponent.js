@@ -22,7 +22,7 @@ export default class LoginComponent extends React.Component {
                     </div>
                     <div className="form-group">
                         <div className="col-sm-offset-2 col-sm-10">
-                            <input type="submit" value="login" className="btn.btn-default"></input>
+                            <input type="submit" value="login" className="btn btn-default"></input>
                         </div>
                     </div>
                 </form>

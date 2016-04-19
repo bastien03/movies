@@ -9,7 +9,6 @@ import LoginComponent from './api/html/login/LoginComponent'
 import InsertMovieComponent from './api/html/insertmovie/InsertMovieComponent'
 import EditMovieComponent from './api/html/edit/EditMovieComponent'
 
-import {renderInsertPage} from './api/html/insertmovie/InsertMoviePage.js';
 import {renderEditPage} from './api/html/edit/EditPage.js';
 import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 

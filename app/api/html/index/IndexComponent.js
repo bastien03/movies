@@ -107,8 +107,8 @@ export default class IndexComponent extends React.Component {
         let header;
         if (isUserLoggedIn) {
             header = <div>
-                <a href="" className="pageLink">logout</a>
-                <a href="" className="pageLink">add a movie</a>
+                <a href={data.link.logout} className="pageLink">logout</a>
+                <a href={data.link.newMovie} className="pageLink">add a movie</a>
             </div>
         } else {
             header = <a href={data.link.login} className="pageLink">login</a>
