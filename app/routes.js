@@ -9,10 +9,8 @@ import LoginComponent from './api/html/login/LoginComponent'
 import InsertMovieComponent from './api/html/insertmovie/InsertMovieComponent'
 import EditMovieComponent from './api/html/edit/EditMovieComponent'
 
-import {renderLoginPage} from './api/html/login/LoginPage.js';
 import {renderInsertPage} from './api/html/insertmovie/InsertMoviePage.js';
 import {renderEditPage} from './api/html/edit/EditPage.js';
-import {renderIndexPage} from './api/html/index/IndexPage.js';
 import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 
 module.exports = function (app, passport) {
