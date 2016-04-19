@@ -4,8 +4,6 @@ import {renderToString} from 'react-dom/server'
 import {Router, Route, match, RouterContext} from 'react-router';
 import {linkTo} from './link.js';
 
-import Main from './component/Main'
-import App from './api/html/App'
 import IndexComponent from './api/html/index/IndexComponent'
 import LoginComponent from './api/html/login/LoginComponent'
 import InsertMovieComponent from './api/html/insertmovie/InsertMovieComponent'
