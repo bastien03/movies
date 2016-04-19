@@ -9,7 +9,6 @@ import LoginComponent from './api/html/login/LoginComponent'
 import InsertMovieComponent from './api/html/insertmovie/InsertMovieComponent'
 import EditMovieComponent from './api/html/edit/EditMovieComponent'
 
-import {renderEditPage} from './api/html/edit/EditPage.js';
 import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 
 module.exports = function (app, passport) {
@@ -48,7 +47,7 @@ module.exports = function (app, passport) {
             } else if (renderProps) {
                 let route = renderProps.routes[1];
                 if (route.component.loadData) {
-                    route.component.loadData(route, req, (data) => {
+                    route.component.loadData(route, renderProps.params, req, (data) => {
                         renderProps.routes[1].data = data;
                         res.status(200).send(renderToString(<RouterContext {...renderProps}/>));
                     });

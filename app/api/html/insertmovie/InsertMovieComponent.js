@@ -6,6 +6,11 @@ export default class InsertMovieComponent extends React.Component {
             <html>
             <head>
                 <link rel="stylesheet" href="/movies/styles.css"/>
+                <link rel="stylesheet"
+                      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+                      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+                      crossOrigin="anonymous"/>
+                <script src="/movies/app.js"/>
             </head>
             <body>
             <div>

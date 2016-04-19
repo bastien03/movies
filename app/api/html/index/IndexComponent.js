@@ -4,7 +4,7 @@ import {getMovies} from '../../../services/MoviesService.js';
 
 export default class IndexComponent extends React.Component {
 
-    static loadData(route, request, cb) {
+    static loadData(route, params, request, cb) {
         getMovies(route.path, function (movies) {
             var configuration = {
                 movies: movies,
@@ -82,8 +82,8 @@ export default class IndexComponent extends React.Component {
             let movieHeader;
             if(isUserLoggedIn) {
                 movieHeader = <div>
-                    <button className="remove-btn" onclick={"app.deleteMovie('" + movie.id + "', '" + movie.title + "')"}>X</button>
-                    <a href="">edit</a>
+                    <button className="remove-btn" onclick={"app.deleteMovie('" + movie._id + "', '" + movie.title + "')"}>X</button>
+                    <a href={data.link.edit + movie._id}>edit</a>
                 </div>
             }
             return (
@@ -117,6 +117,11 @@ export default class IndexComponent extends React.Component {
             <html>
             <head>
                 <link rel="stylesheet" href="/movies/styles.css"/>
+                <link rel="stylesheet"
+                      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+                      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+                      crossOrigin="anonymous"/>
+                <script src="/movies/app.js"/>
             </head>
             <body>
             <div>
