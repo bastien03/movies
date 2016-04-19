@@ -4,9 +4,14 @@ export default class LoginComponent extends React.Component {
     render() {
 
         return (
+            <html>
+            <head>
+                <link rel="stylesheet" href="/movies/styles.css"/>
+            </head>
+            <body>
             <div className="container">
                 <h1>Login</h1>
-                <form name="login" method="post" action={this.props.url}>
+                <form name="login" method="post" action="/movies/login">
                     <div className="form-group">
                         <span className="col-sm-2 control-label"> username</span>
                         <input type="text" name="username" autofocus></input>
@@ -22,6 +27,8 @@ export default class LoginComponent extends React.Component {
                     </div>
                 </form>
             </div>
+            </body>
+            </html>
         );
     }
 }

@@ -1,5 +1,6 @@
 require("babel-core").transform("code");
 
+import 'source-map-support/register'; // use source maps in node-js
 import express from 'express';
 import session from 'express-session';
 import bodyParser from 'body-parser';
