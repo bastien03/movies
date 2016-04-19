@@ -1,7 +1,10 @@
 # movies
 
 ## Local development
-To start the app, just run `npm install` and `npm run dev`. Be sure that you have a running mongo instance.
+To start the app, be sure you run `npm install`. Then:
+* be sure that you have a running mongo instance
+* start babel server: `npm run buildAndWatch` 
+* start server: `npm run dev`
 
 ## Deployment
-Run `npm run dev` and then `fly -l production`.
+Run `npm run build` and then `fly -l production`.
