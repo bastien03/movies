@@ -79,30 +79,32 @@ export default class IndexComponent extends React.Component {
         let data = this.state.data,
             isUserLoggedIn = data.isAuthenticated,
             movies = data.movies.map((movie) => {
-            let movieHeader;
-            if(isUserLoggedIn) {
-                movieHeader = <div>
-                    <button className="remove-btn" onclick={"app.deleteMovie('" + movie._id + "', '" + movie.title + "')"}>X</button>
-                    <a href={data.link.edit + movie._id}>edit</a>
-                </div>
-            }
-            return (
-                <li key={movie._id}>
-                    {movieHeader}
-                    <h2>{movie.title}</h2>
-                    <a href={"?director=" + movie.director} className="movieDirector">{movie.director}</a>
-                    <div className="movieYear">{movie.year}</div>
-                    <a href={movie.url} target="_blank" className="movieTrailer">⇝ trailer</a>
-                </li>
-            )
-        }),
+                let movieHeader;
+                if (isUserLoggedIn) {
+                    movieHeader = <div>
+                        <button className="remove-btn"
+                                onclick={"app.deleteMovie('" + movie._id + "', '" + movie.title + "')"}>X
+                        </button>
+                        <a href={data.link.edit + movie._id}>edit</a>
+                    </div>
+                }
+                return (
+                    <li key={movie._id}>
+                        {movieHeader}
+                        <h2>{movie.title}</h2>
+                        <a href={"?director=" + movie.director} className="movieDirector">{movie.director}</a>
+                        <div className="movieYear">{movie.year}</div>
+                        <a href={movie.url} target="_blank" className="movieTrailer">⇝ trailer</a>
+                    </li>
+                )
+            }),
             directors = data.directors.map((director) => {
-            return (
-                <div key={director.name}>
-                    {director.name}({director.numberMovies})
-                </div>
-            )
-        });
+                return (
+                    <div key={director.name}>
+                        {director.name}({director.numberMovies})
+                    </div>
+                )
+            });
 
         let header;
         if (isUserLoggedIn) {
@@ -114,37 +116,23 @@ export default class IndexComponent extends React.Component {
             header = <a href={data.link.login} className="pageLink">login</a>
         }
         return (
-            <html>
-            <head>
-                <link rel="stylesheet" href="/movies/styles.css"/>
-                <link rel="stylesheet"
-                      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-                      integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
-                      crossOrigin="anonymous"/>
-                <script src="/movies/app.js"/>
-            </head>
-            <body>
-            <div>
-                <div className="container">
-                    <h1>Movies</h1>
+            <div className="container">
+                <h1>Movies</h1>
 
-                    {header}
+                {header}
 
-                    <div className="center">
-                        {data.movies.length} movies
-                    </div>
-                    <div className="moviesDirector">
-                        {directors}
-                    </div>
-                    <div className="moviesList">
-                        <ul>
-                            {movies}
-                        </ul>
-                    </div>
+                <div className="center">
+                    {data.movies.length} movies
+                </div>
+                <div className="moviesDirector">
+                    {directors}
+                </div>
+                <div className="moviesList">
+                    <ul>
+                        {movies}
+                    </ul>
                 </div>
             </div>
-            </body>
-            </html>
         )
     }
 }
