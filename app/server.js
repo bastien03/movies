@@ -12,6 +12,10 @@ import {linkTo} from './link';
 import {config} from './config';
 import {initDb} from './dbManager';
 
+import {RouterContext} from 'react-router'
+import routes from './routes'
+import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
+
 var app = express();
 
 app.use(bodyParser.json());
@@ -32,7 +36,43 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
 
     initDb(db);
     require('./authenticationManager')();
-    require('./routes')(app, passport);
+
+    app.post(linkTo('movies'), addMovieRequest);
+    app.delete(linkTo('movies/:id'), deleteMovieRequest);
+    app.post(linkTo('editmovies/:id'), editMovieRequest);
+
+    app.post(linkTo('login'), passport.authenticate('local', {
+        successRedirect: linkTo(),
+        failureRedirect: linkTo('login')
+    }));
+
+    app.get(linkTo('logout'), function (req, res) {
+        req.logout();
+        res.clearCookie('movies');
+        res.redirect(linkTo());
+    });
+
+    app.get('*', function(req, res) {
+        match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+            if (error) {
+                res.status(500).send(error.message)
+            } else if (redirectLocation) {
+                res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+            } else if (renderProps) {
+                let route = renderProps.routes[1];
+                if (route.component.loadData) {
+                    route.component.loadData(route, renderProps.params, req, (data) => {
+                        renderProps.routes[1].data = data;
+                        res.status(200).send(renderToString(<RouterContext {...renderProps}/>));
+                    });
+                } else {
+                    res.status(200).send(renderToString(<RouterContext {...renderProps}/>));
+                }
+            } else {
+                res.status(404).send('Not found')
+            }
+        })
+    });
 
     console.log('Go to http://localhost:3000' + linkTo());
     app.listen(3000);
