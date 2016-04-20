@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -fr build/* && cp -r public build/&& babel app/ -d build -s --copy-files",
-    "buildAndWatch": "rm -fr build/* && cp -r public build/ && babel -w app/ -d build -s --copy-files &&",
+    "buildAndWatch": "rm -fr build/* && cp -r public build/ && babel -w app/ -d build -s --copy-files",
     "dev": "APP_PROFILE='dev' APP_PATH='/movies/' node build/server.js",
     "prod": "APP_PROFILE='production' APP_PATH='/movies/' node build/server.js"
   },

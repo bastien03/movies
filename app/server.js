@@ -12,11 +12,7 @@ import {linkTo} from './link';
 import {config} from './config';
 import {initDb} from './dbManager';
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import {renderToString} from 'react-dom/server'
-import {Router, Route, match, RouterContext} from 'react-router';
-
+import {RouterContext} from 'react-router'
 import routes from './routes'
 import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 
