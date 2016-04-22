@@ -1,72 +1,87 @@
 require("babel-core").transform("code");
 
 import 'source-map-support/register'; // use source maps in node-js
+
 import express from 'express';
-import session from 'express-session';
 import bodyParser from 'body-parser';
-import path from 'path';
-import passport from 'passport';
 import {MongoClient} from 'mongodb';
 import assert from 'assert';
-import {linkTo} from './link';
 import {config} from './config';
 import {initDb} from './dbManager';
-
-import {RouterContext} from 'react-router'
+import React from 'react';
+import {renderToString} from 'react-dom/server'
+import {match, RouterContext} from 'react-router'
 import routes from './routes'
-import {addMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
+import reducer from './reducers/movies'
+import {addMovieRequest, getMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
+import {initAuthentication, loginRequest, logoutRequest} from './authenticationManager'
+import {loadMovies, loadUser, loadCurrentMovie} from './actions/index'
+import {createStore, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import IndexComponentServer from './components/IndexComponentServer'
+import EditComponentServer from './components/EditComponentServer'
+
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+
+import {fetchCurrentMovie} from './actions/index'
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(linkTo(), express.static(path.join(__dirname, 'public')));
-app.use(session({
-    name: 'movies',
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(express.static(__dirname + '/public'));
 
-// Use connect method to connect to the Server
+initAuthentication(app);
+
+app.post('/movies', addMovieRequest);
+app.get('/movies/:id', getMovieRequest);
+app.delete('/movies/:id', deleteMovieRequest);
+app.post('/editmovies/:id', editMovieRequest);
+
+
 MongoClient.connect(config.DATABASE_URL, (err, db) => {
     assert.equal(null, err);
 
     initDb(db);
-    require('./authenticationManager')();
 
-    app.post(linkTo('movies'), addMovieRequest);
-    app.delete(linkTo('movies/:id'), deleteMovieRequest);
-    app.post(linkTo('editmovies/:id'), editMovieRequest);
+    const loggerMiddleware = createLogger()
 
-    app.post(linkTo('login'), passport.authenticate('local', {
-        successRedirect: linkTo(),
-        failureRedirect: linkTo('login')
-    }));
+    let store = createStore(
+        reducer,
+        applyMiddleware(
+            thunkMiddleware,
+            loggerMiddleware)
+    );
 
-    app.get(linkTo('logout'), function (req, res) {
-        req.logout();
-        res.clearCookie('movies');
-        res.redirect(linkTo());
-    });
-
-    app.get('*', function(req, res) {
-        match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    app.get('*', function (req, res) {
+        match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
             if (error) {
                 res.status(500).send(error.message)
             } else if (redirectLocation) {
                 res.redirect(302, redirectLocation.pathname + redirectLocation.search)
             } else if (renderProps) {
+
                 let route = renderProps.routes[1];
-                if (route.component.loadData) {
-                    route.component.loadData(route, renderProps.params, req, (data) => {
-                        renderProps.routes[1].data = data;
-                        res.status(200).send(renderToString(<RouterContext {...renderProps}/>));
-                    });
+                if (renderProps.components[1] && renderProps.components[1].WrappedComponent) {
+                    let componentName = renderProps.components[1].WrappedComponent.name;
+                    if (componentName == 'IndexComponent') {
+                        IndexComponentServer.loadData(route, renderProps.params, req, (data) => {
+                            store.dispatch(loadMovies(data));
+                            store.dispatch(loadUser(req.user));
+
+                            buildAndReturnPage(res, renderProps, store);
+                        });
+                    } else if (componentName == 'EditMovieComponent') {
+                        EditComponentServer.loadData(renderProps.params, (data) => {
+                            store.dispatch(loadCurrentMovie(data));
+                            store.dispatch(loadUser(req.user));
+
+                            buildAndReturnPage(res, renderProps, store);
+                        });
+                    }
                 } else {
-                    res.status(200).send(renderToString(<RouterContext {...renderProps}/>));
+                    buildAndReturnPage(res, renderProps, store);
                 }
             } else {
                 res.status(404).send('Not found')
@@ -74,6 +89,28 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
         })
     });
 
-    console.log('Go to http://localhost:3000' + linkTo());
+    console.log('Go to http://localhost:3000');
     app.listen(3000);
 });
+
+function buildAndReturnPage(res, renderProps, store) {
+    let html = renderToString(
+        <Provider store={store}>
+            <RouterContext {...renderProps}/>
+        </Provider>);
+    res.status(200).send(renderHTML(html, store));
+}
+
+function renderHTML(appHtml, store) {
+    let storeJson = JSON.stringify(store.getState());
+    return `
+    <!doctype html public="storage">
+    <html>
+    <meta charset=utf-8/>
+    <title>Movies</title>
+    <link rel=stylesheet href=/styles.css>
+    <div id=app>${appHtml}</div>
+    <script>window.__INITIAL_STATE__=${storeJson}</script>
+    <script src="/client.bundle.js"></script>
+   `
+}

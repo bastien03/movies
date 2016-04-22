@@ -1,12 +1,16 @@
 import React from 'react'
 
 export default class LoginComponent extends React.Component {
-    render() {
 
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
         return (
             <div className="container">
                 <h1>Login</h1>
-                <form name="login" method="post" action="/movies/login">
+                <form name="login" method="post" action="login">
                     <div className="form-group">
                         <span className="col-sm-2 control-label"> username</span>
                         <input type="text" name="username" autofocus></input>
