@@ -2,7 +2,7 @@ var plan = require('flightplan');
 
 var appName = 'movies-app';
 var username = 'movies';
-var startFile = 'server.js';
+var startFile = 'server.bundle.js';
 var tmpDir = appName + '-' + new Date().getTime();
 
 plan.target('production', [
@@ -42,5 +42,5 @@ plan.remote(function (remote) {
     remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
     remote.exec('cd ~/' + appName + '/');
     remote.exec('forever stop ~/' + appName + '/build/' + startFile, {failsafe: true});
-    remote.exec("APP_PROFILE='production' APP_PATH='/movies/' forever start ~/" + appName + '/build/' + startFile);
+    remote.exec("APP_PROFILE='production' APP_PATH='/' forever start ~/" + appName + '/build/' + startFile);
 });

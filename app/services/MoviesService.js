@@ -16,7 +16,7 @@ function getAllMovies(callback) {
 }
 
 export function getMovies(filter, callback) {
-    if (filter.director) {
+    if (filter && filter.director) {
         getMoviesByDirector(filter.director, callback);
     } else {
         getAllMovies(callback);

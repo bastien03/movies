@@ -5,7 +5,7 @@ export default class InsertMovieComponent extends React.Component {
         return (
             <div className="container">
                 <h1>Movies</h1>
-                <form name="add-movie" method="post" action="/movies/movies">
+                <form name="add-movie" method="post" action="movies">
                     <div className="form-group">
                         <span className="col-sm-2 control-label">Title</span>
                         <input type="text" name="title"/>
