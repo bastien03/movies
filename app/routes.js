@@ -6,12 +6,15 @@ import IndexComponent from './components/IndexComponent'
 import LoginComponent from './components/LoginComponent'
 import InsertMovieComponent from './components/InsertMovieComponent'
 import EditMovieComponent from './components/EditMovieComponent'
+import uris from './uris';
 
+
+console.log('init routes', uris);
 module.exports = (
-    <Route path="/" component={App}>
+    <Route path={uris.getContext()} component={App}>
         <IndexRoute component={IndexComponent}/>
-        <Route path='login' component={LoginComponent}/>
-        <Route path='new-movie' component={InsertMovieComponent}/>
-        <Route path='edit/:id' component={EditMovieComponent}/>
+        <Route path={uris.loginPage()} component={LoginComponent}/>
+        <Route path={uris.newMoviePage()} component={InsertMovieComponent}/>
+        <Route path={uris.editMoviePage(':id')} component={EditMovieComponent}/>
     </Route>
 );

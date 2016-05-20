@@ -1,11 +1,12 @@
 import React from 'react'
+import uris from '../uris'
 
 export default class InsertMovieComponent extends React.Component {
     render() {
         return (
             <div className="container">
                 <h1>Movies</h1>
-                <form name="add-movie" method="post" action="movies">
+                <form name="add-movie" method="post" action={uris.addMovieApi()}>
                     <div className="form-group">
                         <span className="col-sm-2 control-label">Title</span>
                         <input type="text" name="title"/>

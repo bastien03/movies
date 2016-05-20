@@ -2,6 +2,7 @@ import {Strategy as LocalStrategy} from 'passport-local';
 import session from 'express-session';
 import {getUserById, login} from './services/LoginService.js';
 import passport from 'passport';
+import uris from './uris';
 
 const COOKIE_NAME = 'movies-app';
 
@@ -15,14 +16,14 @@ export function initAuthentication(app) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.post('/login', passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/'
+    app.post(uris.loginApi(), passport.authenticate('local', {
+        successRedirect: uris.indexPage(),
+        failureRedirect: uris.indexPage()
     }));
-    app.get('/logout', function (req, res) {
+    app.get(uris.logoutApi(), function (req, res) {
         req.logout();
         res.clearCookie(COOKIE_NAME);
-        res.redirect('/');
+        res.redirect(uris.indexPage());
     });
 
     passport.serializeUser(function (user, done) {

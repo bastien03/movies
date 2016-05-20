@@ -11,7 +11,6 @@ import {initDb} from './dbManager';
 import React from 'react';
 import {renderToString} from 'react-dom/server'
 import {match, RouterContext} from 'react-router'
-import routes from './routes'
 import reducer from './reducers/movies'
 import {addMovieRequest, getMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 import {initAuthentication, loginRequest, logoutRequest} from './authenticationManager'
@@ -20,10 +19,10 @@ import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import IndexComponentServer from './components/IndexComponentServer'
 import EditComponentServer from './components/EditComponentServer'
-
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
-
+import uris from './uris';
+import routes from './routes'
 import {fetchCurrentMovie} from './actions/index'
 
 var app = express();
@@ -34,25 +33,31 @@ app.use(express.static(__dirname + '/public'));
 
 initAuthentication(app);
 
-app.post('/movies', addMovieRequest);
-app.get('/movies/:id', getMovieRequest);
-app.delete('/movies/:id', deleteMovieRequest);
-app.post('/editmovies/:id', editMovieRequest);
+const loggerMiddleware = createLogger()
+
+let store = createStore(
+    reducer,
+    {
+      config: {
+          context: uris.getContext()
+      }
+    },
+    applyMiddleware(
+        thunkMiddleware/*,
+        loggerMiddleware*/
+    )
+);
+
+app.post(uris.addMovieApi(), addMovieRequest);
+app.get(uris.getMovieApi(':id'), getMovieRequest);
+app.delete(uris.deleteMovieApi(':id'), deleteMovieRequest);
+app.put(uris.editMovieApi(':id'), editMovieRequest);
 
 
 MongoClient.connect(config.DATABASE_URL, (err, db) => {
     assert.equal(null, err);
 
     initDb(db);
-
-    const loggerMiddleware = createLogger()
-
-    let store = createStore(
-        reducer,
-        applyMiddleware(
-            thunkMiddleware,
-            loggerMiddleware)
-    );
 
     app.get('*', function (req, res) {
         match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
@@ -89,7 +94,7 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
         })
     });
 
-    console.log('Go to http://localhost:3000');
+    console.log('Go to http://localhost:3000' + uris.getContext());
     app.listen(3000);
 });
 

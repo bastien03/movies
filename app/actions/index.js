@@ -1,4 +1,5 @@
-import request from 'superagent'
+import request from 'superagent';
+import uris from '../uris';
 
 export const loadMovies = (movies) => {
     return {
@@ -43,7 +44,7 @@ export function fetchCurrentMovie(movieId) {
         dispatch(requestCurrentMovie(movieId));
         console.log('dispatch')
         return request
-            .get('/movies/' + movieId)
+            .get(uris.getMovieApi(movieId))
             .set('Accept', 'application/json')
             .end(function (err, res) {
                 console.log('callback',err, res);

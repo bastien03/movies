@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "npm run build && node build/server.bundle.js",
+    "start:prod": "npm run build && APP_PATH='/x/' node build/server.bundle.js",
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "rm -fr build/ && npm run build:client && npm run build:server",
