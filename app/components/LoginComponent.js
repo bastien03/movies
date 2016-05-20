@@ -1,4 +1,5 @@
 import React from 'react'
+import uris from '../uris'
 
 export default class LoginComponent extends React.Component {
 
@@ -10,7 +11,7 @@ export default class LoginComponent extends React.Component {
         return (
             <div className="container">
                 <h1>Login</h1>
-                <form name="login" method="post" action="login">
+                <form name="login" method="post" action={uris.loginApi()}>
                     <div className="form-group">
                         <span className="col-sm-2 control-label"> username</span>
                         <input type="text" name="username" autofocus></input>

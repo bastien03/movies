@@ -3,15 +3,16 @@ function reducer(state = {}, action) {
         return {
             movies: action.data.movies,
             directors: action.data.directors,
-            links: action.data.links
+            links: action.data.links,
+            config: state.config
         }
     } else if (action.type === 'LOAD_MOVIE') {
-        console.log('reducer:LOAD_MOVIE', action)
         return {
             movies: state.movies,
             directors: state.directors,
             links: state.links,
-            movie: action.data
+            movie: action.data,
+            config: state.config
         }
     } else if (action.type === 'USER') {
         return {
@@ -19,19 +20,22 @@ function reducer(state = {}, action) {
             movie: state.movie,
             directors: state.directors,
             links: state.links,
-            isAuthenticated: action.data
+            isAuthenticated: action.data,
+            config: state.config
         }
     } else if (action.type === 'REQUEST_CURRENT_MOVIE'){
         return Object.assign({}, state, {
             isFetching: true,
-            didInvalidate: false
+            didInvalidate: false,
+            config: state.config
         })
     } else if (action.type === 'RECEIVE_CURRENT_MOVIE'){
         return Object.assign({}, state, {
             isFetching: false,
             didInvalidate: false,
             movie: action.movie,
-            lastUpdated: action.receivedAt
+            lastUpdated: action.receivedAt,
+            config: state.config
         })
     } else {
         return state;

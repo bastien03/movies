@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {Link} from 'react-router'
+import uris from '../uris';
 
 class IndexComponent extends React.Component {
 
@@ -26,7 +27,7 @@ class IndexComponent extends React.Component {
                         <button className="remove-btn"
                                 onclick={"app.deleteMovie('" + movie._id + "', '" + movie.title + "')"}>X
                         </button>
-                        <Link to={'/edit/'+ movie._id}>edit</Link>
+                        <Link to={uris.editMoviePage(movie._id)}>edit</Link>
                     </div>
                 }
                 return (
@@ -50,11 +51,11 @@ class IndexComponent extends React.Component {
         let header;
         if (isUserLoggedIn) {
             header = <div>
-                <a href="logout" className="pageLink">logout</a>
-                <Link to="new-movie" className="pageLink">add a movie</Link>
+                <a href={uris.logoutApi()} className="pageLink">logout</a>
+                <Link to={uris.newMoviePage()} className="pageLink">add a movie</Link>
             </div>
         } else {
-            header = <Link to="login" className="pageLink">login</Link>
+            header = <Link to={uris.loginPage()} className="pageLink">login</Link>
         }
         return (
             <div className="container">
