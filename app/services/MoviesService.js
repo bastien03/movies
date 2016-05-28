@@ -29,14 +29,16 @@ export function getMovie(movieId, callback) {
     });
 }
 
-export function addMovie(movieDto) {
+export function addMovie(movieDto, callback) {
     var movie = {
         title: movieDto.title,
         year: movieDto.year,
         url: movieDto.url,
         director: movieDto.director
     };
-    getDbInstance().collection('movies').insert(movie);
+    return getDbInstance().collection('movies').insertOne(movie, function (err, result) {
+      callback(result.ops[0]);
+    });
 }
 
 export function deleteMovie(id) {

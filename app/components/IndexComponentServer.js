@@ -1,7 +1,7 @@
 import React from 'react'
 import {getMovies} from '../services/MoviesService.js'
 
-export default class IndexComponentServer extends React.Component {
+export default class IndexComponentServer {
 
     static loadData(route, params, request, cb) {
         getMovies(route.path, function (movies) {

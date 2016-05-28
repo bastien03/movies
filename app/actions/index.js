@@ -38,6 +38,13 @@ export const receiveCurrentMovie = (movieId, json) => {
     }
 }
 
+export const movieAdded = (movie) => {
+    return {
+        type: 'MOVIE_ADDED',
+        movie: movie
+    }
+}
+
 export function fetchCurrentMovie(movieId) {
     return function (dispatch) {
         console.log('fetch', movieId)
@@ -56,4 +63,19 @@ export function fetchCurrentMovie(movieId) {
                 console.log('onLoaded', currentMovie);
             });
     }
+}
+
+export function addMovie(movie) {
+  console.log('addMovie', movie);
+  return function(dispatch) {
+    return request
+      .post(uris.addMovieApi())
+      .set('Accept', 'application/json')
+      .send(movie)
+      .end(function (err, res) {
+        let addedMovie = JSON.parse(res.text);
+        console.log('movie added with id', addedMovie);
+        dispatch(movieAdded(addedMovie));
+      });
+  }
 }

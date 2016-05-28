@@ -9,8 +9,11 @@ export function addMovieRequest(req, res) {
     if (!req.user) {
         return notAuthenticated(res);
     }
-    addMovie(req.body);
-    return res.redirect(uris.indexPage());
+
+    addMovie(req.body, function (movie) {
+      return res.status(201).send(movie);
+    });
+    // return res.redirect(uris.indexPage());
 }
 
 export function getMovieRequest(req, res) {

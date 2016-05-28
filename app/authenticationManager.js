@@ -17,13 +17,13 @@ export function initAuthentication(app) {
     app.use(passport.session());
 
     app.post(uris.loginApi(), passport.authenticate('local', {
-        successRedirect: uris.indexPage(),
-        failureRedirect: uris.indexPage()
+        successRedirect: '/',
+        failureRedirect: '/'
     }));
     app.get(uris.logoutApi(), function (req, res) {
         req.logout();
         res.clearCookie(COOKIE_NAME);
-        res.redirect(uris.indexPage());
+        res.redirect('/');
     });
 
     passport.serializeUser(function (user, done) {

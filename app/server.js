@@ -60,6 +60,7 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
     initDb(db);
 
     app.get('*', function (req, res) {
+        console.log(req.method, req.url);
         match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
             if (error) {
                 res.status(500).send(error.message)

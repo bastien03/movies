@@ -37,6 +37,13 @@ function reducer(state = {}, action) {
             lastUpdated: action.receivedAt,
             config: state.config
         })
+    } else if (action.type === 'MOVIE_ADDED') {
+        return Object.assign({}, state, {
+          movies: [
+          ...state.movies,
+          action.movie
+        ]
+        })
     } else {
         return state;
     }
