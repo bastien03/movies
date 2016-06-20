@@ -11,6 +11,9 @@ import {initDb} from './dbManager';
 import React from 'react';
 import {renderToString} from 'react-dom/server'
 import {match, RouterContext} from 'react-router'
+import { Router, useRouterHistory } from 'react-router'
+import { createHistory, useBasename } from 'history'
+// import createBrowserHistory from 'history/lib/createBrowserHistory';
 import reducer from './reducers/movies'
 import {addMovieRequest, getMovieRequest, editMovieRequest, deleteMovieRequest} from './api/http/MoviesController';
 import {initAuthentication, loginRequest, logoutRequest} from './authenticationManager'
@@ -60,8 +63,7 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
     initDb(db);
 
     app.get('*', function (req, res) {
-        console.log(req.method, req.url);
-        match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
+        match({routes, location: req.url, basename: uris.getContext()}, (error, redirectLocation, renderProps) => {
             if (error) {
                 res.status(500).send(error.message)
             } else if (redirectLocation) {
@@ -100,6 +102,14 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
 });
 
 function buildAndReturnPage(res, renderProps, store) {
+    // // Run our app under the /base URL.
+    // const appHistory = useRouterHistory(createBrowserHistory)({
+    //   basename: '/movies'
+    // })
+    // const history = useBasename(createHistory)({
+    //   basename: '/movies'
+    // })
+
     let html = renderToString(
         <Provider store={store}>
             <RouterContext {...renderProps}/>
@@ -114,9 +124,9 @@ function renderHTML(appHtml, store) {
     <html>
     <meta charset=utf-8/>
     <title>Movies</title>
-    <link rel=stylesheet href=/styles.css>
+    <link rel=stylesheet href=./styles.css>
     <div id=app>${appHtml}</div>
     <script>window.__INITIAL_STATE__=${storeJson}</script>
-    <script src="/client.bundle.js"></script>
+    <script src="./client.bundle.js"></script>
    `
 }

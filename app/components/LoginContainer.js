@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import InsertMovieComponent from './InsertMovieComponent'
-import { addMovie } from '../actions'
+import LoginComponent from './LoginComponent'
+import { login } from '../actions'
 import { history } from '../AppHistory';
 
 const mapStateToProps = (state) => {
@@ -9,13 +9,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSaveClick: (e, title, year, url, director) => {
+    onLoginClick: (e, username, password) => {
       e.preventDefault();
-      if (!title.trim() || !year.trim() ||
-          !url.trim() || !director.trim()) {
+      if (!username.trim() || !password.trim()) {
             return;
           }
-      dispatch(addMovie({title, year, url, director}));
+      dispatch(login({username, password}));
+      console.log('go to index');
       history().push('/');
     }
   }
@@ -24,6 +24,6 @@ const mapDispatchToProps = (dispatch) => {
 const Component = connect(
   mapStateToProps,
   mapDispatchToProps
-)(InsertMovieComponent)
+)(LoginComponent)
 
 export default Component

@@ -3,10 +3,6 @@ import uris from '../uris'
 
 export default class InsertMovieComponent extends React.Component {
 
-    // handleClick: function(event) {
-    //   this.setState({liked: !this.state.liked});
-    // },
-
     render() {
         let title, year, url, director;
         return (

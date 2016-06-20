@@ -44,7 +44,11 @@ function reducer(state = {}, action) {
           action.movie
         ]
         })
-    } else {
+    } else if (action.type === 'USER_LOGGED_IN') {
+        return Object.assign({}, state, {
+          isAuthenticated: action.user
+        })
+    }else {
         return state;
     }
 

@@ -13,7 +13,6 @@ export function addMovieRequest(req, res) {
     addMovie(req.body, function (movie) {
       return res.status(201).send(movie);
     });
-    // return res.redirect(uris.indexPage());
 }
 
 export function getMovieRequest(req, res) {

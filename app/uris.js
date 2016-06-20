@@ -23,17 +23,17 @@ class Uris {
   }
 
   // pages
-  indexPage()        {return this.linkTo('')                    }
-  loginPage()        {return this.linkTo('login')               }
-  newMoviePage()     {return this.linkTo('new-movie')           }
+  indexPage()        {return '/'                                }
+  loginPage()        {return '/login'                            }
+  newMoviePage()     {return '/new-movie'                        }
   editMoviePage(id)  {return this.linkTo('edit/' + id)          }
 
   // API endpoints
   getMovieApi(id)    {return this.linkTo('api/movies/' + id)    }
-  addMovieApi()      {return this.linkTo('api/movies')          }
+  addMovieApi()      {return '/api/movies'                      }
   deleteMovieApi(id) {return this.linkTo('api/movies/' + id)    }
   editMovieApi(id)   {return this.linkTo('api/editmovies/' + id)}
-  loginApi()         {return this.linkTo('api/login')           }
+  loginApi()         {return '/api/login'                       }
   logoutApi()        {return this.linkTo('api/logout')          }
 }
 

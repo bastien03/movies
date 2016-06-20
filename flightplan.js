@@ -7,8 +7,10 @@ var tmpDir = appName + '-' + new Date().getTime();
 
 plan.target('production', [
     {
-        host: '85.214.223.229',
+        // host: '85.214.223.229',
+        host: 'h2126362.stratoserver.net',
         username: username,
+        privateKey: '/Users/bastienmary/.ssh/id_rsa',
         agent: process.env.SSH_AUTH_SOCK,
         agentForward: true
     }
@@ -42,5 +44,5 @@ plan.remote(function (remote) {
     remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
     remote.exec('cd ~/' + appName + '/');
     remote.exec('forever stop ~/' + appName + '/build/' + startFile, {failsafe: true});
-    remote.exec("APP_PROFILE='production' APP_PATH='/' forever start ~/" + appName + '/build/' + startFile);
+    remote.exec("APP_PROFILE='production' APP_PATH='/movies/' forever start ~/" + appName + '/build/' + startFile);
 });

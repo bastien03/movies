@@ -13,6 +13,7 @@ class IndexComponent extends React.Component {
     }
 
     componentWillMount() {
+      console.log('componentWillMount index');
     }
 
     render() {
