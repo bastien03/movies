@@ -38,6 +38,20 @@ export const receiveCurrentMovie = (movieId, json) => {
     }
 }
 
+export const movieAdded = (movie) => {
+    return {
+        type: 'MOVIE_ADDED',
+        movie: movie
+    }
+}
+
+export const userLoggedIn = (user) => {
+    return {
+        type: 'USER_LOGGED_IN',
+        user: user
+    }
+}
+
 export function fetchCurrentMovie(movieId) {
     return function (dispatch) {
         console.log('fetch', movieId)
@@ -56,4 +70,31 @@ export function fetchCurrentMovie(movieId) {
                 console.log('onLoaded', currentMovie);
             });
     }
+}
+
+export function addMovie(movie) {
+  return function(dispatch) {
+    return request
+      .post(uris.addMovieApi())
+      .set('Accept', 'application/json')
+      .send(movie)
+      .end(function (err, res) {
+        let addedMovie = JSON.parse(res.text);
+        dispatch(movieAdded(addedMovie));
+      });
+  }
+}
+
+export function login(user) {
+  return function(dispatch) {
+    return request
+      .post(uris.loginApi())
+      .set('Accept', 'application/json')
+      .send(user)
+      .end(function (err, res) {
+        let user = JSON.parse(res.text);
+        console.log('logged in', user);
+        dispatch(userLoggedIn(user));
+      });
+  }
 }

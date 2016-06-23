@@ -9,8 +9,8 @@
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "rm -fr build/ && npm run build:client && npm run build:server",
-    "dev": "APP_PROFILE='dev' APP_PATH='/movies/' node app/server.js",
-    "prod": "APP_PROFILE='production' APP_PATH='/movies/' node build/server.bundle.js",
+    "dev": "npm run build && APP_PROFILE='dev' APP_PATH='/' node build/server.bundle.js",
+    "prod": "npm run build && APP_PROFILE='production' APP_PATH='/movies/' node build/server.bundle.js",
     "deploy": "npm run build && fly -l production"
   },
   "repository": {

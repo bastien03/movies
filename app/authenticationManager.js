@@ -16,14 +16,28 @@ export function initAuthentication(app) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.post(uris.loginApi(), passport.authenticate('local', {
-        successRedirect: uris.indexPage(),
-        failureRedirect: uris.indexPage()
-    }));
+    // app.post(uris.loginApi(), passport.authenticate('local', {
+    //     successRedirect: '/',
+    //     failureRedirect: '/'
+    // }));
+
+    app.post(
+      uris.loginApi(),
+      function(req, res, next) {
+        passport.authenticate('local', function(err, user, info) {
+          if (err) { return next(err); }
+          if (!user) { return res.status(400).send()}
+          req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.status(201).send(user);
+          });
+        })(req, res, next)
+    });
+
     app.get(uris.logoutApi(), function (req, res) {
         req.logout();
         res.clearCookie(COOKIE_NAME);
-        res.redirect(uris.indexPage());
+        res.redirect('/');
     });
 
     passport.serializeUser(function (user, done) {
