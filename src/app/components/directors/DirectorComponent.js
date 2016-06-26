@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const DirectorComponent = ({ name, numberMovies }) => (
   <div>
-    {name}({numberMovies})
+    <Link to={`/movies/${name}`}>{name}({numberMovies})</Link>
   </div>
 );
 

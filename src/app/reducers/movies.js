@@ -54,3 +54,10 @@ function reducer(state = {}, action) {
 }
 
 export default reducer;
+
+export function getDirectorMovies(state, director) {
+  const directorMovies = state.movies.filter(
+    (movie) => movie.director === director
+  );
+  return directorMovies;
+}

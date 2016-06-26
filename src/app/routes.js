@@ -11,6 +11,7 @@ import uris from '../uris';
 module.exports = (
   <Route path={'/'} component={App}>
     <IndexRoute component={IndexComponent} />
+    <Route path={uris.moviesPage()} component={IndexComponent} />
     <Route path={uris.loginPage()} component={LoginComponent} />
     <Route path={uris.newMoviePage()} component={InsertMovieComponent} />
     <Route path={uris.editMoviePage(':id')} component={EditMovieComponent} />

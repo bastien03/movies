@@ -24,7 +24,7 @@ class Uris {
 
   /* eslint-disable no-multi-spaces, block-spacing*/
   // pages
-  indexPage()        {return '/';                                }
+  moviesPage()       {return '/movies/:director';                }
   loginPage()        {return '/login';                           }
   newMoviePage()     {return '/new-movie';                       }
   editMoviePage(id)  {return this.linkTo(`edit/${id}`);          }

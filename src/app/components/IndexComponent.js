@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import uris from '../../uris';
 import Movie from './movies/MovieContainer';
 import Director from './directors/DirectorComponent';
+import { getDirectorMovies } from '../reducers/movies';
 
 const IndexComponent = ({ movies, directors, isAuthenticated }) => {
   const moviesComponents = movies.map((movie) => (
@@ -53,8 +54,19 @@ IndexComponent.propTypes = {
   movies: React.PropTypes.array,
   directors: React.PropTypes.array,
   isAuthenticated: React.PropTypes.object,
+  params: React.PropTypes.shape({
+    director: React.PropTypes.string,
+  }),
 };
 
-const mapStateToProps = (state) => state;
+const mapStateToProps = (state, ownProps) => {
+  const director = ownProps.params.director;
+  const movies = director ? getDirectorMovies(state, director) : state.movies;
+  return {
+    movies,
+    directors: state.directors,
+    isAuthenticated: state.isAuthenticated,
+  };
+};
 
 export default connect(mapStateToProps)(IndexComponent);
