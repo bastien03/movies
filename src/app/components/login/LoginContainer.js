@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import LoginComponent from './LoginComponent';
-import { login } from '../actions';
-import { history } from '../AppHistory';
+import { login } from '../../common/auth/actions';
+import { history } from '../../AppHistory';
 
 const mapDispatchToProps = (dispatch) => ({
   onLoginClick: (e, username, password) => {

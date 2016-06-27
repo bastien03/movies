@@ -12,12 +12,12 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 
-import reducer from './app/reducers/movies';
+import reducer from './app/reducers';
 import {
   addMovieRequest, getMovieRequest,
   editMovieRequest, deleteMovieRequest } from './api/http/MoviesController';
 import { initAuthentication } from './api/authenticationManager';
-import { loadMovies, loadUser, loadCurrentMovie } from './app/actions/index';
+import { loadMovies, loadCurrentMovie } from './app/actions/index';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import IndexComponentServer from './app/components/IndexComponentServer';
@@ -39,11 +39,7 @@ initAuthentication(app);
 
 const store = createStore(
   reducer,
-  {
-    config: {
-      context: uris.getContext(),
-    },
-  },
+  {},
   applyMiddleware(
     thunkMiddleware
   )
@@ -99,14 +95,12 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
             if (componentName === 'IndexComponent') {
               IndexComponentServer.loadData(route, renderProps.params, req, (data) => {
                 store.dispatch(loadMovies(data));
-                store.dispatch(loadUser(req.user));
 
                 buildAndReturnPage(res, renderProps, store);
               });
             } else if (componentName === 'EditMovieComponent') {
               EditComponentServer.loadData(renderProps.params, (data) => {
                 store.dispatch(loadCurrentMovie(data));
-                store.dispatch(loadUser(req.user));
 
                 buildAndReturnPage(res, renderProps, store);
               });

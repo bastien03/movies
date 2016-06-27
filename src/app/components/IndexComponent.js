@@ -42,10 +42,10 @@ IndexComponent.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const director = ownProps.params.director;
-  const movies = director ? getDirectorMovies(state, director) : state.movies;
+  const movies = director ? getDirectorMovies(state, director) : state.movies.all;
   return {
     movies,
-    directors: state.directors,
+    directors: state.movies.directors,
   };
 };
 

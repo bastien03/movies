@@ -6,11 +6,6 @@ export const loadMovies = (movies) => ({
   data: movies,
 });
 
-export const loadUser = (user) => ({
-  type: 'USER',
-  data: user,
-});
-
 export const loadCurrentMovie = (currentMovie) => ({
   type: 'LOAD_MOVIE',
   data: currentMovie,
@@ -31,11 +26,6 @@ export const receiveCurrentMovie = (movieId, json) => ({
 export const movieAdded = (movie) => ({
   type: 'MOVIE_ADDED',
   movie,
-});
-
-export const userLoggedIn = (user) => ({
-  type: 'USER_LOGGED_IN',
-  user,
 });
 
 export function fetchCurrentMovie(movieId) {
@@ -59,16 +49,5 @@ export function addMovie(movie) {
       .end((err, res) => {
         const addedMovie = JSON.parse(res.text);
         dispatch(movieAdded(addedMovie));
-      });
-}
-
-export function login(credentials) {
-  return (dispatch) => request
-      .post(uris.loginApi())
-      .set('Accept', 'application/json')
-      .send(credentials)
-      .end((err, res) => {
-        const user = JSON.parse(res.text);
-        dispatch(userLoggedIn(user));
       });
 }

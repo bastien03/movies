@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Router } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './app/reducers/movies';
+import reducer from './app/reducers';
 import uris from './uris';
 
 import { initHistory, history } from './app/AppHistory';
@@ -13,6 +13,7 @@ import createLogger from 'redux-logger';
 
 // Grab the state from a global injected into server-generated HTML
 const initialState = window.INITIAL_STATE;
+console.log(initialState);
 uris.setContext(initialState.config.context);
 initHistory(initialState.config.context);
 
