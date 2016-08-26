@@ -14,13 +14,11 @@ export function login(credentials) {
       method: 'POST',
       headers,
       body,
+      credentials: 'same-origin',
     }
   );
 
   return fetch(request)
-    .then(response => {
-      console.log('login response', response);
-      return response.json();
-    })
+    .then(response => response.json())
     .catch(error => error.json());
 }
