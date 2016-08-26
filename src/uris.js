@@ -30,6 +30,7 @@ class Uris {
   editMoviePage(id)  {return this.linkTo(`edit/${id}`);          }
 
   // API endpoints
+  getAllMoviesApi()  {return this.linkTo('api/movies/');         }
   getMovieApi(id)    {return this.linkTo(`api/movies/${id}`);    }
   addMovieApi()      {return this.linkTo('api/movies');          }
   deleteMovieApi(id) {return this.linkTo(`api/movies/${id}`);    }

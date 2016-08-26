@@ -1,4 +1,6 @@
-import { addMovie, getMovie, deleteMovie, editMovie } from '../services/MoviesService.js';
+import {
+  addMovie, getMovie, getMovies, deleteMovie, editMovie,
+} from '../services/MoviesService.js';
 import uris from '../../uris';
 
 function notAuthenticated(res) {
@@ -19,6 +21,10 @@ export function getMovieRequest(req, res) {
   }
 
   return getMovie(req.params.id, (movie) => res.status(200).send(movie));
+}
+
+export function getAllMoviesRequest(req, res) {
+  return getMovies(null, (movies) => res.status(200).send(movies));
 }
 
 export function deleteMovieRequest(req, res) {

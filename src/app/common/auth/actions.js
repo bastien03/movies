@@ -1,5 +1,4 @@
-import request from 'superagent';
-import uris from '../../../uris';
+import { login as loginApi } from '../../api/auth';
 
 export const userLoggedIn = (user) => ({
   type: 'USER_LOGGED_IN',
@@ -7,12 +6,7 @@ export const userLoggedIn = (user) => ({
 });
 
 export function login(credentials) {
-  return (dispatch) => request
-      .post(uris.loginApi())
-      .set('Accept', 'application/json')
-      .send(credentials)
-      .end((err, res) => {
-        const user = JSON.parse(res.text);
-        dispatch(userLoggedIn(user));
-      });
+  return (dispatch) => {
+    loginApi(credentials).then(response => dispatch(userLoggedIn(response)));
+  };
 }

@@ -13,7 +13,7 @@ import createLogger from 'redux-logger';
 
 // Grab the state from a global injected into server-generated HTML
 const initialState = window.INITIAL_STATE;
-console.log(initialState);
+console.log('initialState', initialState);
 uris.setContext(initialState.config.context);
 initHistory(initialState.config.context);
 

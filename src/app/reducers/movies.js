@@ -1,4 +1,7 @@
-function reducer(state = {}, action) {
+function reducer(state = {
+  all: [],
+  directors: [],
+}, action) {
   if (action.type === 'LOAD_MOVIES') {
     return {
       all: action.data.movies,
