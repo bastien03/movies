@@ -56,7 +56,6 @@ export function addMovie(movie) {
   );
 
   return fetch(request)
-    // .then(response => response.json())
     .catch(error => error.text());
 }
 
@@ -78,6 +77,24 @@ export function editMovie(id, movie) {
   );
 
   return fetch(request)
-    // .then(response => response.json())
+    .catch(error => error.text());
+}
+
+export function removeMovie(id) {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  });
+
+  const request = new Request(
+    uris.deleteMovieApi(id),
+    {
+      method: 'DELETE',
+      headers,
+      credentials: 'same-origin',
+    }
+  );
+
+  return fetch(request)
     .catch(error => error.text());
 }

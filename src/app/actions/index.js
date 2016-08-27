@@ -3,6 +3,7 @@ import {
   loadMovie as loadMovieApi,
   addMovie as addMovieApi,
   editMovie as editMovieApi,
+  removeMovie as removeMovieApi,
 } from '../api/movies';
 import { history } from '../AppHistory';
 
@@ -63,6 +64,11 @@ export const movieAdded = (movie) => ({
   movie,
 });
 
+export const movieRemoved = (movieId) => ({
+  type: 'MOVIE_REMOVED',
+  movieId,
+});
+
 export function fetchMovies() {
   return (dispatch) => {
     loadMoviesApi().then(response => dispatch(loadMovies(response)));
@@ -84,5 +90,11 @@ export function fetchCurrentMovie(movieId) {
 export function saveCurrentMovie(id, movie) {
   return () => {
     editMovieApi(id, movie).then(() => history().push('/'));
+  };
+}
+
+export function removeCurrentMovie(movieId) {
+  return (dispatch) => {
+    removeMovieApi(movieId).then(() => dispatch(movieRemoved(movieId)));
   };
 }

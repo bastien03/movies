@@ -29,6 +29,10 @@ function reducer(state = {
         action.movie,
       ],
     });
+  } else if (action.type === 'MOVIE_REMOVED') {
+    return Object.assign({}, state, {
+      all: state.all.filter((movie) => movie.id !== action.movieId),
+    });
   }
 
   return state;

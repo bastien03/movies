@@ -4,7 +4,9 @@ import uris from '../../../uris';
 
 class MovieComponent extends React.Component {
 
-  handleDeleteClick() {}
+  handleDeleteClick(e, id) {
+    this.props.removeMovie(id);
+  }
 
   render() {
     const { id, title, director, year, url, isAuthenticated } = this.props;
@@ -15,7 +17,7 @@ class MovieComponent extends React.Component {
         <div>
           <button
             className="remove-btn"
-            onClick={(e) => this.handleDeleteClick(e)}
+            onClick={(e) => this.handleDeleteClick(e, id)}
           >X
           </button>
           <Link to={uris.editMoviePage(id)}>edit</Link>
@@ -43,6 +45,7 @@ MovieComponent.propTypes = {
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   isAuthenticated: React.PropTypes.object,
+  removeMovie: React.PropTypes.func.isRequired,
 };
 
 export default MovieComponent;
