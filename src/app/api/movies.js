@@ -20,6 +20,25 @@ export function loadMovies() {
     .catch(error => error.json());
 }
 
+export function loadMovie(movieId) {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  });
+
+  const request = new Request(
+    uris.getMovieApi(movieId),
+    {
+      method: 'GET',
+      headers,
+    }
+  );
+
+  return fetch(request)
+    .then(response => response.json())
+    .catch(error => error.json());
+}
+
 export function addMovie(movie) {
   const headers = new Headers({
     'Content-Type': 'application/json',
@@ -32,10 +51,33 @@ export function addMovie(movie) {
       method: 'POST',
       headers,
       body: JSON.stringify(movie),
+      credentials: 'same-origin',
     }
   );
 
   return fetch(request)
-    .then(response => response.json())
-    .catch(error => error.json());
+    // .then(response => response.json())
+    .catch(error => error.text());
+}
+
+
+export function editMovie(id, movie) {
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+  });
+
+  const request = new Request(
+    uris.editMovieApi(id),
+    {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(movie),
+      credentials: 'same-origin',
+    }
+  );
+
+  return fetch(request)
+    // .then(response => response.json())
+    .catch(error => error.text());
 }

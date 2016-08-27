@@ -16,14 +16,11 @@ function reducer(state = {
   } else if (action.type === 'REQUEST_CURRENT_MOVIE') {
     return Object.assign({}, state, {
       isFetching: true,
-      didInvalidate: false,
     });
   } else if (action.type === 'RECEIVE_CURRENT_MOVIE') {
     return Object.assign({}, state, {
       isFetching: false,
-      didInvalidate: false,
       movie: action.movie,
-      lastUpdated: action.receivedAt,
     });
   } else if (action.type === 'MOVIE_ADDED') {
     return Object.assign({}, state, {

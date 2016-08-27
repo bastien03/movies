@@ -1,7 +1,10 @@
 import {
   loadMovies as loadMoviesApi,
+  loadMovie as loadMovieApi,
   addMovie as addMovieApi,
+  editMovie as editMovieApi,
 } from '../api/movies';
+import { history } from '../AppHistory';
 
 const getDirectors = (movies) => {
   const tmpDirectors = [];
@@ -72,16 +75,14 @@ export function addMovie(movie) {
   };
 }
 
-// export function fetchCurrentMovie(movieId) {
-//   return (dispatch) => {
-//     dispatch(requestCurrentMovie(movieId));
-//     return request
-//       .get(uris.getMovieApi(movieId))
-//       .set('Accept', 'application/json')
-//       .end((err, res) => {
-//         const currentMovie = JSON.parse(res.text);
-//         dispatch(receiveCurrentMovie(movieId, currentMovie));
-//       });
-//   };
-// }
-//
+export function fetchCurrentMovie(movieId) {
+  return (dispatch) => {
+    loadMovieApi(movieId).then(response => dispatch(receiveCurrentMovie(movieId, response)));
+  };
+}
+
+export function saveCurrentMovie(id, movie) {
+  return () => {
+    editMovieApi(id, movie).then(() => history().push('/'));
+  };
+}
