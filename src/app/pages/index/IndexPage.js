@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Movie from './movies/MovieContainer';
-import Director from './directors/DirectorComponent';
-import { getDirectorMovies } from '../reducers/movies';
-import { fetchMovies } from '../actions';
+import Movie from '../../components/movies/MovieContainer';
+import Director from '../../components/directors/DirectorComponent';
 
 class IndexComponent extends React.Component {
 
@@ -52,17 +49,4 @@ IndexComponent.propTypes = {
   loadAllMovies: React.PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const director = ownProps.params.director;
-  const movies = director ? getDirectorMovies(state, director) : state.movies.all;
-  return {
-    movies,
-    directors: state.movies.directors,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  loadAllMovies: () => dispatch(fetchMovies()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(IndexComponent);
+export default IndexComponent;

@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import IndexComponent from './components/IndexComponent';
+import IndexComponent from './pages/index/IndexContainer';
 import LoginComponent from './components/login/LoginContainer';
-import InsertMovieComponent from './components/InsertMovieContainer';
-import EditMovieComponent from './components/EditMovieComponent';
+import InsertMovieComponent from './pages/insert/InsertMovieContainer';
+import EditMovieComponent from './pages/edit/EditMovieContainer';
 import uris from '../uris';
 
 module.exports = (

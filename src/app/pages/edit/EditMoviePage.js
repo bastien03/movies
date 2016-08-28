@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchCurrentMovie, saveCurrentMovie } from '../actions/index';
 
-class EditMovieComponent extends React.Component {
+class EditMoviePage extends React.Component {
 
   componentDidMount() {
     this.props.loadMovie(this.props.params.id);
@@ -58,7 +56,7 @@ class EditMovieComponent extends React.Component {
   }
   }
 
-EditMovieComponent.propTypes = {
+EditMoviePage.propTypes = {
   movie: React.PropTypes.shape({
     id: React.PropTypes.string,
     title: React.PropTypes.string,
@@ -71,17 +69,4 @@ EditMovieComponent.propTypes = {
   saveMovie: React.PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  movie: state.movies.movie,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadMovie: (movieId) => {
-    dispatch(fetchCurrentMovie(movieId));
-  },
-  saveMovie: (movieId, movie) => {
-    dispatch(saveCurrentMovie(movieId, movie));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditMovieComponent);
+export default EditMoviePage;

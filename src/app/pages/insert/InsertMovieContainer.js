@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import InsertMovieComponent from './InsertMovieComponent';
-import { addMovie } from '../actions';
-import { history } from '../AppHistory';
+import InsertMovieComponent from './InsertMoviePage';
+import { addMovie } from './actions';
+import { history } from '../../AppHistory';
 
 const mapDispatchToProps = (dispatch) => ({
   onSaveClick: (e, title, year, url, director) => {

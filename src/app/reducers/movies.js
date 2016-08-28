@@ -7,16 +7,6 @@ function reducer(state = {
       all: action.data.movies,
       directors: action.data.directors,
     };
-  } else if (action.type === 'LOAD_MOVIE') {
-    return {
-      all: state.all,
-      directors: state.directors,
-      movie: action.data,
-    };
-  } else if (action.type === 'REQUEST_CURRENT_MOVIE') {
-    return Object.assign({}, state, {
-      isFetching: true,
-    });
   } else if (action.type === 'RECEIVE_CURRENT_MOVIE') {
     return Object.assign({}, state, {
       isFetching: false,

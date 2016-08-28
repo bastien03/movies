@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import MovieComponent from './MovieComponent';
-import { removeCurrentMovie } from '../../actions';
+import { removeCurrentMovie } from './actions';
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
