@@ -2,18 +2,32 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import IndexComponent from './pages/index/IndexContainer';
+import IndexPage from './pages/index/IndexContainer';
 import LoginComponent from './components/login/LoginContainer';
-import InsertMovieComponent from './pages/insert/InsertMovieContainer';
-import EditMovieComponent from './pages/edit/EditMovieContainer';
+import InsertMoviePage from './pages/insert/InsertMovieContainer';
+import EditMoviePage from './pages/edit/EditMovieContainer';
 import uris from '../uris';
 
-module.exports = (
-  <Route path={'/'} component={App}>
-    <IndexRoute component={IndexComponent} />
-    <Route path={uris.moviesPage()} component={IndexComponent} />
-    <Route path={uris.loginPage()} component={LoginComponent} />
-    <Route path={uris.newMoviePage()} component={InsertMovieComponent} />
-    <Route path={uris.editMoviePage(':id')} component={EditMovieComponent} />
-  </Route>
-);
+export function routes() {
+  return (dispatch, getState) => {
+    const requireAuth = (nextState, replace) => {
+      if (!getState().auth.isAuthenticated) {
+        console.log('go to', uris.loginPage(), nextState.location.pathname);
+        replace({
+          pathname: uris.loginPage(),
+          state: { nextPathname: nextState.location.pathname },
+        });
+      }
+    };
+
+    return (
+      <Route path={'/'} component={App}>
+        <IndexRoute component={IndexPage} />
+        <Route path={uris.moviesPage()} component={IndexPage} />
+        <Route path={uris.loginPage()} component={LoginComponent} />
+        <Route path={uris.newMoviePage()} component={InsertMoviePage} onEnter={requireAuth} />
+        <Route path={uris.editMoviePage(':id')} component={EditMoviePage} onEnter={requireAuth} />
+      </Route>
+    );
+  };
+}

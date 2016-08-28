@@ -4,6 +4,7 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import uris from './uris';
 import configureStore from './app/configureStore';
+import { routes as initRoutes } from './app/routes';
 
 import { initHistory, history } from './app/AppHistory';
 
@@ -13,14 +14,8 @@ uris.setContext(initialState.config.context);
 initHistory(initialState.config.context);
 
 // load routes after context has been set
-let routes = require('./app/routes');
-
 const store = configureStore(initialState);
-
-// // Run our app under the /base URL.
-// const appHistory = useRouterHistory(createBrowserHistory)({
-//   basename: initialState.context
-// })
+const routes = store.dispatch(initRoutes());
 
 render(
   <Provider store={store}>

@@ -12,6 +12,8 @@ export default class LoginComponent extends React.Component {
           name="login"
           onSubmit={e => {
             this.props.onLoginClick(e,
+              this.props.router,
+              this.props.location,
               username.value, password.value
             ); }}
         >
@@ -36,4 +38,12 @@ export default class LoginComponent extends React.Component {
 
 LoginComponent.propTypes = {
   onLoginClick: React.PropTypes.func,
+  location: React.PropTypes.shape({
+    state: React.PropTypes.shape({
+      nextPathname: React.PropTypes.string,
+    }),
+  }),
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }),
 };

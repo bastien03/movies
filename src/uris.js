@@ -7,11 +7,7 @@ class Uris {
   }
 
   linkTo(url) {
-    if (url) {
-      return this.context + url;
-    }
-
-    return this.context;
+    return url ? this.context + url : this.context;
   }
 
   getContext() {
