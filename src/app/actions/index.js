@@ -8,26 +8,24 @@ import {
 import { history } from '../AppHistory';
 
 const getDirectors = (movies) => {
-  const tmpDirectors = [];
-  const directors = [];
-  movies.map((movie) => {
-    const director = movie.director;
-    if (tmpDirectors[director]) {
-      tmpDirectors[director] = tmpDirectors[director] + 1;
+  const obj = movies.reduce((param1, param2) => {
+    let reduced = {};
+    if (param1.director) {
+      reduced[param1.director] = reduced[param1.director] ? reduced[param1.director] + 1 : 1;
     } else {
-      tmpDirectors[director] = 1;
+      reduced = param1;
     }
-    return movie;
+    reduced[param2.director] = reduced[param2.director] ? reduced[param2.director] + 1 : 1;
+    return reduced;
   });
+  const directors = [];
 
-  tmpDirectors.map((director) => {
-    if (name === 'undefined') return director;
-
+  Object.keys(obj).map((key) => {
     directors.push({
-      name,
-      numberMovies: parseInt(tmpDirectors[name], 10),
+      name: key,
+      numberMovies: obj[key],
     });
-    return director;
+    return key;
   });
 
   return directors.sort((a, b) => b.numberMovies - a.numberMovies);
