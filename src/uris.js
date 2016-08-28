@@ -27,7 +27,7 @@ class Uris {
   moviesPage()       {return '/movies/:director';                }
   loginPage()        {return '/login';                           }
   newMoviePage()     {return '/new-movie';                       }
-  editMoviePage(id)  {return this.linkTo(`edit/${id}`);          }
+  editMoviePage(id)  {return `edit/${id}`;                       }
 
   // API endpoints
   getAllMoviesApi()  {return this.linkTo('api/movies/');         }
