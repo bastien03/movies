@@ -56,9 +56,14 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
   initDb(db);
 
   app.get('*', (req, res) => {
+    const initialState = {
+      auth: {
+        isAuthenticated: req.user,
+      },
+    };
     const store = createStore(
       reducer,
-      {},
+      initialState,
       applyMiddleware(
         thunkMiddleware
       )

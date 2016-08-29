@@ -12,7 +12,6 @@ export function routes() {
   return (dispatch, getState) => {
     const requireAuth = (nextState, replace) => {
       if (!getState().auth.isAuthenticated) {
-        console.log('go to', uris.loginPage(), nextState.location.pathname);
         replace({
           pathname: uris.loginPage(),
           state: { nextPathname: nextState.location.pathname },
