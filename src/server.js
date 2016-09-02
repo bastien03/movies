@@ -18,11 +18,34 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import uris from './uris';
 
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackConfig from '../webpack.config';
+
+const env = process.env.NODE_ENV;
+const context = process.env.APP_PATH || '/';
+const isProd = env === 'production';
+const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
+
 const app = express();
+const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(`${__dirname}/public`));
+// app.use(express.static(`${__dirname}/static`));
+app.use(express.static('public'));
+
+console.log(`==> 🌎  Running app in ${env} mode`); // eslint-disable-line
+if (!isProd) {
+  console.log(`==> 🌎  Using webpack compiler with dev and hot middleware.`); // eslint-disable-line
+  // Use this middleware to set up hot module reloading via webpack.
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath,
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 initAuthentication(app);
 
@@ -37,7 +60,7 @@ app.get(uris.healthCheck(), (req, res) => {
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);
-  const context = reduxStore.config.context;
+  // const context = reduxStore.config.context;
   return `
     <!doctype html public="storage">
     <html>
@@ -46,7 +69,8 @@ function renderHTML(reduxStore) {
     <link rel=stylesheet href=${context}styles.css>
     <div id='app'></div>
     <script>window.INITIAL_STATE=${storeJson}</script>
-    <script src="${context}client.bundle.js"></script>
+    <script src="${context}${bundle}"></script>
+    </html>
    `;
 }
 
@@ -71,6 +95,11 @@ MongoClient.connect(config.DATABASE_URL, (err, db) => {
     res.status(200).send(renderHTML(store.getState()));
   });
 
-  console.log(`Go to http://localhost:3000${uris.getContext()}`); // eslint-disable-line no-console
-  app.listen(3000);
+  app.listen(port, (error) => {
+    if (error) {
+      console.error(error); // eslint-disable-line no-console
+    } else {
+      console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}${context} in your browser.`); // eslint-disable-line no-console
+    }
+  });
 });

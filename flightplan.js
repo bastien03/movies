@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 var plan = require('flightplan');
 
 var appName = 'movies-app';
 var username = 'movies';
-var startFile = 'server.bundle.js';
+var startFile = 'index.js';
 var tmpDir = appName + '-' + new Date().getTime();
 
 plan.target('production', [
@@ -21,8 +23,9 @@ plan.local(function (local) {
     // uncomment these if you need to run a build on your machine first
 
   local.log('Copy files to remote hosts');
-  var filesToCopy = local.find('build -type f', {silent: true}).stdout.split('\n');
-  filesToCopy = filesToCopy.concat(['package.json', 'README.md']);
+  // var filesToCopy = local.find('build -type f', {silent: true}).stdout.split('\n');
+  // filesToCopy = filesToCopy.concat(['package.json', 'README.md']);
+  var filesToCopy = local.exec('git ls-files', {silent: true}).stdout.split('\n');
   // rsync files to all the destination's hosts
   local.transfer(filesToCopy, '/tmp/' + tmpDir);
 });
@@ -43,6 +46,7 @@ plan.remote(function (remote) {
   remote.log('Reload application');
   remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
   remote.exec('cd ~/' + appName + '/');
-  remote.exec('forever stop ~/' + appName + '/build/' + startFile, {failsafe: true});
-  remote.exec("APP_PROFILE='production' APP_PATH='/movies-app/' forever start ~/" + appName + '/build/' + startFile);
+  remote.exec('forever stop ~/' + appName + '/src/' + startFile, {failsafe: true});
+  remote.exec("NODE_ENV='production' APP_PATH='/movies-app/' forever start ~/" + appName + '/src/' + startFile);
 });
+/* eslint-enable */

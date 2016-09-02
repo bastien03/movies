@@ -1,46 +1,45 @@
-var webpack = require('webpack');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var path = require('path'); // eslint-disable-line no-var
+var webpack = require('webpack'); // eslint-disable-line no-var
 
-module.exports = [
-  {
-    name: 'browser',
-    entry: './src/client.js',
+const env = process.env.NODE_ENV;
+const isProd = env === 'production';
+const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
 
-    output: {
-      path: './build/public',
-      filename: 'client.bundle.js',
-      publicPath: '',
-    },
-
-    module: {
-
-      preLoaders: [
-          { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ },
-      ],
-
-      loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader?presets[]=es2015&presets[]=react',
+module.exports = {
+  devtool: 'inline-source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './src/client.js',
+  ],
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: bundle,
+    // publicPath: '/static/',
+  },
+  // output: {
+  //   path: './build/public',
+  //   filename: 'client.bundle.js',
+  //   publicPath: '',
+  // },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        include: __dirname,
+        query: {
+          presets: ['react-hmre'],
         },
-      ],
-    },
-
-    node: {
-      net: 'empty',
-      tls: 'empty',
-      fs: 'empty',
-      module: 'empty',
-    },
-
-    plugins: process.env.NODE_ENV === 'production' ? [
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin(),
-      new CopyWebpackPlugin([{ from: './public' }]),
-    ] : [
-      new CopyWebpackPlugin([{ from: './public' }]),
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+      },
     ],
   },
-];
+};
