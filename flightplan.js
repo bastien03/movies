@@ -23,9 +23,13 @@ plan.local(function (local) {
     // uncomment these if you need to run a build on your machine first
 
   local.log('Copy files to remote hosts');
-  // var filesToCopy = local.find('build -type f', {silent: true}).stdout.split('\n');
-  // filesToCopy = filesToCopy.concat(['package.json', 'README.md']);
-  var filesToCopy = local.exec('git ls-files', {silent: true}).stdout.split('\n');
+
+  var filesToCopy = [];
+  filesToCopy = filesToCopy.concat(
+    local.find('public -type f', {silent: true}).stdout.split('\n'),
+    local.find('src -type f', {silent: true}).stdout.split('\n'),
+    ['.babelrc', 'webpack.config.js', 'package.json', 'README.md']
+  );
   // rsync files to all the destination's hosts
   local.transfer(filesToCopy, '/tmp/' + tmpDir);
 });
@@ -38,7 +42,7 @@ plan.remote(function (remote) {
   remote.rm('-rf /tmp/' + tmpDir);
 
   remote.log('Install dependencies');
-  remote.exec('npm --production --prefix ~/' + tmpDir + ' install ~/' + tmpDir, {user: username});
+  remote.exec('npm --prefix ~/' + tmpDir + ' install ~/' + tmpDir, {user: username});
 
   remote.exec('mkdir ~/' + tmpDir + '/config');
   remote.exec('cp /private-backup/movies/config/production.json ~/' + tmpDir + '/config/');

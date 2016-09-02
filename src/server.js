@@ -33,8 +33,7 @@ const port = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.static(`${__dirname}/static`));
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/../public`));
 
 console.log(`==> 🌎  Running app in ${env} mode`); // eslint-disable-line
 if (!isProd) {
@@ -60,7 +59,7 @@ app.get(uris.healthCheck(), (req, res) => {
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);
-  // const context = reduxStore.config.context;
+
   return `
     <!doctype html public="storage">
     <html>
