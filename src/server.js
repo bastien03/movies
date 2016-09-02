@@ -1,13 +1,10 @@
 require('babel-core').transform('code');
 
 import 'source-map-support/register'; // use source maps in node-js
+import 'regenerator-runtime/runtime';
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import { MongoClient } from 'mongodb';
-import assert from 'assert';
-import { config } from './config';
-import { initDb } from './api/dbManager';
 
 import reducer from './app/reducers';
 import {
@@ -73,32 +70,26 @@ function renderHTML(reduxStore) {
    `;
 }
 
-MongoClient.connect(config.DATABASE_URL, (err, db) => {
-  assert.equal(null, err);
+app.get('*', (req, res) => {
+  const initialState = {
+    auth: {
+      isAuthenticated: req.user,
+    },
+  };
+  const store = createStore(
+    reducer,
+    initialState,
+    applyMiddleware(
+      thunkMiddleware
+    )
+  );
+  res.status(200).send(renderHTML(store.getState()));
+});
 
-  initDb(db);
-
-  app.get('*', (req, res) => {
-    const initialState = {
-      auth: {
-        isAuthenticated: req.user,
-      },
-    };
-    const store = createStore(
-      reducer,
-      initialState,
-      applyMiddleware(
-        thunkMiddleware
-      )
-    );
-    res.status(200).send(renderHTML(store.getState()));
-  });
-
-  app.listen(port, (error) => {
-    if (error) {
-      console.error(error); // eslint-disable-line no-console
-    } else {
-      console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}${context} in your browser.`); // eslint-disable-line no-console
-    }
-  });
+app.listen(port, (error) => {
+  if (error) {
+    console.error(error); // eslint-disable-line no-console
+  } else {
+    console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}${context} in your browser.`); // eslint-disable-line no-console
+  }
 });

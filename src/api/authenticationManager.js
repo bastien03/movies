@@ -16,15 +16,11 @@ export function initAuthentication(app) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // app.post(uris.loginApi(), passport.authenticate('local', {
-  //     successRedirect: '/',
-  //     failureRedirect: '/'
-  // }));
-
   app.post(uris.loginApi(), (req, res, next) => {
     passport.authenticate('local', (err, user) => {
       if (err) { return next(err); }
       if (!user) { return res.status(400).send(); }
+
       return req.logIn(user, (loginError) => {
         if (loginError) {
           return next(err);
@@ -46,12 +42,12 @@ export function initAuthentication(app) {
   });
 
   passport.deserializeUser((id, done) => {
-    getUserById(id, (user) => { done(null, user); });
+    getUserById(id).then(user => { done(null, user); });
   });
 
   passport.use(new LocalStrategy(
     (username, password, done) => {
-      login(username, password, (user) => {
+      login(username, password).then(user => {
         if (user) {
           return done(null, user);
         }

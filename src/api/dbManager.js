@@ -1,8 +1,10 @@
-let db;
-export function initDb(dbInstance) {
-  db = dbInstance;
-}
+import { MongoClient } from 'mongodb';
+import { config } from '../config';
+import co from 'co';
 
-export default function getDb() {
+// connect to the db and return a promise with the db connection
+// don't forget to close db.close() in your your promise.then
+export default () => co(function* gen() {
+  const db = yield MongoClient.connect(config.DATABASE_URL);
   return db;
-}
+});

@@ -1,30 +1,33 @@
-import getDbInstance from '../dbManager';
+import dbInstance from '../dbManager';
 import { ObjectID } from 'mongodb';
+import co from 'co';
 
 const fromDbUser = (dbUser) => {
-  const user = dbUser;
-  user.id = user._id.toString(); // eslint-disable-line no-underscore-dangle
+  const user = Object.assign({}, dbUser, {
+    id: dbUser._id.toString(), // eslint-disable-line no-underscore-dangle
+  });
   delete user._id; // eslint-disable-line no-underscore-dangle
 
   return user;
 };
 
-export function login(username, password, callback) {
-  getDbInstance().collection('users')
+export const login = (username) => dbInstance().then(db => co(function* gen() {
+  const user = yield db.collection('users')
     .find({ username })
     .limit(1)
-    .next((err, dbUser) => {
-      const user = fromDbUser(dbUser);
-      callback(user);
-    });
-}
+    .next();
 
-export function getUserById(id, callback) {
-  getDbInstance().collection('users')
+  db.close();
+
+  return fromDbUser(user);
+}));
+
+export const getUserById = (id) => dbInstance().then(db => co(function* gen() {
+  const user = yield db.collection('users')
     .find({ _id: new ObjectID(id) })
     .limit(1)
-    .next((err, dbUser) => {
-      const user = fromDbUser(dbUser);
-      callback(user);
-    });
-}
+    .next();
+
+  db.close();
+  return fromDbUser(user);
+}));

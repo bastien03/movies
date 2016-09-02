@@ -1,76 +1,48 @@
-import getDbInstance from '../dbManager';
+import dbInstance from '../dbManager';
 import { ObjectID } from 'mongodb';
+import co from 'co';
 
 const fromDbMovie = (dbMovie) => {
-  const movie = dbMovie;
-  movie.id = dbMovie._id.toString(); // eslint-disable-line no-underscore-dangle
+  const movie = Object.assign({}, dbMovie, {
+    id: dbMovie._id.toString(), // eslint-disable-line no-underscore-dangle
+  });
   delete movie._id; // eslint-disable-line no-underscore-dangle
-
   return movie;
 };
 
-function getMoviesByDirector(director, callback) {
-  getDbInstance().collection('movies')
-    .find({ director })
-    .toArray((err, docs) => {
-      const movies = docs.map((movie) => fromDbMovie(movie));
-      callback(movies);
-    });
-}
+export const getAllMovies = () => dbInstance().then(db => co(function* gen() {
+  // Retrieve all movies
+  const res = yield db.collection('movies').find().toArray();
+  const movies = [];
+  res.map(movie => movies.push(fromDbMovie(movie)));
+  db.close(); // Close connection
+  return movies;
+}));
 
-function getAllMovies(callback) {
-  getDbInstance().collection('movies')
-    .find()
-    .toArray((err, docs) => {
-      const movies = docs.map((movie) => fromDbMovie(movie));
-      callback(movies);
-    });
-}
+export const getMovie = (movieId) => dbInstance().then(db => co(function* gen() {
+  // Retrieve one movie
+  const res = yield db.collection('movies').find({ _id: new ObjectID(movieId) }).toArray();
+  const movie = fromDbMovie(res[0]);
+  db.close(); // Close connection
+  return movie;
+}));
 
-export function getMovies(filter, callback) {
-  if (filter && filter.director) {
-    getMoviesByDirector(filter.director, callback);
-  } else {
-    getAllMovies(callback);
-  }
-}
+export const addMovie = (movieDto) => dbInstance().then(db => co(function* gen() {
+  const movie = Object.assign({}, movieDto);
+  // Insert one movie
+  const res = yield db.collection('movies').insertOne(movie);
+  db.close(); // Close connection
+  return res.ops[0];
+}));
 
-export function getMovie(movieId, callback) {
-  getDbInstance().collection('movies')
-    .find({ _id: new ObjectID(movieId) })
-    .toArray((err, doc) => {
-      const movie = fromDbMovie(doc[0]);
-      callback(movie);
-    });
-}
+export const deleteMovie = (id) => dbInstance().then(db => co(function* gen() {
+  // Delete one movie
+  yield db.collection('movies').findOneAndDelete({ _id: new ObjectID(id) });
+  db.close(); // Close connection
+}));
 
-export function addMovie(movieDto, callback) {
-  const movie = {
-    title: movieDto.title,
-    year: movieDto.year,
-    url: movieDto.url,
-    director: movieDto.director,
-  };
-  return getDbInstance().collection('movies')
-          .insertOne(movie, (err, result) => {
-            callback(result.ops[0]);
-          });
-}
-
-export function deleteMovie(id) {
-  getDbInstance().collection('movies')
-    .findOneAndDelete({ _id: new ObjectID(id) });
-}
-
-export function editMovie(id, obj) {
-  getDbInstance().collection('movies')
-    .findOneAndUpdate({ _id: new ObjectID(id) }, obj);
-}
-
-export default {
-  getMovies,
-  getMovie,
-  addMovie,
-  deleteMovie,
-  editMovie,
-};
+export const editMovie = (id, obj) => dbInstance().then(db => co(function* gen() {
+  // Edit one movie
+  yield db.collection('movies').findOneAndUpdate({ _id: new ObjectID(id) }, obj);
+  db.close(); // Close connection
+}));

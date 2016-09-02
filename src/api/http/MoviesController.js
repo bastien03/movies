@@ -1,39 +1,49 @@
 import {
-  addMovie, getMovie, getMovies, deleteMovie, editMovie,
+  addMovie, getMovie, getAllMovies, deleteMovie, editMovie,
 } from '../services/MoviesService.js';
 
-function notAuthenticated(res) {
-  return res.status(401).send('You have to be authenticated to perform this request.');
-}
+const notAuthenticated = res => res.status(401).send('You have to be authenticated.');
+const error = (res, err) => {
+  console.error(err);
+  return res.status(500).send('Something wrong happend. Please try again later.');
+};
 
 export function addMovieRequest(req, res) {
   if (!req.user) {
     return notAuthenticated(res);
   }
 
-  return addMovie(req.body, (movie) => res.status(201).send(movie));
+  return addMovie(req.body)
+    .then(movie => res.status(201).send(movie))
+    .catch(err => error(res, err));
 }
 
 export function getMovieRequest(req, res) {
-  return getMovie(req.params.id, (movie) => res.status(200).send(movie));
+  getMovie(req.params.id)
+    .then(movie => res.status(200).send(movie))
+    .catch(err => error(res, err));
 }
 
 export function getAllMoviesRequest(req, res) {
-  return getMovies(null, (movies) => res.status(200).send(movies));
+  getAllMovies()
+    .then(movies => res.status(200).send(movies))
+    .catch(err => error(res, err));
 }
 
 export function deleteMovieRequest(req, res) {
   if (!req.user) {
     return notAuthenticated(res);
   }
-  deleteMovie(req.params.id);
-  return res.status(204).send();
+  return deleteMovie(req.params.id)
+    .then(() => res.status(204).send())
+    .catch(err => error(res, err));
 }
 
 export function editMovieRequest(req, res) {
   if (!req.user) {
     return notAuthenticated(res);
   }
-  editMovie(req.params.id, req.body);
-  return res.status(204).send();
+  return editMovie(req.params.id, req.body)
+    .then(() => res.status(204).send())
+    .catch(err => error(res, err));
 }

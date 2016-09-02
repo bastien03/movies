@@ -8,19 +8,14 @@ const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
+    'babel-polyfill',
     'webpack-hot-middleware/client',
     './src/client.js',
   ],
   output: {
     path: path.join(__dirname, 'public'),
     filename: bundle,
-    // publicPath: '/static/',
   },
-  // output: {
-  //   path: './build/public',
-  //   filename: 'client.bundle.js',
-  //   publicPath: '',
-  // },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
