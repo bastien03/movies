@@ -8,7 +8,8 @@
     "build:prod": "NODE_ENV='production' webpack",
     "dev": "NODE_ENV='dev' APP_PATH='/' node src/index.js",
     "prod": "NODE_ENV='production' APP_PATH='/' node src/index.js",
-    "deploy": "npm run build:prod && fly -l production"
+    "deploy": "npm run build:prod && fly -l production",
+    "browser:sync": "browser-sync start --port 3000"
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
+    "browser-sync": "^2.14.3",
     "copy-webpack-plugin": "^2.1.5",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",

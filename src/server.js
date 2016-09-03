@@ -57,15 +57,28 @@ app.get(uris.healthCheck(), (req, res) => {
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);
 
+  // the browserSync tag is added only in dev mode and will connect to the
+  // browser sync server
+  const browserSync = isProd ? '' : `
+    <script id="__bs_script__">
+      var script = document.createElement('script');
+      script.src="http://HOST:3001/browser-sync/browser-sync-client.2.14.3.js".replace("HOST", location.hostname);
+      var body = document.getElementsByTagName('body')[0];
+      body.appendChild(script);
+    </script>`;
+
   return `
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
     <title>Movies</title>
     <link rel=stylesheet href=${context}styles.css>
-    <div id='app'></div>
-    <script>window.INITIAL_STATE=${storeJson}</script>
-    <script src="${context}${bundle}"></script>
+    <body>
+      ${browserSync}
+      <div id='app'></div>
+      <script>window.INITIAL_STATE=${storeJson}</script>
+      <script src="${context}${bundle}"></script>
+    </body>
     </html>
    `;
 }
