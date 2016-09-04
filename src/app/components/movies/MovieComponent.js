@@ -14,25 +14,36 @@ class MovieComponent extends React.Component {
     let movieHeader;
     if (isAuthenticated) {
       movieHeader = (
-        <div>
+        <header>
+          <div className="movieYear">{year}</div>
           <button
             className="remove-btn"
             onClick={(e) => this.handleDeleteClick(e, id)}
           >X
           </button>
-          <Link to={uris.editMoviePage(id)}>edit</Link>
-        </div>
+          <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
+          <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
+        </header>
+      );
+    } else {
+      movieHeader = (
+        <header>
+          <div className="movieYear">{year}</div>
+          <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
+        </header>
       );
     }
 
 
     return (
-      <div>
+      <div key={id} className="movieContainer">
         {movieHeader}
-        <h2>{title}</h2>
-        <a href={`?director=${director}`} className="movieDirector">{director}</a>
-        <div className="movieYear">{year}</div>
-        <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
+        <article>
+          <h2 className="movieTitle">{title}</h2>
+        </article>
+        <footer>
+          <a href={`?director=${director}`} className="movieDirector">{director}</a>
+        </footer>
       </div>
     );
   }

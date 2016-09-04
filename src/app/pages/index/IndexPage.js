@@ -12,11 +12,13 @@ class IndexComponent extends React.Component {
     const movies = this.props.movies;
     const directors = this.props.directors;
 
-    const moviesComponents = movies.map((movie) => (
-      <li key={movie.id}>
-        <Movie {...movie} />
-      </li>
-    ));
+    // const moviesComponents = movies.map((movie) => (
+    //   <li key={movie.id}>
+    //     <Movie {...movie} />
+    //   </li>
+    // ));
+
+    const moviesComponents = movies.map((movie) => <Movie {...movie} />);
 
     const directorsComponents = directors.map((director) =>
       <Director {...director} key={director.name} />
