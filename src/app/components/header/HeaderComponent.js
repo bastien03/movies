@@ -5,7 +5,7 @@ import uris from '../../../uris';
 const HeaderComponent = ({ isAuthenticated }) => (
   <div>
 
-    <h1>Movies</h1>
+    <h1><Link to="/">Movies</Link></h1>
 
     {isAuthenticated &&
       <div>

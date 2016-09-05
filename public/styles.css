@@ -19,6 +19,14 @@ button {
     text-align: center;
 }
 
+.container h1 a,
+.container h1 a:visited,
+.container h1 a:link,
+.container h1 a:active {
+  text-decoration: none;
+  color: crimson;
+}
+
 .moviesDirector {
     display: none;
 }

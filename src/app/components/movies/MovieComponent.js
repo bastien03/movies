@@ -41,7 +41,7 @@ class MovieComponent extends React.Component {
           <h2 className="movieTitle">{title}</h2>
         </article>
         <footer>
-          <a href={`?director=${director}`} className="movieDirector">{director}</a>
+          <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>
         </footer>
       </div>
     );
