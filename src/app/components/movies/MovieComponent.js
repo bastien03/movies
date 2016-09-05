@@ -17,10 +17,9 @@ class MovieComponent extends React.Component {
         <header>
           <div className="movieYear">{year}</div>
           <button
-            className="remove-btn"
+            className="movieRemove"
             onClick={(e) => this.handleDeleteClick(e, id)}
-          >X
-          </button>
+          ><span>remove</span></button>
           <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
           <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
         </header>
