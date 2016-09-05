@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LoginComponent from './LoginComponent';
+import LoginComponent from './LoginPage';
 import withRouter from 'react-router/lib/withRouter';
 import { login } from '../../common/auth/actions';
 

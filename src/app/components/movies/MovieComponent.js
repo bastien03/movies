@@ -35,7 +35,7 @@ class MovieComponent extends React.Component {
 
 
     return (
-      <div key={id} className="movieContainer">
+      <div className="movieContainer">
         {movieHeader}
         <article>
           <h2 className="movieTitle">{title}</h2>

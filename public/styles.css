@@ -3,7 +3,8 @@ body {
 }
 
 body,
-button {
+button,
+input {
     font-size: 40px;
 }
 
@@ -16,6 +17,10 @@ button {
     font-size: 80px;
     margin-bottom: 0px;
     margin-top: 0px;
+    text-align: center;
+}
+
+.container h3 {
     text-align: center;
 }
 
@@ -73,9 +78,19 @@ button {
     color: darkturquoise;
 }
 
+.page .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.page {
+    padding-top: 80px;
+}
 @media only screen and (min-device-width : 480px) {
   body,
-  button {
+  button,
+  input {
     font-size: large;
   }
 

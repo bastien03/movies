@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import IndexPage from './pages/index/IndexContainer';
-import LoginComponent from './components/login/LoginContainer';
+import LoginComponent from './pages/login/LoginContainer';
 import InsertMoviePage from './pages/insert/InsertMovieContainer';
 import EditMoviePage from './pages/edit/EditMovieContainer';
 import uris from '../uris';

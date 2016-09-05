@@ -19,8 +19,8 @@ class EditMoviePage extends React.Component {
     let { title, year, url, director } = this.props.movie;
 
     return (
-      <div className="container">
-        <h1>Movies</h1>
+      <div className="container page edit">
+        <h3>{`Edit '${title}'`}</h3>
         <form
           name="add-movie"
           onSubmit={
@@ -29,25 +29,25 @@ class EditMoviePage extends React.Component {
               url: url.value, director: director.value });
           }}
         >
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Title</span>
             <input type="text" ref={node => { title = node; }} defaultValue={title} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Year</span>
             <input type="text" ref={node => { year = node; }} defaultValue={year} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Url</span>
             <input type="text" ref={node => { url = node; }} defaultValue={url} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Director</span>
             <input type="text" ref={node => { director = node; }} defaultValue={director} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <div className="col-sm-offset-2 col-sm-10">
-              <input type="submit" name="add" className="btn btn-default" />
+              <input type="submit" value="edit" className="btn btn-default" />
             </div>
           </div>
         </form>

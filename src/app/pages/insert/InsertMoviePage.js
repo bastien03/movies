@@ -8,8 +8,8 @@ export default class InsertMovieComponent extends React.Component {
     let url;
     let director;
     return (
-      <div className="container">
-        <h1>Movies</h1>
+      <div className="container page insert">
+        <h3>{'Add a new movie'}</h3>
         <form
           name="add-movie"
           onSubmit={
@@ -20,25 +20,25 @@ export default class InsertMovieComponent extends React.Component {
             );
           }}
         >
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Title</span>
             <input type="text" ref={node => { title = node; }} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Year</span>
             <input type="text" ref={node => { year = node; }} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Url</span>
             <input type="text" ref={node => { url = node; }} />
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label">Director</span>
             <input type="text" ref={node => { director = node; }} />
           </div>
           <div className="form-group">
             <div className="col-sm-offset-2 col-sm-10">
-              <input type="submit" name="add" className="btn btn-default" />
+              <input type="submit" value="add" className="btn btn-default" />
             </div>
           </div>
         </form>

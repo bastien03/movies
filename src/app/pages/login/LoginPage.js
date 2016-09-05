@@ -6,8 +6,8 @@ export default class LoginComponent extends React.Component {
     let username;
     let password;
     return (
-      <div className="container">
-        <h1>Login</h1>
+      <div className="container page login">
+        <h3>{'Log in into movies-app'}</h3>
         <form
           name="login"
           onSubmit={e => {
@@ -17,15 +17,15 @@ export default class LoginComponent extends React.Component {
               username.value, password.value
             ); }}
         >
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label"> username</span>
             <input type="text" ref={node => { username = node; }}></input>
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <span className="col-sm-2 control-label"> password</span>
             <input type="password" ref={node => { password = node; }}></input>
           </div>
-          <div className="form-group">
+          <div className="formGroup">
             <div className="col-sm-offset-2 col-sm-10">
               <input type="submit" value="login" className="btn btn-default"></input>
             </div>
