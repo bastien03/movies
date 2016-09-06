@@ -4,12 +4,28 @@ import Director from '../../components/directors/DirectorComponent';
 
 class IndexComponent extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { searchTerm: '' };
+  }
+
   componentDidMount() {
     this.props.loadAllMovies();
   }
 
+  onSearch(e) {
+    this.setState({ searchTerm: e.target.value });
+  }
+
   render() {
-    const movies = this.props.movies;
+    let searchTerm = this.state.searchTerm;
+
+    // filter movies whose title or director contain the search term
+    const movies = this.props.movies.filter(oneMovie =>
+      oneMovie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      oneMovie.director.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const directors = this.props.directors;
 
     const moviesComponents = movies.map((movie) => <Movie {...movie} key={movie.id} />);
@@ -18,6 +34,16 @@ class IndexComponent extends React.Component {
       (director.numberMovies > 1 ?
         <Director {...director} key={director.name} /> :
         null)
+    );
+
+    const search = (
+      <div className="searchContainer center">
+        <label>{'Search'}</label>
+        <input
+          ref={node => { searchTerm = node; }}
+          onChange={(e) => this.onSearch(e)}
+        ></input>
+      </div>
     );
 
     return (
@@ -29,6 +55,7 @@ class IndexComponent extends React.Component {
           {directorsComponents}
           <div>{'...'}</div>
         </div>
+        {search}
         <div className="moviesList">
           {moviesComponents}
         </div>

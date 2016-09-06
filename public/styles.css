@@ -36,6 +36,14 @@ input {
     display: none;
 }
 
+.searchContainer {
+  margin-bottom: 15px;
+}
+
+.searchContainer label {
+  margin-right: 5px;
+}
+
 .moviesList {
     width: 100%;
 }
