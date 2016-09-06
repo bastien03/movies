@@ -15,19 +15,22 @@ class IndexComponent extends React.Component {
     const moviesComponents = movies.map((movie) => <Movie {...movie} key={movie.id} />);
 
     const directorsComponents = directors.map((director) =>
-      <Director {...director} key={director.name} />
+      (director.numberMovies > 1 ?
+        <Director {...director} key={director.name} /> :
+        null)
     );
 
     return (
       <div>
         <div className="center">
-            {movies.length} movies
+          {movies.length} movies
         </div>
         <div className="moviesDirector">
-            {directorsComponents}
+          {directorsComponents}
+          <div>{'...'}</div>
         </div>
         <div className="moviesList">
-            {moviesComponents}
+          {moviesComponents}
         </div>
       </div>
     );
