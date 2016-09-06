@@ -6,7 +6,10 @@ class IndexComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { searchTerm: '' };
+    this.state = {
+      searchTerm: '',
+      order: 'entry',
+    };
   }
 
   componentDidMount() {
@@ -17,14 +20,33 @@ class IndexComponent extends React.Component {
     this.setState({ searchTerm: e.target.value });
   }
 
+  onOrder(e) {
+    this.setState({ order: e.target.value });
+  }
+
   render() {
     let searchTerm = this.state.searchTerm;
+    let order = this.state.order;
 
     // filter movies whose title or director contain the search term
-    const movies = this.props.movies.filter(oneMovie =>
+    let movies = this.props.movies.filter(oneMovie =>
       oneMovie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       oneMovie.director.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    movies = movies.sort((a, b) => {
+      switch (order) {
+        case 'date':
+          return a.year > b.year;
+        case 'title':
+          return a.title > b.title;
+        case 'director':
+          return a.director > b.director;
+        case 'entry':
+        default:
+          return a.id > b.id;
+      }
+    });
 
     const directors = this.props.directors;
 
@@ -46,6 +68,18 @@ class IndexComponent extends React.Component {
       </div>
     );
 
+    const sort = (
+      <div className="orderContainer center" onChange={e => this.onOrder(e)}>
+        <label>{'Order by'}</label>
+        <select name="order" ref={node => { order = node; }}>
+          <option value="entry">entry</option>
+          <option value="date">date</option>
+          <option value="title">title</option>
+          <option value="director">director</option>
+        </select>
+      </div>
+    );
+
     return (
       <div>
         <div className="center">
@@ -56,6 +90,7 @@ class IndexComponent extends React.Component {
           <div>{'...'}</div>
         </div>
         {search}
+        {sort}
         <div className="moviesList">
           {moviesComponents}
         </div>

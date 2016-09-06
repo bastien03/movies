@@ -36,11 +36,13 @@ input {
     display: none;
 }
 
-.searchContainer {
+.searchContainer,
+.orderContainer {
   margin-bottom: 15px;
 }
 
-.searchContainer label {
+.searchContainer label,
+.orderContainer label {
   margin-right: 5px;
 }
 
