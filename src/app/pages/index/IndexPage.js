@@ -37,7 +37,7 @@ class IndexComponent extends React.Component {
     movies = movies.sort((a, b) => {
       switch (order) {
         case 'date':
-          return parseInt(a.year, 10) > parseInt(b.year, 10);
+          return parseInt(a.year, 10) - parseInt(b.year, 10);
         case 'title':
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
         case 'director':
