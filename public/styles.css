@@ -133,4 +133,21 @@ input {
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  select,
+  input.btn,
+  input {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      border-width: 0px;
+      cursor: pointer;
+      font-size: 1em;
+      line-height: 1em;
+      padding: 1em 1em;
+      width: 100%;
+  }
+
+  select,
+  input.btn {
+      border: 1px solid crimson;
+  }
 }
