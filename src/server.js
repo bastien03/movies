@@ -72,6 +72,7 @@ function renderHTML(reduxStore) {
     <html>
     <meta charset=utf-8/>
     <title>Movies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <link rel=stylesheet href=${context}styles.css>
     <body>
       ${browserSync}

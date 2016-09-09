@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Confirm from 'react-confirm-bootstrap';
 import uris from '../../../uris';
+
 
 class MovieComponent extends React.Component {
 
@@ -16,10 +18,16 @@ class MovieComponent extends React.Component {
       movieHeader = (
         <header>
           <div className="movieYear">{year}</div>
-          <button
-            className="movieRemove"
-            onClick={(e) => this.handleDeleteClick(e, id)}
-          ><span>remove</span></button>
+
+          <Confirm
+            onConfirm={(e) => this.handleDeleteClick(e, id)}
+            body={`Are you sure you want to delete '${title}'?`}
+            confirmText="Confirm Delete"
+            title="Deleting a movie"
+          >
+            <button className="movieRemove">remove</button>
+          </Confirm>
+
           <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
           <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
         </header>
