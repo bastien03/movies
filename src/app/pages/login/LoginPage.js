@@ -6,7 +6,7 @@ export default class LoginComponent extends React.Component {
     let username;
     let password;
     return (
-      <div className="container page login">
+      <div className="page login">
         <h3>{'Log in into movies-app'}</h3>
         <form
           name="login"
@@ -18,17 +18,15 @@ export default class LoginComponent extends React.Component {
             ); }}
         >
           <div className="formGroup">
-            <span className="col-sm-2 control-label"> username</span>
+            <span> username</span>
             <input type="text" ref={node => { username = node; }}></input>
           </div>
           <div className="formGroup">
-            <span className="col-sm-2 control-label"> password</span>
+            <span> password</span>
             <input type="password" ref={node => { password = node; }}></input>
           </div>
           <div className="formGroup">
-            <div className="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="login" className="btn btn-default"></input>
-            </div>
+            <input type="submit" value="login" className="btn btn-default"></input>
           </div>
         </form>
       </div>

@@ -4,30 +4,39 @@ body {
 
 body,
 button,
-input {
+input,
+.btn,
+.modal-dialog .modal-title {
     font-size: 40px;
 }
 
-.container {
-    width: 100%;
-    padding-left: 0px;
+.modal-dialog {
+    width: 90%;
 }
 
-.container h1 {
+.modal-footer {
+    margin-top: 20px;
+}
+
+.modal-footer button:first-of-type {
+    float: left;
+}
+
+.container-fluid h1 {
     font-size: 80px;
     margin-bottom: 0px;
     margin-top: 0px;
     text-align: center;
 }
 
-.container h3 {
+.container-fluid h3 {
     text-align: center;
 }
 
-.container h1 a,
-.container h1 a:visited,
-.container h1 a:link,
-.container h1 a:active {
+.container-fluid h1 a,
+.container-fluid h1 a:visited,
+.container-fluid h1 a:link,
+.container-fluid h1 a:active {
   text-decoration: none;
   color: crimson;
 }
@@ -100,7 +109,9 @@ input {
 @media only screen and (min-device-width : 480px) {
   body,
   button,
-  input {
+  input,
+  .btn,
+  .modal-dialog .modal-title {
     font-size: large;
   }
 
@@ -150,4 +161,8 @@ input {
   input.btn {
       border: 1px solid crimson;
   }
+
+  /*.container {
+      width: 100%;
+  }*/
 }
