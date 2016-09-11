@@ -1,3 +1,5 @@
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
 function callAPIMiddleware({ dispatch, getState }) {
   return next => action => {
     if (!action.API) {
@@ -32,6 +34,8 @@ function callAPIMiddleware({ dispatch, getState }) {
       return next(action);
     }
 
+    dispatch(showLoading());
+
     const [requestType, successType, failureType] = types;
 
     dispatch(Object.assign({}, payload, {
@@ -39,14 +43,20 @@ function callAPIMiddleware({ dispatch, getState }) {
     }));
 
     return callAPI().then(
-      response => dispatch(Object.assign({}, payload, {
-        response,
-        type: successType,
-      })),
-      error => dispatch(Object.assign({}, payload, {
-        error,
-        type: failureType,
-      }))
+      response => {
+        dispatch(Object.assign({}, payload, {
+          response,
+          type: successType,
+        }));
+        dispatch(hideLoading());
+      },
+      error => {
+        dispatch(Object.assign({}, payload, {
+          error,
+          type: failureType,
+        }));
+        dispatch(hideLoading());
+      }
     );
   };
 }
