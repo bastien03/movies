@@ -1,8 +1,8 @@
 function reducer(state = {}, action) {
   switch (action.type) {
-    case 'USER_LOGGED_IN':
+    case 'LOGIN_SUCCESS':
       return {
-        isAuthenticated: action.user,
+        isAuthenticated: action.response,
       };
     default:
       return state;

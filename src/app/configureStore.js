@@ -1,8 +1,9 @@
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
 
 import reducer from './reducers';
-import { createStore, applyMiddleware } from 'redux';
+import callAPIMiddleware from './api/util/callApiMiddleware';
 
 export default function (initialState) {
   const loggerMiddleware = createLogger();
@@ -13,6 +14,7 @@ export default function (initialState) {
       initialState,
       applyMiddleware(
           thunkMiddleware,
+          callAPIMiddleware,
           loggerMiddleware)
   );
 

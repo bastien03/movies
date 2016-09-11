@@ -32,7 +32,7 @@ export const addMovie = (movieDto) => dbInstance().then(db => co(function* gen()
   // Insert one movie
   const res = yield db.collection('movies').insertOne(movie);
   db.close(); // Close connection
-  return res.ops[0];
+  return fromDbMovie(res.ops[0]);
 }));
 
 export const deleteMovie = (id) => dbInstance().then(db => co(function* gen() {
@@ -43,6 +43,13 @@ export const deleteMovie = (id) => dbInstance().then(db => co(function* gen() {
 
 export const editMovie = (id, obj) => dbInstance().then(db => co(function* gen() {
   // Edit one movie
-  yield db.collection('movies').findOneAndUpdate({ _id: new ObjectID(id) }, obj);
+  const res = yield db.collection('movies').findOneAndUpdate(
+    { _id: new ObjectID(id) },
+    obj,
+    {
+      returnOriginal: false,
+    }
+  );
   db.close(); // Close connection
+  return fromDbMovie(res.value);
 }));

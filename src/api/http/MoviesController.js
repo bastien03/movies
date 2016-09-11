@@ -44,6 +44,6 @@ export function editMovieRequest(req, res) {
     return notAuthenticated(res);
   }
   return editMovie(req.params.id, req.body)
-    .then(() => res.status(204).send())
+    .then(movie => res.status(200).send(movie))
     .catch(err => error(res, err));
 }

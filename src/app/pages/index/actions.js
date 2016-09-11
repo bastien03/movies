@@ -26,16 +26,14 @@ const getDirectors = (movies) => {
   return directors.sort((a, b) => b.numberMovies - a.numberMovies);
 };
 
-export const loadMovies = (movies) => ({
-  type: 'LOAD_MOVIES',
-  data: {
-    movies,
-    directors: getDirectors(movies),
-  },
-});
-
 export function fetchMovies() {
-  return (dispatch) => {
-    loadMoviesApi().then(response => dispatch(loadMovies(response)));
+  return {
+    API: {
+      types: ['LOAD_MOVIES_REQUEST', 'LOAD_MOVIES_SUCCESS', 'LOAD_MOVIES_ERROR'],
+      callAPI: () => loadMoviesApi().then(movies => {
+        const directors = getDirectors(movies);
+        return Promise.resolve({ movies, directors });
+      }),
+    },
   };
 }

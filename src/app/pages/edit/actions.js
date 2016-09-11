@@ -4,21 +4,20 @@ import {
 } from '../../api/movies';
 import { history } from '../../AppHistory';
 
-export const receiveCurrentMovie = (movieId, json) => ({
-  type: 'RECEIVE_CURRENT_MOVIE',
-  movieId,
-  movie: json,
-  receivedAt: Date.now(),
-});
-
 export function fetchCurrentMovie(movieId) {
-  return (dispatch) => {
-    loadMovieApi(movieId).then(response => dispatch(receiveCurrentMovie(movieId, response)));
+  return {
+    API: {
+      types: ['FETCH_MOVIE_REQUEST', 'FETCH_MOVIE_SUCCESS', 'FETCH_MOVIE_ERROR'],
+      callAPI: () => loadMovieApi(movieId),
+    },
   };
 }
 
 export function saveCurrentMovie(id, movie) {
-  return () => {
-    editMovieApi(id, movie).then(() => history().push('/'));
+  return {
+    API: {
+      types: ['EDIT_MOVIE_REQUEST', 'EDIT_MOVIE_SUCCESS', 'EDIT_MOVIE_ERROR'],
+      callAPI: () => editMovieApi(id, movie).then(() => history().push('/')),
+    },
   };
 }

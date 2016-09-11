@@ -2,13 +2,11 @@ import {
   removeMovie as removeMovieApi,
 } from '../../api/movies';
 
-const movieRemoved = (movieId) => ({
-  type: 'MOVIE_REMOVED',
-  movieId,
-});
-
 export function removeCurrentMovie(movieId) {
-  return (dispatch) => {
-    removeMovieApi(movieId).then(() => dispatch(movieRemoved(movieId)));
+  return {
+    API: {
+      types: ['REMOVE_MOVIE_REQUEST', 'REMOVE_MOVIE_SUCCESS', 'REMOVE_MOVIE_ERROR'],
+      callAPI: () => removeMovieApi(movieId).then(() => ({ movieId })),
+    },
   };
 }

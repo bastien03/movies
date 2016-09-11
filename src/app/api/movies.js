@@ -56,7 +56,8 @@ export function addMovie(movie) {
   );
 
   return fetch(request)
-    .catch(error => error.text());
+    .then(response => response.json())
+    .catch(error => error.json());
 }
 
 
@@ -77,7 +78,8 @@ export function editMovie(id, movie) {
   );
 
   return fetch(request)
-    .catch(error => error.text());
+    .then(response => response.json())
+    .catch(error => error.json());
 }
 
 export function removeMovie(id) {

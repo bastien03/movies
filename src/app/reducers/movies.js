@@ -2,26 +2,26 @@ function reducer(state = {
   all: [],
   directors: [],
 }, action) {
-  if (action.type === 'LOAD_MOVIES') {
+  if (action.type === 'LOAD_MOVIES_SUCCESS') {
     return {
-      all: action.data.movies,
-      directors: action.data.directors,
+      all: action.response.movies,
+      directors: action.response.directors,
     };
-  } else if (action.type === 'RECEIVE_CURRENT_MOVIE') {
+  } else if (action.type === 'FETCH_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
       isFetching: false,
-      movie: action.movie,
+      movie: action.response,
     });
-  } else if (action.type === 'MOVIE_ADDED') {
+  } else if (action.type === 'ADD_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
       all: [
         ...state.all,
-        action.movie,
+        action.response,
       ],
     });
-  } else if (action.type === 'MOVIE_REMOVED') {
+  } else if (action.type === 'REMOVE_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
-      all: state.all.filter((movie) => movie.id !== action.movieId),
+      all: state.all.filter((movie) => movie.id !== action.response.movieId),
     });
   }
 
