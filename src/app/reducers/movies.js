@@ -1,3 +1,5 @@
+import get from 'lodash/get';
+
 function reducer(state = {
   all: [],
   directors: [],
@@ -30,8 +32,24 @@ function reducer(state = {
 
 export default reducer;
 
+export function getAllMovies(state) {
+  return get(state, 'movies.all');
+}
+
+export function getAllDirectors(state) {
+  return get(state, 'movies.directors');
+}
+
+export function getCurrentMovie(state) {
+  return get(state, 'movies.movie');
+}
+
 export function getDirectorMovies(state, director) {
-  const directorMovies = state.movies.all.filter(
+  const movies = getAllMovies(state);
+  if (!movies) {
+    return [];
+  }
+  const directorMovies = movies.filter(
     (movie) => movie.director === director
   );
   return directorMovies;

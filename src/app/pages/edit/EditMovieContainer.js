@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { fetchCurrentMovie, saveCurrentMovie } from './actions';
+import { getCurrentMovie } from '../../reducers/movies';
 import EditMoviePage from './EditMoviePage';
 import withRouter from 'react-router/lib/withRouter';
 
 const mapStateToProps = state => ({
-  movie: state.movies.movie,
+  movie: getCurrentMovie(state),
 });
 
 const mapDispatchToProps = dispatch => ({
