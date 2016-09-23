@@ -18,6 +18,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
+import { version } from '../package';
 
 const env = process.env.NODE_ENV;
 const context = process.env.APP_PATH || '/';
@@ -26,6 +27,7 @@ const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
 
 const app = express();
 const port = 3000;
+const deploymentDate = isProd ? parseInt(process.env.DEPLOYMENT_DATE, 10) : Date.now();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -68,6 +70,7 @@ function renderHTML(reduxStore) {
     <html>
     <meta charset=utf-8/>
     <title>Movies</title>
+    <link rel="shortcut icon" type="image/x-icon" href="${context}favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <link rel=stylesheet href=${context}styles.css>
     <body>
@@ -88,6 +91,8 @@ app.get('*', (req, res) => {
     config: {
       context: uris.getContext(),
       isProd,
+      version,
+      deploymentDate,
     },
   };
   const store = createStore(

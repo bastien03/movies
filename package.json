@@ -1,12 +1,12 @@
 {
   "name": "movies",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:prod": "NODE_ENV='production' webpack",
-    "dev": "NODE_ENV='dev' APP_PATH='/' node src/index.js",
+    "dev": "DEPLOYMENT_DATE=0 NODE_ENV='dev' APP_PATH='/' node src/index.js",
     "prod": "NODE_ENV='production' APP_PATH='/' node src/index.js",
     "deploy": "npm run build:prod && fly -l production",
     "browser:sync": "browser-sync start --port 3000"
@@ -30,6 +30,7 @@
     "express-session": "^1.12.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.1",
+    "moment": "^2.15.1",
     "mongodb": "^2.1.16",
     "npm": "^3.10.6",
     "passport": "^0.3.0",
@@ -39,6 +40,7 @@
     "react-bootstrap": "^0.30.3",
     "react-confirm-bootstrap": "^3.1.2",
     "react-dom": "0.14.8",
+    "react-mousetrap": "^0.1.1",
     "react-redux": "^4.4.5",
     "react-redux-loading-bar": "^2.3.3",
     "react-router": "^2.2.4",

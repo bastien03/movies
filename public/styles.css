@@ -42,6 +42,18 @@ input,
   color: crimson;
 }
 
+.appVersionContainer {
+  border: 5px solid darkturquoise;
+  margin: 2px;
+  background-color: crimson;
+  color: rgb(245, 245, 245);
+  border-radius: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: smaller;
+  list-style-type: none;
+}
+
 .moviesDirector {
     display: none;
 }
