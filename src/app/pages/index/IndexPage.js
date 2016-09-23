@@ -100,8 +100,8 @@ class IndexPage extends React.Component {
 }
 
 IndexPage.propTypes = {
-  movies: React.PropTypes.array,
-  directors: React.PropTypes.array,
+  movies: React.PropTypes.array.isRequired,
+  directors: React.PropTypes.array.isRequired,
   params: React.PropTypes.shape({
     director: React.PropTypes.string,
   }),

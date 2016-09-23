@@ -25,7 +25,7 @@ HeaderComponent.propTypes = {
   logout: React.PropTypes.func.isRequired,
   router: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default HeaderComponent;

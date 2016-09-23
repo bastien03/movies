@@ -54,7 +54,7 @@ app.put(uris.editMovieApi(':id'), editMovieRequest);
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);
-
+  const title = isProd ? 'Movies' : 'Movies (dev)';
   // the browserSync tag is added only in dev mode and will connect to the
   // browser sync server
   const browserSync = isProd ? '' : `
@@ -69,7 +69,7 @@ function renderHTML(reduxStore) {
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
-    <title>Movies</title>
+    <title>${title}</title>
     <link rel="shortcut icon" type="image/x-icon" href="${context}favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <link rel=stylesheet href=${context}styles.css>

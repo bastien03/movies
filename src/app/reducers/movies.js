@@ -11,7 +11,6 @@ function reducer(state = {
     };
   } else if (action.type === 'FETCH_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
-      isFetching: false,
       movie: action.response,
     });
   } else if (action.type === 'ADD_MOVIE_SUCCESS') {
