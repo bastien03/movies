@@ -11,8 +11,7 @@ import {
   addMovieRequest, getMovieRequest, getAllMoviesRequest,
   editMovieRequest, deleteMovieRequest } from './api/http/MoviesController';
 import { initAuthentication } from './api/authenticationManager';
-import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore } from 'redux';
 import uris from './uris';
 
 import webpack from 'webpack';
@@ -50,9 +49,6 @@ app.post(uris.addMovieApi(), addMovieRequest);
 app.get(uris.getMovieApi(':id'), getMovieRequest);
 app.delete(uris.deleteMovieApi(':id'), deleteMovieRequest);
 app.put(uris.editMovieApi(':id'), editMovieRequest);
-app.get(uris.healthCheck(), (req, res) => {
-  res.status(200).send(true);
-});
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);
@@ -89,13 +85,14 @@ app.get('*', (req, res) => {
     auth: {
       isAuthenticated: req.user,
     },
+    config: {
+      context: uris.getContext(),
+      isProd,
+    },
   };
   const store = createStore(
     reducer,
-    initialState,
-    applyMiddleware(
-      thunkMiddleware
-    )
+    initialState
   );
   res.status(200).send(renderHTML(store.getState()));
 });

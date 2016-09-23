@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import uris from '../../../uris';
 
-const HeaderComponent = ({ isAuthenticated }) => (
+const HeaderComponent = ({ isAuthenticated, logout, router }) => (
   <div>
 
     <h1><Link to="/">Movies</Link></h1>
 
     {isAuthenticated &&
       <div>
-        <a href={uris.logoutApi()} className="pageLink">logout</a>
+        <div className="pageLink logoutLink" onClick={() => logout(router)}>logout</div>
         <Link to={uris.newMoviePage()} className="pageLink">add a movie</Link>
       </div>
     }
@@ -22,6 +22,10 @@ const HeaderComponent = ({ isAuthenticated }) => (
 
 HeaderComponent.propTypes = {
   isAuthenticated: React.PropTypes.object,
+  logout: React.PropTypes.func.isRequired,
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }),
 };
 
 export default HeaderComponent;

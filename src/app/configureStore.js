@@ -1,21 +1,23 @@
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducer from './reducers';
 import callAPIMiddleware from './api/util/callApiMiddleware';
 
 export default function (initialState) {
-  const loggerMiddleware = createLogger();
+  const middlewares = [
+    thunkMiddleware,
+    callAPIMiddleware,
+  ];
 
   // Create Redux store with initial state
   const store = createStore(
       reducer,
       initialState,
-      applyMiddleware(
-          thunkMiddleware,
-          callAPIMiddleware,
-          loggerMiddleware)
+      compose(
+        applyMiddleware(...middlewares),
+        !initialState.isProd && window.devToolsExtension ? window.devToolsExtension() : f => f
+      )
   );
 
   return store;

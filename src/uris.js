@@ -33,7 +33,6 @@ class Uris {
   editMovieApi(id)   {return this.linkTo(`api/editmovies/${id}`);}
   loginApi()         {return this.linkTo('api/login');           }
   logoutApi()        {return this.linkTo('api/logout');          }
-  healthCheck()      {return this.linkTo('api/check');           }
   /* eslint-disable */
 }
 

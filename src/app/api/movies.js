@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-fetch';
 import uris from '../../uris';
 
-export function loadMovies() {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
+const headers = new Headers({
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+});
 
+export function loadMovies() {
   const request = new Request(
     uris.getAllMoviesApi(),
     {
@@ -21,11 +21,6 @@ export function loadMovies() {
 }
 
 export function loadMovie(movieId) {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
-
   const request = new Request(
     uris.getMovieApi(movieId),
     {
@@ -40,11 +35,6 @@ export function loadMovie(movieId) {
 }
 
 export function addMovie(movie) {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
-
   const request = new Request(
     uris.addMovieApi(),
     {
@@ -60,13 +50,7 @@ export function addMovie(movie) {
     .catch(error => error.json());
 }
 
-
 export function editMovie(id, movie) {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
-
   const request = new Request(
     uris.editMovieApi(id),
     {
@@ -83,11 +67,6 @@ export function editMovie(id, movie) {
 }
 
 export function removeMovie(id) {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
-
   const request = new Request(
     uris.deleteMovieApi(id),
     {

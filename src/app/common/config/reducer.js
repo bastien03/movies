@@ -1,8 +1,6 @@
-import uris from '../../../uris';
+const initialState = {};
 
-function reducer(state = {
-  context: uris.getContext(),
-}, action) {
+function reducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;

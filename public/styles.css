@@ -36,7 +36,8 @@ input,
 .container-fluid h1 a,
 .container-fluid h1 a:visited,
 .container-fluid h1 a:link,
-.container-fluid h1 a:active {
+.container-fluid h1 a:active,
+.logoutLink {
   text-decoration: none;
   color: crimson;
 }
@@ -74,6 +75,10 @@ input,
     margin-right: auto;
     display: block;
     text-align: center;
+}
+
+.logoutLink {
+    cursor: pointer;
 }
 
 .center {

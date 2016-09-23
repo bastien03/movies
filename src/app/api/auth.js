@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-fetch';
-
 import uris from '../../uris';
 
+const headers = new Headers({
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+});
+
 export function login(credentials) {
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  });
   const body = credentials ? JSON.stringify(credentials) : undefined;
   const request = new Request(
     uris.loginApi(),
@@ -20,5 +20,19 @@ export function login(credentials) {
 
   return fetch(request)
     .then(response => response.json())
+    .catch(error => error.json());
+}
+
+export function logout() {
+  const request = new Request(
+    uris.logoutApi(),
+    {
+      method: 'DELETE',
+      headers,
+      credentials: 'same-origin',
+    }
+  );
+
+  return fetch(request)
     .catch(error => error.json());
 }

@@ -31,10 +31,10 @@ export function initAuthentication(app) {
     })(req, res, next);
   });
 
-  app.get(uris.logoutApi(), (req, res) => {
+  app.delete(uris.logoutApi(), (req, res) => {
     req.logout();
     res.clearCookie(COOKIE_NAME);
-    res.redirect('/');
+    res.status(204).send();
   });
 
   passport.serializeUser((user, done) => {

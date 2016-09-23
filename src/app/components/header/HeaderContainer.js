@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import HeaderComponent from './HeaderComponent';
+import { logout as logoutAction } from '../../common/auth/actions';
+import withRouter from 'react-router/lib/withRouter';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-const component = connect(mapStateToProps)(HeaderComponent);
+const mapDispatchToProps = dispatch => ({
+  logout: (router) => dispatch(logoutAction(router)),
+});
 
-export default component;
+const component = connect(mapStateToProps, mapDispatchToProps)(HeaderComponent);
+
+export default withRouter(component);
