@@ -8,7 +8,7 @@ class EditMoviePage extends React.Component {
 
   saveMovie(e, id, movie) {
     e.preventDefault();
-    this.props.saveMovie(id, movie);
+    this.props.saveMovie(id, movie, this.props.router);
   }
 
   render() {
@@ -67,6 +67,9 @@ EditMoviePage.propTypes = {
   params: React.PropTypes.object,
   loadMovie: React.PropTypes.func.isRequired,
   saveMovie: React.PropTypes.func.isRequired,
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }),
 };
 
 export default EditMoviePage;

@@ -10,4 +10,9 @@ const mapDispatchToProps = (dispatch) => ({
   removeMovie: (movieId) => { dispatch(removeCurrentMovie(movieId)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieComponent);
+const component = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieComponent);
+
+export default component;

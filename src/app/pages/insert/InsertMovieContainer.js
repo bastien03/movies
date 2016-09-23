@@ -1,23 +1,22 @@
 import { connect } from 'react-redux';
 import InsertMovieComponent from './InsertMoviePage';
 import { addMovie } from './actions';
-import { history } from '../../AppHistory';
+import withRouter from 'react-router/lib/withRouter';
 
-const mapDispatchToProps = (dispatch) => ({
-  onSaveClick: (e, title, year, url, director) => {
+const mapDispatchToProps = dispatch => ({
+  onSaveClick: (e, title, year, url, director, router) => {
     e.preventDefault();
     if (!title.trim() || !year.trim() ||
         !url.trim() || !director.trim()) {
       return;
     }
-    dispatch(addMovie({ title, year, url, director }));
-    history().push('/');
+    dispatch(addMovie({ title, year, url, director }, router));
   },
 });
 
-const Component = connect(
+const page = connect(
   null,
   mapDispatchToProps
 )(InsertMovieComponent);
 
-export default Component;
+export default withRouter(page);

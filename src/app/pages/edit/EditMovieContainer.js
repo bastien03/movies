@@ -1,18 +1,24 @@
 import { connect } from 'react-redux';
 import { fetchCurrentMovie, saveCurrentMovie } from './actions';
 import EditMoviePage from './EditMoviePage';
+import withRouter from 'react-router/lib/withRouter';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   movie: state.movies.movie,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   loadMovie: (movieId) => {
     dispatch(fetchCurrentMovie(movieId));
   },
-  saveMovie: (movieId, movie) => {
-    dispatch(saveCurrentMovie(movieId, movie));
+  saveMovie: (movieId, movie, router) => {
+    dispatch(saveCurrentMovie(movieId, movie, router));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditMoviePage);
+const page = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditMoviePage);
+
+export default withRouter(page);

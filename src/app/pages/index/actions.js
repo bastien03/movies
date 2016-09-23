@@ -30,10 +30,11 @@ export function fetchMovies() {
   return {
     API: {
       types: ['LOAD_MOVIES_REQUEST', 'LOAD_MOVIES_SUCCESS', 'LOAD_MOVIES_ERROR'],
-      callAPI: () => loadMoviesApi().then(movies => {
+      callAPI: () => loadMoviesApi().then(),
+      responseProcessor: movies => {
         const directors = getDirectors(movies);
-        return Promise.resolve({ movies, directors });
-      }),
+        return ({ movies, directors });
+      },
     },
   };
 }

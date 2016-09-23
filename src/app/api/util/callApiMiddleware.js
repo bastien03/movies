@@ -10,6 +10,7 @@ function callAPIMiddleware({ dispatch, getState }) {
       types,
       callAPI,
       shouldCallAPI = () => true,
+      responseProcessor = data => data,
       payload = {},
     } = action.API;
 
@@ -44,8 +45,9 @@ function callAPIMiddleware({ dispatch, getState }) {
 
     return callAPI().then(
       response => {
+        const processedResponse = responseProcessor(response);
         dispatch(Object.assign({}, payload, {
-          response,
+          response: processedResponse,
           type: successType,
         }));
         dispatch(hideLoading());

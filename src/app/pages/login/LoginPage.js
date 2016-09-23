@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class LoginComponent extends React.Component {
+class LoginPage extends React.Component {
 
   render() {
     let username;
@@ -34,7 +34,7 @@ export default class LoginComponent extends React.Component {
   }
 }
 
-LoginComponent.propTypes = {
+LoginPage.propTypes = {
   onLoginClick: React.PropTypes.func,
   location: React.PropTypes.shape({
     state: React.PropTypes.shape({
@@ -45,3 +45,5 @@ LoginComponent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
 };
+
+export default LoginPage;

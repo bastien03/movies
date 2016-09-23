@@ -5,4 +5,6 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(HeaderComponent);
+const component = connect(mapStateToProps)(HeaderComponent);
+
+export default component;

@@ -21,7 +21,7 @@ function reducer(state = {
     });
   } else if (action.type === 'REMOVE_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
-      all: state.all.filter((movie) => movie.id !== action.response.movieId),
+      all: state.all.filter((movie) => movie.id !== action.movieId),
     });
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Movie from '../../components/movies/MovieContainer';
 import Director from '../../components/directors/DirectorComponent';
 
-class IndexComponent extends React.Component {
+class IndexPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -99,7 +99,7 @@ class IndexComponent extends React.Component {
   }
 }
 
-IndexComponent.propTypes = {
+IndexPage.propTypes = {
   movies: React.PropTypes.array,
   directors: React.PropTypes.array,
   params: React.PropTypes.shape({
@@ -108,4 +108,4 @@ IndexComponent.propTypes = {
   loadAllMovies: React.PropTypes.func.isRequired,
 };
 
-export default IndexComponent;
+export default IndexPage;

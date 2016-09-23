@@ -2,7 +2,6 @@ import {
   editMovie as editMovieApi,
   loadMovie as loadMovieApi,
 } from '../../api/movies';
-import { history } from '../../AppHistory';
 
 export function fetchCurrentMovie(movieId) {
   return {
@@ -13,11 +12,19 @@ export function fetchCurrentMovie(movieId) {
   };
 }
 
-export function saveCurrentMovie(id, movie) {
+function saveCurrentMovieAction(id, movie) {
   return {
     API: {
       types: ['EDIT_MOVIE_REQUEST', 'EDIT_MOVIE_SUCCESS', 'EDIT_MOVIE_ERROR'],
-      callAPI: () => editMovieApi(id, movie).then(() => history().push('/')),
+      callAPI: () => editMovieApi(id, movie),
     },
+  };
+}
+
+export function saveCurrentMovie(id, movie, router) {
+  return dispatch => {
+    dispatch(saveCurrentMovieAction(id, movie)).then(() => {
+      router.push('/');
+    });
   };
 }

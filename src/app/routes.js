@@ -24,8 +24,10 @@ export function routes() {
         <IndexRoute component={IndexPage} />
         <Route path={uris.moviesPage()} component={IndexPage} />
         <Route path={uris.loginPage()} component={LoginComponent} />
-        <Route path={uris.newMoviePage()} component={InsertMoviePage} onEnter={requireAuth} />
-        <Route path={uris.editMoviePage(':id')} component={EditMoviePage} onEnter={requireAuth} />
+        <Route onEnter={requireAuth}>
+          <Route path={uris.newMoviePage()} component={InsertMoviePage} />
+          <Route path={uris.editMoviePage(':id')} component={EditMoviePage} />
+        </Route>
       </Route>
     );
   };

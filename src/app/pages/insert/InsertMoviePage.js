@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class InsertMovieComponent extends React.Component {
+class InsertMoviePage extends React.Component {
 
   render() {
     let title;
@@ -16,7 +16,8 @@ export default class InsertMovieComponent extends React.Component {
           e => {
             this.props.onSaveClick(e,
               title.value, year.value,
-              url.value, director.value
+              url.value, director.value,
+              this.props.router
             );
           }}
         >
@@ -47,6 +48,11 @@ export default class InsertMovieComponent extends React.Component {
   }
 }
 
-InsertMovieComponent.propTypes = {
+InsertMoviePage.propTypes = {
   onSaveClick: React.PropTypes.func,
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }),
 };
+
+export default InsertMoviePage;

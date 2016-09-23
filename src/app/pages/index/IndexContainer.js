@@ -12,8 +12,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   loadAllMovies: () => dispatch(fetchMovies()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);
+const page = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(IndexPage);
+
+export default page;
