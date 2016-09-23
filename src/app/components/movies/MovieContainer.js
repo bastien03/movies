@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import MovieComponent from './MovieComponent';
 import { removeCurrentMovie } from './actions';
+import { isAuthenticated } from '../../common/auth/reducer';
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: isAuthenticated(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

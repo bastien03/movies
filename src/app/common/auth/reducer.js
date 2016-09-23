@@ -1,3 +1,5 @@
+import get from 'lodash/get';
+
 const initialState = {};
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -13,3 +15,7 @@ function reducer(state = initialState, action) {
 }
 
 export default reducer;
+
+export function isAuthenticated(state) {
+  return get(state, 'auth.isAuthenticated');
+}

@@ -29,6 +29,7 @@
     "express": "^4.13.3",
     "express-session": "^1.12.1",
     "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.16.1",
     "mongodb": "^2.1.16",
     "npm": "^3.10.6",
     "passport": "^0.3.0",

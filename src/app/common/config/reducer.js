@@ -1,4 +1,9 @@
-const initialState = {};
+import get from 'lodash/get';
+
+const initialState = {
+  context: '',
+  isProd: true,
+};
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -8,3 +13,7 @@ function reducer(state = initialState, action) {
 }
 
 export default reducer;
+
+export function isProd(state) {
+  return get(state, 'config.isProd');
+}

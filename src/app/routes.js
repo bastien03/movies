@@ -7,11 +7,12 @@ import LoginComponent from './pages/login/LoginContainer';
 import InsertMoviePage from './pages/insert/InsertMovieContainer';
 import EditMoviePage from './pages/edit/EditMovieContainer';
 import uris from '../uris';
+import { isAuthenticated } from './common/auth/reducer';
 
 export function routes() {
   return (dispatch, getState) => {
     const requireAuth = (nextState, replace) => {
-      if (!getState().auth.isAuthenticated) {
+      if (!isAuthenticated(getState())) {
         replace({
           pathname: uris.loginPage(),
           state: { nextPathname: nextState.location.pathname },

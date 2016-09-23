@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import HeaderComponent from './HeaderComponent';
 import { logout as logoutAction } from '../../common/auth/actions';
 import withRouter from 'react-router/lib/withRouter';
+import { isAuthenticated } from '../../common/auth/reducer';
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: isAuthenticated(state),
 });
 
 const mapDispatchToProps = dispatch => ({
