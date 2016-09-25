@@ -20,19 +20,20 @@ class Uris {
 
   /* eslint-disable no-multi-spaces, block-spacing*/
   // pages
-  moviesPage()       {return '/movies/:director';                }
-  loginPage()        {return '/login';                           }
-  newMoviePage()     {return '/new-movie';                       }
-  editMoviePage(id)  {return `edit/${id}`;                       }
+  moviesPage()        { return '/movies/:director';                 }
+  loginPage()         { return '/login';                            }
+  newMoviePage()      { return '/new-movie';                        }
+  editMoviePage(id)   { return `edit/${id}`;                        }
+  detailMoviePage(id) { return `detail/${id}`;                      }
 
   // API endpoints
-  getAllMoviesApi()  {return this.linkTo('api/movies/');         }
-  getMovieApi(id)    {return this.linkTo(`api/movies/${id}`);    }
-  addMovieApi()      {return this.linkTo('api/movies');          }
-  deleteMovieApi(id) {return this.linkTo(`api/movies/${id}`);    }
-  editMovieApi(id)   {return this.linkTo(`api/editmovies/${id}`);}
-  loginApi()         {return this.linkTo('api/login');           }
-  logoutApi()        {return this.linkTo('api/logout');          }
+  getAllMoviesApi()   { return this.linkTo('api/movies/');          }
+  getMovieApi(id)     { return this.linkTo(`api/movies/${id}`);     }
+  addMovieApi()       { return this.linkTo('api/movies');           }
+  deleteMovieApi(id)  { return this.linkTo(`api/movies/${id}`);     }
+  editMovieApi(id)    { return this.linkTo(`api/editmovies/${id}`); }
+  loginApi()          { return this.linkTo('api/login');            }
+  logoutApi()         { return this.linkTo('api/logout');           }
   /* eslint-disable */
 }
 
