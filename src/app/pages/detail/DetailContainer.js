@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import DetailPage from './DetailPage';
-import { getAllMovies, getAllDirectors, getDirectorMovies } from '../../reducers/movies';
+import { fetchCurrentMovie } from './actions';
+import { getCurrentMovie } from '../../reducers/movies';
 
-const mapStateToProps = (state, ownProps) => {
-  const director = ownProps.params.director;
-  const movies = director ? getDirectorMovies(state, director) : getAllMovies(state);
-  return {
-    movies,
-    directors: getAllDirectors(state),
-  };
-};
+const mapStateToProps = state => ({
+  movie: getCurrentMovie(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadMovie: (movieId) => {
+    dispatch(fetchCurrentMovie(movieId));
+  },
+});
 
 const page = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DetailPage);
 
 export default page;

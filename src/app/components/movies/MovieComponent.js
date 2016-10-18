@@ -7,7 +7,7 @@ import uris from '../../../uris';
 class MovieComponent extends React.Component {
 
   onClick(e, id) {
-    if (e.target.tagName === 'A') {
+    if (['A', 'SPAN'].includes(e.target.tagName)) {
       return;
     }
     this.props.router.push(`/detail/${id}`);
@@ -32,7 +32,7 @@ class MovieComponent extends React.Component {
             confirmText="Confirm Delete"
             title="Deleting a movie"
           >
-            <button className="movieRemove">remove</button>
+            <button id="removeButton" className="movieRemove">remove</button>
           </Confirm>
 
           <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
