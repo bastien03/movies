@@ -50,7 +50,7 @@ class MovieComponent extends React.Component {
 
 
     return (
-      <div onClick={e => this.onClick(e, id)} className="movieContainer">
+      <div onClick={e => this.onClick(e, id)} className="movieItemContainer">
         {movieHeader}
         <article>
           <h2 className="movieTitle">{title}</h2>

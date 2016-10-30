@@ -3,6 +3,11 @@ import Measure from 'react-measure';
 import YouTubePlayer from './YoutubePlayer';
 import DailymotionPlayer from './DailymotionPlayer';
 
+// Componen which takes one video url as props
+// and checks whether it is a youtube or a dailymotion video.
+// If it is the case, it calls corresponding components to play the videos.
+// VideoPlayer uses react-measure to get the width of the parent component
+// and calculates from it the width and height of the video player.
 class VideoPlayer extends React.Component {
 
   constructor(props) {
