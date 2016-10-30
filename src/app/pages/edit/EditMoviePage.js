@@ -47,7 +47,7 @@ class EditMoviePage extends React.Component {
           </div>
           <div className="formGroup">
             <div className="col-sm-offset-2 col-sm-10">
-              <input type="submit" value="edit" className="btn btn-default" />
+              <input type="submit" value="save" className="btn btn-default" />
             </div>
           </div>
         </form>
