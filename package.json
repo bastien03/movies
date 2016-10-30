@@ -40,6 +40,7 @@
     "react": "0.14.8",
     "react-bootstrap": "^0.30.3",
     "react-confirm-bootstrap": "^3.1.2",
+    "react-dailymotion": "^0.2.1",
     "react-dom": "0.14.8",
     "react-measure": "^1.2.0",
     "react-mousetrap": "^0.1.1",
