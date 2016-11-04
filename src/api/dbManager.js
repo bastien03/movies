@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+// var Db = require('tingodb')().Db;
 import { config } from '../config';
 import co from 'co';
 
@@ -8,3 +9,8 @@ export default () => co(function* gen() {
   const db = yield MongoClient.connect(config.DATABASE_URL);
   return db;
 });
+
+// export default () => co(function* gen() {
+//   const db = new Db('./', {});
+//   return Promise.resolve(db);
+// });

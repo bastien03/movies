@@ -11,6 +11,7 @@ const fromDbMovie = (dbMovie) => {
 };
 
 export const getAllMovies = () => dbInstance().then(db => co(function* gen() {
+  // console.log('getAllMovies', db.collection('movies').find());
   // Retrieve all movies
   const res = yield db.collection('movies').find().toArray();
   const movies = [];

@@ -7,7 +7,7 @@ import uris from '../../../uris';
 class MovieComponent extends React.Component {
 
   onClick(e, id) {
-    if (['A', 'SPAN'].includes(e.target.tagName)) {
+    if (['A', 'SPAN', 'BUTTON'].includes(e.target.tagName)) {
       return;
     }
     this.props.router.push(`/detail/${id}`);
