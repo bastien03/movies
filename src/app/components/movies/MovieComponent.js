@@ -6,6 +6,13 @@ import uris from '../../../uris';
 
 class MovieComponent extends React.Component {
 
+  onClick(e, id) {
+    if (['A', 'SPAN'].includes(e.target.tagName)) {
+      return;
+    }
+    this.props.router.push(`/detail/${id}`);
+  }
+
   handleDeleteClick(e, id) {
     this.props.removeMovie(id);
   }
@@ -25,7 +32,7 @@ class MovieComponent extends React.Component {
             confirmText="Confirm Delete"
             title="Deleting a movie"
           >
-            <button className="movieRemove">remove</button>
+            <button id="removeButton" className="movieRemove">remove</button>
           </Confirm>
 
           <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
@@ -43,7 +50,7 @@ class MovieComponent extends React.Component {
 
 
     return (
-      <div className="movieContainer">
+      <div onClick={e => this.onClick(e, id)} className="movieItemContainer">
         {movieHeader}
         <article>
           <h2 className="movieTitle">{title}</h2>
@@ -64,6 +71,9 @@ MovieComponent.propTypes = {
   id: React.PropTypes.string.isRequired,
   isAuthenticated: React.PropTypes.object,
   removeMovie: React.PropTypes.func.isRequired,
+  router: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+  }),
 };
 
 export default MovieComponent;
