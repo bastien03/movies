@@ -5,6 +5,9 @@ import {
 const notAuthenticated = res => res.status(401).send('You have to be authenticated.');
 const error = (res, err) => {
   console.error(err);
+  if (err === 'DTO_VALIDATION') {
+    return res.status(400).send('Input data not valid.');
+  }
   return res.status(500).send('Something wrong happend. Please try again later.');
 };
 
@@ -43,6 +46,7 @@ export function editMovieRequest(req, res) {
   if (!req.user) {
     return notAuthenticated(res);
   }
+
   return editMovie(req.params.id, req.body)
     .then(movie => res.status(200).send(movie))
     .catch(err => error(res, err));

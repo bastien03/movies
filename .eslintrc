@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "env": {
-    "jasmine": true
+    "jasmine": true,
+    "mocha": true
   }
 }

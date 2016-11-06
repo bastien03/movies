@@ -6,9 +6,11 @@
   "scripts": {
     "test-single": "karma start --single-run",
     "test": "karma start",
+    "api:test": "mocha tests/api --timeout 30000",
     "build:prod": "NODE_ENV='production' webpack",
-    "dev": "DEPLOYMENT_DATE=0 NODE_ENV='dev' APP_PATH='/' node src/index.js",
-    "prod": "NODE_ENV='production' APP_PATH='/' node src/index.js",
+    "local:dev": "DEPLOYMENT_DATE=0 NODE_ENV='dev' APP_PATH='/' node src/index.js",
+    "local:prod": "NODE_ENV='production' APP_PATH='/' node src/index.js",
+    "local:test": "NODE_ENV='test' APP_PATH='/' node src/index.js",
     "deploy": "npm run build:prod && fly -l production",
     "browser:sync": "browser-sync start --port 3000"
   },
@@ -51,8 +53,7 @@
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
     "regenerator-runtime": "0.9.5",
-    "source-map-support": "0.4.0",
-    "tingodb": "0.4.2"
+    "source-map-support": "0.4.0"
   },
   "devDependencies": {
     "babel-cli": "6.7.7",
@@ -63,6 +64,8 @@
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-0": "6.5.0",
     "browser-sync": "2.14.3",
+    "chai": "3.5.0",
+    "chai-http": "3.0.0",
     "copy-webpack-plugin": "2.1.5",
     "enzyme": "2.4.1",
     "eslint": "2.13.1",
@@ -80,6 +83,7 @@
     "karma-jasmine": "1.0.2",
     "karma-mocha-reporter": "2.2.0",
     "karma-webpack": "1.8.0",
+    "mocha": "3.1.2",
     "react-addons-test-utils": "15.3.2",
     "react-dom": "0.14.8",
     "webpack": "1.13.0",

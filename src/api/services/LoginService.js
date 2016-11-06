@@ -6,7 +6,9 @@ const fromDbUser = (dbUser) => {
   const user = Object.assign({}, dbUser, {
     id: dbUser._id.toString(), // eslint-disable-line no-underscore-dangle
   });
+
   delete user._id; // eslint-disable-line no-underscore-dangle
+  delete user.password;
 
   return user;
 };

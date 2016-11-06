@@ -26,7 +26,7 @@ const isProd = env === 'production';
 const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
 
 const app = express();
-const port = 3000;
+const port = env === 'test' ? 3001 : 3000;
 const deploymentDate = isProd ? parseInt(process.env.DEPLOYMENT_DATE, 10) : Date.now();
 
 app.use(bodyParser.json());
@@ -109,3 +109,6 @@ app.listen(port, (error) => {
     console.info(`==> 🌎  Listening on port ${port}. Open up http://localhost:${port}${context} in your browser.`); // eslint-disable-line no-console
   }
 });
+
+
+export default app;

@@ -1,2 +1,4 @@
 require('babel-register');
-require('./server');
+var app = require('./server').default;
+
+module.exports = app; // for testing

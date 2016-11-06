@@ -10,6 +10,11 @@ const fromDbMovie = (dbMovie) => {
   return movie;
 };
 
+const validateMovie = (movie) => {
+  const isValid = movie.title && movie.year && movie.url && movie.director;
+  return isValid;
+};
+
 export const getAllMovies = () => dbInstance().then(db => co(function* gen() {
   // console.log('getAllMovies', db.collection('movies').find());
   // Retrieve all movies
@@ -29,6 +34,10 @@ export const getMovie = (movieId) => dbInstance().then(db => co(function* gen() 
 }));
 
 export const addMovie = (movieDto) => dbInstance().then(db => co(function* gen() {
+  if (!validateMovie(movieDto)) {
+    return Promise.reject('DTO_VALIDATION');
+  }
+
   const movie = Object.assign({}, movieDto);
   // Insert one movie
   const res = yield db.collection('movies').insertOne(movie);
@@ -36,17 +45,21 @@ export const addMovie = (movieDto) => dbInstance().then(db => co(function* gen()
   return fromDbMovie(res.ops[0]);
 }));
 
-export const deleteMovie = (id) => dbInstance().then(db => co(function* gen() {
+export const deleteMovie = (movieId) => dbInstance().then(db => co(function* gen() {
   // Delete one movie
-  yield db.collection('movies').findOneAndDelete({ _id: new ObjectID(id) });
+  yield db.collection('movies').findOneAndDelete({ _id: new ObjectID(movieId) });
   db.close(); // Close connection
 }));
 
-export const editMovie = (id, obj) => dbInstance().then(db => co(function* gen() {
+export const editMovie = (movieId, movieDto) => dbInstance().then(db => co(function* gen() {
+  if (!validateMovie(movieDto)) {
+    return Promise.reject('DTO_VALIDATION');
+  }
+
   // Edit one movie
   const res = yield db.collection('movies').findOneAndUpdate(
-    { _id: new ObjectID(id) },
-    obj,
+    { _id: new ObjectID(movieId) },
+    movieDto,
     {
       returnOriginal: false,
     }

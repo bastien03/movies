@@ -31,7 +31,7 @@ class Uris {
   getMovieApi(id)     { return this.linkTo(`api/movies/${id}`);     }
   addMovieApi()       { return this.linkTo('api/movies');           }
   deleteMovieApi(id)  { return this.linkTo(`api/movies/${id}`);     }
-  editMovieApi(id)    { return this.linkTo(`api/editmovies/${id}`); }
+  editMovieApi(id)    { return this.linkTo(`api/movies/${id}`);     }
   loginApi()          { return this.linkTo('api/login');            }
   logoutApi()         { return this.linkTo('api/logout');           }
   /* eslint-disable */
