@@ -1,10 +1,32 @@
 import { Strategy as LocalStrategy } from 'passport-local';
 import session from 'express-session';
-import { getUserById, login } from './services/LoginService.js';
+import { getUserById, getUserByUserName } from './services/LoginService.js';
 import passport from 'passport';
-import uris from '../uris';
 
-const COOKIE_NAME = 'movies-app';
+export const COOKIE_NAME = 'movies-app';
+
+export function login(req, res, next) {
+  passport.authenticate('local', (err, user) => {
+    if (err) { return next(err); }
+    const { username, password } = req.body;
+    if (!username || !password) {
+      // dto validation fails
+      return res.status(400).send();
+    }
+    if (!user) {
+      // user not found
+      return res.status(400).send();
+    }
+
+    return req.logIn(user, (loginError) => {
+      if (loginError) {
+        return next(err);
+      }
+
+      return res.status(201).send(user);
+    });
+  })(req, res, next);
+}
 
 export function initAuthentication(app) {
   app.use(session({
@@ -16,27 +38,6 @@ export function initAuthentication(app) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.post(uris.loginApi(), (req, res, next) => {
-    passport.authenticate('local', (err, user) => {
-      if (err) { return next(err); }
-      if (!user) { return res.status(400).send(); }
-
-      return req.logIn(user, (loginError) => {
-        if (loginError) {
-          return next(err);
-        }
-
-        return res.status(201).send(user);
-      });
-    })(req, res, next);
-  });
-
-  app.delete(uris.logoutApi(), (req, res) => {
-    req.logout();
-    res.clearCookie(COOKIE_NAME);
-    res.status(204).send();
-  });
-
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
@@ -47,7 +48,7 @@ export function initAuthentication(app) {
 
   passport.use(new LocalStrategy(
     (username, password, done) => {
-      login(username, password).then(user => {
+      getUserByUserName(username, password).then(user => {
         if (user) {
           return done(null, user);
         }
