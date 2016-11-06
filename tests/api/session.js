@@ -46,6 +46,13 @@ describe('Session', () => {
   });
 
   describe('/logout', () => {
-    expect('').to.eql('');
+    it('should logout', done => {
+      chai.request(server)
+        .delete('/api/logout')
+        .end((err, res) => {
+          res.should.have.status(204);
+          done();
+        });
+    });
   });
 });
