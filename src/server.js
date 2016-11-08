@@ -7,8 +7,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import reducer from './app/reducers';
-import { initAuthentication } from './api/authenticationManager';
-import { initRoute } from './api/routes';
+import { initApi } from './api/index';
 import { createStore } from 'redux';
 import uris from './uris';
 
@@ -42,8 +41,7 @@ if (!isProd) {
   app.use(webpackHotMiddleware(compiler));
 }
 
-initAuthentication(app);
-initRoute(app);
+initApi(app);
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);

@@ -35,6 +35,7 @@
     "lodash": "4.16.1",
     "moment": "2.15.1",
     "mongodb": "2.1.16",
+    "mongoose": "4.6.6",
     "npm": "3.10.6",
     "passport": "0.3.0",
     "passport-jwt": "2.1.0",
