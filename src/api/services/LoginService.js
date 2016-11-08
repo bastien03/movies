@@ -1,6 +1,7 @@
 import dbInstance from '../dbManager';
 import { ObjectID } from 'mongodb';
 import co from 'co';
+import { login as authLogin, logout as authLogout } from '../authenticationManager';
 
 const fromDbUser = (dbUser) => {
   const user = Object.assign({}, dbUser, {
@@ -13,7 +14,21 @@ const fromDbUser = (dbUser) => {
   return user;
 };
 
-export const login = (username) => dbInstance().then(db => co(function* gen() {
+export const login = (req, res, next, successCallback, errorCallback) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    errorCallback('DTO_VALIDATION');
+  } else {
+    authLogin(req, res, next, successCallback, errorCallback);
+  }
+};
+
+export const logout = (req, res, successCallback) => {
+  authLogout(req, res, successCallback);
+};
+
+export const getUserByUserName = (username) => dbInstance().then(db => co(function* gen() {
   const user = yield db.collection('users')
     .find({ username })
     .limit(1)

@@ -7,10 +7,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import reducer from './app/reducers';
-import {
-  addMovieRequest, getMovieRequest, getAllMoviesRequest,
-  editMovieRequest, deleteMovieRequest } from './api/http/MoviesController';
 import { initAuthentication } from './api/authenticationManager';
+import { initRoute } from './api/routes';
 import { createStore } from 'redux';
 import uris from './uris';
 
@@ -45,12 +43,7 @@ if (!isProd) {
 }
 
 initAuthentication(app);
-
-app.get(uris.getAllMoviesApi(), getAllMoviesRequest);
-app.post(uris.addMovieApi(), addMovieRequest);
-app.get(uris.getMovieApi(':id'), getMovieRequest);
-app.delete(uris.deleteMovieApi(':id'), deleteMovieRequest);
-app.put(uris.editMovieApi(':id'), editMovieRequest);
+initRoute(app);
 
 function renderHTML(reduxStore) {
   const storeJson = JSON.stringify(reduxStore);

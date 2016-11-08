@@ -1,15 +1,9 @@
 import {
   addMovie, getMovie, getAllMovies, deleteMovie, editMovie,
 } from '../services/MoviesService.js';
+import { error } from './ErrorHandler';
 
 const notAuthenticated = res => res.status(401).send('You have to be authenticated.');
-const error = (res, err) => {
-  console.error(err);
-  if (err === 'DTO_VALIDATION') {
-    return res.status(400).send('Input data not valid.');
-  }
-  return res.status(500).send('Something wrong happend. Please try again later.');
-};
 
 export function addMovieRequest(req, res) {
   if (!req.user) {
