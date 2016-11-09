@@ -9,6 +9,7 @@ function initConfig() {
   } else {
     config = require('../config/development.json');
   }
+  config.isTest = () => envConfig === 'test';
   return config;
 }
 

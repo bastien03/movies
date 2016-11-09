@@ -85,6 +85,7 @@
     "karma-mocha-reporter": "2.2.0",
     "karma-webpack": "1.8.0",
     "mocha": "3.1.2",
+    "mockgoose": "6.0.8",
     "react-addons-test-utils": "15.3.2",
     "react-dom": "0.14.8",
     "webpack": "1.13.0",
