@@ -10,6 +10,9 @@ const createMongooseConnection = () => {
     replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
   };
 
+  // Use native promises
+  mongoose.Promise = global.Promise;
+
   // db connection
   mongoose.connect(config.DATABASE_URL, options);
   const db = mongoose.connection;

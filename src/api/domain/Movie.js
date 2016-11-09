@@ -15,10 +15,10 @@ const MovieSchema = new Schema(
 );
 
 MovieSchema.method('toJSON', function deleteMongoId() {
-  const user = this.toObject();
-  user.id = user._id; // eslint-disable-line no-underscore-dangle
-  delete user._id; // eslint-disable-line no-underscore-dangle
-  return user;
+  const movie = this.toObject();
+  movie.id = movie._id; // eslint-disable-line no-underscore-dangle
+  delete movie._id; // eslint-disable-line no-underscore-dangle
+  return movie;
 });
 
 // Exports the MovieSchema for use elsewhere.
