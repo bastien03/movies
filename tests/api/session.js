@@ -1,3 +1,5 @@
+import User from '../../src/api/domain/User';
+
 process.env.NODE_ENV = 'test';
 
 // Require the dev-dependencies
@@ -8,6 +10,8 @@ const server = require('../../src/index');
 
 chai.should();
 chai.use(chaiHttp);
+
+new User({ username: 'bastien' }).save();
 
 describe('Session', () => {
   describe('/login', () => {
