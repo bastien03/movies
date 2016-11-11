@@ -18,7 +18,7 @@ const createMongooseConnection = () => {
 };
 
 const init = () => {
-  if (config.isTest()) {
+  if (config.isTestEnv) {
     mockgoose(mongoose).then(() => {
       createMongooseConnection();
     });
