@@ -1,7 +1,8 @@
+import passport from 'passport';
+
 import { Strategy as LocalStrategy } from 'passport-local';
 import session from 'express-session';
-import { getUserById, getUserByUserName } from './services/LoginService.js';
-import passport from 'passport';
+import { getUserById, getUserByUserName } from './services/LoginService';
 
 const COOKIE_NAME = 'movies-app';
 
@@ -14,7 +15,7 @@ export function login(req, res, next, successCallback, errorCallback) {
       return null;
     }
 
-    return req.logIn(user, loginError => {
+    return req.logIn(user, (loginError) => {
       if (loginError) {
         return next(err);
       }
@@ -45,18 +46,18 @@ export function initAuthentication(app) {
   });
 
   passport.deserializeUser((id, done) => {
-    getUserById(id).then(user => { done(null, user); });
+    getUserById(id).then((user) => { done(null, user); });
   });
 
   passport.use(new LocalStrategy(
     (username, password, done) => {
-      getUserByUserName(username, password).then(user => {
+      getUserByUserName(username, password).then((user) => {
         if (user) {
           return done(null, user);
         }
 
         return done(null, false, { message: 'Incorrect credentials' });
       });
-    }
+    },
   ));
 }

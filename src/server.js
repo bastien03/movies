@@ -7,7 +7,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import reducer from './app/reducers';
-import { initApi } from './api/index';
+import initApi from './api/index';
 import { createStore } from 'redux';
 import uris from './uris';
 

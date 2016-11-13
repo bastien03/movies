@@ -11,7 +11,7 @@ export const getAllMovies = () =>
 export const getMovie = movieId =>
   MovieRepository.getMovie(movieId).then(movie => JSON.stringify(movie));
 
-export const addMovie = movieDto => {
+export const addMovie = (movieDto) => {
   if (!validateMovie(movieDto)) {
     return Promise.reject('DTO_VALIDATION');
   }

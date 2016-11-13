@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
-import { config } from '../config';
 import mockgoose from 'mockgoose';
+
+import { config } from '../config';
 import User from './domain/User';
 
 const createMongooseConnection = () => {

@@ -1,4 +1,6 @@
-export const asJson = res => {
+const asJson = (res) => {
   res.setHeader('Content-Type', 'application/json');
   return res;
 };
+
+export default asJson;
