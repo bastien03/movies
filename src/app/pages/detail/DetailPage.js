@@ -34,7 +34,7 @@ DetailPage.propTypes = {
   movie: React.PropTypes.shape({
     id: React.PropTypes.string,
     title: React.PropTypes.string,
-    year: React.PropTypes.string,
+    year: React.PropTypes.number,
     url: React.PropTypes.string,
     director: React.PropTypes.string,
   }),

@@ -5,7 +5,7 @@ import 'regenerator-runtime/runtime';
 
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import compression from 'compression';
 import reducer from './app/reducers';
 import { initApi } from './api/index';
 import { createStore } from 'redux';
@@ -29,6 +29,7 @@ const deploymentDate = Date.now();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(`${__dirname}/../public`));
+app.use(compression());
 
 console.log(`==> 🌎  Running app in ${env} mode`); // eslint-disable-line
 if (!isProd) {
