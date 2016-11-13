@@ -1,9 +1,10 @@
 import { login, logout } from '../services/LoginService';
 import { error } from './ErrorHandler';
+import { asJson } from './RequestHeader';
 
 export function loginRequest(req, res, next) {
   login(req, res, next,
-    user => res.status(201).send(user),
+    user => asJson(res).status(201).send(user),
     err => error(res, err)
   );
 }

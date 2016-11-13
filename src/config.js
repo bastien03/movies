@@ -5,10 +5,10 @@ function initConfig() {
     config = require('../config/production.json');
   } else if (envConfig === 'test') {
     config = require('../config/development.json');
-    config.dbManager = require('../tests/testdbManager.js').default;
   } else {
     config = require('../config/development.json');
   }
+  config.isTestEnv = envConfig === 'test';
   return config;
 }
 
