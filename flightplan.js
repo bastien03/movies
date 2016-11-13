@@ -51,7 +51,6 @@ plan.remote(function (remote) {
   remote.exec('ln -snf ~/' + tmpDir + ' ~/' + appName, {user: username});
   remote.exec('cd ~/' + appName + '/');
   remote.exec('forever stop ~/' + appName + '/src/' + startFile, {failsafe: true});
-  const date = Date.now();
-  remote.exec("DEPLOYMENT_DATE=" + date + " NODE_ENV='production' APP_PATH='/movies-app/' forever start ~/" + appName + '/src/' + startFile);
+  remote.exec("NODE_ENV='production' APP_PATH='/movies-app/' forever start ~/" + appName + '/src/' + startFile);
 });
 /* eslint-enable */

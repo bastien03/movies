@@ -24,7 +24,7 @@ const bundle = isProd ? 'prod.bundle.js' : 'bundle.js';
 
 const app = express();
 const port = env === 'test' ? 3001 : 3000;
-const deploymentDate = isProd ? parseInt(process.env.DEPLOYMENT_DATE, 10) : Date.now();
+const deploymentDate = Date.now();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

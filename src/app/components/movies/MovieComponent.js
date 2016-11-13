@@ -66,7 +66,7 @@ class MovieComponent extends React.Component {
 MovieComponent.propTypes = {
   title: React.PropTypes.string.isRequired,
   director: React.PropTypes.string.isRequired,
-  year: React.PropTypes.string.isRequired,
+  year: React.PropTypes.number.isRequired,
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   isAuthenticated: React.PropTypes.object,
