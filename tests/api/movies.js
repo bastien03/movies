@@ -1,28 +1,20 @@
-process.env.NODE_ENV = 'test';
+import { getCookies, getApp } from './root';
 
 // Require the dev-dependencies
 const chai = require('chai');
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
-const server = require('../../src/index');
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('Movies', () => {
   let cookies;
+  let server;
 
-  // create one user session that create a cookie.
-  // this cookie can be used in the tests where a user session is needed.
-  before(done => {
-    chai.request(server)
-      .post('/api/login')
-      .send({ username: 'bastien', password: 'rez=56' })
-      .end((err, res) => {
-        // Save the cookie to use it later to retrieve the session
-        cookies = res.headers['set-cookie'].pop().split(';')[0];
-        done();
-      });
+  before(() => {
+    cookies = getCookies();
+    server = getApp();
   });
 
   // ensure all movies created in the tests are deleted

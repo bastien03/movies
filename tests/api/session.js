@@ -1,24 +1,25 @@
-import User from '../../src/api/domain/User';
-
-process.env.NODE_ENV = 'test';
+import { getApp } from './root';
 
 // Require the dev-dependencies
 const chai = require('chai');
 const expect = chai.expect;
 const chaiHttp = require('chai-http');
-const server = require('../../src/index');
 
 chai.should();
 chai.use(chaiHttp);
 
-new User({ username: 'bastien' }).save();
+let server;
 
 describe('Session', () => {
+  before(() => {
+    server = getApp();
+  });
+
   describe('/login', () => {
     it('should login', done => {
       chai.request(server)
         .post('/api/login')
-        .send({ username: 'bastien', password: 'rez=56' })
+        .send({ username: 'testUser', password: 'rez=56' })
         .end((err, res) => {
           res.should.have.status(201);
           // Save the cookie to use it later to retrieve the session
@@ -41,7 +42,7 @@ describe('Session', () => {
     it('should not login if password is missing', done => {
       chai.request(server)
         .post('/api/login')
-        .send({ username: 'bastien' })
+        .send({ username: 'testUser' })
         .end((err, res) => {
           res.should.have.status(400);
           done();

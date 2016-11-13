@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { config } from '../config';
 import mockgoose from 'mockgoose';
+import User from './domain/User';
 
 const createMongooseConnection = () => {
   const options = {
@@ -21,6 +22,10 @@ const init = () => {
   if (config.isTestEnv) {
     mockgoose(mongoose).then(() => {
       createMongooseConnection();
+
+      // in test env, we use a inmemory version of mongoose
+      // so we need to create one user in order to be able to login
+      new User({ username: 'testUser' }).save();
     });
   } else {
     createMongooseConnection();
