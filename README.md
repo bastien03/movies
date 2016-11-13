@@ -5,9 +5,9 @@
 * npm install -g webpack
 * To start the app, be sure you run `npm install`.
 * The local server can be executed in different environments:
-** prod: `npm run local:prod` (like in production)
-** dev: `npm run local:dev` (uses some dev tools for making production easier)
-** test: `npm run local:test` uses an inmemory mongo instance (use user `testUser`)
+ * prod: `npm run local:prod` (like in production)
+ * dev: `npm run local:dev` (uses some dev tools for making production easier)
+ * test: `npm run local:test` uses an inmemory mongo instance (use user `testUser`)
 
 Configuration is given into `config/{development|production}.json`
 
