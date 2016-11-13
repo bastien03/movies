@@ -3,6 +3,10 @@ import {
 } from '../../api/movies';
 
 const getDirectors = (movies) => {
+  if (!movies || !Array.isArray(movies) || movies.length === 0) {
+    return [];
+  }
+
   const obj = movies.reduce((param1, param2) => {
     let reduced = {};
     if (param1.director) {
@@ -30,7 +34,7 @@ export function fetchMovies() {
   return {
     API: {
       types: ['LOAD_MOVIES_REQUEST', 'LOAD_MOVIES_SUCCESS', 'LOAD_MOVIES_ERROR'],
-      callAPI: () => loadMoviesApi().then(),
+      callAPI: () => loadMoviesApi(),
       responseProcessor: movies => {
         const directors = getDirectors(movies);
         return ({ movies, directors });
