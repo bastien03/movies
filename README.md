@@ -29,4 +29,4 @@ API tests are using the application in test mode (see above).
 All tests can be executed by running `npm run test`.
 
 ## Deployment
-Run `npm run build` and then `fly -l production`.
+Run `npm run deploy`.
