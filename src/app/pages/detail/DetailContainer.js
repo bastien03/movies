@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DetailPage from './DetailPage';
-import { fetchCurrentMovie } from './actions';
+import fetchCurrentMovie from './actions';
 import { getCurrentMovie } from '../../reducers/movies';
 
 const mapStateToProps = state => ({
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
 
 const page = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(DetailPage);
 
 export default page;

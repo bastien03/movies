@@ -10,23 +10,23 @@ class LoginPage extends React.Component {
         <h3>{'Log in into movies-app'}</h3>
         <form
           name="login"
-          onSubmit={e => {
+          onSubmit={(e) => {
             this.props.onLoginClick(e,
               this.props.router,
               this.props.location,
-              username.value, password.value
+              username.value, password.value,
             ); }}
         >
           <div className="formGroup">
             <span> username</span>
-            <input type="text" ref={node => { username = node; }}></input>
+            <input type="text" ref={(node) => { username = node; }} />
           </div>
           <div className="formGroup">
             <span> password</span>
-            <input type="password" ref={node => { password = node; }}></input>
+            <input type="password" ref={(node) => { password = node; }} />
           </div>
           <div className="formGroup">
-            <input type="submit" value="login" className="btn btn-default"></input>
+            <input type="submit" value="login" className="btn btn-default" />
           </div>
         </form>
       </div>

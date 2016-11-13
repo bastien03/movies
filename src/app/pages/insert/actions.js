@@ -11,10 +11,12 @@ function addMovieAction(movie) {
   };
 }
 
-export function addMovie(movie, router) {
-  return dispatch => {
+function addMovie(movie, router) {
+  return (dispatch) => {
     dispatch(addMovieAction(movie)).then(() => {
       router.push('/');
     });
   };
 }
+
+export default addMovie;

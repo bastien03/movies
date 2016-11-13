@@ -22,7 +22,7 @@ function reducer(state = {
     });
   } else if (action.type === 'REMOVE_MOVIE_SUCCESS') {
     return Object.assign({}, state, {
-      all: state.all.filter((movie) => movie.id !== action.movieId),
+      all: state.all.filter(movie => movie.id !== action.movieId),
     });
   }
 
@@ -49,7 +49,7 @@ export function getDirectorMovies(state, director) {
     return [];
   }
   const directorMovies = movies.filter(
-    (movie) => movie.director === director
+    movie => movie.director === director,
   );
   return directorMovies;
 }

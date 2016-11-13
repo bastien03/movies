@@ -24,26 +24,31 @@ class EditMoviePage extends React.Component {
         <form
           name="add-movie"
           onSubmit={
-          e => {
-            this.saveMovie(e, id, { title: title.value, year: year.value,
-              url: url.value, director: director.value });
+          (e) => {
+            this.saveMovie(e, id,
+              {
+                title: title.value,
+                year: year.value,
+                url: url.value,
+                director: director.value,
+              });
           }}
         >
           <div className="formGroup">
             <span className="col-sm-2 control-label">Title</span>
-            <input type="text" ref={node => { title = node; }} defaultValue={title} />
+            <input type="text" ref={(node) => { title = node; }} defaultValue={title} />
           </div>
           <div className="formGroup">
             <span className="col-sm-2 control-label">Year</span>
-            <input type="text" ref={node => { year = node; }} defaultValue={year} />
+            <input type="text" ref={(node) => { year = node; }} defaultValue={year} />
           </div>
           <div className="formGroup">
             <span className="col-sm-2 control-label">Url</span>
-            <input type="text" ref={node => { url = node; }} defaultValue={url} />
+            <input type="text" ref={(node) => { url = node; }} defaultValue={url} />
           </div>
           <div className="formGroup">
             <span className="col-sm-2 control-label">Director</span>
-            <input type="text" ref={node => { director = node; }} defaultValue={director} />
+            <input type="text" ref={(node) => { director = node; }} defaultValue={director} />
           </div>
           <div className="formGroup">
             <div className="col-sm-offset-2 col-sm-10">
@@ -60,11 +65,13 @@ EditMoviePage.propTypes = {
   movie: React.PropTypes.shape({
     id: React.PropTypes.string,
     title: React.PropTypes.string,
-    year: React.PropTypes.string,
+    year: React.PropTypes.number,
     url: React.PropTypes.string,
     director: React.PropTypes.string,
   }),
-  params: React.PropTypes.object,
+  params: React.PropTypes.shape({
+    id: React.PropTypes.string,
+  }),
   loadMovie: React.PropTypes.func.isRequired,
   saveMovie: React.PropTypes.func.isRequired,
   router: React.PropTypes.shape({

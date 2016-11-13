@@ -30,15 +30,17 @@ const getDirectors = (movies) => {
   return directors.sort((a, b) => b.numberMovies - a.numberMovies);
 };
 
-export function fetchMovies() {
+function fetchMovies() {
   return {
     API: {
       types: ['LOAD_MOVIES_REQUEST', 'LOAD_MOVIES_SUCCESS', 'LOAD_MOVIES_ERROR'],
       callAPI: () => loadMoviesApi(),
-      responseProcessor: movies => {
+      responseProcessor: (movies) => {
         const directors = getDirectors(movies);
         return ({ movies, directors });
       },
     },
   };
 }
+
+export default fetchMovies;

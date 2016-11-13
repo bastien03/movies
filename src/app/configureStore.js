@@ -18,8 +18,8 @@ export default function (initialState) {
       initialState,
       compose(
         applyMiddleware(...middlewares),
-        !isProdMode && window.devToolsExtension ? window.devToolsExtension() : f => f
-      )
+        !isProdMode && window.devToolsExtension ? window.devToolsExtension() : f => f,
+      ),
   );
 
   return store;

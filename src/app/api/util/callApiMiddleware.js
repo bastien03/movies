@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 function callAPIMiddleware({ dispatch, getState }) {
-  return next => action => {
+  return next => (action) => {
     if (!action.API) {
       return next(action);
     }
@@ -44,7 +44,7 @@ function callAPIMiddleware({ dispatch, getState }) {
     }));
 
     return callAPI().then(
-      response => {
+      (response) => {
         const processedResponse = responseProcessor(response);
         dispatch(Object.assign({}, payload, {
           response: processedResponse,
@@ -52,13 +52,13 @@ function callAPIMiddleware({ dispatch, getState }) {
         }));
         dispatch(hideLoading());
       },
-      error => {
+      (error) => {
         dispatch(Object.assign({}, payload, {
           error,
           type: failureType,
         }));
         dispatch(hideLoading());
-      }
+      },
     );
   };
 }

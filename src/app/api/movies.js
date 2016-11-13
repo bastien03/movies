@@ -12,7 +12,7 @@ export function loadMovies() {
     {
       method: 'GET',
       headers,
-    }
+    },
   );
 
   return fetch(request)
@@ -26,7 +26,7 @@ export function loadMovie(movieId) {
     {
       method: 'GET',
       headers,
-    }
+    },
   );
 
   return fetch(request)
@@ -42,7 +42,7 @@ export function addMovie(movie) {
       headers,
       body: JSON.stringify(movie),
       credentials: 'same-origin',
-    }
+    },
   );
 
   return fetch(request)
@@ -58,7 +58,7 @@ export function editMovie(id, movie) {
       headers,
       body: JSON.stringify(movie),
       credentials: 'same-origin',
-    }
+    },
   );
 
   return fetch(request)
@@ -73,7 +73,7 @@ export function removeMovie(id) {
       method: 'DELETE',
       headers,
       credentials: 'same-origin',
-    }
+    },
   );
 
   return fetch(request)
