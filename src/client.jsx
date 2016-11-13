@@ -21,5 +21,5 @@ render(
   <Provider store={store}>
     <Router routes={routes} history={history} />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

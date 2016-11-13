@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 function initConfig() {
   let config;
   const envConfig = process.env.NODE_ENV;
@@ -15,3 +16,4 @@ function initConfig() {
 module.exports = {
   config: initConfig(),
 };
+/* eslint-disable */

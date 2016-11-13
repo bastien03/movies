@@ -18,7 +18,7 @@ class Uris {
     this.context = context;
   }
 
-  /* eslint-disable no-multi-spaces, block-spacing*/
+  /* eslint-disable no-multi-spaces, block-spacing, class-methods-use-this*/
   // pages
   moviesPage()        { return '/movies/:director';                 }
   loginPage()         { return '/login';                            }

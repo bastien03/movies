@@ -10,7 +10,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './src/client.js',
+    './src/client.jsx',
   ],
   output: {
     path: path.join(__dirname, 'public'),
