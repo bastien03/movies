@@ -2,7 +2,10 @@
 
 ## Local development
 
-* npm install -g webpack
+* global dependencies
+  * `npm install -g webpack`
+  * `npm install -g npm-check-updates`: run `ncu` to check whether there is some dependencies updates available
+  * `npm install -g depcheck`: run `depcheck` to search for unused or missing dependencies
 * To start the app, be sure you run `npm install`.
 * The local server can be executed in different environments:
  * prod: `npm run local:prod` (like in production)
@@ -27,4 +30,4 @@ API tests are using the application in test mode (see above).
 All tests can be executed by running `npm run test`.
 
 ## Deployment
-Run `npm run build` and then `fly -l production`.
+Run `npm run deploy`.
