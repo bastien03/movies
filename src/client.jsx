@@ -6,7 +6,7 @@ import uris from './uris';
 import configureStore from './app/configureStore';
 import { routes as initRoutes } from './app/routes';
 
-import { initHistory } from './app/configureHistory';
+import initHistory from './app/configureHistory';
 
 // Grab the state from a global injected into server-generated HTML
 const initialState = window.INITIAL_STATE;
@@ -21,5 +21,5 @@ render(
   <Provider store={store}>
     <Router routes={routes} history={history} />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

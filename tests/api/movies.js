@@ -2,8 +2,9 @@ import { getCookies, getApp } from './root';
 
 // Require the dev-dependencies
 const chai = require('chai');
-const expect = chai.expect;
 const chaiHttp = require('chai-http');
+
+const expect = chai.expect;
 
 chai.should();
 chai.use(chaiHttp);
@@ -18,7 +19,7 @@ describe('Movies', () => {
   });
 
   // ensure all movies created in the tests are deleted
-  after(done => {
+  after((done) => {
     chai.request(server)
       .get('/api/movies')
       .end((err, res) => {
@@ -53,7 +54,7 @@ describe('Movies', () => {
   });
 
   describe('/GET movies', () => {
-    it('should GET all the movies', done => {
+    it('should GET all the movies', (done) => {
       chai.request(server)
         .get('/api/movies')
         .end((err, res) => {
@@ -77,7 +78,7 @@ describe('Movies', () => {
       };
     });
 
-    it('should not create a movie if user is not logged in', done => {
+    it('should not create a movie if user is not logged in', (done) => {
       chai.request(server)
         .post('/api/movies')
         .send(movie)
@@ -88,7 +89,7 @@ describe('Movies', () => {
     });
 
     describe('user is logged in', () => {
-      it('should create a movie', done => {
+      it('should create a movie', (done) => {
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
         req.send(movie)
@@ -104,7 +105,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not create a movie without a title', done => {
+      it('should not create a movie without a title', (done) => {
         movie.title = undefined;
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
@@ -115,7 +116,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not create a movie without a year', done => {
+      it('should not create a movie without a year', (done) => {
         movie.year = undefined;
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
@@ -126,7 +127,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not create a movie without a director', done => {
+      it('should not create a movie without a director', (done) => {
         movie.director = undefined;
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
@@ -137,7 +138,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not create a movie without a url', done => {
+      it('should not create a movie without a url', (done) => {
         movie.url = undefined;
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
@@ -154,7 +155,7 @@ describe('Movies', () => {
     let movieId;
 
     // create one movie to be updated in the following tests.
-    beforeEach(done => {
+    beforeEach((done) => {
       const movie = {
         title: 'title',
         year: 1987,
@@ -172,7 +173,7 @@ describe('Movies', () => {
         });
     });
 
-    it('should not update a movie if user is not logged in', done => {
+    it('should not update a movie if user is not logged in', (done) => {
       chai.request(server)
         .put('/api/movies/movie-id')
         .send({})
@@ -190,7 +191,7 @@ describe('Movies', () => {
         url: 'updated-url',
       };
 
-      it('should update a movie', done => {
+      it('should update a movie', (done) => {
         const req = chai.request(server).put(`/api/movies/${movieId}`);
         req.cookies = cookies;
         req.send(updateMovie)
@@ -207,7 +208,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not update a movie without a title', done => {
+      it('should not update a movie without a title', (done) => {
         updateMovie.title = undefined;
         const req = chai.request(server).put(`/api/movies/${movieId}`);
         req.cookies = cookies;
@@ -218,7 +219,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not update a movie without a year', done => {
+      it('should not update a movie without a year', (done) => {
         updateMovie.year = undefined;
         const req = chai.request(server).put(`/api/movies/${movieId}`);
         req.cookies = cookies;
@@ -229,7 +230,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not update a movie without a director', done => {
+      it('should not update a movie without a director', (done) => {
         updateMovie.director = undefined;
         const req = chai.request(server).put(`/api/movies/${movieId}`);
         req.cookies = cookies;
@@ -240,7 +241,7 @@ describe('Movies', () => {
           });
       });
 
-      it('should not update a movie without a url', done => {
+      it('should not update a movie without a url', (done) => {
         updateMovie.url = undefined;
         const req = chai.request(server).put(`/api/movies/${movieId}`);
         req.cookies = cookies;
@@ -254,7 +255,7 @@ describe('Movies', () => {
   });
 
   describe('/DELETE movies', () => {
-    it('should not delete a movie if user is not logged in', done => {
+    it('should not delete a movie if user is not logged in', (done) => {
       chai.request(server)
         .delete('/api/movies/movie-id')
         .end((err, res) => {
@@ -266,7 +267,7 @@ describe('Movies', () => {
     describe('user is logged in', () => {
       let movieId;
 
-      before(done => {
+      before((done) => {
         const movie = {
           title: 'movie-title',
           year: 1999,
@@ -285,7 +286,7 @@ describe('Movies', () => {
             done();
           });
       });
-      it('should delete a movie', done => {
+      it('should delete a movie', (done) => {
         const req = chai.request(server).delete(`/api/movies/${movieId}`);
         req.cookies = cookies;
         req.end((err, res) => {
@@ -294,7 +295,7 @@ describe('Movies', () => {
         });
       });
 
-      it('should not delete a non existing movie', done => {
+      it('should not delete a non existing movie', (done) => {
         const req = chai.request(server).delete('/api/movies/57108bbfa17e3eb0e846e787');
         req.cookies = cookies;
         req.end((err, res) => {

@@ -7,6 +7,10 @@ const getDirectors = (movies) => {
     return [];
   }
 
+  if (movies.length === 1) {
+    return [{ name: movies[0].director, numberMovies: 1 }];
+  }
+
   const obj = movies.reduce((param1, param2) => {
     let reduced = {};
     if (param1.director) {
@@ -30,15 +34,17 @@ const getDirectors = (movies) => {
   return directors.sort((a, b) => b.numberMovies - a.numberMovies);
 };
 
-export function fetchMovies() {
+function fetchMovies() {
   return {
     API: {
       types: ['LOAD_MOVIES_REQUEST', 'LOAD_MOVIES_SUCCESS', 'LOAD_MOVIES_ERROR'],
       callAPI: () => loadMoviesApi(),
-      responseProcessor: movies => {
+      responseProcessor: (movies) => {
         const directors = getDirectors(movies);
         return ({ movies, directors });
       },
     },
   };
 }
+
+export default fetchMovies;

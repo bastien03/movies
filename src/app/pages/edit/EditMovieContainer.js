@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
+import withRouter from 'react-router/lib/withRouter';
 import { fetchCurrentMovie, saveCurrentMovie } from './actions';
 import { getCurrentMovie } from '../../reducers/movies';
 import EditMoviePage from './EditMoviePage';
-import withRouter from 'react-router/lib/withRouter';
 
 const mapStateToProps = state => ({
   movie: getCurrentMovie(state),
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 
 const page = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EditMoviePage);
 
 export default withRouter(page);

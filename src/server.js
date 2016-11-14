@@ -1,21 +1,20 @@
-require('babel-core').transform('code');
-
 import 'source-map-support/register'; // use source maps in node-js
 import 'regenerator-runtime/runtime';
-
-import express from 'express';
-import bodyParser from 'body-parser';
-import compression from 'compression';
-import reducer from './app/reducers';
-import { initApi } from './api/index';
-import { createStore } from 'redux';
-import uris from './uris';
-
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import express from 'express';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+import { createStore } from 'redux';
+import reducer from './app/reducers';
+import initApi from './api/index';
+import uris from './uris';
+
 import webpackConfig from '../webpack.config';
-import { version } from '../package';
+import { version } from '../package.json';
+
+require('babel-core').transform('code');
 
 const env = process.env.NODE_ENV;
 const context = process.env.APP_PATH || '/';
@@ -89,7 +88,7 @@ app.get('*', (req, res) => {
   };
   const store = createStore(
     reducer,
-    initialState
+    initialState,
   );
   res.status(200).send(renderHTML(store.getState()));
 });

@@ -10,7 +10,7 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'webpack-hot-middleware/client',
-    './src/client.js',
+    './src/client.jsx',
   ],
   output: {
     path: path.join(__dirname, 'public'),
@@ -20,10 +20,13 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/,
         include: __dirname,

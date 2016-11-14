@@ -1,7 +1,7 @@
-import { useRouterHistory } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { useRouterHistory } from 'react-router';
 
-export function initHistory(basename) {
+function initHistory(basename) {
   // Run our app under the /base URL.
   const appHistory = useRouterHistory(createBrowserHistory)({
     basename,
@@ -9,3 +9,5 @@ export function initHistory(basename) {
 
   return appHistory;
 }
+
+export default initHistory;

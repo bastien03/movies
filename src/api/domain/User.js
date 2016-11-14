@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 // movie schema definition
@@ -9,7 +10,7 @@ const UserSchema = new Schema(
   },
   {
     versionKey: false,
-  }
+  },
 );
 
 UserSchema.method('toJSON', function deleteMongoId() {

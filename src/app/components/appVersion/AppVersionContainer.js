@@ -1,5 +1,5 @@
-import AppVersion from './AppVersion';
 import { connect } from 'react-redux';
+import AppVersion from './AppVersion';
 import { getVersion, getDeploymentDate, isProd } from '../../common/config/reducer';
 
 const mapStateToProps = (state, ownProps) => ({

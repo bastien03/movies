@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import InsertMovieComponent from './InsertMoviePage';
-import { addMovie } from './actions';
 import withRouter from 'react-router/lib/withRouter';
+import InsertMovieComponent from './InsertMoviePage';
+import addMovie from './actions';
 
 const mapDispatchToProps = dispatch => ({
   onSaveClick: (e, title, year, url, director, router) => {
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 
 const page = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(InsertMovieComponent);
 
 export default withRouter(page);

@@ -31,7 +31,7 @@ class VideoPlayer extends React.Component {
     const { updated } = this.state;
 
     const playerWidth = width * 0.9;
-    const playerHeight = playerWidth * 9 / 16;
+    const playerHeight = playerWidth * (9 / 16);
 
     const opts = {
       width: playerWidth,

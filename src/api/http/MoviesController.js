@@ -1,8 +1,8 @@
 import {
   addMovie, getMovie, getAllMovies, deleteMovie, editMovie,
-} from '../services/MoviesService.js';
-import { error } from './ErrorHandler';
-import { asJson } from './RequestHeader';
+} from '../services/MoviesService';
+import error from './ErrorHandler';
+import asJson from './RequestHeader';
 
 const notAuthenticated = res => res.status(401).send('You have to be authenticated.');
 

@@ -27,7 +27,7 @@ class MovieComponent extends React.Component {
           <div className="movieYear">{year}</div>
 
           <Confirm
-            onConfirm={(e) => this.handleDeleteClick(e, id)}
+            onConfirm={e => this.handleDeleteClick(e, id)}
             body={`Are you sure you want to delete '${title}'?`}
             confirmText="Confirm Delete"
             title="Deleting a movie"
@@ -36,14 +36,20 @@ class MovieComponent extends React.Component {
           </Confirm>
 
           <Link className="movieEdit" to={uris.editMoviePage(id)}>edit</Link>
-          <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
+          <a
+            href={url} target="_blank" rel="noreferrer noopener"
+            className="movieTrailer"
+          >⇝ trailer</a>
         </header>
       );
     } else {
       movieHeader = (
         <header>
           <div className="movieYear">{year}</div>
-          <a href={url} target="_blank" className="movieTrailer">⇝ trailer</a>
+          <a
+            href={url} target="_blank" rel="noreferrer noopener"
+            className="movieTrailer"
+          >⇝ trailer</a>
         </header>
       );
     }
@@ -69,7 +75,9 @@ MovieComponent.propTypes = {
   year: React.PropTypes.number.isRequired,
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
-  isAuthenticated: React.PropTypes.object,
+  isAuthenticated: React.PropTypes.shape({
+    username: React.PropTypes.string,
+  }),
   removeMovie: React.PropTypes.func.isRequired,
   router: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,

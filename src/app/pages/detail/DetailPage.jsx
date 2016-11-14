@@ -38,7 +38,9 @@ DetailPage.propTypes = {
     url: React.PropTypes.string,
     director: React.PropTypes.string,
   }),
-  params: React.PropTypes.object,
+  params: React.PropTypes.shape({
+    id: React.PropTypes.string,
+  }),
   loadMovie: React.PropTypes.func.isRequired,
 };
 

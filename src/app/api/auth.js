@@ -15,7 +15,7 @@ export function login(credentials) {
       headers,
       body,
       credentials: 'same-origin',
-    }
+    },
   );
 
   return fetch(request)
@@ -30,7 +30,7 @@ export function logout() {
       method: 'DELETE',
       headers,
       credentials: 'same-origin',
-    }
+    },
   );
 
   return fetch(request)

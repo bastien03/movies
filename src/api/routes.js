@@ -4,7 +4,7 @@ import {
 import { loginRequest, logoutRequest } from './http/SessionController';
 import uris from '../uris';
 
-export function initRoute(app) {
+function initRoute(app) {
   // movies
   app.get(uris.getAllMoviesApi(), getAllMoviesRequest);
   app.post(uris.addMovieApi(), addMovieRequest);
@@ -16,3 +16,5 @@ export function initRoute(app) {
   app.post(uris.loginApi(), loginRequest);
   app.delete(uris.logoutApi(), logoutRequest);
 }
+
+export default initRoute;

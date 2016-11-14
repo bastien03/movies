@@ -31,7 +31,7 @@ function logoutAction() {
 }
 
 export function logout(router) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(logoutAction()).then(() => {
       router.push('/');
     });

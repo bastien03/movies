@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import IndexPage from './IndexPage';
 import { getAllMovies, getAllDirectors, getDirectorMovies } from '../../reducers/movies';
-import { fetchMovies } from './actions';
+import fetchMovies from './actions';
 
 const mapStateToProps = (state, ownProps) => {
   const director = ownProps.params.director;
@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 
 const page = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(IndexPage);
 
 export default page;

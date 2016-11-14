@@ -22,7 +22,7 @@ function saveCurrentMovieAction(id, movie) {
 }
 
 export function saveCurrentMovie(id, movie, router) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(saveCurrentMovieAction(id, movie)).then(() => {
       router.push('/');
     });

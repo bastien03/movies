@@ -1,8 +1,8 @@
 import React from 'react';
+import { mouseTrap } from 'react-mousetrap';
 import LoadingBar from 'react-redux-loading-bar';
 import Header from './header/HeaderContainer';
 import AppVersion from './appVersion/AppVersionContainer';
-import { mouseTrap } from 'react-mousetrap';
 
 const hotKeys = ['ctrl+o']; // show/hide the AppVersion component
 

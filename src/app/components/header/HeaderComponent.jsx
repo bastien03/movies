@@ -21,7 +21,9 @@ const HeaderComponent = ({ isAuthenticated, logout, router }) => (
 );
 
 HeaderComponent.propTypes = {
-  isAuthenticated: React.PropTypes.object,
+  isAuthenticated: React.PropTypes.shape({
+    username: React.PropTypes.string,
+  }),
   logout: React.PropTypes.func.isRequired,
   router: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,

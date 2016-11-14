@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import LoginComponent from './LoginPage';
 import withRouter from 'react-router/lib/withRouter';
+import LoginComponent from './LoginPage';
 import { login } from '../../common/auth/actions';
 
 const mapDispatchToProps = dispatch => ({
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
 
 const page = connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LoginComponent);
 
 export default withRouter(page);

@@ -6,7 +6,7 @@ describe('<Movie />', () => {
   const props = {
     title: 'movie-title',
     director: 'movie-director',
-    year: 'movie-year',
+    year: 1999,
     url: '',
     id: '',
     isAuthenticated: {},
@@ -25,7 +25,7 @@ describe('<Movie />', () => {
     const wrapper = shallow(<Movie {...props} />);
     expect(wrapper.contains('movie-title')).toBeTruthy();
     expect(wrapper.contains('movie-director')).toBeTruthy();
-    expect(wrapper.contains('movie-year')).toBeTruthy();
+    expect(wrapper.contains(1999)).toBeTruthy();
   });
 
   describe('logged in state', () => {
