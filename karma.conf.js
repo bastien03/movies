@@ -14,7 +14,7 @@ module.exports = function karmaConf(config) {
 
     preprocessors: {
       // add webpack as preprocessor
-      'src/**/*.js': ['webpack'],
+      'src/**/*.js*': ['webpack'],
       'tests/**/*_tests.js': ['webpack'],
     },
 
@@ -23,11 +23,15 @@ module.exports = function karmaConf(config) {
       // (you don't need to specify the entry option)
       // webpack watches dependencies
 
+      resolve: {
+        extensions: ['', '.js', '.jsx'],
+      },
+
       // webpack configuration
       module: {
         loaders: [
           {
-            test: /\.js$/,
+            test: /\.jsx?$/,
             loader: 'babel',
             exclude: /node_modules/,
             include: __dirname,

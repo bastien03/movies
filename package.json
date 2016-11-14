@@ -14,7 +14,7 @@
     "local:test": "NODE_ENV='test' APP_PATH='/' node src/index.js",
     "deploy": "npm run build:prod && fly -l production",
     "browser:sync": "browser-sync start --port 3000",
-    "util:eslint": "eslint src/"
+    "util:eslint": "eslint src"
   },
   "repository": {
     "type": "git",

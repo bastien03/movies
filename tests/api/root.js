@@ -1,6 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
+
 const expect = chai.expect;
 const server = require('../../src/index');
 
@@ -15,7 +16,7 @@ export const getApp = () => server;
 // succeeds.
 // The retrieved cookie is exposed as function so that every test
 // can retrieve it without having to login itself.
-before(done => {
+before((done) => {
   setTimeout(() => {
     chai.request(server)
       .post('/api/login')

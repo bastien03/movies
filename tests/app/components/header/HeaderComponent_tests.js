@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Header from '../../../../src/app/components/header/HeaderComponent';
+import Header from '../../../../src/app/components/header/HeaderComponent.jsx';
 import { ROUTER_MOCK } from '../../../utils';
 
 describe('<Header />', () => {

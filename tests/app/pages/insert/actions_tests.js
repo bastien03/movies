@@ -1,4 +1,4 @@
-import * as actions from '../../../../src/app/pages/insert/actions';
+import addMovie from '../../../../src/app/pages/insert/actions';
 import { ROUTER_MOCK, DISPATCH, spyRouter, cleanRouter } from '../../../utils';
 
 describe('Insert Page actions', () => {
@@ -11,7 +11,7 @@ describe('Insert Page actions', () => {
   });
 
   it('goes to start page after having successfully saved the movie', () => {
-    actions.addMovie('movie', ROUTER_MOCK)(DISPATCH);
+    addMovie('movie', ROUTER_MOCK)(DISPATCH);
 
     expect(ROUTER_MOCK.push).toHaveBeenCalledWith('/');
   });

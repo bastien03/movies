@@ -2,8 +2,9 @@ import { getApp } from './root';
 
 // Require the dev-dependencies
 const chai = require('chai');
-const expect = chai.expect;
 const chaiHttp = require('chai-http');
+
+const expect = chai.expect;
 
 chai.should();
 chai.use(chaiHttp);
@@ -16,7 +17,7 @@ describe('Session', () => {
   });
 
   describe('/login', () => {
-    it('should login', done => {
+    it('should login', (done) => {
       chai.request(server)
         .post('/api/login')
         .send({ username: 'testUser', password: 'rez=56' })
@@ -29,7 +30,7 @@ describe('Session', () => {
         });
     });
 
-    it('should not login if username is missing', done => {
+    it('should not login if username is missing', (done) => {
       chai.request(server)
         .post('/api/login')
         .send({ password: 'rez=56' })
@@ -39,7 +40,7 @@ describe('Session', () => {
         });
     });
 
-    it('should not login if password is missing', done => {
+    it('should not login if password is missing', (done) => {
       chai.request(server)
         .post('/api/login')
         .send({ username: 'testUser' })
@@ -51,7 +52,7 @@ describe('Session', () => {
   });
 
   describe('/logout', () => {
-    it('should logout', done => {
+    it('should logout', (done) => {
       chai.request(server)
         .delete('/api/logout')
         .end((err, res) => {

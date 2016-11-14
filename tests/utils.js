@@ -5,7 +5,7 @@ export const FAKE_PROMISE = {
 export const DISPATCH = jasmine.createSpy('dispatch').and.callFake(() => FAKE_PROMISE);
 
 export const ROUTER_MOCK = {
-  push: (x) => x,
+  push: x => x,
 };
 
 export function spyRouter() {
