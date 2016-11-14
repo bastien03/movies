@@ -1,3 +1,4 @@
+/* eslint-disable*/
 require('babel-register');
 var app = require('./server').default;
 

@@ -13,7 +13,8 @@
     "local:prod": "NODE_ENV='production' APP_PATH='/' node src/index.js",
     "local:test": "NODE_ENV='test' APP_PATH='/' node src/index.js",
     "deploy": "npm run build:prod && fly -l production",
-    "browser:sync": "browser-sync start --port 3000"
+    "browser:sync": "browser-sync start --port 3000",
+    "util:eslint": "eslint src/"
   },
   "repository": {
     "type": "git",
@@ -28,8 +29,10 @@
   "dependencies": {
     "babel-core": "6.18.2",
     "body-parser": "1.15.2",
+    "compression": "1.6.2",
     "express": "4.14.0",
     "express-session": "1.14.2",
+    "history": "3.2.1",
     "isomorphic-fetch": "2.2.1",
     "lodash": "4.16.6",
     "mockgoose": "6.0.8",
@@ -54,6 +57,7 @@
     "regenerator-runtime": "0.9.6",
     "source-map-support": "0.4.6",
     "webpack": "1.13.3",
+    "webpack-dev-middleware": "1.8.4",
     "webpack-dev-server": "1.16.2",
     "webpack-hot-middleware": "2.13.2"
   },
