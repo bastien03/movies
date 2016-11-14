@@ -7,6 +7,10 @@ const getDirectors = (movies) => {
     return [];
   }
 
+  if (movies.length === 1) {
+    return [{ name: movies[0].director, numberMovies: 1 }];
+  }
+
   const obj = movies.reduce((param1, param2) => {
     let reduced = {};
     if (param1.director) {
