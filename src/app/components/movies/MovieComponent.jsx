@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Confirm from 'react-confirm-bootstrap';
+import random from 'lodash/random';
 import uris from '../../../uris';
 
 
@@ -54,9 +55,19 @@ class MovieComponent extends React.Component {
       );
     }
 
+    const colors = ['DarkKhaki', 'Khaki', 'LemonChiffon', 'LightGoldenRodYellow',
+      'LightYellow', 'Moccasin', 'PaleGoldenRod', 'PapayaWhip', 'PeachPuff'];
+    const color = colors[random(0, colors.length - 1)];
+
+    const divStyle = {
+      backgroundColor: color,
+    };
 
     return (
-      <div onClick={e => this.onClick(e, id)} className="movieItemContainer">
+      <div
+        onClick={e => this.onClick(e, id)} className="movieItemContainer"
+        style={divStyle}
+      >
         {movieHeader}
         <article>
           <h2 className="movieTitle">{title}</h2>
