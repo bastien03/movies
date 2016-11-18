@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 import uris from '../../../uris';
+import LanguageSelector from './languageselector/LanguageSelectorContainer';
 
 const HeaderComponent = ({ isAuthenticated, logout, router }) => (
   <div>
-
+    <LanguageSelector />
     <h1><Link to="/">Movies</Link></h1>
 
     {isAuthenticated &&

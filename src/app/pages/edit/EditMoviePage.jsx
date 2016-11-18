@@ -1,4 +1,5 @@
 import React from 'react';
+import { getTitle } from '../../components/movies/MovieTitle';
 
 class EditMoviePage extends React.Component {
 
@@ -12,6 +13,7 @@ class EditMoviePage extends React.Component {
   }
 
   render() {
+    const language = 'fr';
     if (!this.props.movie) {
       return (<div>Loading</div>);
     }
@@ -20,24 +22,40 @@ class EditMoviePage extends React.Component {
 
     return (
       <div className="container page edit">
-        <h3>{`Edit '${title}'`}</h3>
+        <h3>{`Edit '${getTitle(title, language)}'`}</h3>
         <form
           name="add-movie"
           onSubmit={
           (e) => {
             this.saveMovie(e, id,
               {
-                title: title.value,
+                title: {
+                  de: title.de.value,
+                  en: title.en.value,
+                  fr: title.fr.value,
+                  default: title.default.value,
+                },
                 year: year.value,
                 url: url.value,
                 director: director.value,
               });
           }}
         >
-          <div className="formGroup">
-            <span className="col-sm-2 control-label">Title</span>
-            <input type="text" ref={(node) => { title = node; }} defaultValue={title} />
-          </div>
+          <fieldset>
+            <div className="formGroup">
+              <span className="col-sm-2 control-label">Title (de)</span>
+              <input type="text" ref={(node) => { title.de = node; }} defaultValue={title.de} />
+              <span className="col-sm-2 control-label">Title (en)</span>
+              <input type="text" ref={(node) => { title.en = node; }} defaultValue={title.en} />
+              <span className="col-sm-2 control-label">Title (fr)</span>
+              <input type="text" ref={(node) => { title.fr = node; }} defaultValue={title.fr} />
+              <span className="col-sm-2 control-label">Title (default)</span>
+              <input
+                type="text" ref={(node) => { title.default = node; }}
+                defaultValue={title.default}
+              />
+            </div>
+          </fieldset>
           <div className="formGroup">
             <span className="col-sm-2 control-label">Year</span>
             <input type="text" ref={(node) => { year = node; }} defaultValue={year} />
@@ -64,7 +82,12 @@ class EditMoviePage extends React.Component {
 EditMoviePage.propTypes = {
   movie: React.PropTypes.shape({
     id: React.PropTypes.string,
-    title: React.PropTypes.string,
+    title: React.PropTypes.shape({
+      de: React.PropTypes.string,
+      fr: React.PropTypes.string,
+      en: React.PropTypes.string,
+      default: React.PropTypes.string,
+    }),
     year: React.PropTypes.number,
     url: React.PropTypes.string,
     director: React.PropTypes.string,

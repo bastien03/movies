@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import VideoPlayer from './component/VideoPlayer';
+import { getTitle } from '../../components/movies/MovieTitle';
 
 class DetailPage extends React.Component {
 
@@ -9,6 +10,7 @@ class DetailPage extends React.Component {
   }
 
   render() {
+    const language = 'fr';
     if (!this.props.movie) {
       return null;
     }
@@ -17,7 +19,7 @@ class DetailPage extends React.Component {
 
     return (
       <div>
-        <h3>{`${title} (${year})`}</h3>
+        <h3>{`${getTitle(title, language)} (${year})`}</h3>
         <div className="center">
           {' Director: '}
           <Link to={`/movies/${director}`}>{director}</Link>
@@ -33,7 +35,12 @@ class DetailPage extends React.Component {
 DetailPage.propTypes = {
   movie: React.PropTypes.shape({
     id: React.PropTypes.string,
-    title: React.PropTypes.string,
+    title: React.PropTypes.shape({
+      de: React.PropTypes.string,
+      fr: React.PropTypes.string,
+      en: React.PropTypes.string,
+      default: React.PropTypes.string,
+    }),
     year: React.PropTypes.number,
     url: React.PropTypes.string,
     director: React.PropTypes.string,

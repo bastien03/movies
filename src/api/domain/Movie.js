@@ -9,7 +9,7 @@ const MovieSchema = new Schema(
       de: { type: String, required: false },
       en: { type: String, required: false },
       fr: { type: String, required: false },
-      defult: { type: String, required: true },
+      default: { type: String, required: true },
     },
     director: { type: String, required: true },
     year: { type: Number, required: true },

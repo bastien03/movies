@@ -4,7 +4,6 @@ import Confirm from 'react-confirm-bootstrap';
 import random from 'lodash/random';
 import uris from '../../../uris';
 
-
 class MovieComponent extends React.Component {
 
   onClick(e, id) {

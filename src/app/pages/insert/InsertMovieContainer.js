@@ -6,7 +6,10 @@ import addMovie from './actions';
 const mapDispatchToProps = dispatch => ({
   onSaveClick: (e, title, year, url, director, router) => {
     e.preventDefault();
-    if (!title.trim() || !year.trim() ||
+
+    // TODO title validation
+
+    if (!year.trim() ||
         !url.trim() || !director.trim()) {
       return;
     }

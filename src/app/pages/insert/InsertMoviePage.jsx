@@ -3,7 +3,7 @@ import React from 'react';
 class InsertMoviePage extends React.Component {
 
   render() {
-    let title;
+    let title = { de: '', en: '', fr: '', default: '' };
     let year;
     let url;
     let director;
@@ -15,16 +15,33 @@ class InsertMoviePage extends React.Component {
           onSubmit={
           (e) => {
             this.props.onSaveClick(e,
-              title.value, year.value,
-              url.value, director.value,
+              {
+                de: title.de.value,
+                en: title.en.value,
+                fr: title.fr.value,
+                default: title.default.value,
+              },
+              year.value,
+              url.value,
+              director.value,
               this.props.router,
             );
           }}
         >
-          <div className="formGroup">
-            <span className="col-sm-2 control-label">Title</span>
-            <input type="text" ref={(node) => { title = node; }} />
-          </div>
+          <fieldset>
+            <div className="formGroup">
+              <span className="col-sm-2 control-label">Title (de)</span>
+              <input type="text" ref={(node) => { title.de = node; }} />
+              <span className="col-sm-2 control-label">Title (en)</span>
+              <input type="text" ref={(node) => { title.en = node; }} />
+              <span className="col-sm-2 control-label">Title (fr)</span>
+              <input type="text" ref={(node) => { title.fr = node; }} />
+              <span className="col-sm-2 control-label">Title (default)</span>
+              <input
+                type="text" ref={(node) => { title.default = node; }}
+              />
+            </div>
+          </fieldset>
           <div className="formGroup">
             <span className="col-sm-2 control-label">Year</span>
             <input type="text" ref={(node) => { year = node; }} />
