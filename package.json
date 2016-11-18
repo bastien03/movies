@@ -14,6 +14,7 @@
     "local:test": "NODE_ENV='test' APP_PATH='/' node src/index.js",
     "deploy": "npm run build:prod && fly -l production",
     "browser:sync": "browser-sync start --port 3000",
+    "patch:dev": "NODE_ENV='dev' node patches/",
     "util:eslint": "eslint src"
   },
   "repository": {
@@ -71,6 +72,7 @@
     "browser-sync": "2.17.5",
     "chai": "3.5.0",
     "chai-http": "3.0.0",
+    "co": "4.6.0",
     "enzyme": "2.6.0",
     "eslint": "3.9.1",
     "eslint-config-airbnb": "13.0.0",
@@ -87,6 +89,7 @@
     "karma-mocha-reporter": "2.2.0",
     "karma-webpack": "1.8.0",
     "mocha": "3.1.2",
+    "mongodb": "2.2.11",
     "react-addons-test-utils": "15.3.2"
   }
 }
