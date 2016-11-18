@@ -5,7 +5,12 @@ const Schema = mongoose.Schema;
 // movie schema definition
 const MovieSchema = new Schema(
   {
-    title: { type: String, required: true },
+    title: {
+      de: { type: String, required: false },
+      en: { type: String, required: false },
+      fr: { type: String, required: false },
+      defult: { type: String, required: true },
+    },
     director: { type: String, required: true },
     year: { type: Number, required: true },
     url: { type: String, required: true },

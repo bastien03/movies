@@ -30,7 +30,7 @@ class IndexPage extends React.Component {
 
     // filter movies whose title or director contain the search term
     let movies = this.props.movies.filter(oneMovie =>
-      oneMovie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      oneMovie.title.default.toLowerCase().includes(searchTerm.toLowerCase()) ||
       oneMovie.director.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
@@ -39,7 +39,7 @@ class IndexPage extends React.Component {
         case 'date':
           return parseInt(a.year, 10) - parseInt(b.year, 10);
         case 'title':
-          return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
+          return a.title.default.toLowerCase() > b.title.default.toLowerCase() ? 1 : -1;
         case 'director':
           return a.director.toLowerCase() > b.director.toLowerCase() ? 1 : -1;
         case 'entry':
@@ -50,7 +50,7 @@ class IndexPage extends React.Component {
 
     const directors = this.props.directors;
 
-    const moviesComponents = movies.map(movie => <Movie {...movie} key={movie.id} />);
+    const moviesComponents = movies.map(movie => <Movie {...movie} title={movie.title.default} key={movie.id} />);
 
     const directorsComponents = directors.map(director =>
       (director.numberMovies > 1 ?
