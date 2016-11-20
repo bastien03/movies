@@ -12,6 +12,7 @@ const HeaderComponent = ({ isAuthenticated, logout, router }) => (
       <div>
         <div className="pageLink logoutLink" onClick={() => logout(router)}>logout</div>
         <Link to={uris.newMoviePage()} className="pageLink">add a movie</Link>
+        <Link to={uris.adminPage()} className="pageLink">admin</Link>
       </div>
     }
 

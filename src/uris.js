@@ -25,9 +25,10 @@ class Uris {
   newMoviePage()      { return '/new-movie';                        }
   editMoviePage(id)   { return `edit/${id}`;                        }
   detailMoviePage(id) { return `detail/${id}`;                      }
+  adminPage()         { return 'admin';                             }
 
   // API endpoints
-  getAllMoviesApi()   { return this.linkTo('api/movies');          }
+  getAllMoviesApi()   { return this.linkTo('api/movies');           }
   getMovieApi(id)     { return this.linkTo(`api/movies/${id}`);     }
   addMovieApi()       { return this.linkTo('api/movies');           }
   deleteMovieApi(id)  { return this.linkTo(`api/movies/${id}`);     }

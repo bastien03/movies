@@ -5,8 +5,14 @@ const validateMovie = (movie) => {
   return isValid;
 };
 
-export const getAllMovies = () =>
-  MovieRepository.getMovies().then(movies => JSON.stringify(movies));
+export const getMovies = (filter) => {
+  if (filter && filter === 'MISSING_TITLE') {
+    return MovieRepository.getMoviesWithMissingTitle().then(movies => JSON.stringify(movies));
+  } else {
+    return MovieRepository.getMovies().then(movies => JSON.stringify(movies));
+  }
+}
+
 
 export const getMovie = movieId =>
   MovieRepository.getMovie(movieId).then(movie => JSON.stringify(movie));

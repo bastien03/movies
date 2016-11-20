@@ -20,6 +20,20 @@ export function loadMovies() {
     .catch(error => error.json());
 }
 
+export function loadMoviesWithMissingTitles() {
+  const request = new Request(
+    `${uris.getAllMoviesApi()}?filter=MISSING_TITLE`,
+    {
+      method: 'GET',
+      headers,
+    },
+  );
+
+  return fetch(request)
+    .then(response => response.json())
+    .catch(error => error.json());
+}
+
 export function loadMovie(movieId) {
   const request = new Request(
     uris.getMovieApi(movieId),
