@@ -64,6 +64,42 @@ describe('Movies', () => {
           done();
         });
     });
+
+    it('should GET all the movies with missing titles', (done) => {
+      const movie1 = {
+        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1',
+      };
+
+      const movie2 = {
+        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2',
+      };
+
+      const req = chai.request(server).post('/api/movies');
+      req.cookies = cookies;
+      req.send(movie1)
+        .end((err, res) => {
+          res.should.have.status(201);
+
+          const req2 = chai.request(server).post('/api/movies');
+          req2.cookies = cookies;
+          req2.send(movie2)
+            .end((e, r) => {
+              r.should.have.status(201);
+
+              // only movie with uncompleted title translations
+              // should be returned
+              chai.request(server)
+                .get('/api/movies?filter=MISSING_TITLE')
+                .end((error, response) => {
+                  response.should.have.status(200);
+                  response.body.should.be.a('array');
+                  response.body.length.should.be.eql(1);
+                  expect(response.body[0].title.en).to.eql('t1');
+                  done();
+                });
+            });
+        });
+    });
   });
 
   describe('/POST movies', () => {
@@ -232,6 +268,10 @@ describe('Movies', () => {
 
             done();
           });
+      });
+
+      it('should update multiple movies', (done) => {
+
       });
 
       it('should not update a movie without a title', (done) => {

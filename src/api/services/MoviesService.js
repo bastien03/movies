@@ -4,7 +4,7 @@ const isTitleValid = title => title && title.length > 0;
 
 const validateMovie = (movie) => {
   const hasTitle = movie.title && (
-     isTitleValid(movie.title.de) || isTitleValid(movie.title.de) || isTitleValid(movie.title.fr)
+     isTitleValid(movie.title.de) || isTitleValid(movie.title.en) || isTitleValid(movie.title.fr)
   );
   const isValid = hasTitle && movie.year && movie.url && movie.director;
   return isValid;
