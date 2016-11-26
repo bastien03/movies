@@ -5,38 +5,103 @@ class AdminPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
+      movies: {},
     };
   }
 
   componentDidMount() {
-    this.props.loadMoviesWithMissingTitles().then(movies => this.setState({
-      movies,
-    }));
+    this.loadMovies();
   }
 
+  loadMovies() {
+    this.props.loadMoviesWithMissingTitles()
+      .then((movies) => {
+        const moviesHash = {};
+        movies.forEach((m) => { moviesHash[m.id] = m; });
+        this.setState({ movies: moviesHash });
+      });
+  }
+
+  save(id) {
+    const movie = this.state.movies[id];
+    this.props.saveMovie(id, movie).then(() => {
+      this.loadMovies();
+    });
+  }
+
+  handleChange(id, name, value) {
+    const newState = Object.assign({}, this.state.movies, {
+      [id]: Object.assign({}, this.state.movies[id], {
+        title: Object.assign({}, this.state.movies[id].title, {
+          [name]: value,
+        }),
+      }),
+    });
+    this.setState({ movies: newState });
+  }
   render() {
     const movies = this.state.movies;
-    const editMovies = movies.map(m =>
-      <fieldset key={m.id}>
-
-        <input name={`title_de_${m.id}`} value={m.title.de ? m.title.de : 'Titel'} />
-        <input name={`title_en_${m.id}`} value={m.title.en ? m.title.en : 'title'} />
-        <input name={`title_fr_${m.id}`} value={m.title.fr ? m.title.fr : 'titre'} />
-        <span>&nbsp;</span>
-        <input value={m.title.default} disabled />
-      </fieldset>,
-    );
+    const editMovies = Object.keys(movies).map((id, idx) => {
+      const m = movies[id];
+      return (
+        <tr key={m.id}>
+          <td>
+            {idx + 1 }
+          </td>
+          <td>
+            <input
+              type="text" name={`title_de_${m.id}`}
+              value={m.de} onChange={e => this.handleChange(id, 'de', e.target.value)}
+              defaultValue={m.title.de ? m.title.de : 'Titel'}
+            />
+          </td>
+          <td>
+            <input
+              type="text" name={`title_en_${m.id}`}
+              value={m.en} onChange={e => this.handleChange(id, 'en', e.target.value)}
+              defaultValue={m.title.en ? m.title.en : 'title'}
+            />
+          </td>
+          <td>
+            <input
+              type="text" name={`title_fr_${m.id}`}
+              value={m.fr} onChange={e => this.handleChange(id, 'fr', e.target.value)}
+              defaultValue={m.title.fr ? m.title.fr : 'titre'}
+            />
+          </td>
+          <td>
+            <div className="defaultTitle">{m.title.default}</div>
+          </td>
+          <td>
+            <button onClick={() => this.save(m.id)} >{'Save'}</button>
+          </td>
+        </tr>
+      );
+    });
     return (
-      <div>
-        {editMovies}
+      <div className="adminPage">
+        <h3>{'Movies with missing titles'}</h3>
+        <table className="table">
+          <tbody>
+            <tr>
+              <th>{''}</th>
+              <th>{'de'}</th>
+              <th>{'en'}</th>
+              <th>{'fr'}</th>
+              <th>{'default'}</th>
+              <th>{''}</th>
+            </tr>
+            {editMovies}
+          </tbody>
+        </table>
       </div>
     );
   }
 }
 
 AdminPage.propTypes = {
-
+  loadMoviesWithMissingTitles: React.PropTypes.func.isRequired,
+  saveMovie: React.PropTypes.func.isRequired,
 };
 
 export default AdminPage;

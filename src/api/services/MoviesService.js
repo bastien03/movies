@@ -1,12 +1,13 @@
 import MovieRepository from '../repositories/MovieRepository';
 
-const isTitleValid = title => title && title.length > 0;
+const isStringValid = title => title && title.length > 0;
 
 const validateMovie = (movie) => {
   const hasTitle = movie.title && (
-     isTitleValid(movie.title.de) || isTitleValid(movie.title.en) || isTitleValid(movie.title.fr)
+     isStringValid(movie.title.de) || isStringValid(movie.title.en) || isStringValid(movie.title.fr)
   );
-  const isValid = hasTitle && movie.year && movie.url && movie.director;
+  const isValid = hasTitle && movie.year && isStringValid(movie.url)
+    && isStringValid(movie.director);
   return isValid;
 };
 
@@ -17,17 +18,17 @@ const validateMovie = (movie) => {
 //      - french
 //      - german
 const defineDefaultTitle = (title) => {
-  if (isTitleValid(title.de) && !isTitleValid(title.en) && !isTitleValid(title.fr)) {
+  if (isStringValid(title.de) && !isStringValid(title.en) && !isStringValid(title.fr)) {
     return title.de;
   }
-  if (isTitleValid(title.en) && !isTitleValid(title.de) && !isTitleValid(title.fr)) {
+  if (isStringValid(title.en) && !isStringValid(title.de) && !isStringValid(title.fr)) {
     return title.en;
   }
-  if (isTitleValid(title.fr) && !isTitleValid(title.de) && !isTitleValid(title.en)) {
+  if (isStringValid(title.fr) && !isStringValid(title.de) && !isStringValid(title.en)) {
     return title.fr;
   }
-  if (isTitleValid(title.en)) return title.en;
-  if (isTitleValid(title.fr)) return title.fr;
+  if (isStringValid(title.en)) return title.en;
+  if (isStringValid(title.fr)) return title.fr;
 
   return title.de;
 };
@@ -70,4 +71,22 @@ export const editMovie = (movieId, movieDto) => {
   });
 
   return MovieRepository.updateMovie(movieId, witDefaultTitle);
+};
+
+export const editMovies = (moviesDto) => {
+  const moviesWithDefaultTitleDto = [];
+  moviesDto.forEach((dto) => {
+    if (!validateMovie(dto)) {
+      return;
+    }
+
+    const withDefaultTitle = Object.assign({}, dto, {
+      title: Object.assign({}, dto.title, {
+        default: defineDefaultTitle(dto.title),
+      }),
+    });
+    moviesWithDefaultTitleDto.push(withDefaultTitle);
+  });
+
+  return MovieRepository.updateMovies(moviesWithDefaultTitleDto);
 };

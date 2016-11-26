@@ -126,6 +126,16 @@ input,
 .page {
     padding-top: 80px;
 }
+
+.adminPage th,
+.adminPage td {
+  text-align: center;
+}
+
+.adminPage .defaultTitle {
+  font-style: italic;
+}
+
 @media only screen and (min-device-width : 480px) {
   body,
   button,

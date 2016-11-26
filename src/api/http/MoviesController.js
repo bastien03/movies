@@ -1,5 +1,5 @@
 import {
-  addMovie, getMovie, getMovies, deleteMovie, editMovie,
+  addMovie, getMovie, getMovies, deleteMovie, editMovie, editMovies,
 } from '../services/MoviesService';
 import error from './ErrorHandler';
 import asJson from './RequestHeader';
@@ -46,4 +46,13 @@ export function editMovieRequest(req, res) {
   return editMovie(req.params.id, req.body)
     .then(movie => asJson(res).status(200).send(movie))
     .catch(err => error(res, err));
+}
+
+export function editMoviesRequest(req, res) {
+  if (!req.user) {
+    return notAuthenticated(res);
+  }
+  return editMovies(req.body)
+     .then(() => asJson(res).status(200).send())
+     .catch(err => error(res, err));
 }

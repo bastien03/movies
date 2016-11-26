@@ -221,7 +221,6 @@ describe('Movies', () => {
         .end((err, res) => {
           res.should.have.status(201);
           movieId = res.body.id;
-          // expect(createdMovie.id).to.not.be.null;
           done();
         });
     });
@@ -271,7 +270,116 @@ describe('Movies', () => {
       });
 
       it('should update multiple movies', (done) => {
+        let movieId1;
+        let movieId2;
 
+        // create two movies
+        const movie1 = {
+          title: {
+            de: 'Titel-1',
+            en: 'title-1',
+            fr: 'titre-1',
+          },
+          year: 1111,
+          url: 'url-1',
+          director: 'director-1',
+        };
+        const movie2 = {
+          title: {
+            de: 'Titel-2',
+            en: 'title-2',
+            fr: 'titre-2',
+          },
+          year: 2222,
+          url: 'url-2',
+          director: 'director-2',
+        };
+
+        const req1 = chai.request(server).post('/api/movies');
+        req1.cookies = cookies;
+        req1.send(movie1)
+          .end((err1, res1) => {
+            res1.should.have.status(201);
+            movieId1 = res1.body.id;
+
+            const req2 = chai.request(server).post('/api/movies');
+            req2.cookies = cookies;
+            req2.send(movie2)
+              .end((err2, res2) => {
+                res2.should.have.status(201);
+                movieId2 = res2.body.id;
+
+                // update the two movies
+                const updateMovies = [
+                  {
+                    title: {
+                      de: 'Titel-update-1',
+                      en: 'title-update-1',
+                      fr: 'titre-update-1',
+                    },
+                    year: 1100,
+                    url: 'url-update-1',
+                    director: 'director-update-1',
+                    id: movieId1,
+                  },
+                  {
+                    title: {
+                      de: 'Titel-update-2',
+                      en: 'title-update-2',
+                      fr: 'titre-update-2',
+                    },
+                    year: 2200,
+                    url: 'url-update-2',
+                    director: 'director-update-2',
+                    id: movieId2,
+                  },
+                ];
+                const req3 = chai.request(server).put('/api/movies/bulk');
+                req3.cookies = cookies;
+                req3.send(updateMovies)
+                  .end((err3, res3) => {
+                    res3.should.have.status(200);
+
+                    // check the movies have been updated
+                    chai.request(server)
+                      .get(`/api/movies/${movieId1}`)
+                      .end((err4, res4) => {
+                        res4.should.have.status(200);
+                        res4.body.should.eql({
+                          title: {
+                            de: 'Titel-update-1',
+                            en: 'title-update-1',
+                            fr: 'titre-update-1',
+                            default: 'title-update-1',
+                          },
+                          year: 1100,
+                          url: 'url-update-1',
+                          director: 'director-update-1',
+                          id: movieId1,
+                        });
+
+                        chai.request(server)
+                          .get(`/api/movies/${movieId2}`)
+                          .end((err5, res5) => {
+                            res5.should.have.status(200);
+                            res5.body.should.eql({
+                              title: {
+                                de: 'Titel-update-2',
+                                en: 'title-update-2',
+                                fr: 'titre-update-2',
+                                default: 'title-update-2',
+                              },
+                              year: 2200,
+                              url: 'url-update-2',
+                              director: 'director-update-2',
+                              id: movieId2,
+                            });
+                            done();
+                          });
+                      });
+                  });
+              });
+          });
       });
 
       it('should not update a movie without a title', (done) => {
