@@ -1,7 +1,6 @@
 import {
   addMovieRequest, getMovieRequest, getAllMoviesRequest,
-  editMovieRequest, editMoviesRequest,
-  deleteMovieRequest } from './http/MoviesController';
+  editMovieRequest, deleteMovieRequest } from './http/MoviesController';
 import { loginRequest, logoutRequest } from './http/SessionController';
 import uris from '../uris';
 
@@ -11,7 +10,6 @@ function initRoute(app) {
   app.post(uris.addMovieApi(), addMovieRequest);
   app.get(uris.getMovieApi(':id'), getMovieRequest);
   app.delete(uris.deleteMovieApi(':id'), deleteMovieRequest);
-  app.put(uris.editMoviesApi(), editMoviesRequest);
   app.put(uris.editMovieApi(':id'), editMovieRequest);
 
   // session

@@ -47,12 +47,3 @@ export function editMovieRequest(req, res) {
     .then(movie => asJson(res).status(200).send(movie))
     .catch(err => error(res, err));
 }
-
-export function editMoviesRequest(req, res) {
-  if (!req.user) {
-    return notAuthenticated(res);
-  }
-  return editMovies(req.body)
-     .then(() => asJson(res).status(200).send())
-     .catch(err => error(res, err));
-}
