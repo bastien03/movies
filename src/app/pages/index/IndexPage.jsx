@@ -1,6 +1,7 @@
 import React from 'react';
 import Movie from '../../components/movies/MovieContainer';
 import Director from '../../components/directors/DirectorComponent';
+import { getTitle } from '../../components/movies/MovieTitle';
 
 class IndexPage extends React.Component {
 
@@ -25,12 +26,13 @@ class IndexPage extends React.Component {
   }
 
   render() {
+    const language = this.props.lang;
     let searchTerm = this.state.searchTerm;
     let order = this.state.order;
 
     // filter movies whose title or director contain the search term
     let movies = this.props.movies.filter(oneMovie =>
-      oneMovie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      getTitle(oneMovie.title, language).toLowerCase().includes(searchTerm.toLowerCase()) ||
       oneMovie.director.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
@@ -39,7 +41,8 @@ class IndexPage extends React.Component {
         case 'date':
           return parseInt(a.year, 10) - parseInt(b.year, 10);
         case 'title':
-          return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
+          return getTitle(a.title, language).toLowerCase()
+            > getTitle(b.title, language).toLowerCase() ? 1 : -1;
         case 'director':
           return a.director.toLowerCase() > b.director.toLowerCase() ? 1 : -1;
         case 'entry':
@@ -50,7 +53,8 @@ class IndexPage extends React.Component {
 
     const directors = this.props.directors;
 
-    const moviesComponents = movies.map(movie => <Movie {...movie} key={movie.id} />);
+    const moviesComponents = movies.map(movie =>
+      <Movie {...movie} title={getTitle(movie.title, language)} key={movie.id} />);
 
     const directorsComponents = directors.map(director =>
       (director.numberMovies > 1 ?
@@ -83,15 +87,15 @@ class IndexPage extends React.Component {
 
     return (
       <div>
-        <div className="center">
-          {movies.length} movies
-        </div>
         <div className="moviesDirector">
           {directorsComponents}
           <div>{'...'}</div>
         </div>
         {search}
         {sort}
+        <div className="center">
+          {movies.length} movies
+        </div>
         <div className="moviesList">
           {moviesComponents}
         </div>
@@ -104,6 +108,7 @@ IndexPage.propTypes = {
   movies: React.PropTypes.array.isRequired,
   directors: React.PropTypes.array.isRequired,
   loadAllMovies: React.PropTypes.func.isRequired,
+  lang: React.PropTypes.string,
 };
 
 export default IndexPage;

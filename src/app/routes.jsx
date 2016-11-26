@@ -7,6 +7,7 @@ import DetailPage from './pages/detail/DetailContainer';
 import LoginComponent from './pages/login/LoginContainer';
 import InsertMoviePage from './pages/insert/InsertMovieContainer';
 import EditMoviePage from './pages/edit/EditMovieContainer';
+import AdminPage from './pages/admin/AdminContainer';
 import uris from '../uris';
 import { isAuthenticated } from './common/auth/reducer';
 
@@ -30,6 +31,7 @@ export function routes() {
         <Route onEnter={requireAuth}>
           <Route path={uris.newMoviePage()} component={InsertMoviePage} />
           <Route path={uris.editMoviePage(':id')} component={EditMoviePage} />
+          <Route path={uris.adminPage()} component={AdminPage} />
         </Route>
       </Route>
     );

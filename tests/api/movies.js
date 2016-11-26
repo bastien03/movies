@@ -64,6 +64,42 @@ describe('Movies', () => {
           done();
         });
     });
+
+    it('should GET all the movies with missing titles', (done) => {
+      const movie1 = {
+        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1',
+      };
+
+      const movie2 = {
+        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2',
+      };
+
+      const req = chai.request(server).post('/api/movies');
+      req.cookies = cookies;
+      req.send(movie1)
+        .end((err, res) => {
+          res.should.have.status(201);
+
+          const req2 = chai.request(server).post('/api/movies');
+          req2.cookies = cookies;
+          req2.send(movie2)
+            .end((e, r) => {
+              r.should.have.status(201);
+
+              // only movie with uncompleted title translations
+              // should be returned
+              chai.request(server)
+                .get('/api/movies?filter=MISSING_TITLE')
+                .end((error, response) => {
+                  response.should.have.status(200);
+                  response.body.should.be.a('array');
+                  response.body.length.should.be.eql(1);
+                  expect(response.body[0].title.en).to.eql('t1');
+                  done();
+                });
+            });
+        });
+    });
   });
 
   describe('/POST movies', () => {
@@ -71,7 +107,11 @@ describe('Movies', () => {
 
     beforeEach(() => {
       movie = {
-        title: 'title',
+        title: {
+          de: '',
+          en: '',
+          fr: 'titre',
+        },
         year: 2000,
         url: 'trailer-url',
         director: 'dir-ector',
@@ -97,7 +137,12 @@ describe('Movies', () => {
             res.should.have.status(201);
             const createdMovie = res.body;
             expect(createdMovie.id).to.not.be.null;
-            expect(createdMovie.title).to.eql(movie.title);
+            expect(createdMovie.title).to.eql({
+              de: movie.title.de,
+              en: movie.title.en,
+              fr: movie.title.fr,
+              default: movie.title.fr,
+            });
             expect(createdMovie.year).to.eql(movie.year);
             expect(createdMovie.url).to.eql(movie.url);
             expect(createdMovie.director).to.eql(movie.director);
@@ -106,7 +151,11 @@ describe('Movies', () => {
       });
 
       it('should not create a movie without a title', (done) => {
-        movie.title = undefined;
+        movie.title = {
+          de: '',
+          en: '',
+          fr: '',
+        };
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
         req.send(movie)
@@ -157,7 +206,11 @@ describe('Movies', () => {
     // create one movie to be updated in the following tests.
     beforeEach((done) => {
       const movie = {
-        title: 'title',
+        title: {
+          de: 'Titel',
+          en: 'title',
+          fr: 'titre',
+        },
         year: 1987,
         url: 'url',
         director: 'director',
@@ -168,7 +221,6 @@ describe('Movies', () => {
         .end((err, res) => {
           res.should.have.status(201);
           movieId = res.body.id;
-          // expect(createdMovie.id).to.not.be.null;
           done();
         });
     });
@@ -185,7 +237,11 @@ describe('Movies', () => {
 
     describe('user is logged in', () => {
       const updateMovie = {
-        title: 'updated-title',
+        title: {
+          de: 'updated-Titel',
+          en: 'updated-title',
+          fr: 'updated-titre',
+        },
         year: 2222,
         director: 'updated-director',
         url: 'updated-url',
@@ -199,7 +255,12 @@ describe('Movies', () => {
             res.should.have.status(200);
             const createdMovie = res.body;
             expect(createdMovie.id).to.eql(movieId);
-            expect(createdMovie.title).to.eql(updateMovie.title);
+            expect(createdMovie.title).to.eql({
+              de: updateMovie.title.de,
+              en: updateMovie.title.en,
+              fr: updateMovie.title.fr,
+              default: updateMovie.title.en,
+            });
             expect(createdMovie.year).to.eql(updateMovie.year);
             expect(createdMovie.url).to.eql(updateMovie.url);
             expect(createdMovie.director).to.eql(updateMovie.director);
@@ -269,7 +330,11 @@ describe('Movies', () => {
 
       before((done) => {
         const movie = {
-          title: 'movie-title',
+          title: {
+            de: 'Titel',
+            en: 'title',
+            fr: 'titre',
+          },
           year: 1999,
           director: 'movie-director',
           url: 'movie-url',

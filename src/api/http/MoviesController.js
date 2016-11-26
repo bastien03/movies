@@ -1,5 +1,5 @@
 import {
-  addMovie, getMovie, getAllMovies, deleteMovie, editMovie,
+  addMovie, getMovie, getMovies, deleteMovie, editMovie, editMovies,
 } from '../services/MoviesService';
 import error from './ErrorHandler';
 import asJson from './RequestHeader';
@@ -23,7 +23,8 @@ export function getMovieRequest(req, res) {
 }
 
 export function getAllMoviesRequest(req, res) {
-  getAllMovies()
+  const filter = req.query ? req.query.filter : undefined;
+  getMovies(filter)
     .then(movies => asJson(res).status(200).send(movies))
     .catch(err => error(res, err));
 }

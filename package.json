@@ -15,6 +15,7 @@
     "deploy": "npm run build:prod && fly -l production",
     "browser:sync": "browser-sync start --port 3000",
     "patch:dev": "NODE_ENV='dev' node dbpatch/",
+    "patch:prod": "NODE_ENV='prod' node dbpatch/",
     "util:eslint": "eslint src"
   },
   "repository": {

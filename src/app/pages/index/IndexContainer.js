@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import IndexPage from './IndexPage';
 import { getAllMovies, getAllDirectors, getDirectorMovies } from '../../reducers/movies';
+import { getLanguage } from '../../reducers/settings';
 import fetchMovies from './actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     movies,
     directors: getAllDirectors(state),
+    lang: getLanguage(state),
   };
 };
 

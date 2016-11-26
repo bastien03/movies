@@ -126,6 +126,22 @@ input,
 .page {
     padding-top: 80px;
 }
+
+.adminPage th,
+.adminPage td {
+  text-align: center;
+}
+
+.adminPage .defaultTitle {
+  font-style: italic;
+}
+
+.insert fieldset,
+.edit fieldset {
+  border-bottom: 1px solid gainsboro;
+  margin-bottom: 30px;
+}
+
 @media only screen and (min-device-width : 480px) {
   body,
   button,
@@ -182,7 +198,7 @@ input,
       border: 1px solid crimson;
   }
 
-  /*.container {
+  .container {
       width: 100%;
-  }*/
+  }
 }
