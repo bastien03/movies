@@ -3,73 +3,113 @@ import { getTitle } from '../../components/movies/MovieTitle';
 
 class EditMoviePage extends React.Component {
 
-  componentDidMount() {
-    this.props.loadMovie(this.props.params.id);
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: {},
+      initialTitle: {},
+    };
   }
 
-  saveMovie(e, id, movie) {
+  componentDidMount() {
+    this.props.loadMovie(this.props.params.id).then((movie) => {
+      this.setState({
+        movie,
+        initialTitle: movie.title,
+      });
+    });
+  }
+
+  saveMovie(e, id) {
     e.preventDefault();
-    this.props.saveMovie(id, movie, this.props.router);
+    this.props.saveMovie(id, this.state.movie, this.props.router);
+  }
+
+  handleTitleChange(key, value) {
+    const newState = Object.assign({}, this.state.movie, {
+      title: Object.assign({}, this.state.movie.title, {
+        [key]: value,
+      }),
+    });
+    this.setState({ movie: newState });
+  }
+
+  handleChange(key, value) {
+    const newState = Object.assign({}, this.state.movie, {
+      [key]: value,
+    });
+    this.setState({ movie: newState });
   }
 
   render() {
-    const language = 'fr';
-    if (!this.props.movie) {
+    const language = this.props.lang;
+    const movie = this.state.movie;
+    if (!movie || !movie.title) {
       return (<div>Loading</div>);
     }
     const id = this.props.params.id;
-    let { title, year, url, director } = this.props.movie;
+    const { title, year, url, director } = movie;
 
     return (
       <div className="container page edit">
-        <h3>{`Edit '${getTitle(title, language)}'`}</h3>
+        <h3>{`Edit '${getTitle(this.state.initialTitle, language)}'`}</h3>
         <form
           name="add-movie"
-          onSubmit={
-          (e) => {
-            this.saveMovie(e, id,
-              {
-                title: {
-                  de: title.de.value,
-                  en: title.en.value,
-                  fr: title.fr.value,
-                  default: title.default.value,
-                },
-                year: year.value,
-                url: url.value,
-                director: director.value,
-              });
-          }}
+          onSubmit={(e) => { this.saveMovie(e, id); }}
         >
           <fieldset>
+            <legend>{'Title'}</legend>
             <div className="formGroup">
-              <span className="col-sm-2 control-label">Title (de)</span>
-              <input type="text" ref={(node) => { title.de = node; }} defaultValue={title.de} />
-              <span className="col-sm-2 control-label">Title (en)</span>
-              <input type="text" ref={(node) => { title.en = node; }} defaultValue={title.en} />
-              <span className="col-sm-2 control-label">Title (fr)</span>
-              <input type="text" ref={(node) => { title.fr = node; }} defaultValue={title.fr} />
-              <span className="col-sm-2 control-label">Title (default)</span>
+              <span className="col-xs-12 col-sm-12 control-label">Title (de)</span>
               <input
-                type="text" ref={(node) => { title.default = node; }}
-                defaultValue={title.default}
+                type="text"
+                onChange={e => this.handleTitleChange('de', e.target.value)}
+                defaultValue={title.de}
+              />
+            </div>
+            <div className="formGroup">
+              <span className="col-xs-12 col-sm-12 control-label">Title (en)</span>
+              <input
+                type="text"
+                onChange={e => this.handleTitleChange('en', e.target.value)}
+                defaultValue={title.en}
+              />
+            </div>
+            <div className="formGroup">
+              <span className="col-xs-12 col-sm-12 control-label">Title (fr)</span>
+              <input
+                type="text"
+                onChange={e => this.handleTitleChange('fr', e.target.value)}
+                defaultValue={title.fr}
               />
             </div>
           </fieldset>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Year</span>
-            <input type="text" ref={(node) => { year = node; }} defaultValue={year} />
+            <span className="col-xs-12 col-sm-12 control-label">Year</span>
+            <input
+              type="text"
+              onChange={e => this.handleChange('year', e.target.value)}
+              defaultValue={year}
+            />
           </div>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Url</span>
-            <input type="text" ref={(node) => { url = node; }} defaultValue={url} />
+            <span className="col-xs-12 col-sm-12 control-label">Url</span>
+            <input
+              type="text"
+              onChange={e => this.handleChange('url', e.target.value)}
+              defaultValue={url}
+            />
           </div>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Director</span>
-            <input type="text" ref={(node) => { director = node; }} defaultValue={director} />
+            <span className="col-xs-12 col-sm-12 control-label">Director</span>
+            <input
+              type="text"
+              onChange={e => this.handleChange('director', e.target.value)}
+              defaultValue={director}
+            />
           </div>
           <div className="formGroup">
-            <div className="col-sm-offset-2 col-sm-10">
+            <div className="">
               <input type="submit" value="save" className="btn btn-default" />
             </div>
           </div>
@@ -77,21 +117,9 @@ class EditMoviePage extends React.Component {
       </div>
     );
   }
-  }
+}
 
 EditMoviePage.propTypes = {
-  movie: React.PropTypes.shape({
-    id: React.PropTypes.string,
-    title: React.PropTypes.shape({
-      de: React.PropTypes.string,
-      fr: React.PropTypes.string,
-      en: React.PropTypes.string,
-      default: React.PropTypes.string,
-    }),
-    year: React.PropTypes.number,
-    url: React.PropTypes.string,
-    director: React.PropTypes.string,
-  }),
   params: React.PropTypes.shape({
     id: React.PropTypes.string,
   }),
@@ -100,6 +128,7 @@ EditMoviePage.propTypes = {
   router: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
+  lang: React.PropTypes.string,
 };
 
 export default EditMoviePage;

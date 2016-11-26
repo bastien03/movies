@@ -10,7 +10,7 @@ class DetailPage extends React.Component {
   }
 
   render() {
-    const language = 'fr';
+    const language = this.props.lang;
     if (!this.props.movie) {
       return null;
     }
@@ -49,6 +49,7 @@ DetailPage.propTypes = {
     id: React.PropTypes.string,
   }),
   loadMovie: React.PropTypes.func.isRequired,
+  lang: React.PropTypes.string,
 };
 
 export default DetailPage;

@@ -29,33 +29,30 @@ class InsertMoviePage extends React.Component {
           }}
         >
           <fieldset>
+            <legend>{'title'}</legend>
             <div className="formGroup">
-              <span className="col-sm-2 control-label">Title (de)</span>
+              <span className="col-xs-12 col-sm-12 control-label">Title (de)</span>
               <input type="text" ref={(node) => { title.de = node; }} />
-              <span className="col-sm-2 control-label">Title (en)</span>
+              <span className="col-xs-12 col-sm-12 control-label">Title (en)</span>
               <input type="text" ref={(node) => { title.en = node; }} />
-              <span className="col-sm-2 control-label">Title (fr)</span>
+              <span className="col-xs-12 col-sm-12 control-label">Title (fr)</span>
               <input type="text" ref={(node) => { title.fr = node; }} />
-              <span className="col-sm-2 control-label">Title (default)</span>
-              <input
-                type="text" ref={(node) => { title.default = node; }}
-              />
             </div>
           </fieldset>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Year</span>
+            <span className="col-xs-12 col-sm-12 control-label">Year</span>
             <input type="text" ref={(node) => { year = node; }} />
           </div>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Url</span>
+            <span className="col-xs-12 col-sm-12 control-label">Url</span>
             <input type="text" ref={(node) => { url = node; }} />
           </div>
           <div className="formGroup">
-            <span className="col-sm-2 control-label">Director</span>
+            <span className="col-xs-12 col-sm-12 control-label">Director</span>
             <input type="text" ref={(node) => { director = node; }} />
           </div>
           <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-10">
+            <div>
               <input type="submit" value="add" className="btn btn-default" />
             </div>
           </div>
