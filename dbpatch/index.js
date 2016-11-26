@@ -13,7 +13,7 @@ const patchDirectory = 'patches';
 const log = new Log();
 
 // retrieve configuration corresponding to the given environment
-const dbUrl = process.env.dev === 'prod' ?
+const dbUrl = process.env.NODE_ENV === 'prod' ?
   require('../config/production.json').DATABASE_URL :
   require('../config/development.json').DATABASE_URL;
 
