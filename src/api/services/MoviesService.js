@@ -36,6 +36,8 @@ const defineDefaultTitle = (title) => {
 export const getMovies = (filter) => {
   if (filter && filter === 'MISSING_TITLE') {
     return MovieRepository.getMoviesWithMissingTitle().then(movies => JSON.stringify(movies));
+  } else if (filter && filter === 'MISSING_COUNTRY') {
+    return MovieRepository.getMoviesWithMissingCountry().then(movies => JSON.stringify(movies));
   }
   return MovieRepository.getMovies().then(movies => JSON.stringify(movies));
 };
@@ -71,6 +73,13 @@ export const editMovie = (movieId, movieDto) => {
   });
 
   return MovieRepository.updateMovie(movieId, witDefaultTitle);
+};
+
+export const patchMovie = (movieId, movieDto) => {
+  if (movieDto && Object.keys(movieDto) && Object.keys(movieDto).length > 1) {
+    return Promise.reject('DTO_VALIDATION');
+  }
+  return MovieRepository.updateMovie(movieId, movieDto);
 };
 
 export const editMovies = (moviesDto) => {

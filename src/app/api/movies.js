@@ -34,6 +34,20 @@ export function loadMoviesWithMissingTitles() {
     .catch(error => error.json());
 }
 
+export function loadMoviesWithMissingCountry() {
+  const request = new Request(
+    `${uris.getAllMoviesApi()}?filter=MISSING_COUNTRY`,
+    {
+      method: 'GET',
+      headers,
+    },
+  );
+
+  return fetch(request)
+    .then(response => response.json())
+    .catch(error => error.json());
+}
+
 export function loadMovie(movieId) {
   const request = new Request(
     uris.getMovieApi(movieId),
@@ -71,6 +85,22 @@ export function editMovie(id, movie) {
       method: 'PUT',
       headers,
       body: JSON.stringify(movie),
+      credentials: 'same-origin',
+    },
+  );
+
+  return fetch(request)
+    .then(response => response.json())
+    .catch(error => error.json());
+}
+
+export function patchMovie(id, patch) {
+  const request = new Request(
+    uris.editMovieApi(id),
+    {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify(patch),
       credentials: 'same-origin',
     },
   );
