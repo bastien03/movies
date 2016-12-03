@@ -76,9 +76,16 @@ export const editMovie = (movieId, movieDto) => {
 };
 
 export const patchMovie = (movieId, movieDto) => {
+  if (!movieDto) {
+    return Promise.reject('DTO_VALIDATION');
+  }
   if (movieDto && Object.keys(movieDto) && Object.keys(movieDto).length > 1) {
     return Promise.reject('DTO_VALIDATION');
   }
+  if (Object.keys(movieDto)[0] !== 'country') {
+    return Promise.reject('DTO_VALIDATION');
+  }
+
   return MovieRepository.updateMovie(movieId, movieDto);
 };
 
