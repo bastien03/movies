@@ -4,7 +4,7 @@ import InsertMovieComponent from './InsertMoviePage';
 import addMovie from './actions';
 
 const mapDispatchToProps = dispatch => ({
-  onSaveClick: (e, title, year, url, director, router) => {
+  onSaveClick: (e, title, year, url, director, country, router) => {
     e.preventDefault();
 
     // TODO title validation
@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
         !url.trim() || !director.trim()) {
       return;
     }
-    dispatch(addMovie({ title, year, url, director }, router));
+    dispatch(addMovie({ title, year, url, director, country }, router));
   },
 });
 

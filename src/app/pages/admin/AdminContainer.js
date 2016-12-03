@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
 import AdminPage from './AdminPage';
-import { fetchMovies, saveMovie } from './actions';
+import { getLanguage } from '../../reducers/settings';
 
-const mapDispatchToProps = () => ({
-  loadMoviesWithMissingTitles: () => fetchMovies(),
-  saveMovie: (id, movie) => saveMovie(id, movie),
+const mapStateToProps = state => ({
+  lang: getLanguage(state),
 });
 
 const page = connect(
-  null,
-  mapDispatchToProps,
+  mapStateToProps,
 )(AdminPage);
 
 export default page;

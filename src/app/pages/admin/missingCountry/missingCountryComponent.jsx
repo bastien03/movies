@@ -65,7 +65,6 @@ class MissingCountryComponent extends React.Component {
               type="text" name={`country_${m.id}`}
               value={m.country}
               onChange={e => this.handleChange(m.id, e.target.value)}
-              defaultValue={m.country}
             />
           </td>
           <td>
