@@ -41,7 +41,6 @@ class AdminPage extends React.Component {
     this.setState({ movies: newState });
   }
   render() {
-    const language = this.props.lang;
     const movies = this.state.movies;
     const showList = this.state.show;
     const numberMovies = Object.keys(movies) ? Object.keys(movies).length : 0;

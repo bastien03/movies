@@ -6,7 +6,6 @@ class MissingCountryComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [],
       moviesWithoutCountry: {},
       show: false,
     };
@@ -20,16 +19,15 @@ class MissingCountryComponent extends React.Component {
     this.props.loadMoviesWithMissingCountry()
       .then((movies) => {
         const moviesHash = {};
-        movies.forEach((m) => { moviesHash[m.id] = m.country; });
+        movies.forEach((m) => { moviesHash[m.id] = m; });
         this.setState({
-          movies,
           moviesWithoutCountry: moviesHash,
         });
       });
   }
 
   saveCountry(id) {
-    const country = this.state.moviesWithoutCountry[id];
+    const country = this.state.moviesWithoutCountry[id].country;
     this.props.patchMovieCountry(id, country).then(() => {
       this.loadMovies();
     });
@@ -37,7 +35,9 @@ class MissingCountryComponent extends React.Component {
 
   handleChange(id, value) {
     const newState = Object.assign({}, this.state.moviesWithoutCountry, {
-      [id]: value,
+      [id]: Object.assign({}, this.state.moviesWithoutCountry[id], {
+        country: value,
+      }),
     });
     this.setState({ moviesWithoutCountry: newState });
   }
@@ -45,11 +45,11 @@ class MissingCountryComponent extends React.Component {
   render() {
     const language = this.props.lang;
     const showList = this.state.show;
-    const movies = this.state.movies;
     const moviesWithoutCountry = this.state.moviesWithoutCountry;
-    const numberMovies = movies ? movies.length : 0;
-    const editMovies = movies.map((m, idx) => {
-      // const m = movies[id];
+    const numberMovies = Object.keys(moviesWithoutCountry) ?
+      Object.keys(moviesWithoutCountry).length : 0;
+    const editMovies = Object.keys(moviesWithoutCountry).map((id, idx) => {
+      const m = moviesWithoutCountry[id];
       return (
         <tr key={m.id}>
           <td>
@@ -63,7 +63,7 @@ class MissingCountryComponent extends React.Component {
           <td>
             <input
               type="text" name={`country_${m.id}`}
-              value={moviesWithoutCountry.id}
+              value={m.country}
               onChange={e => this.handleChange(m.id, e.target.value)}
               defaultValue={m.country}
             />
@@ -109,6 +109,7 @@ class MissingCountryComponent extends React.Component {
 MissingCountryComponent.propTypes = {
   loadMoviesWithMissingCountry: React.PropTypes.func.isRequired,
   patchMovieCountry: React.PropTypes.func.isRequired,
+  lang: React.PropTypes.string.isRequired,
 };
 
 export default MissingCountryComponent;
