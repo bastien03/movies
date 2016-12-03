@@ -6,11 +6,13 @@ const deleteMovie = movieId => Movie.remove({ _id: movieId });
 const getMovie = movieId => Movie.findById(movieId);
 const getMovies = () => Movie.find({});
 const getMoviesWithMissingTitle = () => Movie.find({ $or: [
-  { "title.de": { $eq: "" } },
-  { "title.en": { $eq: "" } },
-  { "title.fr": { $eq: "" } }
+  { 'title.de': '' },
+  { 'title.en': '' },
+  { 'title.fr': '' },
 ] });
+const getMoviesWithMissingCountry = () => Movie.find({ country: '' });
 const updateMovie = (movieId, movie) => Movie.findByIdAndUpdate(movieId, movie, { new: true });
+
 const updateMovies = (movies) => {
   const bulk = Movie.collection.initializeUnorderedBulkOp();
   movies.forEach((m) => {
@@ -27,6 +29,7 @@ const repo = {
   getMovie,
   getMovies,
   getMoviesWithMissingTitle,
+  getMoviesWithMissingCountry,
   updateMovie,
   updateMovies,
 };

@@ -15,11 +15,12 @@ class DetailPage extends React.Component {
       return null;
     }
 
-    const { title, year, url, director } = this.props.movie;
+    const { title, year, url, director, country } = this.props.movie;
 
     return (
       <div>
         <h3>{`${getTitle(title, language)} (${year})`}</h3>
+        <div className="center">{country}</div>
         <div className="center">
           {' Director: '}
           <Link to={`/movies/${director}`}>{director}</Link>
@@ -44,6 +45,7 @@ DetailPage.propTypes = {
     year: React.PropTypes.number,
     url: React.PropTypes.string,
     director: React.PropTypes.string,
+    country: React.PropTypes.string,
   }),
   params: React.PropTypes.shape({
     id: React.PropTypes.string,

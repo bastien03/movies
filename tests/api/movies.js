@@ -315,6 +315,106 @@ describe('Movies', () => {
     });
   });
 
+  describe('/PATCH movies', () => {
+    let movieId;
+
+    // create one movie to be updated in the following tests.
+    beforeEach((done) => {
+      const movie = {
+        title: {
+          de: 'Titel',
+          en: 'title',
+          fr: 'titre',
+        },
+        year: 1987,
+        url: 'url',
+        director: 'director',
+        country: 'old-country',
+      };
+      const req = chai.request(server).post('/api/movies');
+      req.cookies = cookies;
+      req.send(movie)
+        .end((err, res) => {
+          res.should.have.status(201);
+          movieId = res.body.id;
+          done();
+        });
+    });
+
+    it('should not update a movie if user is not logged in', (done) => {
+      chai.request(server)
+        .patch('/api/movies/movie-id')
+        .send({})
+        .end((err, res) => {
+          res.should.have.status(401);
+          done();
+        });
+    });
+
+    describe('user is logged in', () => {
+      it('should update the movie country', (done) => {
+        const req = chai.request(server).patch(`/api/movies/${movieId}`);
+        req.cookies = cookies;
+        req.send({ country: 'new-country' })
+          .end((err, res) => {
+            res.should.have.status(200);
+            const createdMovie = res.body;
+            expect(createdMovie.id).to.eql(movieId);
+            expect(createdMovie.title).to.eql(createdMovie.title);
+            expect(createdMovie.year).to.eql(createdMovie.year);
+            expect(createdMovie.url).to.eql(createdMovie.url);
+            expect(createdMovie.director).to.eql(createdMovie.director);
+            expect(createdMovie.country).to.eql('new-country');
+
+            done();
+          });
+      });
+
+      it('should not update the movie country if too many fields are given', (done) => {
+        const req = chai.request(server).patch(`/api/movies/${movieId}`);
+        req.cookies = cookies;
+        req.send({ country: 'new-country', year: 2000 })
+          .end((err, res) => {
+            res.should.have.status(400);
+
+            done();
+          });
+      });
+
+      it('should not update anything else than the movie country', (done) => {
+        const req1 = chai.request(server).patch(`/api/movies/${movieId}`);
+        req1.cookies = cookies;
+        req1.send({ year: 2000 })
+          .end((err1, res1) => {
+            res1.should.have.status(400);
+
+            const req2 = chai.request(server).patch(`/api/movies/${movieId}`);
+            req2.cookies = cookies;
+            req2.send({ title: {} })
+              .end((err2, res2) => {
+                res2.should.have.status(400);
+
+                const req3 = chai.request(server).patch(`/api/movies/${movieId}`);
+                req3.cookies = cookies;
+                req3.send({ director: 'dir' })
+                  .end((err3, res3) => {
+                    res3.should.have.status(400);
+
+                    const req4 = chai.request(server).patch(`/api/movies/${movieId}`);
+                    req4.cookies = cookies;
+                    req4.send({ url: 'url' })
+                      .end((err4, res4) => {
+                        res4.should.have.status(400);
+
+                        done();
+                      });
+                  });
+              });
+          });
+      });
+    });
+  });
+
   describe('/DELETE movies', () => {
     it('should not delete a movie if user is not logged in', (done) => {
       chai.request(server)

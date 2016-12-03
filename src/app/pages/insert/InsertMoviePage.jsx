@@ -7,6 +7,7 @@ class InsertMoviePage extends React.Component {
     let year;
     let url;
     let director;
+    let country;
     return (
       <div className="container page insert">
         <h3>{'Add a new movie'}</h3>
@@ -24,6 +25,7 @@ class InsertMoviePage extends React.Component {
               year.value,
               url.value,
               director.value,
+              country.value,
               this.props.router,
             );
           }}
@@ -50,6 +52,10 @@ class InsertMoviePage extends React.Component {
           <div className="formGroup">
             <span className="col-xs-12 col-sm-12 control-label">Director</span>
             <input type="text" ref={(node) => { director = node; }} />
+          </div>
+          <div className="formGroup">
+            <span className="col-xs-12 col-sm-12 control-label">Country</span>
+            <input type="text" ref={(node) => { country = node; }} />
           </div>
           <div className="form-group">
             <div>

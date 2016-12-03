@@ -48,7 +48,7 @@ class EditMoviePage extends React.Component {
       return (<div>Loading</div>);
     }
     const id = this.props.params.id;
-    const { title, year, url, director } = movie;
+    const { title, year, url, director, country } = movie;
 
     return (
       <div className="container page edit">
@@ -106,6 +106,14 @@ class EditMoviePage extends React.Component {
               type="text"
               onChange={e => this.handleChange('director', e.target.value)}
               defaultValue={director}
+            />
+          </div>
+          <div className="formGroup">
+            <span className="col-xs-12 col-sm-12 control-label">Country</span>
+            <input
+              type="text"
+              onChange={e => this.handleChange('country', e.target.value)}
+              defaultValue={country}
             />
           </div>
           <div className="formGroup">

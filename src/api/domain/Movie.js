@@ -14,6 +14,7 @@ const MovieSchema = new Schema(
     director: { type: String, required: true },
     year: { type: Number, required: true },
     url: { type: String, required: true },
+    country: { type: String, required: false },
   },
   {
     versionKey: false,
