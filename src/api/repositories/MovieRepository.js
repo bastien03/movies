@@ -23,6 +23,58 @@ const updateMovies = (movies) => {
   return bulk.execute();
 };
 
+const ranges = [
+  1900, 1910, 1920, 1930, 1940, 1950, 1960,
+  1970, 1980, 1990, 2000, 2010, 2020,
+];
+const rangeProj = {
+  $concat: []
+};
+
+for (let i = 1; i < ranges.length; i++) {
+  rangeProj.$concat.push({
+    $cond: {
+      if: {
+        $and: [{
+          $gte: ['$year', ranges[i - 1]],
+        }, {
+          $lt: ['$year', ranges[i]],
+        }],
+      },
+      then: `${ranges[i - 1]}-${ranges[i]}`,
+      else: '',
+    },
+  });
+}
+
+const getStatistics = () => Promise.all(
+  [
+    Movie.aggregate({
+      $group: {
+        _id: '$country',
+        count: { $sum: 1 },
+      },
+    }),
+    Movie.aggregate({
+      $group: {
+        _id: '$director',
+        count: { $sum: 1 },
+      },
+    }),
+    Movie.aggregate([{
+      $project: { "_id": 0, "range": rangeProj }
+    }, {
+      $group: { _id: "$range", count: { $sum: 1 } }
+    }, {
+      $sort: { "_id": 1 }
+    }]),
+  ],
+).then(data => ({
+  groupByCountry: data[0],
+  groupByDirector: data[1],
+  groupByDecade: data[2],
+}));
+
 const repo = {
   addMovie,
   deleteMovie,
@@ -30,6 +82,7 @@ const repo = {
   getMovies,
   getMoviesWithMissingTitle,
   getMoviesWithMissingCountry,
+  getStatistics,
   updateMovie,
   updateMovies,
 };

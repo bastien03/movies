@@ -10,6 +10,7 @@ const HeaderComponent = ({ isAuthenticated, logout, router }) => (
 
     {isAuthenticated &&
       <div>
+        <Link to={uris.statisticsPage()} className="pageLink">statistics</Link>
         <div className="pageLink logoutLink" onClick={() => logout(router)}>logout</div>
         <Link to={uris.newMoviePage()} className="pageLink">add a movie</Link>
         <Link to={uris.adminPage()} className="pageLink">admin</Link>
@@ -17,7 +18,10 @@ const HeaderComponent = ({ isAuthenticated, logout, router }) => (
     }
 
     {!isAuthenticated &&
-      <Link to={uris.loginPage()} className="pageLink">login</Link>
+      <div>
+        <Link to={uris.statisticsPage()} className="pageLink">statistics</Link>
+        <Link to={uris.loginPage()} className="pageLink">login</Link>
+      </div>
     }
   </div>
 );

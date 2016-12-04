@@ -106,3 +106,5 @@ export const editMovies = (moviesDto) => {
 
   return MovieRepository.updateMovies(moviesWithDefaultTitleDto);
 };
+
+export const statistics = () => MovieRepository.getStatistics();

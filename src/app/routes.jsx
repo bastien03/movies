@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import IndexPage from './pages/index/IndexContainer';
+import StatisticsPage from './pages/statistics/StatisticsContainer';
 import DetailPage from './pages/detail/DetailContainer';
 import LoginComponent from './pages/login/LoginContainer';
 import InsertMoviePage from './pages/insert/InsertMovieContainer';
@@ -26,6 +27,7 @@ export function routes() {
       <Route path={'/'} component={App}>
         <IndexRoute component={IndexPage} />
         <Route path={uris.moviesPage()} component={IndexPage} />
+        <Route path={uris.statisticsPage()} component={StatisticsPage} />
         <Route path={uris.loginPage()} component={LoginComponent} />
         <Route path={uris.detailMoviePage(':id')} component={DetailPage} />
         <Route onEnter={requireAuth}>

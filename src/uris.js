@@ -21,6 +21,7 @@ class Uris {
   /* eslint-disable no-multi-spaces, block-spacing, class-methods-use-this*/
   // pages
   moviesPage()        { return '/movies/:director';                 }
+  statisticsPage()    { return '/statistics';                       }
   loginPage()         { return '/login';                            }
   newMoviePage()      { return '/new-movie';                        }
   editMoviePage(id)   { return `edit/${id}`;                        }
@@ -33,6 +34,7 @@ class Uris {
   addMovieApi()       { return this.linkTo('api/movies');           }
   deleteMovieApi(id)  { return this.linkTo(`api/movies/${id}`);     }
   editMovieApi(id)    { return this.linkTo(`api/movies/${id}`);     }
+  statisticsApi()     { return this.linkTo('api/statistics/');      }
   loginApi()          { return this.linkTo('api/login');            }
   logoutApi()         { return this.linkTo('api/logout');           }
   /* eslint-disable */

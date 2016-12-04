@@ -123,3 +123,17 @@ export function removeMovie(id) {
   return fetch(request)
     .catch(error => error.text());
 }
+
+export function statistics() {
+  const request = new Request(
+    uris.statisticsApi(),
+    {
+      method: 'GET',
+      headers,
+    },
+  );
+
+  return fetch(request)
+    .then(response => response.json())
+    .catch(error => error.json());
+}
