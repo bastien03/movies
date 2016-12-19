@@ -35,11 +35,13 @@ class App extends React.Component {
       display: this.state.showVersion ? 'block' : 'none',
     };
     return (
-      <div className="container-fluid">
+      <div className="container-fluid root">
         <AppVersion style={versionStyle} />
         <LoadingBar />
         <Header />
-        {this.props.children}
+        <div className="container">
+          {this.props.children}
+        </div>
       </div>
     );
   }

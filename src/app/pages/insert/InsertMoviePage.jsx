@@ -9,8 +9,8 @@ class InsertMoviePage extends React.Component {
     let director;
     let country;
     return (
-      <div className="container page insert">
-        <h3>{'Add a new movie'}</h3>
+      <div className="insertPage">
+        <h1>{'Add a new movie'}</h1>
         <form
           name="add-movie"
           onSubmit={

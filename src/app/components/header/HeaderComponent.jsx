@@ -3,27 +3,38 @@ import { Link } from 'react-router';
 import uris from '../../../uris';
 import LanguageSelector from './languageselector/LanguageSelectorContainer';
 
-const HeaderComponent = ({ isAuthenticated, logout, router }) => (
-  <div>
-    <LanguageSelector />
-    <h1><Link to="/">Movies</Link></h1>
-
+const LinksComponent = ({ isAuthenticated }) => (
+  <div className="links">
+    <Link to={uris.statisticsPage()} className="pageLink">Statistics</Link>
     {isAuthenticated &&
-      <div>
-        <Link to={uris.statisticsPage()} className="pageLink">statistics</Link>
-        <div className="pageLink logoutLink" onClick={() => logout(router)}>logout</div>
-        <Link to={uris.newMoviePage()} className="pageLink">add a movie</Link>
-        <Link to={uris.adminPage()} className="pageLink">admin</Link>
-      </div>
+      <Link to={uris.newMoviePage()} className="pageLink">Add a movie</Link>
+    }
+    {isAuthenticated &&
+      <Link to={uris.adminPage()} className="pageLink">Admin</Link>
+    }
+  </div>
+);
+
+const UserComponent = ({ isAuthenticated, logout, router }) => (
+  <div className="right">
+    {isAuthenticated &&
+      <div className="pageLink logoutLink" onClick={() => logout(router)}>logout</div>
     }
 
     {!isAuthenticated &&
-      <div>
-        <Link to={uris.statisticsPage()} className="pageLink">statistics</Link>
-        <Link to={uris.loginPage()} className="pageLink">login</Link>
-      </div>
+      <div><Link to={uris.loginPage()} className="pageLink">login</Link></div>
     }
   </div>
+);
+
+const HeaderComponent = ({ isAuthenticated, logout, router }) => (
+  <nav className="header">
+    <div className="brand">
+      <Link to="/" className="pageLink">M</Link>
+    </div>
+    <LinksComponent isAuthenticated={isAuthenticated} />
+    <UserComponent isAuthenticated={isAuthenticated} logout={logout} router={router} />
+  </nav>
 );
 
 HeaderComponent.propTypes = {
@@ -35,5 +46,7 @@ HeaderComponent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
 };
+UserComponent.propTypes = HeaderComponent.propTypes;
+LinksComponent.propTypes = LinksComponent.propTypes;
 
 export default HeaderComponent;

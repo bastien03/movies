@@ -19,7 +19,7 @@ class DetailPage extends React.Component {
 
     return (
       <div>
-        <h3>{`${getTitle(title, language)} (${year})`}</h3>
+        <h1>{`${getTitle(title, language)} (${year})`}</h1>
         <div className="center">{country}</div>
         <div className="center">
           {' Director: '}

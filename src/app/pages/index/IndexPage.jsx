@@ -87,6 +87,7 @@ class IndexPage extends React.Component {
 
     return (
       <div>
+        <h1>Index</h1>
         <div className="moviesDirector">
           {directorsComponents}
           <div>{'...'}</div>

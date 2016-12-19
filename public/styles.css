@@ -22,24 +22,28 @@ input,
     float: left;
 }
 
-.container-fluid h1 {
-    font-size: 80px;
+.root h1 {
     margin-bottom: 0px;
     margin-top: 0px;
     text-align: center;
 }
 
-.container-fluid h3 {
+.root h2,
+.root h3 {
     text-align: center;
 }
 
-.container-fluid h1 a,
-.container-fluid h1 a:visited,
-.container-fluid h1 a:link,
-.container-fluid h1 a:active,
+.root h1 a,
+.root h1 a:visited,
+.root h1 a:link,
+.root h1 a:active,
 .logoutLink {
   text-decoration: none;
   color: crimson;
+}
+
+.root > .container {
+  margin-top: 50px;
 }
 
 .appVersionContainer {
@@ -53,6 +57,39 @@ input,
   font-size: smaller;
   list-style-type: none;
   text-align: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+  position: fixed;
+  width: 100%;
+  margin-left: -15px;
+  color: white;
+  background-color: darkturquoise;
+  padding: 10px 20px 10px 20px;
+}
+
+.header .brand {
+  padding-right: 15px;
+}
+
+.header .links {
+  display: flex;
+  flex-direction: row;
+}
+
+.header .links a {
+  margin-right: 15px;
+}
+
+.header .right {
+  margin-left: auto;
+}
+
+.header .pageLink {
+  color: white;
 }
 
 .moviesDirector {
@@ -117,14 +154,10 @@ input,
     color: darkturquoise;
 }
 
-.page .formGroup {
+.container .formGroup {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-}
-
-.page {
-    padding-top: 80px;
 }
 
 .adminPage th,
@@ -136,8 +169,8 @@ input,
   font-style: italic;
 }
 
-.insert fieldset,
-.edit fieldset {
+.insertPage fieldset,
+.editPage fieldset {
   border-bottom: 1px solid gainsboro;
   margin-bottom: 30px;
 }
@@ -200,5 +233,9 @@ input,
 
   .container {
       width: 100%;
+  }
+
+  .root > .container {
+    margin-top: 100px;
   }
 }

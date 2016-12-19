@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
     let password;
     return (
       <div className="page login">
-        <h3>{'Log in into movies-app'}</h3>
+        <h1>{'Log in into movies-app'}</h1>
         <form
           name="login"
           onSubmit={(e) => {

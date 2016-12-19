@@ -37,7 +37,7 @@ class StatisticsPage extends React.Component {
     );
     return (
       <div className="adminPage">
-        <h3>Statistics</h3>
+        <h1>Statistics</h1>
         <h4>Country</h4>
         {countryStats}
         <h4>Year</h4>

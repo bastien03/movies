@@ -51,8 +51,8 @@ class EditMoviePage extends React.Component {
     const { title, year, url, director, country } = movie;
 
     return (
-      <div className="container page edit">
-        <h3>{`Edit '${getTitle(this.state.initialTitle, language)}'`}</h3>
+      <div className="editPage">
+        <h1>{`Edit '${getTitle(this.state.initialTitle, language)}'`}</h1>
         <form
           name="add-movie"
           onSubmit={(e) => { this.saveMovie(e, id); }}
