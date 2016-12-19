@@ -59,6 +59,7 @@ input,
   text-align: center;
 }
 
+.footer,
 .header {
   display: flex;
   flex-direction: row;
@@ -86,6 +87,13 @@ input,
 
 .header .right {
   margin-left: auto;
+  display: flex;
+}
+
+.header .right form {
+  margin-bottom: 0px;
+  margin-left: 5px;
+  color: crimson;
 }
 
 .header .pageLink {
@@ -245,6 +253,10 @@ input,
 
   .root > .container {
     margin-top: 100px;
+  }
+
+  .header .right form {
+    font-size: 20px;
   }
 
   .searchContainer {

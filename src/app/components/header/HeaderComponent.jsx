@@ -24,6 +24,7 @@ const UserComponent = ({ isAuthenticated, logout, router }) => (
     {!isAuthenticated &&
       <div><Link to={uris.loginPage()} className="pageLink">login</Link></div>
     }
+    <LanguageSelector />
   </div>
 );
 
@@ -47,6 +48,6 @@ HeaderComponent.propTypes = {
   }).isRequired,
 };
 UserComponent.propTypes = HeaderComponent.propTypes;
-LinksComponent.propTypes = LinksComponent.propTypes;
+LinksComponent.propTypes = HeaderComponent.propTypes;
 
 export default HeaderComponent;
