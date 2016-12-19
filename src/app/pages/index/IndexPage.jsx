@@ -10,6 +10,7 @@ class IndexPage extends React.Component {
     this.state = {
       searchTerm: '',
       order: 'entry',
+      sortBy: 'asc',
     };
   }
 
@@ -25,8 +26,13 @@ class IndexPage extends React.Component {
     this.setState({ order: e.target.value });
   }
 
+  onOrderBy(e) {
+    this.setState({ sortBy: e.target.value });
+  }
+
   render() {
     const language = this.props.lang;
+    const sortBy = this.state.sortBy;
     let searchTerm = this.state.searchTerm;
     let order = this.state.order;
 
@@ -37,66 +43,72 @@ class IndexPage extends React.Component {
     );
 
     movies = movies.sort((a, b) => {
+      let result;
       switch (order) {
         case 'date':
-          return parseInt(a.year, 10) - parseInt(b.year, 10);
+          result = parseInt(a.year, 10) - parseInt(b.year, 10);
+          break;
         case 'title':
-          return getTitle(a.title, language).toLowerCase()
+          result = getTitle(a.title, language).toLowerCase()
             > getTitle(b.title, language).toLowerCase() ? 1 : -1;
+          break;
         case 'director':
-          return a.director.toLowerCase() > b.director.toLowerCase() ? 1 : -1;
+          result = a.director.toLowerCase() > b.director.toLowerCase() ? 1 : -1;
+          break;
         case 'entry':
         default:
-          return a.id > b.id;
+          result = a.id > b.id;
+          break;
       }
-    });
 
-    const directors = this.props.directors;
+      const ascOrDesc = sortBy === 'asc' ? 1 : -1;
+      return ascOrDesc * result;
+    });
 
     const moviesComponents = movies.map(movie =>
       <Movie {...movie} title={getTitle(movie.title, language)} key={movie.id} />);
 
-    const directorsComponents = directors.map(director =>
-      (director.numberMovies > 1 ?
-        <Director {...director} key={director.name} /> :
-        null),
-    );
-
-    const search = (
-      <div className="searchContainer center">
-        <label htmlFor="search">{'Search'}</label>
-        <input
-          name="search"
-          ref={(node) => { searchTerm = node; }}
-          onChange={e => this.onSearch(e)}
-        />
+    const sort = (
+      <div className="orderContainer">
+        <form onChange={e => this.onOrder(e)}>
+          <label htmlFor="order">{'Order by'}</label>
+          <select name="order" ref={(node) => { order = node; }}>
+            <option value="entry">entry</option>
+            <option value="date">date</option>
+            <option value="title">title</option>
+            <option value="director">director</option>
+          </select>
+        </form>
+        <form>
+          <select onChange={e => this.onOrderBy(e)}>
+            <option value="asc">asc</option>
+            <option value="desc">desc</option>
+          </select>
+        </form>
       </div>
     );
 
-    const sort = (
-      <div className="orderContainer center" onChange={e => this.onOrder(e)}>
-        <label htmlFor="order">{'Order by'}</label>
-        <select name="order" ref={(node) => { order = node; }}>
-          <option value="entry">entry</option>
-          <option value="date">date</option>
-          <option value="title">title</option>
-          <option value="director">director</option>
-        </select>
+    const search = (
+      <div className="searchContainer">
+        <div>
+          {movies.length} movies
+        </div>
+        <div>
+          <label htmlFor="search">{'Search'}</label>
+          <input
+            name="search"
+            ref={(node) => { searchTerm = node; }}
+            onChange={e => this.onSearch(e)}
+          />
+        </div>
+        {sort}
       </div>
     );
 
     return (
       <div>
         <h1>Index</h1>
-        <div className="moviesDirector">
-          {directorsComponents}
-          <div>{'...'}</div>
-        </div>
         {search}
-        {sort}
-        <div className="center">
-          {movies.length} movies
-        </div>
         <div className="moviesList">
           {moviesComponents}
         </div>

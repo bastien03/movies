@@ -96,14 +96,22 @@ input,
     display: none;
 }
 
-.searchContainer,
-.orderContainer {
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.orderContainer {
+  display: flex;
 }
 
 .searchContainer label,
 .orderContainer label {
   margin-right: 5px;
+  font-weight: normal;
 }
 
 .moviesList {
@@ -237,5 +245,21 @@ input,
 
   .root > .container {
     margin-top: 100px;
+  }
+
+  .searchContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .searchContainer > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  .orderContainer {
+    flex-direction: column;
   }
 }
