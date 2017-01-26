@@ -1,4 +1,5 @@
 import React from 'react';
+import { Treemap, BarChart } from 'react-d3';
 
 class StatisticsPage extends React.Component {
 
@@ -29,19 +30,45 @@ class StatisticsPage extends React.Component {
     // const language = this.props.lang;
     const stats = this.state.stats;
 
-    const countryStats = stats.groupByCountry.map(country =>
-      (<div key={country._id}>{`${country._id}: ${country.count}`}</div>)
-    );
     const decadeStats = stats.groupByDecade.map(decade =>
       (<div key={decade._id}>{`${decade._id}: ${decade.count}`}</div>)
     );
+    const treemapData = [];
+    stats.groupByCountry.map(country => treemapData.push(
+      { label: country._id, value: country.count }),
+    );
+
+    const barData = [
+      {
+        name: 'Series A',
+        values: [],
+      }
+    ];
+    stats.groupByDecade.map(decade => barData[0].values.push(
+      { x: decade._id, y: decade.count },
+    ));
+
     return (
       <div className="adminPage">
         <h1>Statistics</h1>
         <h4>Country</h4>
-        {countryStats}
+        <Treemap
+          data={treemapData}
+          width={800}
+          height={250}
+          textColor="#484848"
+          fontSize="12px"
+          hoverAnimation={true}
+        />
         <h4>Year</h4>
-        {decadeStats}
+        <BarChart
+          data={barData}
+          width={800}
+          height={200}
+          fill={'#3182bd'}
+          yAxisLabel="Label"
+          xAxisLabel="Value"
+        />
       </div>
     );
   }
