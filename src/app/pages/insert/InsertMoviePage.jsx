@@ -1,13 +1,37 @@
 import React from 'react';
 
+import SelectAwards from '../../components/movies/awards/SelectAwardsComponent';
+
 class InsertMoviePage extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      movie: {},
+    };
+  }
+
+  handleAwardsChange(award, checked) {
+    const awards = new Set(this.state.movie.awards);
+    if (checked) {
+      awards.add(award);
+    } else {
+      awards.delete(award);
+    }
+
+    const newState = Object.assign({}, this.state.movie, {
+      awards: Array.from(awards),
+    });
+    this.setState({ movie: newState });
+  }
+
   render() {
-    let title = { de: '', en: '', fr: '', default: '' };
+    const title = { de: '', en: '', fr: '', default: '' };
     let year;
     let url;
     let director;
     let country;
+    let awards;
     return (
       <div className="insertPage">
         <h1>{'Add a new movie'}</h1>
@@ -26,6 +50,7 @@ class InsertMoviePage extends React.Component {
               url.value,
               director.value,
               country.value,
+              this.state.movie.awards,
               this.props.router,
             );
           }}
@@ -56,6 +81,13 @@ class InsertMoviePage extends React.Component {
           <div className="formGroup">
             <span className="col-xs-12 col-sm-12 control-label">Country</span>
             <input type="text" ref={(node) => { country = node; }} />
+          </div>
+          <div className="formGroup">
+            <span className="col-xs-12 col-sm-12 control-label">Awards</span>
+            <SelectAwards
+              awards={awards}
+              onChange={(...args) => this.handleAwardsChange(...args)}
+            />
           </div>
           <div className="form-group">
             <div>

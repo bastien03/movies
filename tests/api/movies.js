@@ -115,6 +115,8 @@ describe('Movies', () => {
         year: 2000,
         url: 'trailer-url',
         director: 'dir-ector',
+        country: 'france',
+        awards: ['Cannes', 'Berlin'],
       };
     });
 
@@ -146,6 +148,8 @@ describe('Movies', () => {
             expect(createdMovie.year).to.eql(movie.year);
             expect(createdMovie.url).to.eql(movie.url);
             expect(createdMovie.director).to.eql(movie.director);
+            expect(createdMovie.country).to.eql(movie.country);
+            expect(createdMovie.awards).to.eql(movie.awards);
             done();
           });
       });

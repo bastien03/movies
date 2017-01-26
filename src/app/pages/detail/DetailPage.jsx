@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import VideoPlayer from './component/VideoPlayer';
 import { getTitle } from '../../components/movies/MovieTitle';
+import Awards from '../../components/movies/awards/AwardsComponent';
 
 class DetailPage extends React.Component {
 
@@ -15,7 +16,7 @@ class DetailPage extends React.Component {
       return null;
     }
 
-    const { title, year, url, director, country } = this.props.movie;
+    const { title, year, url, director, country, awards } = this.props.movie;
 
     return (
       <div>
@@ -25,6 +26,7 @@ class DetailPage extends React.Component {
           {' Director: '}
           <Link to={`/movies/${director}`}>{director}</Link>
         </div>
+        <div className="center"><Awards awards={awards} /></div>
         <div className="center">
           <VideoPlayer url={url} />
         </div>
@@ -46,6 +48,7 @@ DetailPage.propTypes = {
     url: React.PropTypes.string,
     director: React.PropTypes.string,
     country: React.PropTypes.string,
+    awards: React.PropTypes.array,
   }),
   params: React.PropTypes.shape({
     id: React.PropTypes.string,

@@ -59,7 +59,7 @@ class MovieComponent extends React.Component {
     const color = colors[random(0, colors.length - 1)];
 
     const divStyle = {
-      backgroundColor: color,
+      background: `radial-gradient(white, ${color})`,
     };
 
     return (

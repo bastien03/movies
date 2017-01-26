@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { getTitle } from '../../components/movies/MovieTitle';
+import SelectAwards from '../../components/movies/awards/SelectAwardsComponent';
 
 class EditMoviePage extends React.Component {
 
@@ -41,6 +43,20 @@ class EditMoviePage extends React.Component {
     this.setState({ movie: newState });
   }
 
+  handleAwardsChange(award, checked) {
+    const awards = new Set(this.state.movie.awards);
+    if (checked) {
+      awards.add(award);
+    } else {
+      awards.delete(award);
+    }
+
+    const newState = Object.assign({}, this.state.movie, {
+      awards: Array.from(awards),
+    });
+    this.setState({ movie: newState });
+  }
+
   render() {
     const language = this.props.lang;
     const movie = this.state.movie;
@@ -48,8 +64,7 @@ class EditMoviePage extends React.Component {
       return (<div>Loading</div>);
     }
     const id = this.props.params.id;
-    const { title, year, url, director, country } = movie;
-
+    const { title, year, url, director, country, awards } = movie;
     return (
       <div className="editPage">
         <h1>{`Edit '${getTitle(this.state.initialTitle, language)}'`}</h1>
@@ -114,6 +129,13 @@ class EditMoviePage extends React.Component {
               type="text"
               onChange={e => this.handleChange('country', e.target.value)}
               defaultValue={country}
+            />
+          </div>
+          <div className="formGroup">
+            <span className="col-xs-12 col-sm-12 control-label">Awards</span>
+            <SelectAwards
+              awards={awards}
+              onChange={(...args) => this.handleAwardsChange(...args)}
             />
           </div>
           <div className="formGroup">

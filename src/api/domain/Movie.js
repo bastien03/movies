@@ -15,6 +15,7 @@ const MovieSchema = new Schema(
     year: { type: Number, required: true },
     url: { type: String, required: true },
     country: { type: String, required: false },
+    awards: [String],
   },
   {
     versionKey: false,
