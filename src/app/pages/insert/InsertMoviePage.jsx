@@ -85,7 +85,7 @@ class InsertMoviePage extends React.Component {
           <div className="formGroup">
             <span className="col-xs-12 col-sm-12 control-label">Awards</span>
             <SelectAwards
-              awards={awards}
+              movieAwards={awards}
               onChange={(...args) => this.handleAwardsChange(...args)}
             />
           </div>

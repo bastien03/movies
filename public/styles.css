@@ -200,6 +200,17 @@ input,
   height: 20px;
 }
 
+.awardYear {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.awardYearButton {
+  border: 1px solid black;
+  background-color: white;
+  margin: 2px;
+}
+
 @media only screen and (min-device-width : 480px) {
   body,
   button,

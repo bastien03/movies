@@ -12,36 +12,99 @@ const translate = (award) => {
   return 'Aucune';
 };
 
-const AwardsComponent = ({ awards, onChange }) => {
-  const isChecked = award => !!awards && awards.includes(award);
-  return (
-    <div>
-      {AWARDS.map((award) => {
-        let checked = isChecked(award);
-        const change = () => { checked = !checked; onChange(award, checked); };
-        return (
-          <div key={award}>
-            <label htmlFor={award}>
-              <input
-                type="checkbox"
-                id={award}
-                value={award}
-                defaultChecked={checked}
-                onChange={change}
-              />
-              {translate(award)}
-            </label>
-          </div>
-        );
-      })}
-    </div>
-  );
+// Search for an award with the given award name in the given award list
+const searchAward = (awardList, awardName) => {
+  if (!awardList) {
+    return undefined;
+  }
+  const searchedAwards = awardList.filter(award => awardName === award.name);
+  return searchedAwards[0];
 };
 
+class AwardsComponent extends React.Component {
+
+  constructor(props) {
+    super(props);
+    const initialState = {};
+
+    AWARDS.forEach((award) => {
+      // check whether the movie has recieved this award
+      const movieAward = searchAward(this.props.movieAwards, award);
+      initialState[award] = {
+        checked: !!movieAward,
+        year: movieAward ? movieAward.year : props.movieYear,
+      };
+    });
+
+    this.state = Object.assign({}, initialState);
+  }
+
+  onSelectionChange(awardName) {
+    const year = this.state[awardName].year;
+    const checked = !this.state[awardName].checked;
+    this.setAwardInState(awardName, year, checked);
+    this.props.onChange({ name: awardName, year }, checked);
+  }
+
+  onYearChange(e, awardName, offset) {
+    e.preventDefault();
+    const year = this.state[awardName].year + offset;
+    const checked = this.state[awardName].checked;
+    this.setAwardInState(awardName, year, checked);
+    this.props.onChange({ name: awardName, year }, checked);
+  }
+
+  setAwardInState(awardName, year, checked) {
+    const newState = Object.assign({}, this.state, {
+      [awardName]: {
+        checked,
+        year,
+      },
+    });
+    this.setState(newState);
+  }
+
+  render() {
+    return (
+      <div>
+        {AWARDS.map(awardName =>
+          <div key={awardName}>
+            <label htmlFor={awardName}>
+              <input
+                type="checkbox"
+                id={awardName}
+                value={awardName}
+                defaultChecked={this.state[awardName].checked}
+                onChange={() => this.onSelectionChange(awardName)}
+              />
+              {translate(awardName)}
+            </label>
+            <span className="awardYear">
+              {'year: '}{this.state[awardName].year}
+            </span>
+            <button
+              className="btn btn-xs awardYearButton"
+              onClick={e => this.onYearChange(e, awardName, 1)}
+            >{'+'}</button>
+            <button
+              className="btn btn-xs awardYearButton"
+              onClick={e => this.onYearChange(e, awardName, -1)}
+            >{'-'}</button>
+          </div>,
+        )}
+      </div>
+    );
+  }
+}
+
 AwardsComponent.propTypes = {
-  awards: React.PropTypes.arrayOf(
-    React.PropTypes.string,
+  movieAwards: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      name: React.PropTypes.string,
+      year: React.PropTypes.number,
+    }),
   ),
+  movieYear: React.PropTypes.number,
   onChange: React.PropTypes.func,
 };
 

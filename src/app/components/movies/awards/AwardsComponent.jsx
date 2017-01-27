@@ -16,8 +16,13 @@ const translate = (award) => {
 const AwardsComponent = ({ awards }) =>
   <ul className="awards">
     {awards.map(award =>
-      <li key={award}>
-        <span>{translate(award)}</span>
+      <li key={award.name}>
+        <span>
+          <AwardLogo award={award} />
+        </span>
+        <span>
+          {`${translate(award.name)} (${award.year})`}
+        </span>
         <span>
           <AwardLogo award={award} />
         </span>
@@ -28,7 +33,10 @@ const AwardsComponent = ({ awards }) =>
 
 AwardsComponent.propTypes = {
   awards: React.PropTypes.arrayOf(
-    React.PropTypes.string,
+    React.PropTypes.shape({
+      name: React.PropTypes.string,
+      year: React.PropTypes.number,
+    }),
   ),
 };
 

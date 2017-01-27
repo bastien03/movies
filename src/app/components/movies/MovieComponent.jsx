@@ -75,7 +75,7 @@ class MovieComponent extends React.Component {
         <footer>
           <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>
           <span className="awards">
-            {awards.map(award => <AwardLogo award={award} key={award} />)}
+            {awards.map(award => <AwardLogo award={award} key={award.name} />)}
           </span>
         </footer>
       </div>
@@ -90,7 +90,10 @@ MovieComponent.propTypes = {
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
   awards: React.PropTypes.arrayOf(
-    React.PropTypes.string,
+    React.PropTypes.shape({
+      name: React.PropTypes.string,
+      year: React.PropTypes.number,
+    }),
   ),
   isAuthenticated: React.PropTypes.shape({
     username: React.PropTypes.string,

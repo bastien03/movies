@@ -1,16 +1,24 @@
 import React from 'react';
 
 const AwardLogoComponent = ({ award }) => {
-  if (award) {
-    const moduleName = award.toLowerCase();
-    return (<img src={`/img/awards/${moduleName}-logo.svg`} role="presentation" className="logo" />);
+  if (award && award.name) {
+    const moduleName = award.name.toLowerCase();
+    return (
+      <img
+        src={`/img/awards/${moduleName}-logo.svg`}
+        role="presentation"
+        className="logo"
+      />);
   }
 
   return null;
 };
 
 AwardLogoComponent.propTypes = {
-  award: React.PropTypes.string,
+  award: React.PropTypes.shape({
+    name: React.PropTypes.string,
+    year: React.PropTypes.number,
+  }),
 };
 
 export default AwardLogoComponent;

@@ -46,11 +46,11 @@ class EditMoviePage extends React.Component {
   handleAwardsChange(award, checked) {
     const awards = new Set(this.state.movie.awards);
     if (checked) {
+      awards.forEach((a) => { if (a.name === award.name) awards.delete(a); });
       awards.add(award);
     } else {
-      awards.delete(award);
+      awards.forEach((a) => { if (a.name === award.name) awards.delete(a); });
     }
-
     const newState = Object.assign({}, this.state.movie, {
       awards: Array.from(awards),
     });
@@ -134,7 +134,8 @@ class EditMoviePage extends React.Component {
           <div className="formGroup">
             <span className="col-xs-12 col-sm-12 control-label">Awards</span>
             <SelectAwards
-              awards={awards}
+              movieAwards={awards}
+              movieYear={this.state.movie.year}
               onChange={(...args) => this.handleAwardsChange(...args)}
             />
           </div>
