@@ -191,6 +191,15 @@ input,
   margin-bottom: 30px;
 }
 
+.awards {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.awards .logo {
+  height: 20px;
+}
+
 @media only screen and (min-device-width : 480px) {
   body,
   button,

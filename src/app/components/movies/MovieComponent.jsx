@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import Confirm from 'react-confirm-bootstrap';
 import random from 'lodash/random';
 import uris from '../../../uris';
+import AwardLogo from './awards/AwardLogoComponent';
 
 class MovieComponent extends React.Component {
 
@@ -18,7 +19,7 @@ class MovieComponent extends React.Component {
   }
 
   render() {
-    const { id, title, director, year, url, isAuthenticated } = this.props;
+    const { id, title, director, year, url, isAuthenticated, awards } = this.props;
 
     let movieHeader;
     if (isAuthenticated) {
@@ -73,6 +74,9 @@ class MovieComponent extends React.Component {
         </article>
         <footer>
           <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>
+          <span className="awards">
+            {awards.map(award => <AwardLogo award={award} key={award} />)}
+          </span>
         </footer>
       </div>
     );
@@ -85,6 +89,9 @@ MovieComponent.propTypes = {
   year: React.PropTypes.number.isRequired,
   url: React.PropTypes.string.isRequired,
   id: React.PropTypes.string.isRequired,
+  awards: React.PropTypes.arrayOf(
+    React.PropTypes.string,
+  ),
   isAuthenticated: React.PropTypes.shape({
     username: React.PropTypes.string,
   }),

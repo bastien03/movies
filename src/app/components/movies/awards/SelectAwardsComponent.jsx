@@ -2,11 +2,11 @@ import React from 'react';
 import { AWARDS } from '../../../../MovieAwards';
 
 const translate = (award) => {
-  if (award === 'Berlin') {
+  if (award === 'berlin') {
     return "Ours d'or - Berlin";
-  } else if (award === 'Cannes') {
+  } else if (award === 'cannes') {
     return "Palme d'or - Cannes";
-  } else if (award === 'Venice') {
+  } else if (award === 'venice') {
     return "Lion d'or - Venise";
   }
   return 'Aucune';

@@ -60,6 +60,7 @@ function renderHTML(reduxStore) {
     <!doctype html public="storage">
     <html>
     <meta charset=utf-8/>
+    <base href="${context}"/>
     <title>${title}</title>
     <link rel="shortcut icon" type="image/x-icon" href="${context}favicon.ico" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
