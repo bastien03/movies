@@ -70,13 +70,15 @@ class MovieComponent extends React.Component {
       >
         {movieHeader}
         <article>
-          <h2 className="movieTitle">{title}</h2>
+          <h2 className="movieTitle">
+            {title}
+            <span className="awards">
+              {awards.map(award => <AwardLogo award={award} key={award.name} />)}
+            </span>
+          </h2>
         </article>
         <footer>
           <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>
-          <span className="awards">
-            {awards.map(award => <AwardLogo award={award} key={award.name} />)}
-          </span>
         </footer>
       </div>
     );
