@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { getTitle } from '../../components/movies/MovieTitle';
-import SelectAwards from '../../components/movies/awards/SelectAwardsComponent';
+import EditMovieComponent from '../../components/movies/EditMovieComponent';
 
 class EditMoviePage extends React.Component {
 
@@ -9,7 +8,6 @@ class EditMoviePage extends React.Component {
     super(props);
     this.state = {
       movie: {},
-      initialTitle: {},
     };
   }
 
@@ -17,135 +15,21 @@ class EditMoviePage extends React.Component {
     this.props.loadMovie(this.props.params.id).then((movie) => {
       this.setState({
         movie,
-        initialTitle: movie.title,
       });
     });
   }
 
-  saveMovie(e, id) {
-    e.preventDefault();
-    this.props.saveMovie(id, this.state.movie, this.props.router);
-  }
-
-  handleTitleChange(key, value) {
-    const newState = Object.assign({}, this.state.movie, {
-      title: Object.assign({}, this.state.movie.title, {
-        [key]: value,
-      }),
-    });
-    this.setState({ movie: newState });
-  }
-
-  handleChange(key, value) {
-    const newState = Object.assign({}, this.state.movie, {
-      [key]: value,
-    });
-    this.setState({ movie: newState });
-  }
-
-  handleAwardsChange(award, checked) {
-    const awards = new Set(this.state.movie.awards);
-    if (checked) {
-      awards.forEach((a) => { if (a.name === award.name) awards.delete(a); });
-      awards.add(award);
-    } else {
-      awards.forEach((a) => { if (a.name === award.name) awards.delete(a); });
-    }
-    const newState = Object.assign({}, this.state.movie, {
-      awards: Array.from(awards),
-    });
-    this.setState({ movie: newState });
+  saveMovie(movie) {
+    this.props.saveMovie(movie.id, movie, this.props.router);
   }
 
   render() {
-    const language = this.props.lang;
-    const movie = this.state.movie;
-    if (!movie || !movie.title) {
-      return (<div>Loading</div>);
-    }
-    const id = this.props.params.id;
-    const { title, year, url, director, country, awards } = movie;
     return (
-      <div className="editPage">
-        <h1>{`Edit '${getTitle(this.state.initialTitle, language)}'`}</h1>
-        <form
-          name="add-movie"
-          onSubmit={(e) => { this.saveMovie(e, id); }}
-        >
-          <fieldset>
-            <legend>{'Title'}</legend>
-            <div className="formGroup">
-              <span className="col-xs-12 col-sm-12 control-label">Title (de)</span>
-              <input
-                type="text"
-                onChange={e => this.handleTitleChange('de', e.target.value)}
-                defaultValue={title.de}
-              />
-            </div>
-            <div className="formGroup">
-              <span className="col-xs-12 col-sm-12 control-label">Title (en)</span>
-              <input
-                type="text"
-                onChange={e => this.handleTitleChange('en', e.target.value)}
-                defaultValue={title.en}
-              />
-            </div>
-            <div className="formGroup">
-              <span className="col-xs-12 col-sm-12 control-label">Title (fr)</span>
-              <input
-                type="text"
-                onChange={e => this.handleTitleChange('fr', e.target.value)}
-                defaultValue={title.fr}
-              />
-            </div>
-          </fieldset>
-          <div className="formGroup">
-            <span className="col-xs-12 col-sm-12 control-label">Year</span>
-            <input
-              type="text"
-              onChange={e => this.handleChange('year', e.target.value)}
-              defaultValue={year}
-            />
-          </div>
-          <div className="formGroup">
-            <span className="col-xs-12 col-sm-12 control-label">Url</span>
-            <input
-              type="text"
-              onChange={e => this.handleChange('url', e.target.value)}
-              defaultValue={url}
-            />
-          </div>
-          <div className="formGroup">
-            <span className="col-xs-12 col-sm-12 control-label">Director</span>
-            <input
-              type="text"
-              onChange={e => this.handleChange('director', e.target.value)}
-              defaultValue={director}
-            />
-          </div>
-          <div className="formGroup">
-            <span className="col-xs-12 col-sm-12 control-label">Country</span>
-            <input
-              type="text"
-              onChange={e => this.handleChange('country', e.target.value)}
-              defaultValue={country}
-            />
-          </div>
-          <div className="formGroup">
-            <span className="col-xs-12 col-sm-12 control-label">Awards</span>
-            <SelectAwards
-              movieAwards={awards}
-              movieYear={this.state.movie.year}
-              onChange={(...args) => this.handleAwardsChange(...args)}
-            />
-          </div>
-          <div className="formGroup">
-            <div className="">
-              <input type="submit" value="save" className="btn btn-default" />
-            </div>
-          </div>
-        </form>
-      </div>
+      <EditMovieComponent
+        movie={this.state.movie}
+        saveMovie={(...args) => this.saveMovie(...args)}
+        lang={this.props.lang}
+      />
     );
   }
 }
