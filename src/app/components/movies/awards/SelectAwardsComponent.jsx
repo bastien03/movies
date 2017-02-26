@@ -21,51 +21,52 @@ const searchAward = (awardList, awardName) => {
   return searchedAwards[0];
 };
 
+// create a new state object which contains the given movieAwards
+const prepareState = (state, movieAwards, movieYear) => {
+  const newState = Object.assign({}, state);
+  AWARDS.forEach((award) => {
+    // check whether the movie has recieved this award
+    const movieAward = searchAward(movieAwards, award);
+    newState[award] = {
+      checked: !!movieAward,
+      year: movieAward ? movieAward.year : movieYear,
+    };
+  });
+  return newState;
+};
+
 class SelectAwardsComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    const initialState = {};
-
-    AWARDS.forEach((award) => {
-      // check whether the movie has recieved this award
-      const movieAward = searchAward(this.props.movieAwards, award);
-      initialState[award] = {
-        checked: !!movieAward,
-        year: movieAward ? movieAward.year : props.movieYear,
-      };
-    });
-
+    const initialState = prepareState({}, props.movieAwards, props.movieYear);
     this.state = Object.assign({}, initialState);
   }
 
   componentWillReceiveProps(props) {
-    const newState = Object.assign({}, this.state);
-    AWARDS.forEach((award) => {
-      newState[award].year = props.movieYear;
-    });
+    const newState = prepareState(this.state, props.movieAwards, props.movieYear);
     this.setState(newState);
   }
 
   onSelectionChange(awardName) {
     const year = this.state[awardName].year;
     const checked = !this.state[awardName].checked;
-    this.setAwardInState(awardName, year, checked);
+    this.setOneAwardInState(awardName, year, checked);
     this.props.onChange({ name: awardName, year }, checked);
   }
 
   onYearChange(e, awardName, offset) {
     e.preventDefault();
-    const year = this.state[awardName].year;
-    if (year) {
-      const newYear = year + offset;
-      const checked = this.state[awardName].checked;
-      this.setAwardInState(awardName, newYear, checked);
-      this.props.onChange({ name: awardName, newYear }, checked);
+    const award = this.state[awardName];
+    if (award && award.year) {
+      const newYear = award.year + offset;
+      const checked = award.checked;
+      this.setOneAwardInState(awardName, newYear, checked);
+      this.props.onChange({ name: awardName, year: newYear }, checked);
     }
   }
 
-  setAwardInState(awardName, year, checked) {
+  setOneAwardInState(awardName, year, checked) {
     const newState = Object.assign({}, this.state, {
       [awardName]: {
         checked,
@@ -87,7 +88,7 @@ class SelectAwardsComponent extends React.Component {
                   type="checkbox"
                   id={awardName}
                   value={awardName}
-                  defaultChecked={award.checked}
+                  checked={award.checked}
                   onChange={() => this.onSelectionChange(awardName)}
                 />
                 {translate(awardName)}

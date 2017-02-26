@@ -8,6 +8,7 @@ const AwardLogoComponent = ({ award }) => {
         src={`/img/awards/${moduleName}-logo.svg`}
         role="presentation"
         className="logo"
+        key={moduleName}
       />);
   }
 

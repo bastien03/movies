@@ -3,13 +3,23 @@ import React from 'react';
 import { getTitle } from '../../components/movies/MovieTitle';
 import SelectAwards from '../../components/movies/awards/SelectAwardsComponent';
 
+const emptyMovie = {
+  title: {
+    de: '',
+    en: '',
+    fr: '',
+  },
+  url: '',
+  director: '',
+  country: '',
+  year: 1970,
+};
+
 class EditMovieComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    const movie = props.movie ? props.movie : {
-      title: {},
-    };
+    const movie = props.movie ? props.movie : emptyMovie;
     const initialTitle = props.movie ? props.movie.title : {};
     this.state = {
       movie,
@@ -18,9 +28,7 @@ class EditMovieComponent extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const movie = props.movie ? props.movie : {
-      title: {},
-    };
+    const movie = props.movie ? props.movie : emptyMovie;
     const initialTitle = props.movie ? props.movie.title : {};
     this.setState({
       movie,
@@ -51,7 +59,7 @@ class EditMovieComponent extends React.Component {
 
   handleChangeNumber(key, value) {
     const number = parseInt(value, 10);
-    this.handleChange(key, isNaN(number) ? undefined : number);
+    this.handleChange(key, isNaN(number) ? 1970 : number);
   }
 
   handleAwardsChange(award, checked) {
@@ -71,12 +79,11 @@ class EditMovieComponent extends React.Component {
   render() {
     const language = this.props.lang;
     const movie = this.state.movie;
-    console.log('render', movie, movie.year);
-    /*if (movie && !movie.title) {
-      return (<div>Loading</div>);
-    }*/
     const { id, title, year, url, director, country, awards } = movie ? movie : {};
-    const selectedTitle = movie ? getTitle(this.state.initialTitle, language) : '';
+    const selectedTitle = movie && movie.title ? getTitle(movie.title, language) : '';
+    const titleDe = title ? title.de : '';
+    const titleFr = title ? title.fr : '';
+    const titleEn = title ? title.en : '';
     return (
       <div className="editPage">
         <h1>{`Edit '${selectedTitle}'`}</h1>
@@ -91,7 +98,7 @@ class EditMovieComponent extends React.Component {
               <input
                 type="text"
                 onChange={e => this.handleTitleChange('de', e.target.value)}
-                defaultValue={title.de}
+                value={titleDe}
               />
             </div>
             <div className="formGroup">
@@ -99,7 +106,7 @@ class EditMovieComponent extends React.Component {
               <input
                 type="text"
                 onChange={e => this.handleTitleChange('en', e.target.value)}
-                defaultValue={title.en}
+                value={titleEn}
               />
             </div>
             <div className="formGroup">
@@ -107,7 +114,7 @@ class EditMovieComponent extends React.Component {
               <input
                 type="text"
                 onChange={e => this.handleTitleChange('fr', e.target.value)}
-                defaultValue={title.fr}
+                value={titleFr}
               />
             </div>
           </fieldset>
@@ -116,7 +123,7 @@ class EditMovieComponent extends React.Component {
             <input
               type="text"
               onChange={e => this.handleChangeNumber('year', e.target.value)}
-              defaultValue={year}
+              value={year}
             />
           </div>
           <div className="formGroup">
@@ -124,7 +131,7 @@ class EditMovieComponent extends React.Component {
             <input
               type="text"
               onChange={e => this.handleChange('url', e.target.value)}
-              defaultValue={url}
+              value={url}
             />
           </div>
           <div className="formGroup">
@@ -132,7 +139,7 @@ class EditMovieComponent extends React.Component {
             <input
               type="text"
               onChange={e => this.handleChange('director', e.target.value)}
-              defaultValue={director}
+              value={director}
             />
           </div>
           <div className="formGroup">
@@ -140,7 +147,7 @@ class EditMovieComponent extends React.Component {
             <input
               type="text"
               onChange={e => this.handleChange('country', e.target.value)}
-              defaultValue={country}
+              value={country}
             />
           </div>
           <div className="formGroup">

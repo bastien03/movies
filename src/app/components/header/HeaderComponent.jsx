@@ -47,7 +47,11 @@ HeaderComponent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
 };
+LinksComponent.propTypes = {
+  isAuthenticated: React.PropTypes.shape({
+    username: React.PropTypes.string,
+  }),
+};
 UserComponent.propTypes = HeaderComponent.propTypes;
-LinksComponent.propTypes = HeaderComponent.propTypes;
 
 export default HeaderComponent;

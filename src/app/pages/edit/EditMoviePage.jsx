@@ -7,7 +7,12 @@ class EditMoviePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {},
+      movie: {
+        url: '',
+        director: '',
+        country: '',
+        year: 1970,
+      },
     };
   }
 
