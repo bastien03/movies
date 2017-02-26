@@ -1,4 +1,5 @@
 import MovieRepository from '../repositories/MovieRepository';
+import { isAwardListValid } from '../../MovieAwards';
 
 const isStringValid = title => title && title.length > 0;
 
@@ -7,7 +8,7 @@ const validateMovie = (movie) => {
      isStringValid(movie.title.de) || isStringValid(movie.title.en) || isStringValid(movie.title.fr)
   );
   const isValid = hasTitle && movie.year && isStringValid(movie.url)
-    && isStringValid(movie.director);
+    && isStringValid(movie.director) && isAwardListValid(movie.awards);
   return isValid;
 };
 
