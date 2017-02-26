@@ -82,7 +82,7 @@ class SelectAwardsComponent extends React.Component {
         {AWARDS.map((awardName) => {
           const award = this.state[awardName];
           return (
-            <div key={awardName}>
+            <div key={awardName} className={awardName}>
               <label htmlFor={awardName}>
                 <input
                   type="checkbox"
@@ -97,7 +97,7 @@ class SelectAwardsComponent extends React.Component {
                 {'year: '}{award.year}
               </span>
               {award.year &&
-                <span>
+                <span className="awardYearButton">
                   <button
                     className="btn btn-xs awardYearButton"
                     onClick={e => this.onYearChange(e, awardName, 1)}

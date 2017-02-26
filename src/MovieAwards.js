@@ -2,4 +2,4 @@
 export const AWARDS = ['cannes', 'berlin', 'venice'];
 
 const isAwardValid = award => AWARDS.includes(award.name) && !!award.year;
-export const isAwardListValid = awards => awards.every(isAwardValid);
+export const isAwardListValid = awards => awards && awards.every(isAwardValid);

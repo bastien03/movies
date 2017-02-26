@@ -13,6 +13,7 @@ const emptyMovie = {
   director: '',
   country: '',
   year: 1970,
+  awards: [],
 };
 
 class EditMovieComponent extends React.Component {
@@ -93,7 +94,7 @@ class EditMovieComponent extends React.Component {
         >
           <fieldset>
             <legend>{'Title'}</legend>
-            <div className="formGroup">
+            <div className="formGroup title-de">
               <span className="col-xs-12 col-sm-12 control-label">Title (de)</span>
               <input
                 type="text"
@@ -101,7 +102,7 @@ class EditMovieComponent extends React.Component {
                 value={titleDe}
               />
             </div>
-            <div className="formGroup">
+            <div className="formGroup title-en">
               <span className="col-xs-12 col-sm-12 control-label">Title (en)</span>
               <input
                 type="text"
@@ -109,7 +110,7 @@ class EditMovieComponent extends React.Component {
                 value={titleEn}
               />
             </div>
-            <div className="formGroup">
+            <div className="formGroup title-fr">
               <span className="col-xs-12 col-sm-12 control-label">Title (fr)</span>
               <input
                 type="text"
@@ -118,7 +119,7 @@ class EditMovieComponent extends React.Component {
               />
             </div>
           </fieldset>
-          <div className="formGroup">
+          <div className="formGroup year">
             <span className="col-xs-12 col-sm-12 control-label">Year</span>
             <input
               type="text"
@@ -126,7 +127,7 @@ class EditMovieComponent extends React.Component {
               value={year}
             />
           </div>
-          <div className="formGroup">
+          <div className="formGroup url">
             <span className="col-xs-12 col-sm-12 control-label">Url</span>
             <input
               type="text"
@@ -134,7 +135,7 @@ class EditMovieComponent extends React.Component {
               value={url}
             />
           </div>
-          <div className="formGroup">
+          <div className="formGroup director">
             <span className="col-xs-12 col-sm-12 control-label">Director</span>
             <input
               type="text"
@@ -142,7 +143,7 @@ class EditMovieComponent extends React.Component {
               value={director}
             />
           </div>
-          <div className="formGroup">
+          <div className="formGroup country">
             <span className="col-xs-12 col-sm-12 control-label">Country</span>
             <input
               type="text"
@@ -159,7 +160,7 @@ class EditMovieComponent extends React.Component {
             />
           </div>
           <div className="formGroup">
-            <div className="">
+            <div className="saveButton">
               <input type="submit" value="save" className="btn btn-default" />
             </div>
           </div>
