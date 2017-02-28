@@ -67,11 +67,11 @@ describe('Movies', () => {
 
     it('should GET all the movies with missing titles', (done) => {
       const movie1 = {
-        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1',
+        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1', country: 'france',
       };
 
       const movie2 = {
-        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2',
+        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2', country: 'france',
       };
 
       const req = chai.request(server).post('/api/movies');
@@ -99,108 +99,6 @@ describe('Movies', () => {
                 });
             });
         });
-    });
-  });
-
-  describe('/POST movies', () => {
-    let movie;
-
-    beforeEach(() => {
-      movie = {
-        title: {
-          de: '',
-          en: '',
-          fr: 'titre',
-        },
-        year: 2000,
-        url: 'trailer-url',
-        director: 'dir-ector',
-        country: 'france',
-        awards: ['Cannes', 'Berlin'],
-      };
-    });
-
-    it('should not create a movie if user is not logged in', (done) => {
-      chai.request(server)
-        .post('/api/movies')
-        .send(movie)
-        .end((err, res) => {
-          res.should.have.status(401);
-          done();
-        });
-    });
-
-    describe('user is logged in', () => {
-      it('should create a movie', (done) => {
-        const req = chai.request(server).post('/api/movies');
-        req.cookies = cookies;
-        req.send(movie)
-          .end((err, res) => {
-            res.should.have.status(201);
-            const createdMovie = res.body;
-            expect(createdMovie.id).to.not.be.null;
-            expect(createdMovie.title).to.eql({
-              de: movie.title.de,
-              en: movie.title.en,
-              fr: movie.title.fr,
-              default: movie.title.fr,
-            });
-            expect(createdMovie.year).to.eql(movie.year);
-            expect(createdMovie.url).to.eql(movie.url);
-            expect(createdMovie.director).to.eql(movie.director);
-            expect(createdMovie.country).to.eql(movie.country);
-            expect(createdMovie.awards).to.eql(movie.awards);
-            done();
-          });
-      });
-
-      it('should not create a movie without a title', (done) => {
-        movie.title = {
-          de: '',
-          en: '',
-          fr: '',
-        };
-        const req = chai.request(server).post('/api/movies');
-        req.cookies = cookies;
-        req.send(movie)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
-
-      it('should not create a movie without a year', (done) => {
-        movie.year = undefined;
-        const req = chai.request(server).post('/api/movies');
-        req.cookies = cookies;
-        req.send(movie)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
-
-      it('should not create a movie without a director', (done) => {
-        movie.director = undefined;
-        const req = chai.request(server).post('/api/movies');
-        req.cookies = cookies;
-        req.send(movie)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
-
-      it('should not create a movie without a url', (done) => {
-        movie.url = undefined;
-        const req = chai.request(server).post('/api/movies');
-        req.cookies = cookies;
-        req.send(movie)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
     });
   });
 
