@@ -37,6 +37,8 @@ class Uris {
   statisticsApi()     { return this.linkTo('api/statistics/');      }
   loginApi()          { return this.linkTo('api/login');            }
   logoutApi()         { return this.linkTo('api/logout');           }
+
+  img(path)           { return this.linkTo(path);                   }
   /* eslint-disable */
 }
 

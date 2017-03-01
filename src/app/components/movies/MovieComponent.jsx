@@ -73,7 +73,7 @@ class MovieComponent extends React.Component {
           <h2 className="movieTitle">
             {title}
             <span className="awards">
-              {awards.map(award => <AwardLogo award={award} />)}
+              {awards && awards.map(award => <AwardLogo award={award} />)}
             </span>
           </h2>
         </article>

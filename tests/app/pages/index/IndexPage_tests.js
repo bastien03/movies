@@ -64,16 +64,4 @@ describe('<IndexPage />', () => {
       expect(moviesWrapper.length).toBe(0);
     });
   });
-
-  describe('should render directors', () => {
-    it('only if they have more than 1 movie', () => {
-      let wrapper = shallow(<Index {...props} />);
-      expect(wrapper.find(Director).length).toBe(1);
-
-      // change number of movies of director 2
-      props.directors[1].numberMovies = 3;
-      wrapper = shallow(<Index {...props} />);
-      expect(wrapper.find(Director).length).toBe(2);
-    });
-  });
 });

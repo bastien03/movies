@@ -1,11 +1,12 @@
 import React from 'react';
+import uris from '../../../../uris';
 
 const AwardLogoComponent = ({ award }) => {
   if (award && award.name) {
     const moduleName = award.name.toLowerCase();
     return (
       <img
-        src={`/img/awards/${moduleName}-logo.svg`}
+        src={uris.img(`img/awards/${moduleName}-logo.svg`)}
         role="presentation"
         className="logo"
         key={moduleName}
