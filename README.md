@@ -1,4 +1,5 @@
 # movies
+[![Build Status](https://travis-ci.org/bastien03/movies.svg?branch=master)](https://travis-ci.org/bastien03/movies)
 
 ## Local development
 
