@@ -1,10 +1,13 @@
 import React from 'react';
+import { Treemap } from 'react-d3';
+import Measure from 'react-measure';
 
 class StatisticsPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      dimensions: {},
       stats: {
         groupByCountry: [],
         groupByDecade: [],
@@ -25,24 +28,55 @@ class StatisticsPage extends React.Component {
       });
   }
 
-  render() {
-    // const language = this.props.lang;
-    const stats = this.state.stats;
+  updateDimensions(dimensions) {
+    this.setState({
+      dimensions,
+      updated: true,
+    });
+  }
 
-    const countryStats = stats.groupByCountry.map(country =>
-      (<div key={country._id}>{`${country._id}: ${country.count}`}</div>)
+  renderPage(width) {
+    if (!width) {
+      return <div />;
+    }
+
+    const chartWidth = width * 0.9;
+    const stats = this.state.stats;
+    const treemapData = [];
+    stats.groupByCountry.map(country => treemapData.push(
+      { label: `${country._id} (${country.count})`, value: country.count }),
     );
-    const decadeStats = stats.groupByDecade.map(decade =>
-      (<div key={decade._id}>{`${decade._id}: ${decade.count}`}</div>)
-    );
+
     return (
-      <div className="adminPage">
+      <div className="statisticsPage">
         <h1>Statistics</h1>
         <h4>Country</h4>
-        {countryStats}
-        <h4>Year</h4>
-        {decadeStats}
+        <Treemap
+          data={treemapData}
+          width={chartWidth}
+          height={250}
+          textColor="#484848"
+          fontSize="12px"
+          hoverAnimation
+        />
       </div>
+    );
+  }
+
+  render() {
+    // const language = this.props.lang;
+    const { width } = this.state.dimensions;
+
+    return (
+      <Measure
+        onMeasure={(dimensions) => {
+          if (this.state.dimensions.width !== dimensions.width) {
+            this.updateDimensions(dimensions);
+          }
+        }}
+      >
+        {this.renderPage(width)}
+      </Measure>
     );
   }
 }
