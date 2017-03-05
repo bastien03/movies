@@ -30,12 +30,9 @@ class StatisticsPage extends React.Component {
     // const language = this.props.lang;
     const stats = this.state.stats;
 
-    const decadeStats = stats.groupByDecade.map(decade =>
-      (<div key={decade._id}>{`${decade._id}: ${decade.count}`}</div>)
-    );
     const treemapData = [];
     stats.groupByCountry.map(country => treemapData.push(
-      { label: country._id, value: country.count }),
+      { label: `${country._id} (${country.count})`, value: country.count }),
     );
 
     const barData = [
@@ -49,7 +46,7 @@ class StatisticsPage extends React.Component {
     ));
 
     return (
-      <div className="adminPage">
+      <div className="statisticsPage">
         <h1>Statistics</h1>
         <h4>Country</h4>
         <Treemap
@@ -58,17 +55,19 @@ class StatisticsPage extends React.Component {
           height={250}
           textColor="#484848"
           fontSize="12px"
-          hoverAnimation={true}
+          hoverAnimation
         />
         <h4>Year</h4>
-        <BarChart
-          data={barData}
-          width={800}
-          height={200}
-          fill={'#3182bd'}
-          yAxisLabel="Label"
-          xAxisLabel="Value"
-        />
+        <div className="yearChart">
+          <BarChart
+            data={barData}
+            width={800}
+            height={200}
+            fill={'#3182bd'}
+            yAxisLabel="Label"
+            xAxisLabel="Value"
+          />
+        </div>
       </div>
     );
   }
