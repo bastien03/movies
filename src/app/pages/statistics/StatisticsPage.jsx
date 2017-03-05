@@ -1,11 +1,13 @@
 import React from 'react';
-import { Treemap, BarChart } from 'react-d3';
+import { Treemap } from 'react-d3';
+import Measure from 'react-measure';
 
 class StatisticsPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      dimensions: {},
       stats: {
         groupByCountry: [],
         groupByDecade: [],
@@ -26,24 +28,24 @@ class StatisticsPage extends React.Component {
       });
   }
 
-  render() {
-    // const language = this.props.lang;
-    const stats = this.state.stats;
+  updateDimensions(dimensions) {
+    this.setState({
+      dimensions,
+      updated: true,
+    });
+  }
 
+  renderPage(width) {
+    if (!width) {
+      return <div />;
+    }
+
+    const chartWidth = width * 0.9;
+    const stats = this.state.stats;
     const treemapData = [];
     stats.groupByCountry.map(country => treemapData.push(
       { label: `${country._id} (${country.count})`, value: country.count }),
     );
-
-    const barData = [
-      {
-        name: 'Series A',
-        values: [],
-      }
-    ];
-    stats.groupByDecade.map(decade => barData[0].values.push(
-      { x: decade._id, y: decade.count },
-    ));
 
     return (
       <div className="statisticsPage">
@@ -51,24 +53,30 @@ class StatisticsPage extends React.Component {
         <h4>Country</h4>
         <Treemap
           data={treemapData}
-          width={800}
+          width={chartWidth}
           height={250}
           textColor="#484848"
           fontSize="12px"
           hoverAnimation
         />
-        <h4>Year</h4>
-        <div className="yearChart">
-          <BarChart
-            data={barData}
-            width={800}
-            height={200}
-            fill={'#3182bd'}
-            yAxisLabel="Label"
-            xAxisLabel="Value"
-          />
-        </div>
       </div>
+    );
+  }
+
+  render() {
+    // const language = this.props.lang;
+    const { width } = this.state.dimensions;
+
+    return (
+      <Measure
+        onMeasure={(dimensions) => {
+          if (this.state.dimensions.width !== dimensions.width) {
+            this.updateDimensions(dimensions);
+          }
+        }}
+      >
+        {this.renderPage(width)}
+      </Measure>
     );
   }
 }
