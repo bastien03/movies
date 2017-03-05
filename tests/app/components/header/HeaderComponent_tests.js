@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import React from 'react';
 import Header from '../../../../src/app/components/header/HeaderComponent.jsx';
 import { ROUTER_MOCK } from '../../../utils';
@@ -7,6 +7,16 @@ describe('<Header />', () => {
   const props = {
     logout: () => {},
     router: ROUTER_MOCK,
+  };
+
+  const store = {
+    subscribe: () => {},
+    dispatch: () => {},
+    getState: () => ({}),
+  };
+  const options = {
+    context: { store },
+    childContextTypes: { store: React.PropTypes.object.isRequired },
   };
 
   beforeEach(() => {
@@ -19,16 +29,16 @@ describe('<Header />', () => {
 
   describe('logged in state', () => {
     it('should render a logout link', () => {
-      props.isAuthenticated = {};
-      const wrapper = shallow(<Header {...props} />);
+      props.isAuthenticated = { username: 'user1' };
+      const wrapper = mount(<Header {...props} />, options);
 
-      expect(wrapper.contains('logout')).toBeTruthy();
-      expect(wrapper.contains('login')).toBeFalsy();
+      expect(wrapper.text()).toContain('logout');
+      expect(wrapper.text()).not.toContain('login');
     });
 
     it('click on logout should call the props function', () => {
       props.isAuthenticated = {};
-      const wrapper = shallow(<Header {...props} />);
+      const wrapper = mount(<Header {...props} />, options);
 
       wrapper.find('.logoutLink').simulate('click');
       expect(props.logout).toHaveBeenCalledWith(ROUTER_MOCK);
@@ -38,10 +48,10 @@ describe('<Header />', () => {
   describe('logged out state', () => {
     it('should render a login link', () => {
       props.isAuthenticated = undefined;
-      const wrapper = shallow(<Header {...props} />);
+      const wrapper = mount(<Header {...props} />, options);
 
-      expect(wrapper.contains('login')).toBeTruthy();
-      expect(wrapper.contains('logout')).toBeFalsy();
+      expect(wrapper.text()).toContain('login');
+      expect(wrapper.text()).not.toContain('logout');
     });
   });
 });

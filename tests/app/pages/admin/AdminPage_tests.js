@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import Admin from '../../../../src/app/pages/admin/AdminPage';
 
-fdescribe('<AdminPage />', () => {
+describe('<AdminPage />', () => {
   let movies;
   const props = {
     loadMoviesWithMissingTitles: () => {},
