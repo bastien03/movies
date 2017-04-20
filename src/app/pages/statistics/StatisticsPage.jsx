@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CountriesStats from './components/CountriesStats';
-import DirectorsStats from './components/DirectorsStats';
+import CountriesStats from './components/CountriesStats.jsx';
+import DirectorsStats from './components/DirectorsStats.jsx';
 
 class StatisticsPage extends React.Component {
 
@@ -35,9 +35,9 @@ class StatisticsPage extends React.Component {
       <div className="statisticsPage">
         <h1>Statistics</h1>
         <h4>Countries</h4>
-        <CountriesStats stats={stats.groupByCountry}/>
+        <CountriesStats stats={stats.groupByCountry} />
         <h4>Directors</h4>
-        <DirectorsStats stats={stats.groupByDirector}/>
+        <DirectorsStats stats={stats.groupByDirector} />
       </div>
     );
   }

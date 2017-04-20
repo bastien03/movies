@@ -5,28 +5,28 @@ import Please from 'pleasejs';
 
 const getColors = length => Please.make_color({
   colors_returned: length,
-  base_color: 'red'
+  base_color: 'red',
 });
 
-const CustomizedContent = React.createClass({
-  render() {
-    const { root, depth, x, y, width, height, index, payload, colors, rank, name, value } = this.props;
-    return (
-      <g>
-        <rect
-          x={x}
-          y={y}
-          width={width}
-          height={height}
-          style={{
-            fill: depth < 2 ? colors[index] : 'none',
-            stroke: '#fff',
-            strokeWidth: 2 / (depth + 1e-10),
-            strokeOpacity: 1 / (depth + 1e-10),
-          }}
-        />
-        {
-          depth === 1 ?
+const CustomizedContent = (props) => {
+  const { depth, x, y, width, height, index,
+    payload, colors, rank, name, value } = props;
+  return (
+    <g>
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        style={{
+          fill: depth < 2 ? colors[index] : 'none',
+          stroke: '#fff',
+          strokeWidth: 2 / (depth + 1e-10),
+          strokeOpacity: 1 / (depth + 1e-10),
+        }}
+      />
+      {
+        depth === 1 ?
           <text
             x={x + width / 2}
             y={y + height / 2 + 7}
@@ -36,17 +36,16 @@ const CustomizedContent = React.createClass({
           >
             {name}
           </text>
-          : null
-        }
-      </g>
-    );
-  }
-});
+        : null
+      }
+    </g>
+  );
+};
 
 class CountriesStats extends React.Component {
   render() {
-    const {stats} = this.props;
-    if (!stats || stats.length == 0) {
+    const { stats } = this.props;
+    if (!stats || stats.length === 0) {
       return null;
     }
     const data = [];
@@ -55,8 +54,8 @@ class CountriesStats extends React.Component {
         name: `${country._id} (${country.count})`,
         children: [
           { name: country._id, size: country.count },
-        ]
-      })
+        ],
+      }),
     );
     const colors = getColors(data.length);
     return (
@@ -65,7 +64,7 @@ class CountriesStats extends React.Component {
           data={data}
           dataKey="size"
           stroke="#fff"
-          content={<CustomizedContent colors={colors}/>}
+          content={<CustomizedContent colors={colors} />}
         />
       </ResponsiveContainer>
     );
