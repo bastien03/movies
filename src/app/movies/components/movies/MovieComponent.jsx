@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Confirm from 'react-confirm-bootstrap';
 import random from 'lodash/random';
-import uris from '../../../uris';
+import uris from '../../../../uris';
 import AwardLogo from './awards/AwardLogoComponent';
 
 class MovieComponent extends React.Component {

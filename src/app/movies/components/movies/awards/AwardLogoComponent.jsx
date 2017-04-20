@@ -1,5 +1,5 @@
 import React from 'react';
-import uris from '../../../../uris';
+import uris from '../../../../../uris';
 
 const AwardLogoComponent = ({ award }) => {
   if (award && award.name) {
@@ -7,7 +7,7 @@ const AwardLogoComponent = ({ award }) => {
     return (
       <img
         src={uris.img(`img/awards/${moduleName}-logo.svg`)}
-        role="presentation"
+        alt="presentation"
         className="logo"
         key={moduleName}
       />);

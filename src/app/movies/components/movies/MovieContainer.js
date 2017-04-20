@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import withRouter from 'react-router/lib/withRouter';
 import MovieComponent from './MovieComponent';
 import removeCurrentMovie from './actions';
-import { isAuthenticated } from '../../common/auth/reducer';
+import { isAuthenticated } from '../../../common/auth/reducer';
 
 const mapStateToProps = state => ({
   isAuthenticated: isAuthenticated(state),

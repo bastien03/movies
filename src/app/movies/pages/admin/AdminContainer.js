@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AdminPage from './AdminPage';
-import { getLanguage } from '../../reducers/settings';
+import { getLanguage } from '../../../reducers/settings';
 
 const mapStateToProps = state => ({
   lang: getLanguage(state),

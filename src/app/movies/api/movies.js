@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import uris from '../../uris';
+import uris from '../../../uris';
 
 const headers = new Headers({
   'Content-Type': 'application/json',

@@ -3,12 +3,13 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
 import IndexPage from './pages/index/IndexContainer';
-import StatisticsPage from './pages/statistics/StatisticsContainer';
-import DetailPage from './pages/detail/DetailContainer';
+import IndexMoviePage from './movies/pages/index/IndexContainer';
+import StatisticsPage from './movies/pages/statistics/StatisticsContainer';
+import DetailPage from './movies/pages/detail/DetailContainer';
+import InsertMoviePage from './movies/pages/insert/InsertMovieContainer';
+import EditMoviePage from './movies/pages/edit/EditMovieContainer';
+import AdminPage from './movies/pages/admin/AdminContainer';
 import LoginComponent from './pages/login/LoginContainer';
-import InsertMoviePage from './pages/insert/InsertMovieContainer';
-import EditMoviePage from './pages/edit/EditMovieContainer';
-import AdminPage from './pages/admin/AdminContainer';
 import uris from '../uris';
 import { isAuthenticated } from './common/auth/reducer';
 
@@ -26,7 +27,8 @@ export function routes() {
     return (
       <Route path={'/'} component={App}>
         <IndexRoute component={IndexPage} />
-        <Route path={uris.moviesPage()} component={IndexPage} />
+        <Route path={uris.moviesStartPage()} component={IndexMoviePage} />
+        <Route path={uris.moviesPage()} component={IndexMoviePage} />
         <Route path={uris.statisticsPage()} component={StatisticsPage} />
         <Route path={uris.loginPage()} component={LoginComponent} />
         <Route path={uris.detailMoviePage(':id')} component={DetailPage} />

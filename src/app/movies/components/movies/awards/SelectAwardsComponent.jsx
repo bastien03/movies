@@ -1,5 +1,5 @@
 import React from 'react';
-import { AWARDS } from '../../../../MovieAwards';
+import { AWARDS } from '../../../../../MovieAwards';
 
 const translate = (award) => {
   if (award === 'berlin') {

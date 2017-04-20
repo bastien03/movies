@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import DetailPage from './DetailPage';
 import fetchCurrentMovie from './actions';
-import { getLanguage } from '../../reducers/settings';
+import { getLanguage } from '../../../reducers/settings';
 import { getCurrentMovie } from '../../reducers/movies';
 
 const mapStateToProps = state => ({
