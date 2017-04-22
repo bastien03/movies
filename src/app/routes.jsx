@@ -4,9 +4,9 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import IndexPage from './pages/index/IndexContainer';
 import LoginComponent from './pages/login/LoginContainer';
+import movieRoutes from './pages/movies/routes';
 import uris from '../uris';
 import { isAuthenticated } from './common/auth/reducer';
-import movieRoutes from './movies/routes';
 
 export default function routes() {
   return (dispatch, getState) => {
