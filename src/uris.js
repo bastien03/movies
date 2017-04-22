@@ -20,6 +20,7 @@ class Uris {
 
   /* eslint-disable no-multi-spaces, block-spacing, class-methods-use-this*/
   // pages
+  moviesStartPage()   { return '/movies';                           }
   moviesPage()        { return '/movies/:director';                 }
   statisticsPage()    { return '/statistics';                       }
   loginPage()         { return '/login';                            }

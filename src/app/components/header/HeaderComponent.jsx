@@ -52,6 +52,9 @@ LinksComponent.propTypes = {
     username: React.PropTypes.string,
   }),
 };
+LinksComponent.defaultProps = {
+  isAuthenticated: undefined
+};
 UserComponent.propTypes = HeaderComponent.propTypes;
 
 export default HeaderComponent;

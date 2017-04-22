@@ -4,7 +4,7 @@ import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 import uris from './uris';
 import configureStore from './app/configureStore';
-import { routes as initRoutes } from './app/routes';
+import initRoutes from './app/routes';
 
 import initHistory from './app/configureHistory';
 
