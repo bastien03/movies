@@ -1,5 +1,6 @@
 import React from 'react';
-import Movie from '../../components/movies/MovieContainer';
+import { Link } from 'react-router';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { getTitle } from '../../components/movies/MovieTitle';
 
 class IndexPage extends React.Component {
@@ -32,7 +33,8 @@ class IndexPage extends React.Component {
   render() {
     const language = this.props.lang;
     const sortBy = this.state.sortBy;
-    let searchTerm = this.state.searchTerm;
+    const { movies } = this.props;
+    /*let searchTerm = this.state.searchTerm;
     let order = this.state.order;
 
     // filter movies whose title or director contain the search term
@@ -103,11 +105,41 @@ class IndexPage extends React.Component {
         {sort}
       </div>
     );
+    */
 
+    const titleFormatter = (cell, row) => {
+      const { title } = row;
+      return getTitle(title, language);
+    };
+    const directorFormatter = director =>
+      <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>;
+
+    const moviesComponents = (
+      <BootstrapTable
+        data={movies}
+        striped
+        hover
+        condensed
+        search
+        multiColumnSort
+      >
+        <TableHeaderColumn isKey dataField="title" dataSort dataFormat={titleFormatter}>
+          Title
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="director" dataSort dataFormat={directorFormatter} width="30%">
+          Director
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="year" dataSort width="10%">
+          year
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="country" dataSort width="20%">
+          country
+        </TableHeaderColumn>
+      </BootstrapTable>
+    );
     return (
       <div>
         <h1>Index</h1>
-        {search}
         <div className="moviesList">
           {moviesComponents}
         </div>
