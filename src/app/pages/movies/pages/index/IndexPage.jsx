@@ -1,5 +1,6 @@
 import React from 'react';
-import Movie from '../../components/movies/MovieContainer';
+import { Link } from 'react-router';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { getTitle } from '../../components/movies/MovieTitle';
 
 class IndexPage extends React.Component {
@@ -31,83 +32,40 @@ class IndexPage extends React.Component {
 
   render() {
     const language = this.props.lang;
-    const sortBy = this.state.sortBy;
-    let searchTerm = this.state.searchTerm;
-    let order = this.state.order;
+    const { movies } = this.props;
 
-    // filter movies whose title or director contain the search term
-    let movies = this.props.movies.filter(oneMovie =>
-      getTitle(oneMovie.title, language).toLowerCase().includes(searchTerm.toLowerCase()) ||
-      oneMovie.director.toLowerCase().includes(searchTerm.toLowerCase()),
+    const titleFormatter = (cell, row) => {
+      const { title } = row;
+      return getTitle(title, language);
+    };
+    const directorFormatter = director =>
+      <Link to={`/movies/${director}`} className="movieDirector">{director}</Link>;
+
+    const moviesComponents = (
+      <BootstrapTable
+        data={movies}
+        striped
+        hover
+        condensed
+        search
+      >
+        <TableHeaderColumn isKey dataField="title" dataSort dataFormat={titleFormatter}>
+          Title
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="director" dataSort dataFormat={directorFormatter} width="30%">
+          Director
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="year" dataSort width="10%">
+          year
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="country" dataSort width="20%">
+          country
+        </TableHeaderColumn>
+      </BootstrapTable>
     );
-
-    movies = movies.sort((a, b) => {
-      let result;
-      switch (order) {
-        case 'date':
-          result = parseInt(a.year, 10) - parseInt(b.year, 10);
-          break;
-        case 'title':
-          result = getTitle(a.title, language).toLowerCase()
-            > getTitle(b.title, language).toLowerCase() ? 1 : -1;
-          break;
-        case 'director':
-          result = a.director.toLowerCase() > b.director.toLowerCase() ? 1 : -1;
-          break;
-        case 'entry':
-        default:
-          result = a.id > b.id;
-          break;
-      }
-
-      const ascOrDesc = sortBy === 'asc' ? 1 : -1;
-      return ascOrDesc * result;
-    });
-
-    const moviesComponents = movies.map(movie =>
-      <Movie {...movie} title={getTitle(movie.title, language)} key={movie.id} />);
-
-    const sort = (
-      <div className="orderContainer">
-        <form onChange={e => this.onOrder(e)}>
-          <label htmlFor="order">{'Order by'}</label>
-          <select name="order" ref={(node) => { order = node; }}>
-            <option value="entry">entry</option>
-            <option value="date">date</option>
-            <option value="title">title</option>
-            <option value="director">director</option>
-          </select>
-        </form>
-        <form>
-          <select onChange={e => this.onOrderBy(e)}>
-            <option value="asc">asc</option>
-            <option value="desc">desc</option>
-          </select>
-        </form>
-      </div>
-    );
-
-    const search = (
-      <div className="searchContainer">
-        <div>
-          {movies.length} movies
-        </div>
-        <div>
-          <label htmlFor="search">{'Search'}</label>
-          <input
-            name="search"
-            ref={(node) => { searchTerm = node; }}
-            onChange={e => this.onSearch(e)}
-          />
-        </div>
-        {sort}
-      </div>
-    );
-
     return (
       <div>
         <h1>Index</h1>
-        {search}
         <div className="moviesList">
           {moviesComponents}
         </div>
