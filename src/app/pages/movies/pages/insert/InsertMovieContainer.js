@@ -2,6 +2,13 @@ import { connect } from 'react-redux';
 import withRouter from 'react-router/lib/withRouter';
 import InsertMovieComponent from './InsertMoviePage';
 import addMovie from './actions';
+import { getLanguage } from '../../../../reducers/settings';
+import { getCountries } from '../../../../reducers/countries';
+
+const mapStateToProps = state => ({
+  countries: getCountries(state),
+  lang: getLanguage(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   onSaveClick: (title, year, url, director, country, awards, router) => {
@@ -14,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const page = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(InsertMovieComponent);
 

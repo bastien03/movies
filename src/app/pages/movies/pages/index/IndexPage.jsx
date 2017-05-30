@@ -12,6 +12,8 @@ class IndexPage extends React.Component {
       order: 'entry',
       sortBy: 'asc',
     };
+
+    this.countryFormatter = this.countryFormatter.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +30,13 @@ class IndexPage extends React.Component {
 
   onOrderBy(e) {
     this.setState({ sortBy: e.target.value });
+  }
+
+  countryFormatter(cell, row) {
+    const { country } = row;
+    const { getCountryName, countries } = this.props;
+    const countryName = getCountryName(countries, country);
+    return countryName;
   }
 
   render() {
@@ -58,7 +67,12 @@ class IndexPage extends React.Component {
         <TableHeaderColumn dataField="year" dataSort width="10%">
           year
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="country" dataSort width="20%">
+        <TableHeaderColumn
+          dataField="country"
+          dataSort
+          dataFormat={this.countryFormatter}
+          width="20%"
+        >
           country
         </TableHeaderColumn>
       </BootstrapTable>
@@ -77,7 +91,9 @@ class IndexPage extends React.Component {
 IndexPage.propTypes = {
   movies: React.PropTypes.array.isRequired,
   directors: React.PropTypes.array.isRequired,
+  getCountryName: React.PropTypes.func.isRequired,
   loadAllMovies: React.PropTypes.func.isRequired,
+  countries: React.PropTypes.object.isRequired,
   lang: React.PropTypes.string,
 };
 

@@ -25,6 +25,7 @@ class InsertMoviePage extends React.Component {
       <EditMovieComponent
         saveMovie={(...args) => this.saveMovie(...args)}
         lang={this.props.lang}
+        countries={this.props.countries}
       />
     );
   }
@@ -37,6 +38,7 @@ InsertMoviePage.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   lang: React.PropTypes.string,
+  countries: React.PropTypes.object.isRequired,
 };
 
 export default InsertMoviePage;
