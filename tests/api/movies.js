@@ -67,11 +67,11 @@ describe('Movies', () => {
 
     it('should GET all the movies with missing titles', (done) => {
       const movie1 = {
-        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1', country: 'france',
+        title: { de: '', en: 't1', fr: '' }, year: 2000, url: 'u-1', director: 'd-1', country: 'DE',
       };
 
       const movie2 = {
-        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2', country: 'france',
+        title: { de: 't2', en: 't2', fr: 't2' }, year: 2000, url: 'u-2', director: 'd-2', country: 'DE',
       };
 
       const req = chai.request(server).post('/api/movies');
@@ -115,6 +115,7 @@ describe('Movies', () => {
         },
         year: 1987,
         url: 'url',
+        country: 'DE',
         director: 'director',
       };
       const req = chai.request(server).post('/api/movies');
@@ -146,6 +147,7 @@ describe('Movies', () => {
         },
         year: 2222,
         director: 'updated-director',
+        country: 'DE',
         url: 'updated-url',
       };
 
@@ -231,7 +233,7 @@ describe('Movies', () => {
         year: 1987,
         url: 'url',
         director: 'director',
-        country: 'old-country',
+        country: 'DE',
       };
       const req = chai.request(server).post('/api/movies');
       req.cookies = cookies;
@@ -257,7 +259,7 @@ describe('Movies', () => {
       it('should update the movie country', (done) => {
         const req = chai.request(server).patch(`/api/movies/${movieId}`);
         req.cookies = cookies;
-        req.send({ country: 'new-country' })
+        req.send({ country: 'JP' })
           .end((err, res) => {
             res.should.have.status(200);
             const createdMovie = res.body;
@@ -266,7 +268,7 @@ describe('Movies', () => {
             expect(createdMovie.year).to.eql(createdMovie.year);
             expect(createdMovie.url).to.eql(createdMovie.url);
             expect(createdMovie.director).to.eql(createdMovie.director);
-            expect(createdMovie.country).to.eql('new-country');
+            expect(createdMovie.country).to.eql('JP');
 
             done();
           });
@@ -275,7 +277,7 @@ describe('Movies', () => {
       it('should not update the movie country if too many fields are given', (done) => {
         const req = chai.request(server).patch(`/api/movies/${movieId}`);
         req.cookies = cookies;
-        req.send({ country: 'new-country', year: 2000 })
+        req.send({ country: 'JP', year: 2000 })
           .end((err, res) => {
             res.should.have.status(400);
 
@@ -339,6 +341,7 @@ describe('Movies', () => {
           },
           year: 1999,
           director: 'movie-director',
+          country: 'DE',
           url: 'movie-url',
         };
 

@@ -66,7 +66,7 @@ describe('Movies', () => {
         year: 2000,
         url: 'trailer-url',
         director: 'dir-ector',
-        country: 'france',
+        country: 'FR',
         awards: [{ name: 'cannes', year: 2000 }],
       };
     });
@@ -169,6 +169,17 @@ describe('Movies', () => {
 
       it('should not create a movie without a url', (done) => {
         movie.url = undefined;
+        const req = chai.request(server).post('/api/movies');
+        req.cookies = cookies;
+        req.send(movie)
+          .end((err, res) => {
+            res.should.have.status(400);
+            done();
+          });
+      });
+
+      it('should not create a movie without a valid country', (done) => {
+        movie.country = 'AA';
         const req = chai.request(server).post('/api/movies');
         req.cookies = cookies;
         req.send(movie)
