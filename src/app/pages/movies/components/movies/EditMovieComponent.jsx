@@ -1,4 +1,6 @@
 import React from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 import { getTitle } from '../../components/movies/MovieTitle';
 import SelectAwards from '../../components/movies/awards/SelectAwardsComponent';
@@ -80,11 +82,15 @@ class EditMovieComponent extends React.Component {
   render() {
     const language = this.props.lang;
     const movie = this.state.movie;
+    const { countries } = this.props;
     const { id, title, year, url, director, country, awards } = movie ? movie : {};
     const selectedTitle = movie && movie.title ? getTitle(movie.title, language) : '';
     const titleDe = title ? title.de : '';
     const titleFr = title ? title.fr : '';
     const titleEn = title ? title.en : '';
+    const countriesOptions = Object.keys(countries).map(code =>
+      ({ value: code, label: countries[code] }));
+
     return (
       <div className="editPage">
         <h1>{`Edit '${selectedTitle}'`}</h1>
@@ -145,10 +151,11 @@ class EditMovieComponent extends React.Component {
           </div>
           <div className="formGroup country">
             <span className="col-xs-12 col-sm-12 control-label">Country</span>
-            <input
-              type="text"
-              onChange={e => this.handleChange('country', e.target.value)}
+            <Select
+              name="country"
               value={country}
+              options={countriesOptions}
+              onChange={e => this.handleChange('country', e.value)}
             />
           </div>
           <div className="formGroup">
@@ -180,6 +187,7 @@ EditMovieComponent.propTypes = {
     }),
   }),
   saveMovie: React.PropTypes.func.isRequired,
+  countries: React.PropTypes.object.isRequired,
   lang: React.PropTypes.string,
 };
 

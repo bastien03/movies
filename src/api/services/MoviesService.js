@@ -1,14 +1,17 @@
+import countries from '../../countries';
 import MovieRepository from '../repositories/MovieRepository';
 import { isAwardListValid } from '../../MovieAwards';
 
 const isStringValid = title => title && title.length > 0;
+const isCountryValid = country => Object.keys(countries).includes(country.toUpperCase());
 
 const validateMovie = (movie) => {
   const hasTitle = movie.title && (
      isStringValid(movie.title.de) || isStringValid(movie.title.en) || isStringValid(movie.title.fr)
   );
   const isValid = hasTitle && movie.year && isStringValid(movie.url)
-    && isStringValid(movie.director) && isAwardListValid(movie.awards);
+    && isStringValid(movie.director) && isAwardListValid(movie.awards)
+    && isCountryValid(movie.country);
   return isValid;
 };
 

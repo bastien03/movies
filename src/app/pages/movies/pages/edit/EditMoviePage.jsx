@@ -49,6 +49,7 @@ EditMoviePage.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   lang: React.PropTypes.string,
+  countries: React.PropTypes.object.isRequired,
 };
 
 export default EditMoviePage;

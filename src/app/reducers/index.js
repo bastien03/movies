@@ -4,6 +4,7 @@ import auth from '../common/auth/reducer';
 import config from '../common/config/reducer';
 import movies from '../pages/movies/reducers/movies';
 import settings from './settings';
+import countries from './countries';
 
 export default combineReducers({
   movies,
@@ -11,4 +12,5 @@ export default combineReducers({
   config,
   settings,
   loadingBar: loadingBarReducer,
+  countries
 });

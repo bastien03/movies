@@ -4,6 +4,7 @@ import EditMovie from '../../../../../../src/app/pages/movies/components/movies/
 
 describe('<EditMovie />', () => {
   const props = {
+    countries: { countryCode: 'countryName' }
   };
 
   const setInputText = (wrapper, selector, value) => {
@@ -46,7 +47,6 @@ describe('<EditMovie />', () => {
     setInputText(wrapper, 'year', 2013);
     setInputText(wrapper, 'url', 'movie-url');
     setInputText(wrapper, 'director', 'movie-director');
-    setInputText(wrapper, 'country', 'movie-country');
 
     const form = wrapper.find('form');
     form.simulate('submit');
@@ -58,7 +58,7 @@ describe('<EditMovie />', () => {
       },
       url: 'movie-url',
       director: 'movie-director',
-      country: 'movie-country',
+      country: '',
       year: 2013,
       awards: [],
     });
